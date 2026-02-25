@@ -1,56 +1,30 @@
-import { MetadataRoute } from "next"
-import { getAllPages } from "@/lib/page-data"
-import { BUSINESS_INFO } from "@/lib/waterproofing-data"
+import type { MetadataRoute } from "next"
+import { equipmentCategories, spaceRentals } from "@/lib/data"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = BUSINESS_INFO.domain
-  const pages = getAllPages()
+  const baseUrl = "https://hadeed-transport.com"
 
-  // Homepage — highest priority
-  const homeEntry = {
-    url: baseUrl,
-    lastModified: new Date("2026-02-16"),
+  const staticPages = [
+    { url: baseUrl, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 1 },
+    { url: `${baseUrl}/equipments`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
+    { url: `${baseUrl}/space-rentals`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
+    { url: `${baseUrl}/about-us`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
+    { url: `${baseUrl}/contact-us`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
+  ]
+
+  const equipmentPages = equipmentCategories.map((cat) => ({
+    url: `${baseUrl}/equipments/${cat.slug}`,
+    lastModified: new Date(),
     changeFrequency: "weekly" as const,
-    priority: 1.0,
-  }
+    priority: 0.8,
+  }))
 
-  // Leads page
-  const leadsEntry = {
-    url: `${baseUrl}/leads`,
-    lastModified: new Date("2026-02-16"),
-    changeFrequency: "monthly" as const,
-    priority: 0.3,
-  }
+  const spacePages = spaceRentals.map((space) => ({
+    url: `${baseUrl}/space-rentals/${space.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }))
 
-  // Dynamic pages with priority based on type
-  const dynamicEntries = pages.map((page) => {
-    let priority = 0.7
-    let changeFrequency: "daily" | "weekly" | "monthly" = "weekly"
-
-    if (page.slug === "waterproofing-in-vadodara") {
-      priority = 0.95
-      changeFrequency = "daily"
-    } else if (page.type === "city") {
-      priority = 0.85
-      changeFrequency = "weekly"
-    } else if (page.type === "area") {
-      priority = 0.8
-      changeFrequency = "weekly"
-    } else if (page.type === "service") {
-      priority = 0.8
-      changeFrequency = "weekly"
-    } else if (page.type === "service-city") {
-      priority = 0.7
-      changeFrequency = "monthly"
-    }
-
-    return {
-      url: `${baseUrl}/${page.slug}`,
-      lastModified: new Date("2026-02-16"),
-      changeFrequency,
-      priority,
-    }
-  })
-
-  return [homeEntry, ...dynamicEntries, leadsEntry]
+  return [...staticPages, ...equipmentPages, ...spacePages]
 }

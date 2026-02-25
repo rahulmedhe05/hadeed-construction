@@ -1,112 +1,49 @@
 "use client"
 
-import { ChevronDown } from "lucide-react"
 import { useState } from "react"
-
-const faqs = [
-  {
-    question: "How long does it take to rank on Google?",
-    answer:
-      "Local SEO typically takes 2-4 months to show significant results. For less competitive keywords, you may see results in as little as 4-6 weeks. For highly competitive terms, it may take 4-6 months. We focus on realistic expectations, not fake promises.",
-  },
-  {
-    question: "What if I don't rank? Do I still have to pay?",
-    answer:
-      "No. Our model is simple — you pay only after you see yourself ranking on Google for your target keywords. If we don't deliver results, you don't pay. This keeps us accountable and removes your risk completely.",
-  },
-  {
-    question: "Is this suitable for my business?",
-    answer:
-      "If you have a local business and your customers search for your services on Google, then yes — Local SEO will help you. This works for shops, clinics, restaurants, professionals, service providers, coaching centres, and virtually any local business.",
-  },
-  {
-    question: "Why one-time payment instead of monthly fees?",
-    answer:
-      "Most of the heavy SEO work happens in the first 3-6 months. After that, your rankings typically maintain themselves with minimal effort. We believe in one-time payment because it's honest — you shouldn't keep paying monthly for work done once. Enjoy long-term results!",
-  },
-  {
-    question: "Do I need a website for SEO?",
-    answer:
-      "Yes, a website is essential for our SEO services. We optimize your website content, structure, and technical aspects to help you rank on Google. If your current website needs improvement, we include a free redesign as part of our package.",
-  },
-  {
-    question: "Can you guarantee #1 ranking on Google?",
-    answer:
-      "No honest SEO professional can guarantee #1 ranking — Google's algorithm is controlled by Google, not us. What we CAN guarantee is our best effort, proven strategies, and our pay-after-ranking model which ensures you only pay for actual results.",
-  },
-  {
-    question: "What keywords will I rank for?",
-    answer:
-      "We target keywords your potential customers are actually searching for, like '[your service] in [your city]'. During our consultation, we'll research and discuss the most valuable keywords for your specific business.",
-  },
-  {
-    question: "How do I get started?",
-    answer:
-      "Simple! Click the WhatsApp button or fill out the form on this page. We'll have a quick chat to understand your business, do a free SEO analysis, and tell you exactly how we can help. No commitment required for the consultation.",
-  },
-]
+import { ChevronDown } from "lucide-react"
+import { faqs } from "@/lib/data"
 
 export function FAQSection() {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(0)
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section id="faq" className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <p className="text-accent font-semibold uppercase tracking-wider mb-3 text-sm">FAQ</p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 text-balance">
-            Frequently Asked Questions About Local SEO
+    <section className="py-24 bg-[#0f0f1a]">
+      <div className="max-w-4xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <span className="text-[#c8a35a] text-sm font-semibold tracking-[0.3em] uppercase">
+            Common Questions
+          </span>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mt-4">
+            Most Popular Questions
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Got questions? We've got clear, honest answers.
-          </p>
         </div>
 
-        <div className="max-w-3xl mx-auto space-y-4">
+        <div className="space-y-4">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-card rounded-lg border border-border overflow-hidden hover:border-primary/50 transition-colors"
+              className="bg-[#1a1a2e] border border-[#c8a35a]/15 rounded-xl overflow-hidden hover:border-[#c8a35a]/30 transition-all"
             >
               <button
-                onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
-                className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-primary/5 transition-colors"
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                className="w-full flex items-center justify-between p-6 text-left"
               >
-                <h3 className="text-lg font-semibold text-foreground">{faq.question}</h3>
+                <span className="text-white font-medium pr-4">{faq.question}</span>
                 <ChevronDown
-                  className={`w-5 h-5 text-primary transition-transform flex-shrink-0 ${
-                    expandedIndex === index ? "rotate-180" : ""
+                  className={`w-5 h-5 text-[#c8a35a] flex-shrink-0 transition-transform duration-300 ${
+                    openIndex === index ? "rotate-180" : ""
                   }`}
                 />
               </button>
-
-              {expandedIndex === index && (
-                <div className="px-6 py-4 border-t border-border bg-muted/30">
-                  <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
+              {openIndex === index && (
+                <div className="px-6 pb-6">
+                  <p className="text-gray-400 leading-relaxed">{faq.answer}</p>
                 </div>
               )}
             </div>
           ))}
         </div>
-
-        {/* Schema.org FAQ Script */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              mainEntity: faqs.map((faq) => ({
-                "@type": "Question",
-                name: faq.question,
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: faq.answer,
-                },
-              })),
-            }),
-          }}
-        />
       </div>
     </section>
   )

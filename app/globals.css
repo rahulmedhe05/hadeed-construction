@@ -3,101 +3,42 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Professional SEO Services Color Palette - Trust & Growth */
 :root {
-  /* Clean white backgrounds */
-  --background: oklch(0.99 0.002 0);
-  --foreground: oklch(0.18 0.02 250);
-
-  /* Card colors */
-  --card: oklch(0.98 0.003 0);
-  --card-foreground: oklch(0.18 0.02 250);
-
-  /* Popover */
-  --popover: oklch(0.98 0.003 0);
-  --popover-foreground: oklch(0.18 0.02 250);
-
-  /* Primary - Professional Deep Blue */
-  --primary: oklch(0.45 0.18 260);
-  --primary-foreground: oklch(0.99 0.002 0);
-
-  /* Secondary - Trust Blue */
-  --secondary: oklch(0.55 0.12 250);
-  --secondary-foreground: oklch(0.99 0.002 0);
-
-  /* Muted tones */
-  --muted: oklch(0.95 0.008 250);
-  --muted-foreground: oklch(0.45 0.02 250);
-
-  /* Accent - Success Green */
-  --accent: oklch(0.55 0.18 145);
-  --accent-foreground: oklch(0.99 0.002 0);
-
-  /* Destructive */
+  --background: oklch(0.13 0.01 250);
+  --foreground: oklch(0.97 0.003 80);
+  --card: oklch(0.17 0.01 250);
+  --card-foreground: oklch(0.97 0.003 80);
+  --popover: oklch(0.17 0.01 250);
+  --popover-foreground: oklch(0.97 0.003 80);
+  --primary: oklch(0.78 0.15 75);
+  --primary-foreground: oklch(0.13 0.01 250);
+  --secondary: oklch(0.60 0.12 75);
+  --secondary-foreground: oklch(0.97 0.003 80);
+  --muted: oklch(0.22 0.01 250);
+  --muted-foreground: oklch(0.65 0.01 250);
+  --accent: oklch(0.78 0.15 75);
+  --accent-foreground: oklch(0.13 0.01 250);
   --destructive: oklch(0.55 0.22 25);
   --destructive-foreground: oklch(0.99 0.002 0);
-
-  /* Borders and inputs */
-  --border: oklch(0.90 0.01 250);
-  --input: oklch(0.95 0.005 250);
-  --ring: oklch(0.45 0.18 260);
-
-  /* Charts */
-  --chart-1: oklch(0.45 0.18 260);
-  --chart-2: oklch(0.55 0.18 145);
+  --border: oklch(0.30 0.01 250);
+  --input: oklch(0.22 0.01 250);
+  --ring: oklch(0.78 0.15 75);
+  --chart-1: oklch(0.78 0.15 75);
+  --chart-2: oklch(0.65 0.15 75);
   --chart-3: oklch(0.55 0.12 250);
-  --chart-4: oklch(0.65 0.15 200);
+  --chart-4: oklch(0.65 0.12 200);
   --chart-5: oklch(0.6 0.12 300);
-
   --radius: 0.625rem;
-
-  /* Sidebar */
-  --sidebar: oklch(0.98 0.003 0);
-  --sidebar-foreground: oklch(0.18 0.02 250);
-  --sidebar-primary: oklch(0.45 0.18 260);
-  --sidebar-primary-foreground: oklch(0.99 0.002 0);
-  --sidebar-accent: oklch(0.95 0.008 250);
-  --sidebar-accent-foreground: oklch(0.18 0.02 250);
-  --sidebar-border: oklch(0.90 0.01 250);
-  --sidebar-ring: oklch(0.45 0.18 260);
+  --sidebar: oklch(0.15 0.01 250);
+  --sidebar-foreground: oklch(0.97 0.003 80);
+  --sidebar-primary: oklch(0.78 0.15 75);
+  --sidebar-primary-foreground: oklch(0.13 0.01 250);
+  --sidebar-accent: oklch(0.22 0.01 250);
+  --sidebar-accent-foreground: oklch(0.97 0.003 80);
+  --sidebar-border: oklch(0.30 0.01 250);
+  --sidebar-ring: oklch(0.78 0.15 75);
 }
 
-.dark {
-  --background: oklch(0.12 0.02 250);
-  --foreground: oklch(0.97 0.003 0);
-  --card: oklch(0.16 0.025 250);
-  --card-foreground: oklch(0.97 0.003 0);
-  --popover: oklch(0.16 0.025 250);
-  --popover-foreground: oklch(0.97 0.003 0);
-  --primary: oklch(0.55 0.2 260);
-  --primary-foreground: oklch(0.99 0.002 0);
-  --secondary: oklch(0.45 0.1 250);
-  --secondary-foreground: oklch(0.97 0.003 0);
-  --muted: oklch(0.22 0.02 250);
-  --muted-foreground: oklch(0.7 0.01 250);
-  --accent: oklch(0.55 0.2 145);
-  --accent-foreground: oklch(0.99 0.002 0);
-  --destructive: oklch(0.55 0.22 25);
-  --destructive-foreground: oklch(0.97 0.003 0);
-  --border: oklch(0.25 0.02 250);
-  --input: oklch(0.25 0.02 250);
-  --ring: oklch(0.55 0.2 260);
-  --chart-1: oklch(0.55 0.2 260);
-  --chart-2: oklch(0.55 0.2 145);
-  --chart-3: oklch(0.55 0.12 200);
-  --chart-4: oklch(0.65 0.12 250);
-  --chart-5: oklch(0.6 0.15 300);
-  --sidebar: oklch(0.16 0.025 250);
-  --sidebar-foreground: oklch(0.97 0.003 0);
-  --sidebar-primary: oklch(0.55 0.2 260);
-  --sidebar-primary-foreground: oklch(0.99 0.002 0);
-  --sidebar-accent: oklch(0.22 0.02 250);
-  --sidebar-accent-foreground: oklch(0.97 0.003 0);
-  --sidebar-border: oklch(0.25 0.02 250);
-  --sidebar-ring: oklch(0.55 0.2 260);
-}
-
-/* Modern professional fonts for SEO services */
 @theme inline {
   --font-sans: "Inter", "system-ui", "sans-serif";
   --font-mono: "Inter", "system-ui", "sans-serif";
@@ -146,38 +87,23 @@
   body {
     @apply bg-background text-foreground;
   }
-
-  /* Custom scrollbar styling for premium look */
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
   }
-
   ::-webkit-scrollbar-track {
-    @apply bg-muted;
+    background: #111;
   }
-
   ::-webkit-scrollbar-thumb {
-    @apply bg-primary rounded-lg;
+    background: #c8a35a;
+    border-radius: 4px;
   }
-
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-accent;
+    background: #e0b96e;
   }
 }
 
 @layer components {
-  .badge-flicker {
-    animation: badgeFlicker 1.5s ease-in-out infinite;
-  }
-
-  @keyframes badgeFlicker {
-    0%, 100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.6;
-      transform: scale(1.05);
-    }
+  .gold-gradient {
+    background: linear-gradient(135deg, #c8a35a 0%, #e0c97f 50%, #c8a35a 100%);
   }
 }
