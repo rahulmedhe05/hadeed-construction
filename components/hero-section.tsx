@@ -10,22 +10,22 @@ const heroSlides = [
   {
     image: "/images/hero/hero-1.jpg",
     title: "Industrial & Construction Excellence",
-    subtitle: "25+ years delivering complex projects across UAE, Qatar & Jordan",
+    subtitle: "Heavy equipment fleet and skilled workforce delivering complex projects across Abu Dhabi & Dubai",
   },
   {
     image: "/images/hero/hero-2.jpg",
-    title: "400+ Projects Successfully Delivered",
-    subtitle: "From industrial complexes to infrastructure works — proven execution at scale",
+    title: "Zamil Steel Certified Builder",
+    subtitle: "Sole certified builder for Zamil Steel in Abu Dhabi — pre-engineered steel buildings at scale",
   },
   {
     image: "/images/hero/hero-3.jpg",
-    title: "Diverse Sector Expertise",
-    subtitle: "Serving 15+ sectors including oil & gas, logistics, defense, and commercial",
+    title: "400+ Projects Successfully Delivered",
+    subtitle: "From industrial cable factories to logistics parks — proven execution across 15+ sectors",
   },
   {
     image: "/images/hero/hero-4.jpg",
-    title: "Engineering Excellence & Safety",
-    subtitle: "ISO certified with strong HSE culture across all projects",
+    title: "Diverse Sector Expertise",
+    subtitle: "25+ years serving oil & gas, logistics, defense, aviation, and commercial sectors across UAE & Qatar",
   },
 ]
 
