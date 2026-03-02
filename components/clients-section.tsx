@@ -3,34 +3,29 @@
 import { useEffect, useRef } from "react"
 
 const clientLogos = [
-  "/images/client-logos/logo-10c61d2c.jpg",
-  "/images/client-logos/logo-13fbc5f2.jpg",
-  "/images/client-logos/logo-1570bf3a.jpg",
-  "/images/client-logos/logo-189a856d.jpg",
-  "/images/client-logos/logo-1cbb2af3.jpg",
-  "/images/client-logos/logo-2bd12042.jpg",
-  "/images/client-logos/logo-2cd1a154.jpg",
-  "/images/client-logos/logo-38d47d47.jpg",
-  "/images/client-logos/logo-436d502d.jpg",
-  "/images/client-logos/logo-4f059c0f.jpg",
-  "/images/client-logos/logo-6478907c.jpg",
-  "/images/client-logos/logo-66952e54.jpg",
-  "/images/client-logos/logo-695fc954.jpg",
-  "/images/client-logos/logo-6b348d57.jpg",
-  "/images/client-logos/logo-77539289.jpg",
-  "/images/client-logos/logo-8ccdf8d9.jpg",
-  "/images/client-logos/logo-8fb11081.jpg",
-  "/images/client-logos/logo-9026b9f0.jpg",
-  "/images/client-logos/logo-a38a7270.jpg",
-  "/images/client-logos/logo-afa0b5ee.jpg",
-  "/images/client-logos/logo-b41accf9.jpg",
-  "/images/client-logos/logo-c0bd5eba.jpg",
-  "/images/client-logos/logo-c6108933.jpg",
-  "/images/client-logos/logo-c8797fb2.jpg",
-  "/images/client-logos/logo-f067b282.jpg",
-  "/images/client-logos/logo-f27e2c67.jpg",
-  "/images/client-logos/logo-fb0cd959.jpg",
-  "/images/client-logos/logo-fc6142a2.jpg",
+  "/images/client-logos/client-logo-01.jpeg",
+  "/images/client-logos/client-logo-02.png",
+  "/images/client-logos/client-logo-03.png",
+  "/images/client-logos/client-logo-04.png",
+  "/images/client-logos/client-logo-05.png",
+  "/images/client-logos/client-logo-06.png",
+  "/images/client-logos/client-logo-07.png",
+  "/images/client-logos/client-logo-08.png",
+  "/images/client-logos/client-logo-09.png",
+  "/images/client-logos/client-logo-10.png",
+  "/images/client-logos/client-logo-11.png",
+  "/images/client-logos/client-logo-12.png",
+  "/images/client-logos/client-logo-13.png",
+  "/images/client-logos/client-logo-14.png",
+  "/images/client-logos/client-logo-15.png",
+  "/images/client-logos/client-logo-16.png",
+  "/images/client-logos/client-logo-17.png",
+  "/images/client-logos/client-logo-18.png",
+  "/images/client-logos/client-logo-19.png",
+  "/images/client-logos/client-logo-20.png",
+  "/images/client-logos/client-logo-21.png",
+  "/images/client-logos/client-logo-22.png",
+  "/images/client-logos/client-logo-23.png",
 ]
 
 const clientProjects = [
@@ -121,7 +116,7 @@ export function ClientsSection() {
             {[...clientLogos, ...clientLogos].map((logo, i) => (
               <div
                 key={i}
-                className="flex-shrink-0 w-20 h-20 bg-gray-50 rounded-xl border border-gray-100 flex items-center justify-center p-2 hover:border-[#2563eb]/30 hover:shadow-md transition-all"
+                className="flex-shrink-0 w-28 h-20 bg-white rounded-xl border border-gray-100 flex items-center justify-center p-3 hover:border-[#2563eb]/30 hover:shadow-md transition-all"
               >
                 <img
                   src={logo}
