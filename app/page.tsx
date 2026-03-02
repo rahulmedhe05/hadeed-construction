@@ -9,6 +9,9 @@ import { Footer } from "@/components/footer"
 import { Navigation } from "@/components/navigation"
 import { WhatsAppFloat } from "@/components/whatsapp-float"
 import { ProjectGallery } from "@/components/project-gallery"
+import { CertificatesSection } from "@/components/certificates-section"
+import { ClientsSection } from "@/components/clients-section"
+import { OurWorkSection } from "@/components/our-work-section"
 import { projectSectors } from "@/lib/data"
 
 export default function Home() {
@@ -17,6 +20,8 @@ export default function Home() {
       <Navigation />
       <HeroSection />
       <AboutSection />
+      <CertificatesSection />
+      <ClientsSection />
 
       {/* Project Sectors Grid */}
       <section className="py-24 bg-[#ffffff]">
@@ -66,6 +71,7 @@ export default function Home() {
         </div>
       </section>
 
+      <OurWorkSection />
       <ProjectGallery />
       <HowItWorks />
       <StatsCounter />

@@ -4,18 +4,18 @@ import { useState } from "react"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 
 const projectGallery = [
-  { src: "/images/projects/project-01.jpeg", title: "Industrial Complex — Abu Dhabi", category: "Industrial" },
-  { src: "/images/projects/project-16.jpeg", title: "Defense Facility Construction", category: "Military" },
-  { src: "/images/projects/project-10.jpeg", title: "Commercial Development — Dubai", category: "Commercial" },
-  { src: "/images/projects/project-14.jpeg", title: "Logistics Hub — KIZAD", category: "Logistics" },
-  { src: "/images/projects/project-15.jpeg", title: "Warehouse Construction — Mussafah", category: "Warehousing" },
-  { src: "/images/projects/project-35.jpeg", title: "Oil & Gas Support Facilities", category: "Oil & Gas" },
-  { src: "/images/projects/project-22.jpeg", title: "Infrastructure Works — Al Ain", category: "Infrastructure" },
-  { src: "/images/projects/project-37.jpeg", title: "Solar Installation Project", category: "Energy" },
-  { src: "/images/projects/project-17.png", title: "Aviation Facility — Abu Dhabi Airport", category: "Aviation" },
-  { src: "/images/projects/project-50.png", title: "Free Zone Development — JAFZA", category: "Free Zone" },
-  { src: "/images/projects/project-52.png", title: "Residential Tower Construction", category: "Residential" },
-  { src: "/images/projects/project-34.jpeg", title: "Port Infrastructure — Fujairah", category: "Marine" },
+  { src: "/images/projects/ppt-project-01.jpg", title: "ICT Logistics Park — Mussafah", category: "Logistics" },
+  { src: "/images/projects/ppt-project-05.jpg", title: "DEWA Solar Innovation Centre", category: "Renewable Energy" },
+  { src: "/images/projects/ppt-project-08.jpg", title: "Al-Taaqa Warehouse — Jebel Ali Airport", category: "Logistics" },
+  { src: "/images/projects/ppt-project-13.jpg", title: "ADCAN Pharmaceutical Factory", category: "Pharmaceutical" },
+  { src: "/images/projects/ppt-project-18.jpg", title: "Aircraft Hangar — Internal View", category: "Aviation" },
+  { src: "/images/projects/ppt-project-22.jpg", title: "Al Ain Cement Factory Services", category: "Building Materials" },
+  { src: "/images/projects/ppt-project-25.jpg", title: "Kimera Warehouses — KIZAD", category: "Logistics" },
+  { src: "/images/projects/ppt-project-29.jpg", title: "Schmidlin Aluminium Factory", category: "Metal Industries" },
+  { src: "/images/projects/ppt-project-32.jpg", title: "ADSB Vessel Outfit Workshop", category: "Marine & Ports" },
+  { src: "/images/projects/ppt-project-35.jpg", title: "CMW Communication Tower — Ghagha", category: "Military" },
+  { src: "/images/projects/ppt-project-37.jpg", title: "Tawazun Residential Complex", category: "Residential" },
+  { src: "/images/projects/ppt-project-43.jpg", title: "Madinat Zayed Primary Substation", category: "Energy" },
 ]
 
 export function ProjectGallery() {
