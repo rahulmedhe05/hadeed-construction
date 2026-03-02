@@ -1,244 +1,447 @@
 // ============================================================
-// Dubai & Abu Dhabi Area Data
+// Hadeed Emirates Contracting — Cities & Areas Data
+// UAE (7 Emirates) + Qatar + Jordan
 // ============================================================
 
 export interface Area {
   name: string
   slug: string
   description: string
-  highlights: string[]
 }
 
-export interface CityData {
+export interface City {
   name: string
   slug: string
+  country: string
+  countryCode: string
   title: string
   description: string
   metaDescription: string
   areas: Area[]
 }
 
-// ────────────────────────────────────────────────
-// Dubai Areas
-// ────────────────────────────────────────────────
+// ============================================================
+// UAE — Abu Dhabi
+// ============================================================
 
-export const dubaiAreas: Area[] = [
-  { name: "Deira", slug: "deira", description: "One of Dubai's oldest commercial hubs, Deira is a bustling center of trade and commerce. Hadeed Transport provides heavy equipment rental and logistics support to construction and infrastructure projects in Deira.", highlights: ["Commercial construction support", "Equipment delivery to congested areas", "Compact machinery for tight spaces"] },
-  { name: "Bur Dubai", slug: "bur-dubai", description: "A historic district blending traditional heritage with modern development. Our equipment rental services in Bur Dubai support renovation, heritage restoration, and new construction projects.", highlights: ["Heritage building renovation support", "Compact equipment for old town areas", "Flexible short-term rentals"] },
-  { name: "Downtown Dubai", slug: "downtown-dubai", description: "Home to the Burj Khalifa and Dubai Mall, Downtown Dubai represents world-class urban development. Hadeed Transport supplies cranes, lifts, and heavy machinery for prestigious high-rise projects in this iconic district.", highlights: ["High-rise construction equipment", "Tower crane services", "Manlift and aerial platform rentals"] },
-  { name: "Dubai Marina", slug: "dubai-marina", description: "A stunning waterfront development featuring luxury towers and promenades. We provide specialized equipment for marine-adjacent construction and high-rise maintenance projects in Dubai Marina.", highlights: ["Waterfront construction support", "High-level manlift services", "Equipment logistics in dense areas"] },
-  { name: "Jumeirah", slug: "jumeirah", description: "An upscale beachfront community known for luxury villas and resorts. Hadeed Transport offers residential construction equipment and landscaping machinery for projects in Jumeirah.", highlights: ["Residential construction equipment", "Landscaping machinery rental", "Villa renovation support"] },
-  { name: "Al Quoz", slug: "al-quoz", description: "Dubai's industrial and creative hub featuring warehouses, workshops, and galleries. We serve Al Quoz with warehouse storage, open yards, and heavy machinery for industrial projects.", highlights: ["Industrial equipment rental", "Warehouse and storage solutions", "Open yard availability"] },
-  { name: "Al Barsha", slug: "al-barsha", description: "A diverse residential and commercial district near Mall of the Emirates. Our services in Al Barsha include construction equipment rental for residential towers and commercial buildings.", highlights: ["Mixed-use development support", "Residential tower equipment", "Commercial construction machinery"] },
-  { name: "Business Bay", slug: "business-bay", description: "Dubai's central business district with modern commercial towers and mixed-use developments. Hadeed Transport provides comprehensive equipment rental for the fast-growing Business Bay area.", highlights: ["Commercial tower construction support", "Office fit-out equipment", "Logistics and transport services"] },
-  { name: "DIFC", slug: "difc", description: "The Dubai International Financial Centre is a premium business district. We supply precision equipment and professional-grade machinery for the high-standard projects in DIFC.", highlights: ["Premium project support", "Precision equipment for fit-outs", "Professional machinery fleet"] },
-  { name: "JBR (Jumeirah Beach Residence)", slug: "jbr", description: "A vibrant beachfront community in Dubai. Hadeed Transport supports maintenance, renovation, and construction activities at JBR with reliable equipment and fast delivery.", highlights: ["Beachfront maintenance equipment", "Renovation machinery", "Compact construction tools"] },
-  { name: "JLT (Jumeirah Lakes Towers)", slug: "jlt", description: "A mixed-use free zone development with residential and commercial towers surrounding artificial lakes. We serve JLT with construction and maintenance equipment rentals.", highlights: ["Tower maintenance equipment", "Commercial fit-out tools", "Efficient delivery logistics"] },
-  { name: "Palm Jumeirah", slug: "palm-jumeirah", description: "The world-famous man-made island featuring luxury residences and hotels. Hadeed Transport provides specialized equipment for the unique construction and maintenance needs of Palm Jumeirah.", highlights: ["Island-specific logistics", "Luxury property construction support", "Marine-adjacent equipment solutions"] },
-  { name: "Dubai Silicon Oasis", slug: "dubai-silicon-oasis", description: "A technology-focused free zone and residential community. We provide equipment rental services for tech park construction, office fit-outs, and infrastructure projects in DSO.", highlights: ["Tech park construction equipment", "Office infrastructure tools", "Data center support equipment"] },
-  { name: "Dubai Internet City", slug: "dubai-internet-city", description: "A major technology hub hosting global tech companies. Hadeed Transport supports construction, renovation, and maintenance projects in Dubai Internet City with modern equipment.", highlights: ["Corporate campus construction", "IT infrastructure support equipment", "Office renovation tools"] },
-  { name: "Dubai Media City", slug: "dubai-media-city", description: "A media industry free zone in Dubai. We offer equipment rentals for studio construction, event setup, and facility maintenance in Dubai Media City.", highlights: ["Studio and set construction", "Event setup equipment", "Facility maintenance tools"] },
-  { name: "Dubai Investment Park (DIP)", slug: "dubai-investment-park", description: "A self-contained mixed-use complex with industrial, commercial, and residential zones. Hadeed Transport serves DIP with heavy machinery, storage solutions, and transport services.", highlights: ["Industrial zone equipment", "Warehouse and storage rentals", "Heavy machinery fleet"] },
-  { name: "Jebel Ali", slug: "jebel-ali", description: "Home to one of the world's largest ports and the Jebel Ali Free Zone. We provide industrial-grade equipment, storage containers, and transport services for the massive logistics operations in Jebel Ali.", highlights: ["Port and logistics equipment", "Container and storage rentals", "Industrial machinery fleet"] },
-  { name: "Al Karama", slug: "al-karama", description: "A popular residential and commercial district in central Dubai. Our compact construction equipment and renovation tools serve the ongoing building maintenance projects in Al Karama.", highlights: ["Residential renovation equipment", "Compact machinery for dense areas", "Building maintenance tools"] },
-  { name: "Al Garhoud", slug: "al-garhoud", description: "A mixed residential and commercial area near Dubai International Airport. Hadeed Transport provides equipment for construction, aviation support, and infrastructure projects in Al Garhoud.", highlights: ["Airport-adjacent project support", "Infrastructure construction equipment", "Commercial building tools"] },
-  { name: "Dubai South", slug: "dubai-south", description: "A master-planned city surrounding Al Maktoum International Airport and Expo City. We support the massive development projects in Dubai South with our full fleet of heavy equipment and storage solutions.", highlights: ["Large-scale development support", "Full heavy equipment fleet", "Long-term project contracts"] },
-  { name: "Dubai Creek Harbour", slug: "dubai-creek-harbour", description: "A waterfront development that will feature Dubai Creek Tower. Hadeed Transport provides cranes, earthmoving equipment, and construction tools for this major development.", highlights: ["Waterfront development equipment", "Crane and lifting services", "Earthmoving machinery"] },
-  { name: "Mirdif", slug: "mirdif", description: "A well-established residential community in eastern Dubai. We provide residential construction equipment and renovation tools for projects in the Mirdif area.", highlights: ["Residential community development", "Villa construction equipment", "Garden and landscape machinery"] },
-  { name: "Al Warqa", slug: "al-warqa", description: "A suburban residential area known for villas and family communities. Our equipment services in Al Warqa support residential construction, maintenance, and infrastructure projects.", highlights: ["Suburban development equipment", "Road and utility construction", "Residential renovation tools"] },
-  { name: "Nad Al Sheba", slug: "nad-al-sheba", description: "A rapidly developing residential area in Dubai. Hadeed Transport offers construction equipment for the new housing and infrastructure projects being built in Nad Al Sheba.", highlights: ["New community construction", "Infrastructure development equipment", "Road construction machinery"] },
-  { name: "Ras Al Khor", slug: "ras-al-khor", description: "Dubai's industrial area near the creek, known for its industrial and commercial activities. We serve Ras Al Khor with heavy machinery, storage, and logistics equipment.", highlights: ["Industrial operations support", "Heavy machinery rental", "Storage and logistics services"] },
-  { name: "International City", slug: "international-city", description: "A large residential development offering affordable housing. Our services support ongoing construction and maintenance projects in International City with reliable equipment.", highlights: ["Affordable housing construction", "Building maintenance equipment", "Compact construction tools"] },
-  { name: "Discovery Gardens", slug: "discovery-gardens", description: "A residential community in Jebel Ali offering garden-themed housing. We provide construction and landscaping equipment for projects in Discovery Gardens.", highlights: ["Community renovation equipment", "Landscaping machinery", "Maintenance tools"] },
-  { name: "Dubai Festival City", slug: "dubai-festival-city", description: "A mixed-use waterfront development along Dubai Creek. Hadeed Transport supports retail, hospitality, and residential construction projects in Festival City.", highlights: ["Retail construction support", "Waterfront project equipment", "Hospitality renovation tools"] },
-  { name: "Motor City", slug: "motor-city", description: "A motorsport-themed community with residential and commercial elements. We provide construction equipment for ongoing developments in Motor City.", highlights: ["Community development equipment", "Road construction machinery", "Building maintenance tools"] },
-  { name: "Dubai Sports City", slug: "dubai-sports-city", description: "A sports-focused community with stadiums and residential towers. Our equipment rental services support sports facility construction and residential projects.", highlights: ["Sports facility construction", "Stadium and arena equipment", "Residential tower machinery"] },
-  { name: "Dubai Hills Estate", slug: "dubai-hills-estate", description: "A premium master-planned community featuring villas, apartments, and a golf course. We supply construction equipment for the luxury projects in Dubai Hills.", highlights: ["Luxury community development", "Premium construction equipment", "Landscape and grading machinery"] },
-  { name: "Arabian Ranches", slug: "arabian-ranches", description: "An established villa community offering a suburban lifestyle. Hadeed Transport provides equipment for villa construction, renovation, and community infrastructure in Arabian Ranches.", highlights: ["Villa construction support", "Renovation and remodeling equipment", "Community infrastructure tools"] },
-  { name: "DAMAC Hills", slug: "damac-hills", description: "A luxury lifestyle community with golf course residences. Our services include construction equipment for villas, apartment buildings, and amenity projects in DAMAC Hills.", highlights: ["Golf community development", "Luxury villa construction", "Amenity project equipment"] },
-  { name: "Dubai Industrial City", slug: "dubai-industrial-city", description: "A dedicated industrial zone supporting manufacturing and logistics. Hadeed Transport serves Dubai Industrial City with heavy machinery, storage facilities, and material transport services.", highlights: ["Heavy industrial equipment", "Manufacturing support machinery", "Logistics and transport fleet"] },
-  { name: "Al Nahda Dubai", slug: "al-nahda-dubai", description: "A residential district on the Dubai-Sharjah border known for its apartment buildings. We provide compact construction equipment for building maintenance and renovation projects in Al Nahda.", highlights: ["Apartment renovation equipment", "Building maintenance tools", "Compact machinery for tight sites"] },
-  { name: "Dubai Production City", slug: "dubai-production-city", description: "A media and publishing free zone with modern facilities. Our equipment services support construction and fit-out projects across Dubai Production City.", highlights: ["Commercial construction support", "Fit-out and renovation tools", "Infrastructure equipment"] },
-  { name: "Jumeirah Village Circle (JVC)", slug: "jumeirah-village-circle", description: "A family-friendly residential community with villas and apartments. Hadeed Transport provides building construction and maintenance equipment for JVC projects.", highlights: ["Residential building equipment", "Community infrastructure tools", "Maintenance and renovation machinery"] },
-  { name: "Dubailand", slug: "dubailand", description: "A massive entertainment and residential development hub. We support the large-scale projects in Dubailand with our full range of heavy equipment and transport services.", highlights: ["Large-scale project support", "Entertainment venue construction", "Heavy equipment fleet"] },
-  { name: "Al Awir", slug: "al-awir", description: "An area on the outskirts of Dubai featuring farms and new developments. Hadeed Transport serves Al Awir with earthmoving equipment, storage solutions, and construction machinery.", highlights: ["Agricultural and construction equipment", "Earthmoving machinery", "Remote area delivery"] },
-  { name: "Dubai Harbour", slug: "dubai-harbour", description: "A landmark maritime destination featuring a cruise terminal and marinas. We provide specialized equipment for marine and waterfront construction projects at Dubai Harbour.", highlights: ["Marine construction equipment", "Waterfront project support", "Cruise terminal construction tools"] },
-  { name: "Umm Suqeim", slug: "umm-suqeim", description: "A prestigious beachfront residential area near the iconic Burj Al Arab. Hadeed Transport provides villa construction equipment, landscaping machinery, and renovation tools for projects in Umm Suqeim.", highlights: ["Villa construction equipment", "Beachfront project support", "Landscaping machinery rental"] },
-  { name: "Al Safa", slug: "al-safa", description: "An upscale residential district known for luxury villas and proximity to Safa Park. We provide premium construction and renovation equipment for the high-value residential projects in Al Safa.", highlights: ["Luxury villa construction", "Premium renovation equipment", "Landscaping and grading tools"] },
-  { name: "Al Wasl", slug: "al-wasl", description: "A central residential area connecting Jumeirah to the heart of Dubai. Hadeed Transport delivers construction equipment for the mixed residential and commercial developments in Al Wasl.", highlights: ["Central location delivery", "Mixed-use development support", "Residential renovation equipment"] },
-  { name: "Al Satwa", slug: "al-satwa", description: "A vibrant multicultural neighborhood in central Dubai undergoing urban renewal. Our equipment services support renovation, redevelopment, and infrastructure improvement projects in Al Satwa.", highlights: ["Urban renewal equipment", "Renovation and demolition tools", "Compact machinery for tight streets"] },
-  { name: "Oud Metha", slug: "oud-metha", description: "A central district housing healthcare, education, and commercial facilities. Hadeed Transport provides construction and fit-out equipment for the institutional and commercial projects in Oud Metha.", highlights: ["Institutional construction support", "Healthcare facility equipment", "Commercial fit-out tools"] },
-  { name: "Dubai Healthcare City", slug: "dubai-healthcare-city", description: "A medical free zone with hospitals, clinics, and wellness centers. We provide specialized construction and fit-out equipment for healthcare facility projects in DHCC.", highlights: ["Healthcare facility construction", "Clean-room fit-out equipment", "Precision installation tools"] },
-  { name: "Dubai Academic City", slug: "dubai-academic-city", description: "An educational free zone with universities and student facilities. Our equipment services support campus construction, expansion, and maintenance projects in Academic City.", highlights: ["Campus construction equipment", "Educational facility tools", "Student housing construction"] },
-  { name: "Dubai Studio City", slug: "dubai-studio-city", description: "A media production free zone with studios and creative spaces. Hadeed Transport provides construction and fit-out equipment for studio builds and production facility projects.", highlights: ["Studio construction equipment", "Set building tools", "Production facility fit-out"] },
-  { name: "Dubai Knowledge Park", slug: "dubai-knowledge-park", description: "An education and training free zone in Dubai. We support campus construction, office fit-outs, and facility maintenance with our comprehensive equipment fleet.", highlights: ["Education facility equipment", "Office fit-out tools", "Campus maintenance machinery"] },
-  { name: "TECOM (Dubai Technology & Media Free Zone)", slug: "tecom", description: "A leading business district encompassing technology, media, and education clusters. Hadeed Transport serves TECOM with commercial construction and office fit-out equipment.", highlights: ["Commercial tower equipment", "Office fit-out tools", "Technology infrastructure support"] },
-  { name: "The Greens", slug: "the-greens", description: "A popular residential community near Emirates Golf Club. We provide maintenance, renovation, and landscaping equipment for the established community of The Greens.", highlights: ["Community maintenance equipment", "Landscaping machinery", "Apartment renovation tools"] },
-  { name: "The Views", slug: "the-views", description: "A lakeside residential community adjacent to The Greens with modern apartments. Our services include building maintenance, renovation, and community infrastructure equipment.", highlights: ["Lakeside development support", "Building maintenance tools", "Community renovation equipment"] },
-  { name: "The Springs", slug: "the-springs", description: "A family-friendly villa community by Emaar with lakes and parks. Hadeed Transport provides villa renovation, landscaping, and community maintenance equipment for The Springs.", highlights: ["Villa renovation support", "Landscaping equipment", "Community infrastructure tools"] },
-  { name: "The Meadows", slug: "the-meadows", description: "An established villa community in the heart of Emirates Living. We serve The Meadows with residential construction, renovation, and landscaping equipment.", highlights: ["Residential renovation equipment", "Garden and landscape machinery", "Villa extension support"] },
-  { name: "Emirates Hills", slug: "emirates-hills", description: "Dubai's most exclusive gated villa community. Hadeed Transport provides premium construction and renovation equipment for the ultra-luxury properties in Emirates Hills.", highlights: ["Ultra-luxury construction support", "Premium renovation equipment", "Quiet-operation machinery"] },
-  { name: "Jumeirah Islands", slug: "jumeirah-islands", description: "A collection of islands featuring luxury villas surrounded by lakes. We provide specialized equipment for island property construction and renovation in Jumeirah Islands.", highlights: ["Island-access equipment", "Luxury villa construction", "Waterfront development tools"] },
-  { name: "Jumeirah Park", slug: "jumeirah-park", description: "A villa community offering regional-style homes with parks and open spaces. Our equipment services support residential construction and community development in Jumeirah Park.", highlights: ["Villa community development", "Park and landscape equipment", "Residential construction tools"] },
-  { name: "Al Furjan", slug: "al-furjan", description: "A residential community near Ibn Battuta Mall and the Expo Road. Hadeed Transport provides construction equipment for the ongoing villa and apartment projects in Al Furjan.", highlights: ["Residential building equipment", "Villa construction support", "Community infrastructure machinery"] },
-  { name: "Town Square Dubai", slug: "town-square", description: "A vibrant community by Nshama featuring apartments, retail, and parks. We supply construction and fit-out equipment for the growing Town Square development.", highlights: ["Community development equipment", "Retail construction support", "Park and landscape tools"] },
-  { name: "Remraam", slug: "remraam", description: "An affordable residential community in Dubailand offering apartments and townhouses. Our equipment supports building construction and community infrastructure projects in Remraam.", highlights: ["Affordable housing construction", "Community infrastructure tools", "Building maintenance equipment"] },
-  { name: "Mudon", slug: "mudon", description: "A family-friendly villa and townhouse community by Dubai Properties. Hadeed Transport provides residential construction and landscaping equipment for projects in Mudon.", highlights: ["Villa community construction", "Landscaping machinery", "Infrastructure development tools"] },
-  { name: "Villanova", slug: "villanova", description: "A Mediterranean-inspired townhouse community by Dubai Properties in Dubailand. We serve Villanova with construction, renovation, and landscaping equipment.", highlights: ["Townhouse construction equipment", "Mediterranean-style development", "Landscape and garden machinery"] },
-  { name: "Tilal Al Ghaf", slug: "tilal-al-ghaf", description: "A master-planned community by Majid Al Futtaim featuring a lagoon and luxury homes. Our services include heavy equipment for the large-scale construction at Tilal Al Ghaf.", highlights: ["Lagoon community construction", "Large-scale development equipment", "Luxury home building tools"] },
-  { name: "City Walk", slug: "city-walk", description: "A premium urban lifestyle destination by Meraas with retail, dining, and residences. We provide fit-out and construction equipment for commercial and residential projects at City Walk.", highlights: ["Premium retail fit-out", "Residential construction support", "Urban project equipment"] },
-  { name: "Dubai Design District (d3)", slug: "dubai-design-district", description: "A creative community and free zone dedicated to design, fashion, and art. Hadeed Transport supplies construction and interior fit-out equipment for the creative spaces in d3.", highlights: ["Creative space construction", "Interior fit-out equipment", "Gallery and showroom tools"] },
-  { name: "Al Jadaf", slug: "al-jadaf", description: "A waterfront area along Dubai Creek known for its dhow-building heritage and new developments. We provide construction equipment for the residential and commercial projects in Al Jadaf.", highlights: ["Waterfront construction support", "Heritage area equipment", "New development machinery"] },
-  { name: "Culture Village", slug: "culture-village", description: "A mixed-use waterfront development celebrating Dubai's cultural heritage. Our equipment services support the residential, commercial, and cultural construction projects in Culture Village.", highlights: ["Cultural project construction", "Waterfront development tools", "Heritage-sensitive equipment"] },
-  { name: "The Sustainable City", slug: "sustainable-city", description: "The UAE's first net-zero energy community focused on sustainability. Hadeed Transport provides eco-friendly construction equipment and green building tools for Sustainable City projects.", highlights: ["Green building equipment", "Eco-friendly machinery", "Sustainable construction support"] },
-  { name: "Hatta", slug: "hatta", description: "A mountainous exclave of Dubai offering natural beauty and adventure tourism. We deliver construction and infrastructure equipment to Hatta for resort, road, and community development projects.", highlights: ["Remote mountain delivery", "Resort construction equipment", "Road and infrastructure tools"] },
-  { name: "Warsan", slug: "warsan", description: "An area in eastern Dubai featuring residential and industrial components. Hadeed Transport serves Warsan with construction equipment, storage solutions, and logistics machinery.", highlights: ["Residential and industrial support", "Storage solutions available", "Construction machinery fleet"] },
-  { name: "Al Rashidiya", slug: "al-rashidiya", description: "A residential district near Dubai International Airport. We provide compact construction equipment and renovation tools for the residential projects in Al Rashidiya.", highlights: ["Airport-adjacent delivery", "Residential renovation equipment", "Compact construction tools"] },
-  { name: "Al Mamzar", slug: "al-mamzar", description: "A beachfront residential area on the Dubai-Sharjah border known for Al Mamzar Beach Park. Our equipment services support construction and maintenance projects in Al Mamzar.", highlights: ["Beachfront project equipment", "Residential construction support", "Park maintenance machinery"] },
-  { name: "Port Rashid", slug: "port-rashid", description: "Dubai's historic port area being transformed into a premium waterfront destination. Hadeed Transport provides marine, construction, and demolition equipment for the Port Rashid redevelopment.", highlights: ["Port redevelopment equipment", "Marine construction tools", "Demolition and clearing machinery"] },
-  { name: "Bluewaters Island", slug: "bluewaters-island", description: "A premier island destination home to Ain Dubai, the world's largest observation wheel. We provide specialized construction and maintenance equipment for Bluewaters Island projects.", highlights: ["Island construction logistics", "Entertainment venue equipment", "Premium project machinery"] },
-  { name: "La Mer", slug: "la-mer", description: "A vibrant beachfront destination by Meraas in Jumeirah. Hadeed Transport supplies construction, renovation, and maintenance equipment for the retail and hospitality projects at La Mer.", highlights: ["Beachfront construction support", "Hospitality project equipment", "Retail fit-out tools"] },
-  { name: "Jumeirah Village Triangle (JVT)", slug: "jumeirah-village-triangle", description: "A residential community adjacent to JVC with villas, townhouses, and apartments. We provide building construction and community infrastructure equipment for JVT projects.", highlights: ["Community construction equipment", "Villa and townhouse tools", "Infrastructure development support"] },
-  { name: "Dubai World Trade Centre Area", slug: "dubai-world-trade-centre", description: "The area surrounding Dubai's iconic World Trade Centre, a hub for exhibitions and business events. Our equipment supports event setup, commercial construction, and venue maintenance.", highlights: ["Exhibition setup equipment", "Commercial construction tools", "Event logistics support"] },
-  { name: "Jebel Ali Free Zone (JAFZA)", slug: "jafza", description: "One of the world's largest and fastest-growing free trade zones. Hadeed Transport provides industrial equipment, warehousing support, and heavy machinery for JAFZA operations.", highlights: ["Free zone industrial equipment", "Warehousing and logistics support", "Heavy machinery rental"] },
-  { name: "Dubai Logistics City", slug: "dubai-logistics-city", description: "A dedicated logistics hub within Dubai South. We serve Dubai Logistics City with material handling equipment, storage solutions, and transport vehicles for the logistics sector.", highlights: ["Logistics equipment rental", "Material handling machinery", "Storage and transport solutions"] },
-  { name: "Liwan", slug: "liwan", description: "An emerging residential community in Dubailand offering affordable apartments and retail spaces. Our equipment supports the ongoing construction and infrastructure projects in Liwan.", highlights: ["Affordable community construction", "Infrastructure development tools", "Building maintenance equipment"] },
-  { name: "Dubai Residence Complex", slug: "dubai-residence-complex", description: "A large residential development in Dubailand with apartment clusters and community facilities. Hadeed Transport provides construction and maintenance equipment for this growing community.", highlights: ["Large-scale residential support", "Community facility construction", "Maintenance and renovation tools"] },
-  { name: "Al Khawaneej", slug: "al-khawaneej", description: "A suburban area in eastern Dubai featuring villas, farms, and new lifestyle developments. We provide earthmoving, construction, and landscaping equipment for Al Khawaneej projects.", highlights: ["Suburban villa construction", "Farm and landscape equipment", "Earthmoving machinery"] },
-  { name: "Meydan", slug: "meydan", description: "Home to the Meydan Racecourse and a rapidly growing mixed-use district. Our equipment services support the luxury residential, commercial, and leisure developments in Meydan.", highlights: ["Luxury development equipment", "Sports venue construction", "Mixed-use project tools"] },
-  { name: "Sobha Hartland", slug: "sobha-hartland", description: "A premium waterfront community along the Dubai Water Canal by Sobha Realty. We provide construction equipment for the luxury villas, apartments, and amenity projects in Sobha Hartland.", highlights: ["Waterfront luxury construction", "Premium development equipment", "Amenity and landscape tools"] },
-  { name: "Dubai Creek Golf & Yacht Club Area", slug: "creek-golf-yacht", description: "An iconic development area surrounding the famous golf club. Hadeed Transport provides specialized equipment for the premium hospitality and residential projects in this area.", highlights: ["Premium hospitality equipment", "Golf course maintenance tools", "Yacht club construction support"] },
+const abuDhabiAreas: Area[] = [
+  { name: "Mussafah", slug: "mussafah", description: "Industrial hub in Abu Dhabi — home to ICAD and manufacturing facilities requiring construction and contracting services." },
+  { name: "ICAD", slug: "icad", description: "Industrial City of Abu Dhabi — major industrial zone for factories, warehouses, and logistics facilities." },
+  { name: "KIZAD", slug: "kizad", description: "Khalifa Industrial Zone Abu Dhabi — a world-class industrial zone for large-scale construction projects." },
+  { name: "Khalifa City", slug: "khalifa-city", description: "Residential and commercial area in Abu Dhabi with growing construction and infrastructure needs." },
+  { name: "Mohammed Bin Zayed City", slug: "mohammed-bin-zayed-city", description: "MBZ City — a major residential hub requiring construction, villa building, and infrastructure works." },
+  { name: "Al Reem Island", slug: "al-reem-island", description: "Premium mixed-use development on Abu Dhabi's waterfront with residential and commercial construction." },
+  { name: "Al Shamkha", slug: "al-shamkha", description: "Expanding residential area in Abu Dhabi requiring new construction and development projects." },
+  { name: "Al Rahba", slug: "al-rahba", description: "Growing community near Abu Dhabi International Airport with residential and industrial construction." },
+  { name: "Saadiyat Island", slug: "saadiyat-island", description: "Cultural district and premium residential island with high-end construction projects." },
+  { name: "Yas Island", slug: "yas-island", description: "Entertainment and residential destination with major construction and hospitality developments." },
+  { name: "Al Ain Road", slug: "al-ain-road", description: "Major corridor connecting Abu Dhabi and Al Ain with logistics and industrial construction." },
+  { name: "Madinat Zayed", slug: "madinat-zayed", description: "Central Abu Dhabi commercial district with office and retail construction projects." },
+  { name: "Al Bateen", slug: "al-bateen", description: "Premium residential and diplomatic area in Abu Dhabi with high-end construction needs." },
+  { name: "Corniche", slug: "corniche", description: "Abu Dhabi's iconic waterfront with commercial, hospitality, and residential developments." },
+  { name: "Al Maqta", slug: "al-maqta", description: "Strategic location connecting Abu Dhabi island with mainland — commercial and infrastructure projects." },
+  { name: "Al Falah", slug: "al-falah", description: "Large residential community in Abu Dhabi requiring construction and fit-out services." },
+  { name: "Baniyas", slug: "baniyas", description: "Historic residential area with ongoing development and construction activity." },
+  { name: "Shakhbout City", slug: "shakhbout-city", description: "Growing residential district in Abu Dhabi with new villa and housing construction projects." },
+  { name: "Al Wathba", slug: "al-wathba", description: "Expanding area south of Abu Dhabi with industrial and residential construction." },
+  { name: "Al Samha", slug: "al-samha", description: "Developing community between Abu Dhabi and Dubai with commercial and warehouse construction." },
+  { name: "Masdar City", slug: "masdar-city", description: "Sustainable smart city project — green building and energy-efficient construction." },
+  { name: "Al Maryah Island", slug: "al-maryah-island", description: "Abu Dhabi Global Market financial district with premium commercial construction." },
+  { name: "Tourist Club Area", slug: "tourist-club-area", description: "Central Abu Dhabi commercial district with retail and hospitality construction." },
+  { name: "Electra Street", slug: "electra-street", description: "Busy commercial area in downtown Abu Dhabi requiring renovation and construction services." },
+  { name: "Hamdan Street", slug: "hamdan-street", description: "Prime Abu Dhabi commercial corridor with retail and office construction." },
+  { name: "Al Nahyan", slug: "al-nahyan", description: "Established residential district with ongoing construction and renovation projects." },
+  { name: "Al Mushrif", slug: "al-mushrif", description: "Premium residential area in Abu Dhabi with villa construction and renovation." },
+  { name: "Al Karamah", slug: "al-karamah", description: "Central residential area with mid-rise apartment construction projects." },
+  { name: "Zayed Sports City", slug: "zayed-sports-city", description: "Sports and entertainment district with construction and infrastructure projects." },
+  { name: "Al Marina", slug: "al-marina", description: "Waterfront development area with residential tower and commercial construction." },
 ]
 
-// ────────────────────────────────────────────────
-// Abu Dhabi Areas
-// ────────────────────────────────────────────────
+// ============================================================
+// UAE — Al Ain
+// ============================================================
 
-export const abuDhabiAreas: Area[] = [
-  { name: "ICAD (Industrial City of Abu Dhabi)", slug: "icad", description: "Our home base in ICAD III. The Industrial City of Abu Dhabi is the emirate's largest industrial zone, and Hadeed Transport is proud to operate right in the heart of it. We provide same-day equipment delivery and comprehensive rental services to all ICAD zones.", highlights: ["Same-day delivery from our base", "Full equipment fleet available", "Storage and warehouse solutions on-site"] },
-  { name: "Mussafah", slug: "mussafah", description: "Abu Dhabi's major industrial and commercial district. Hadeed Transport provides heavy equipment, transport services, and storage solutions for the numerous industrial operations in Mussafah.", highlights: ["Industrial equipment rental", "Heavy machinery fleet", "Warehouse and storage availability"] },
-  { name: "Khalifa City", slug: "khalifa-city", description: "A rapidly growing residential community between Abu Dhabi city and the airport. We supply construction equipment for the ongoing residential and commercial developments in Khalifa City.", highlights: ["Residential development equipment", "Commercial construction support", "Infrastructure machinery"] },
-  { name: "Al Reem Island", slug: "al-reem-island", description: "A premium investment zone with luxury towers and waterfront living. Hadeed Transport provides high-rise construction equipment and maintenance machinery for Al Reem Island's skyline projects.", highlights: ["High-rise construction equipment", "Tower crane and manlift services", "Premium project support"] },
-  { name: "Yas Island", slug: "yas-island", description: "Home to Ferrari World, Yas Marina Circuit, and SeaWorld. We serve Yas Island's entertainment, hospitality, and residential construction projects with our full equipment fleet.", highlights: ["Entertainment venue construction", "Hospitality project equipment", "Event support machinery"] },
-  { name: "Saadiyat Island", slug: "saadiyat-island", description: "Abu Dhabi's cultural district housing the Louvre Abu Dhabi. Our equipment services support the ongoing museum, gallery, and luxury residential construction on Saadiyat Island.", highlights: ["Cultural project support", "Luxury construction equipment", "Precision machinery for delicate projects"] },
-  { name: "Al Shamkha", slug: "al-shamkha", description: "A growing suburban area in Abu Dhabi with new residential communities. We provide earthmoving equipment and construction machinery for the developing Al Shamkha projects.", highlights: ["New community development", "Earthmoving equipment", "Infrastructure construction support"] },
-  { name: "Mohammed Bin Zayed City (MBZ)", slug: "mohammed-bin-zayed-city", description: "One of Abu Dhabi's largest residential areas with ongoing development. Hadeed Transport provides comprehensive equipment rental for MBZ City's construction and infrastructure projects.", highlights: ["Large-scale residential support", "Road construction equipment", "Utility installation machinery"] },
-  { name: "Al Falah", slug: "al-falah", description: "A major housing development providing affordable homes. Our equipment services support the massive infrastructure and construction projects in Al Falah.", highlights: ["Housing project equipment", "Infrastructure development tools", "Large-area earthmoving machinery"] },
-  { name: "Khalifa Industrial Zone (KIZAD)", slug: "kizad", description: "A major industrial zone near Khalifa Port. We provide heavy industrial equipment, container storage, and transport services for operations in KIZAD.", highlights: ["Industrial-grade heavy equipment", "Container and storage solutions", "Port logistics support"] },
-  { name: "Al Ain", slug: "al-ain", description: "The Garden City of the UAE and Abu Dhabi's second-largest city. Hadeed Transport extends our full equipment rental services to Al Ain, supporting construction, agriculture, and infrastructure projects.", highlights: ["Full equipment delivery to Al Ain", "Agricultural machinery available", "Construction and road equipment"] },
-  { name: "Al Bateen", slug: "al-bateen", description: "An exclusive residential district in the heart of Abu Dhabi. We provide specialized equipment for luxury villa construction and renovation in Al Bateen.", highlights: ["Luxury property support", "Renovation and restoration equipment", "Quiet-operation machinery"] },
-  { name: "Corniche", slug: "corniche", description: "Abu Dhabi's iconic waterfront boulevard featuring towers and public spaces. Hadeed Transport supplies construction and maintenance equipment for the prestigious Corniche projects.", highlights: ["Waterfront construction support", "High-rise maintenance equipment", "Public space development tools"] },
-  { name: "Tourist Club Area", slug: "tourist-club-area", description: "A central commercial district in Abu Dhabi island. We provide construction and renovation equipment for the commercial buildings and hospitality projects in the Tourist Club Area.", highlights: ["Commercial renovation equipment", "Hospitality construction tools", "Compact city machinery"] },
-  { name: "Al Nahyan", slug: "al-nahyan", description: "A residential neighborhood in central Abu Dhabi. Our equipment services support building construction, maintenance, and renovation projects in Al Nahyan.", highlights: ["Residential building equipment", "Maintenance and renovation tools", "Compact construction machinery"] },
-  { name: "Al Mushrif", slug: "al-mushrif", description: "An established residential area in Abu Dhabi. Hadeed Transport provides construction and landscaping equipment for projects in Al Mushrif.", highlights: ["Residential construction support", "Landscaping equipment", "Property maintenance tools"] },
-  { name: "Al Karamah", slug: "al-karamah", description: "A central Abu Dhabi district undergoing modernization. We serve Al Karamah with construction equipment for renovation, infrastructure, and new building projects.", highlights: ["Urban renewal equipment", "Infrastructure modernization tools", "Building renovation machinery"] },
-  { name: "Al Maqta", slug: "al-maqta", description: "A developing area connecting Abu Dhabi island to the mainland. Our services include construction equipment for the bridge, tunnel, and real estate projects in Al Maqta.", highlights: ["Infrastructure project equipment", "Bridge and tunnel construction", "Real estate development tools"] },
-  { name: "Al Reef", slug: "al-reef", description: "A residential community between Abu Dhabi and Dubai. Hadeed Transport serves Al Reef with residential construction equipment and community development machinery.", highlights: ["Community development equipment", "Residential building tools", "Infrastructure construction support"] },
-  { name: "Al Raha", slug: "al-raha", description: "A waterfront development featuring Al Raha Beach and Al Raha Gardens. We provide construction and maintenance equipment for the mixed-use developments in Al Raha.", highlights: ["Waterfront development equipment", "Mixed-use project support", "Community maintenance tools"] },
-  { name: "Between Two Bridges", slug: "between-two-bridges", description: "An emerging area in Abu Dhabi island undergoing urban development. Our equipment rental services support the construction and renovation projects in this revitalizing area.", highlights: ["Urban development equipment", "Renovation project tools", "Compact city machinery"] },
-  { name: "Al Wathba", slug: "al-wathba", description: "A large area southeast of Abu Dhabi with new developments and natural attractions. We provide earthmoving and construction equipment for the expanding Al Wathba community.", highlights: ["Large-scale earthmoving", "New community construction", "Road building equipment"] },
-  { name: "Shakhbout City", slug: "shakhbout-city", description: "A planned residential city in Abu Dhabi. Our services support the ongoing residential construction and infrastructure development in Shakhbout City.", highlights: ["Planned city construction", "Mass housing equipment", "Infrastructure development tools"] },
-  { name: "Baniyas", slug: "baniyas", description: "A residential area north of Abu Dhabi city. Hadeed Transport serves Baniyas with construction, renovation, and landscaping equipment for residential and commercial projects.", highlights: ["Residential construction support", "Commercial project equipment", "Community infrastructure tools"] },
-  { name: "Al Dhafra", slug: "al-dhafra", description: "The western region of Abu Dhabi emirate covering a vast area. We provide equipment delivery to Al Dhafra for oil and gas, industrial, and infrastructure projects.", highlights: ["Remote area equipment delivery", "Oil and gas project support", "Industrial-grade machinery"] },
-  { name: "Masdar City", slug: "masdar-city", description: "The world's most sustainable urban community and free zone. Hadeed Transport supplies eco-conscious construction equipment and tools for the green building projects in Masdar City.", highlights: ["Sustainable construction support", "Green building equipment", "Electric and low-emission machinery"] },
-  { name: "Al Maryah Island", slug: "al-maryah-island", description: "Abu Dhabi's financial center featuring the Abu Dhabi Global Market. We provide premium construction and fit-out equipment for the world-class commercial projects on Al Maryah Island.", highlights: ["Premium commercial equipment", "High-end fit-out tools", "Financial district construction support"] },
-  { name: "Al Hudayriyat Island", slug: "al-hudayriyat-island", description: "A leisure and sports island destination in Abu Dhabi. Our equipment supports the ongoing leisure, sports facility, and infrastructure construction on Hudayriyat Island.", highlights: ["Leisure facility construction", "Sports venue equipment", "Island development support"] },
-  { name: "Saadiyat Grove", slug: "saadiyat-grove", description: "A vibrant mixed-use development on Saadiyat Island. We provide construction and fit-out equipment for the residential, retail, and hospitality projects at Saadiyat Grove.", highlights: ["Mixed-use development equipment", "Retail construction support", "Hospitality fit-out tools"] },
-  { name: "Abu Dhabi Airport Area", slug: "airport-area", description: "The area surrounding Zayed International Airport and its expanding terminals. Hadeed Transport provides heavy equipment for aviation infrastructure and commercial projects near the airport.", highlights: ["Aviation infrastructure equipment", "Commercial zone construction", "Heavy machinery fleet"] },
-  { name: "Al Zahiyah", slug: "al-zahiyah", description: "A central Abu Dhabi district known for shopping, dining, and commercial activity. Hadeed Transport provides construction and renovation equipment for commercial buildings and retail spaces in Al Zahiyah.", highlights: ["Commercial renovation equipment", "Retail fit-out tools", "Central city delivery"] },
-  { name: "Al Khalidiyah", slug: "al-khalidiyah", description: "A prime residential and commercial area on Abu Dhabi island. We serve Al Khalidiyah with compact construction equipment for renovation, building maintenance, and new development projects.", highlights: ["Central residential construction", "Compact city equipment", "Building renovation support"] },
-  { name: "Capital Centre", slug: "capital-centre", description: "Abu Dhabi's exhibition and events district near ADNEC. Hadeed Transport provides event setup equipment, construction machinery, and fit-out tools for Capital Centre projects.", highlights: ["Exhibition setup equipment", "Event construction support", "Commercial fit-out machinery"] },
-  { name: "Rawdhat Abu Dhabi", slug: "rawdhat", description: "A residential area in the central part of Abu Dhabi island. We provide compact construction equipment and building maintenance tools for the apartment complexes and residences in Rawdhat.", highlights: ["Residential maintenance equipment", "Compact construction tools", "Apartment renovation support"] },
-  { name: "Danet Abu Dhabi", slug: "danet-abu-dhabi", description: "A modern residential district with high-rise apartments in central Abu Dhabi. Our equipment services support building construction, maintenance, and renovation projects in Danet.", highlights: ["High-rise maintenance equipment", "Residential construction tools", "Central Abu Dhabi delivery"] },
-  { name: "Al Muroor", slug: "al-muroor", description: "A major residential and commercial corridor along Muroor Road. Hadeed Transport provides construction equipment for the mixed-use development and infrastructure projects along Al Muroor.", highlights: ["Road corridor construction", "Mixed-use development equipment", "Infrastructure maintenance tools"] },
-  { name: "Al Manaseer", slug: "al-manaseer", description: "A residential area in Abu Dhabi known for modern apartment buildings. We provide building construction and maintenance equipment for projects in the Al Manaseer neighborhood.", highlights: ["Residential building equipment", "Maintenance and renovation tools", "Apartment construction support"] },
-  { name: "Al Samha", slug: "al-samha", description: "A developing area between Abu Dhabi city and the airport region. Hadeed Transport serves Al Samha with earthmoving, construction, and infrastructure equipment for the expanding community.", highlights: ["New community development", "Earthmoving equipment", "Infrastructure construction support"] },
-  { name: "Mafraq", slug: "mafraq", description: "An area in the outskirts of Abu Dhabi known for industrial and residential development. We provide heavy equipment, storage solutions, and construction machinery for Mafraq projects.", highlights: ["Industrial development equipment", "Storage and warehousing support", "Heavy machinery rental"] },
-  { name: "Ghantoot", slug: "ghantoot", description: "A border area between Abu Dhabi and Dubai on the E11 highway. Our services extend to Ghantoot for resort, residential, and infrastructure construction projects.", highlights: ["Cross-emirate delivery", "Resort construction equipment", "Highway infrastructure tools"] },
-  { name: "Al Rahba", slug: "al-rahba", description: "A residential community north of Abu Dhabi city. Hadeed Transport provides construction, renovation, and landscaping equipment for the residential projects in Al Rahba.", highlights: ["Residential construction support", "Community development tools", "Landscaping equipment"] },
-  { name: "Zayed City (New Capital District)", slug: "zayed-city", description: "A new master-planned city development in Abu Dhabi featuring residential, commercial, and government facilities. We support the massive construction projects in Zayed City with our full equipment fleet.", highlights: ["Large-scale city development", "Government project equipment", "Full heavy machinery fleet"] },
-  { name: "Yas Acres", slug: "yas-acres", description: "A premium residential community on Yas Island with villas and townhouses. Our equipment services support villa construction, landscaping, and community infrastructure in Yas Acres.", highlights: ["Villa construction equipment", "Landscaping machinery", "Premium community development"] },
-  { name: "Al Jubail Island", slug: "al-jubail-island", description: "A natural island off the coast of Abu Dhabi featuring mangroves and sustainable developments. Hadeed Transport provides environmentally sensitive construction equipment for Al Jubail Island projects.", highlights: ["Eco-sensitive construction", "Island development equipment", "Sustainable building tools"] },
-  { name: "Al Ghadeer", slug: "al-ghadeer", description: "A residential community on the Abu Dhabi-Dubai border. We provide construction and maintenance equipment for the residential developments in Al Ghadeer.", highlights: ["Border community construction", "Residential building tools", "Maintenance equipment"] },
-  { name: "Marina Village", slug: "marina-village", description: "A waterfront community near Abu Dhabi Breakwater. Hadeed Transport serves Marina Village with construction, renovation, and marine-adjacent equipment.", highlights: ["Waterfront construction support", "Marine-adjacent equipment", "Renovation and maintenance tools"] },
-  { name: "Officers City", slug: "officers-city", description: "A residential development near Abu Dhabi Corniche Road. We provide construction and infrastructure equipment for the housing and community projects in Officers City.", highlights: ["Housing development equipment", "Community infrastructure tools", "Residential construction support"] },
-  { name: "Al Raha Gardens", slug: "al-raha-gardens", description: "A community of villas and townhouses near Al Raha Beach. Hadeed Transport provides landscaping, construction, and renovation equipment for Al Raha Gardens projects.", highlights: ["Villa renovation equipment", "Garden and landscape machinery", "Community maintenance tools"] },
-  { name: "Al Maqam", slug: "al-maqam", description: "An area in Al Ain known for cultural heritage and modern development. We deliver construction equipment to Al Maqam for both heritage preservation and new development projects.", highlights: ["Heritage preservation equipment", "Cultural project tools", "Modern construction machinery"] },
-  { name: "Sweihan", slug: "sweihan", description: "A rural area east of Abu Dhabi with agricultural and development potential. Our services include earthmoving equipment and construction machinery for the evolving Sweihan area.", highlights: ["Agricultural support equipment", "Earthmoving machinery", "Rural area delivery service"] },
-  { name: "Madinat Zayed (Abu Dhabi)", slug: "madinat-zayed-abudhabi", description: "A central Abu Dhabi area with commercial towers and residential buildings. Hadeed Transport provides equipment for both new construction and renovation projects in Madinat Zayed.", highlights: ["Central commercial construction", "Renovation equipment", "Building maintenance tools"] },
-  { name: "Ruwais", slug: "ruwais", description: "An industrial city in the Al Dhafra region, home to ADNOC refinery operations. We provide industrial-grade heavy equipment for the oil, gas, and construction projects in Ruwais.", highlights: ["Oil and gas project equipment", "Industrial-grade heavy machinery", "Remote area logistics support"] },
-  { name: "Mirfa", slug: "mirfa", description: "A coastal town in the western region of Abu Dhabi. Our equipment delivery extends to Mirfa for coastal development, infrastructure, and residential construction projects.", highlights: ["Coastal development equipment", "Infrastructure construction tools", "Western region delivery"] },
-  { name: "Liwa", slug: "liwa", description: "A historical oasis area in the western region of Abu Dhabi. Hadeed Transport provides construction and tourism infrastructure equipment for projects in the Liwa area.", highlights: ["Heritage tourism construction", "Desert terrain equipment", "Remote location delivery"] },
-  { name: "Al Ain Industrial Area", slug: "al-ain-industrial", description: "The industrial zone of Al Ain supporting manufacturing and logistics. We serve Al Ain Industrial Area with heavy machinery, storage solutions, and transport equipment.", highlights: ["Industrial machinery rental", "Manufacturing support equipment", "Storage and logistics solutions"] },
-  { name: "Remah", slug: "remah", description: "A town in the eastern region of Abu Dhabi near the Oman border. Hadeed Transport extends equipment delivery to Remah for construction and infrastructure development projects.", highlights: ["Eastern region delivery", "Construction equipment rental", "Infrastructure development tools"] },
-  { name: "Khalifa Port Area", slug: "khalifa-port", description: "The modern port facility south of Abu Dhabi. We provide heavy logistics equipment, container handling machinery, and construction tools for the expanding Khalifa Port operations.", highlights: ["Port logistics equipment", "Container handling machinery", "Marine construction tools"] },
-  { name: "Al Wagan", slug: "al-wagan", description: "A developing area in the Al Ain region of Abu Dhabi. Our services include earthmoving and construction equipment for the infrastructure projects in Al Wagan.", highlights: ["Infrastructure development equipment", "Earthmoving machinery", "Rural construction support"] },
-  { name: "Hili", slug: "hili", description: "A historical area in Al Ain known for the Hili archaeological sites. Hadeed Transport provides construction equipment for heritage-sensitive development and modern projects near Hili.", highlights: ["Heritage-sensitive equipment", "Archaeological site support", "Modern construction tools"] },
+const alAinAreas: Area[] = [
+  { name: "Al Ain Industrial Area", slug: "al-ain-industrial-area", description: "Industrial hub in Al Ain for factory, warehouse, and workshop construction." },
+  { name: "Al Jimi", slug: "al-jimi", description: "Commercial and residential district in Al Ain with ongoing construction activity." },
+  { name: "Al Muwaiji", slug: "al-muwaiji", description: "Growing residential area in Al Ain with villa and mid-rise construction." },
+  { name: "Al Towayya", slug: "al-towayya", description: "Residential area in Al Ain requiring construction and development." },
+  { name: "Zakher", slug: "zakher", description: "Established residential community in Al Ain with construction and renovation needs." },
+  { name: "Al Hili", slug: "al-hili", description: "Historic area in Al Ain and site of ongoing residential developments." },
+  { name: "Al Ain Oasis", slug: "al-ain-oasis", description: "Heritage site area with sensitive construction and renovation requirements." },
+  { name: "Al Sarooj", slug: "al-sarooj", description: "Central Al Ain district with commercial and residential construction." },
+  { name: "Falaj Hazza", slug: "falaj-hazza", description: "Growing residential zone in Al Ain with new building and infrastructure projects." },
+  { name: "Al Markhaniya", slug: "al-markhaniya", description: "Residential area in Al Ain with villa and townhouse construction." },
+  { name: "Al Mutarad", slug: "al-mutarad", description: "Community in Al Ain with various residential construction projects." },
+  { name: "Al Khabisi", slug: "al-khabisi", description: "Residential and commercial area in Al Ain with construction services." },
+  { name: "Al Yahar", slug: "al-yahar", description: "Developing area on the outskirts of Al Ain with industrial facilities." },
+  { name: "Sweihan", slug: "sweihan", description: "Military and agricultural area between Abu Dhabi and Al Ain with specialized construction." },
+  { name: "Remah", slug: "remah", description: "Growing community east of Al Ain with residential development projects." },
 ]
 
-// ────────────────────────────────────────────────
-// City configurations
-// ────────────────────────────────────────────────
+// ============================================================
+// UAE — Dubai
+// ============================================================
 
-export const dubaiCity: CityData = {
-  name: "Dubai",
-  slug: "dubai",
-  title: "Equipment Rental & Space Solutions in Dubai",
-  description:
-    "Hadeed Transport provides heavy equipment rental, construction machinery, and space rental services across all areas of Dubai. From Downtown to Jebel Ali, our fleet of well-maintained equipment is ready for delivery to your project site.",
-  metaDescription:
-    "Rent heavy equipment, construction machinery, cranes, forklifts & more in Dubai. Hadeed Transport delivers across all Dubai areas. Warehouses, storage & office spaces available.",
-  areas: dubaiAreas,
-}
-
-export const abuDhabiCity: CityData = {
-  name: "Abu Dhabi",
-  slug: "abu-dhabi",
-  title: "Equipment Rental & Space Solutions in Abu Dhabi",
-  description:
-    "Based in ICAD III, Hadeed Transport is Abu Dhabi's trusted partner for heavy equipment rental, construction machinery, and space solutions. With same-day delivery across the emirate, we keep your projects moving.",
-  metaDescription:
-    "Rent heavy equipment, construction machinery, cranes, forklifts & more in Abu Dhabi. Based in ICAD III. Same-day delivery. Warehouses, storage & office spaces available.",
-  areas: abuDhabiAreas,
-}
-
-// ────────────────────────────────────────────────
-// Sharjah Areas
-// ────────────────────────────────────────────────
-
-export const sharjahAreas: Area[] = [
-  { name: "Industrial Area Sharjah", slug: "industrial-area-sharjah", description: "One of the UAE's largest industrial zones. Hadeed Transport provides heavy machinery, storage solutions, and transport equipment for the industrial operations in Sharjah Industrial Area.", highlights: ["Heavy industrial equipment", "Warehouse and storage rentals", "Manufacturing support machinery"] },
-  { name: "Muwaileh", slug: "muwaileh", description: "A rapidly developing residential and commercial area in Sharjah. We serve Muwaileh with construction equipment for the numerous apartment, villa, and commercial projects underway.", highlights: ["Residential development equipment", "Commercial construction support", "Community infrastructure tools"] },
-  { name: "Al Nahda Sharjah", slug: "al-nahda-sharjah", description: "A popular residential district on the Dubai-Sharjah border. Hadeed Transport provides construction and renovation equipment for the building projects in Al Nahda, Sharjah.", highlights: ["Cross-border delivery from Dubai", "Residential renovation equipment", "Building maintenance tools"] },
-  { name: "Al Majaz", slug: "al-majaz", description: "A waterfront area in Sharjah featuring the Al Majaz Waterfront park and commercial buildings. We provide construction and maintenance equipment for projects in Al Majaz.", highlights: ["Waterfront development support", "Building maintenance tools", "Commercial construction equipment"] },
-  { name: "Al Khan", slug: "al-khan", description: "A coastal area in Sharjah featuring residential towers and the Sharjah Aquarium. Our equipment services support waterfront construction and building maintenance in Al Khan.", highlights: ["Waterfront construction equipment", "Tower maintenance tools", "Marine-adjacent machinery"] },
-  { name: "Al Taawun", slug: "al-taawun", description: "A high-rise residential and commercial area in Sharjah. Hadeed Transport provides tower construction, maintenance, and fit-out equipment for Al Taawun projects.", highlights: ["High-rise construction equipment", "Tower maintenance tools", "Commercial fit-out support"] },
-  { name: "Al Qasimia", slug: "al-qasimia", description: "A central residential district in Sharjah city. We provide construction, renovation, and maintenance equipment for the ongoing building projects in Al Qasimia.", highlights: ["Central Sharjah delivery", "Residential construction tools", "Renovation equipment"] },
-  { name: "Al Mamzar Sharjah", slug: "al-mamzar-sharjah", description: "A residential area near the Al Mamzar lagoon at the Dubai-Sharjah border. Our services include construction and landscaping equipment for projects in Al Mamzar, Sharjah.", highlights: ["Border area delivery", "Lagoon-adjacent development", "Residential construction support"] },
-  { name: "Sharjah University City", slug: "sharjah-university-city", description: "An educational hub housing multiple universities and student facilities. Hadeed Transport provides campus construction, renovation, and maintenance equipment for University City.", highlights: ["Campus construction equipment", "Educational facility tools", "Student housing construction"] },
-  { name: "Al Zahia", slug: "al-zahia", description: "A modern gated community by Majid Al Futtaim in Sharjah. We supply construction and landscaping equipment for the premium residential developments in Al Zahia.", highlights: ["Gated community construction", "Premium development equipment", "Landscaping and garden tools"] },
-  { name: "Aljada", slug: "aljada", description: "Sharjah's largest mixed-use megaproject by Arada. Our comprehensive equipment fleet supports the massive construction operations at Aljada.", highlights: ["Megaproject construction support", "Full heavy equipment fleet", "Long-term rental contracts"] },
-  { name: "Tilal City Sharjah", slug: "tilal-city", description: "A residential community by Tilal Properties offering villas and plots. Hadeed Transport provides excavation, grading, and construction equipment for Tilal City development.", highlights: ["Villa construction equipment", "Earthmoving and grading tools", "Community infrastructure machinery"] },
-  { name: "Sharjah Waterfront City", slug: "sharjah-waterfront-city", description: "A waterfront development on the shores of Sharjah. We provide construction equipment for the residential and leisure developments at Sharjah Waterfront City.", highlights: ["Waterfront construction equipment", "Marine-adjacent machinery", "Leisure facility construction"] },
-  { name: "Al Riqqa Sharjah", slug: "al-riqqa-sharjah", description: "A central commercial and residential area in Sharjah. Our equipment services support the building construction, renovation, and commercial fit-out projects in Al Riqqa.", highlights: ["Commercial construction support", "Building renovation tools", "Central location delivery"] },
-  { name: "Abu Shagara", slug: "abu-shagara", description: "A mixed residential and commercial district in Sharjah. Hadeed Transport provides construction and maintenance equipment for the building projects in Abu Shagara.", highlights: ["Mixed-use development support", "Building maintenance equipment", "Residential renovation tools"] },
-  { name: "Al Juraina", slug: "al-juraina", description: "A residential area near Muwaileh in Sharjah. We serve Al Juraina with residential construction equipment and community infrastructure tools.", highlights: ["Residential construction support", "Community infrastructure tools", "Building maintenance equipment"] },
-  { name: "Al Dhaid", slug: "al-dhaid", description: "A central town in the Sharjah emirate known for agriculture. Our equipment services extend to Al Dhaid for agricultural, construction, and infrastructure projects.", highlights: ["Agricultural equipment support", "Infrastructure construction tools", "Remote area delivery"] },
-  { name: "Kalba", slug: "kalba", description: "A coastal city on the east coast of Sharjah emirate. Hadeed Transport delivers construction and marine development equipment to Kalba for coastal and community projects.", highlights: ["East coast delivery", "Coastal development equipment", "Community construction tools"] },
-  { name: "Khor Fakkan", slug: "khor-fakkan", description: "A port city on the east coast of Sharjah with significant development. We provide construction equipment for port expansion, residential, and tourism projects in Khor Fakkan.", highlights: ["Port construction equipment", "Tourism development tools", "Coastal community support"] },
-  { name: "Sharjah Airport Free Zone (SAIF)", slug: "saif-zone", description: "A major free zone near Sharjah International Airport. Our heavy equipment and logistics support serve the industrial and commercial operations in SAIF Zone.", highlights: ["Free zone industrial equipment", "Logistics and transport support", "Commercial construction tools"] },
-  { name: "Hamriyah Free Zone", slug: "hamriyah-free-zone", description: "An industrial free zone on the Sharjah coast. Hadeed Transport provides industrial equipment, port machinery, and storage solutions for Hamriyah Free Zone operations.", highlights: ["Port and marine equipment", "Industrial-grade machinery", "Storage and container solutions"] },
+const dubaiAreas: Area[] = [
+  { name: "Jebel Ali", slug: "jebel-ali", description: "Major industrial and port area hosting JAFZA — large-scale warehouse and logistics construction." },
+  { name: "JAFZA", slug: "jafza", description: "Jebel Ali Free Zone — the UAE's largest free zone requiring industrial and commercial construction." },
+  { name: "Dubai Industrial City", slug: "dubai-industrial-city", description: "Dedicated manufacturing and logistics zone with heavy industrial construction projects." },
+  { name: "Al Quoz", slug: "al-quoz", description: "Mixed industrial and creative district with warehouse and workshop construction." },
+  { name: "Dubai Investment Park", slug: "dubai-investment-park", description: "Integrated commercial and industrial community with warehouse and factory construction." },
+  { name: "Business Bay", slug: "business-bay", description: "Central business district with high-rise commercial and residential construction." },
+  { name: "Downtown Dubai", slug: "downtown-dubai", description: "Iconic urban center with premium commercial and hospitality construction." },
+  { name: "Dubai Marina", slug: "dubai-marina", description: "Waterfront residential district with tower and mixed-use construction." },
+  { name: "Dubai Silicon Oasis", slug: "dubai-silicon-oasis", description: "Technology park with commercial and residential construction." },
+  { name: "International City", slug: "international-city", description: "Affordable residential community with construction and renovation projects." },
+  { name: "JLT", slug: "jlt", description: "Jumeirah Lake Towers — commercial and residential tower construction hub." },
+  { name: "DIFC", slug: "difc", description: "Dubai International Financial Centre — premium commercial construction." },
+  { name: "Deira", slug: "deira", description: "Historic commercial district with renovation and retail construction." },
+  { name: "Bur Dubai", slug: "bur-dubai", description: "Traditional commercial area with ongoing construction and renovation." },
+  { name: "Al Rashidiya", slug: "al-rashidiya", description: "Residential area near Dubai Airport with construction and infrastructure." },
+  { name: "Jumeirah Village Circle", slug: "jumeirah-village-circle", description: "Growing residential community with mid-rise apartment construction." },
+  { name: "Dubai South", slug: "dubai-south", description: "Aviation district near Al Maktoum Airport with massive infrastructure development." },
+  { name: "Dubai Hills Estate", slug: "dubai-hills-estate", description: "Premium residential and commercial development with villa and tower construction." },
+  { name: "Motor City", slug: "motor-city", description: "Residential community with apartment and townhouse construction." },
+  { name: "Dubai Sports City", slug: "dubai-sports-city", description: "Sports-themed community with stadium and facility construction." },
+  { name: "Mirdif", slug: "mirdif", description: "Established residential area with villa construction and renovation." },
+  { name: "Palm Jumeirah", slug: "palm-jumeirah", description: "Iconic artificial island with luxury villa and resort construction." },
+  { name: "Creek Harbour", slug: "creek-harbour", description: "Waterfront mega-development with tower and mixed-use construction." },
+  { name: "Nad Al Sheba", slug: "nad-al-sheba", description: "Developing area with residential and commercial construction projects." },
+  { name: "Al Warqa", slug: "al-warqa", description: "Residential district with villa and apartment construction." },
+  { name: "Dubailand", slug: "dubailand", description: "Entertainment and residential mega-project with diverse construction." },
+  { name: "Al Barsha", slug: "al-barsha", description: "Mixed residential and commercial area with construction activity." },
+  { name: "Jumeirah", slug: "jumeirah", description: "Premium beachfront residential area with villa construction and renovation." },
+  { name: "Karama", slug: "karama", description: "Dense commercial and residential area with renovation and construction." },
+  { name: "Arabian Ranches", slug: "arabian-ranches", description: "Premium villa community with residential construction and landscaping." },
 ]
 
-export const sharjahCity: CityData = {
-  name: "Sharjah",
-  slug: "sharjah",
-  title: "Equipment Rental & Space Solutions in Sharjah",
-  description:
-    "Hadeed Transport extends our reliable equipment rental and space solutions to all areas of Sharjah. From the Industrial Area to Aljada, we deliver heavy machinery, construction tools, and storage solutions across the emirate.",
-  metaDescription:
-    "Rent heavy equipment, construction machinery, cranes, forklifts & more in Sharjah. Hadeed Transport delivers across all Sharjah areas. Warehouses, storage & office spaces available.",
-  areas: sharjahAreas,
+// ============================================================
+// UAE — Sharjah
+// ============================================================
+
+const sharjahAreas: Area[] = [
+  { name: "Sharjah Industrial Area", slug: "sharjah-industrial-area", description: "Major industrial zone in Sharjah with warehouse and factory construction." },
+  { name: "SAIF Zone", slug: "saif-zone", description: "Sharjah Airport International Free Zone — industrial and commercial construction." },
+  { name: "Al Nahda Sharjah", slug: "al-nahda-sharjah", description: "Residential and commercial area with high-rise construction." },
+  { name: "Al Majaz", slug: "al-majaz", description: "Lakefront area in Sharjah with commercial and hospitality construction." },
+  { name: "Al Khan", slug: "al-khan", description: "Waterfront area with residential tower and commercial construction." },
+  { name: "Muwaileh", slug: "muwaileh", description: "Growing commercial area in Sharjah with retail and residential construction." },
+  { name: "Al Qasimia", slug: "al-qasimia", description: "Central Sharjah district with residential and commercial developments." },
+  { name: "University City", slug: "university-city", description: "Academic district in Sharjah with institutional and educational construction." },
+  { name: "Sharjah Waterfront City", slug: "sharjah-waterfront-city", description: "New waterfront development with residential and commercial construction." },
+  { name: "Al Taawun", slug: "al-taawun", description: "Residential area between Sharjah and Ajman with tower construction." },
+  { name: "Bu Tina", slug: "bu-tina", description: "Residential area in Sharjah with ongoing construction activity." },
+  { name: "Al Mamzar Sharjah", slug: "al-mamzar-sharjah", description: "Waterfront residential area with apartment construction." },
+  { name: "Rolla", slug: "rolla", description: "Commercial center of Sharjah with retail and office construction." },
+  { name: "Aljada", slug: "aljada", description: "Major mega-development in Sharjah with residential and commercial construction." },
+  { name: "Tilal City", slug: "tilal-city", description: "New freehold residential community with villa and apartment construction." },
+]
+
+// ============================================================
+// UAE — Ajman
+// ============================================================
+
+const ajmanAreas: Area[] = [
+  { name: "Ajman Free Zone", slug: "ajman-free-zone", description: "Free zone area with commercial and industrial construction." },
+  { name: "Ajman Industrial Area", slug: "ajman-industrial-area", description: "Industrial zone in Ajman for warehouse and factory construction." },
+  { name: "Al Nuaimiya", slug: "al-nuaimiya", description: "Central Ajman commercial and residential construction district." },
+  { name: "Al Rashidiya Ajman", slug: "al-rashidiya-ajman", description: "Residential area in Ajman with construction projects." },
+  { name: "Al Jurf", slug: "al-jurf", description: "Developing industrial area in Ajman with warehouse construction." },
+  { name: "Emirates City", slug: "emirates-city-ajman", description: "Flagship development in Ajman with tower and commercial construction." },
+  { name: "Al Mowaihat", slug: "al-mowaihat", description: "Growing residential area in Ajman with villa construction." },
+  { name: "Al Hamidiya", slug: "al-hamidiya", description: "Traditional residential area with renovation and new construction." },
+  { name: "Ajman Corniche", slug: "ajman-corniche", description: "Waterfront area with hospitality and residential construction." },
+  { name: "Al Rawda Ajman", slug: "al-rawda-ajman", description: "Residential area with new building construction projects." },
+]
+
+// ============================================================
+// UAE — Umm Al Quwain
+// ============================================================
+
+const uaqAreas: Area[] = [
+  { name: "UAQ Free Trade Zone", slug: "uaq-free-trade-zone", description: "Commercial free zone with industrial and warehouse construction." },
+  { name: "UAQ Industrial Area", slug: "uaq-industrial-area", description: "Industrial zone for factory and workshop construction in UAQ." },
+  { name: "Al Salamah UAQ", slug: "al-salamah-uaq", description: "Residential district in Umm Al Quwain with construction needs." },
+  { name: "Old Town UAQ", slug: "old-town-uaq", description: "Historic area with renovation and heritage construction." },
+  { name: "Al Raas UAQ", slug: "al-raas-uaq", description: "Commercial area in UAQ with retail construction." },
+  { name: "Al Aahad UAQ", slug: "al-aahad-uaq", description: "Developing residential area in UAQ." },
+  { name: "Falaj Al Mualla", slug: "falaj-al-mualla", description: "Inland area in UAQ with residential and agricultural construction." },
+  { name: "Umm Al Quwain Marina", slug: "umm-al-quwain-marina", description: "Waterfront development area with marine and residential construction." },
+]
+
+// ============================================================
+// UAE — Ras Al Khaimah
+// ============================================================
+
+const rakAreas: Area[] = [
+  { name: "RAK Free Trade Zone", slug: "rak-free-trade-zone", description: "Major free zone for commercial and industrial construction." },
+  { name: "RAK Industrial Area", slug: "rak-industrial-area", description: "Industrial zone in Ras Al Khaimah for factory and warehouse construction." },
+  { name: "Al Hamra Village", slug: "al-hamra-village", description: "Resort-style residential community with villa and hospitality construction." },
+  { name: "Al Nakheel", slug: "al-nakheel", description: "Central commercial area in RAK with retail and office construction." },
+  { name: "Julphar", slug: "julphar", description: "Commercial district in RAK with tower and mixed-use construction." },
+  { name: "Mina Al Arab", slug: "mina-al-arab", description: "Waterfront development with residential and hospitality construction." },
+  { name: "Al Marjan Island", slug: "al-marjan-island", description: "Artificial island development with resort and residential construction." },
+  { name: "Khuzam", slug: "khuzam", description: "Residential area in RAK with villa and apartment construction." },
+  { name: "Dafan Al Nakheel", slug: "dafan-al-nakheel", description: "Commercial area in RAK with office and retail construction." },
+  { name: "Sidroh", slug: "sidroh", description: "Residential area in RAK with new construction activity." },
+  { name: "Al Dhait", slug: "al-dhait", description: "Growing residential district with villa and housing construction." },
+  { name: "RAK Gateway", slug: "rak-gateway", description: "New commercial development with infrastructure construction." },
+]
+
+// ============================================================
+// UAE — Fujairah
+// ============================================================
+
+const fujairahAreas: Area[] = [
+  { name: "Fujairah Free Zone", slug: "fujairah-free-zone", description: "Free zone area for industrial and commercial construction." },
+  { name: "Fujairah Industrial Area", slug: "fujairah-industrial-area", description: "Industrial zone for factory and warehouse construction." },
+  { name: "Fujairah Port Area", slug: "fujairah-port-area", description: "Port district with marine, logistics, and industrial construction." },
+  { name: "Al Faseel", slug: "al-faseel", description: "Central Fujairah commercial area with retail and office construction." },
+  { name: "Mirbah", slug: "mirbah", description: "Coastal area in Fujairah with residential and tourism construction." },
+  { name: "Dibba Al Fujairah", slug: "dibba-al-fujairah", description: "Northern Fujairah town with residential and commercial construction." },
+  { name: "Sakamkam", slug: "sakamkam", description: "Residential area in Fujairah with housing construction." },
+  { name: "Al Hayl", slug: "al-hayl", description: "Inland area in Fujairah with residential and infrastructure construction." },
+  { name: "Qidfa", slug: "qidfa", description: "Developing area in Fujairah with agricultural and residential construction." },
+  { name: "Masafi", slug: "masafi", description: "Mountain area between Fujairah and other emirates with construction needs." },
+]
+
+// ============================================================
+// QATAR
+// ============================================================
+
+const dohaAreas: Area[] = [
+  { name: "West Bay", slug: "west-bay", description: "Qatar's prestigious business district with skyscraper and commercial construction." },
+  { name: "Lusail City", slug: "lusail-city", description: "Qatar's flagship mega-city development with massive infrastructure and tower construction." },
+  { name: "The Pearl Qatar", slug: "the-pearl-qatar", description: "Artificial island with luxury residential and retail construction." },
+  { name: "Industrial Area Doha", slug: "industrial-area-doha", description: "Doha's main industrial zone for factory, warehouse, and workshop construction." },
+  { name: "Al Wakrah", slug: "al-wakrah", description: "Growing city south of Doha with residential and commercial construction." },
+  { name: "Mesaieed", slug: "mesaieed", description: "Industrial city and port area with heavy industrial and petrochemical construction." },
+  { name: "Ras Laffan", slug: "ras-laffan", description: "Major industrial city for LNG — heavy industrial construction and infrastructure." },
+  { name: "Al Rayyan", slug: "al-rayyan", description: "Western Doha municipality with residential and commercial construction." },
+  { name: "Al Dafna", slug: "al-dafna", description: "Central business area with office tower and hospitality construction." },
+  { name: "Msheireb Downtown", slug: "msheireb-downtown", description: "Sustainable urban regeneration project with smart building and heritage construction." },
+  { name: "Education City", slug: "education-city", description: "Qatar Foundation campus with institutional and educational building construction." },
+  { name: "Al Sadd", slug: "al-sadd", description: "Mixed-use district in Doha with commercial and residential construction." },
+  { name: "Umm Salal", slug: "umm-salal", description: "Northern Doha municipality with residential and infrastructure construction." },
+  { name: "Al Khor", slug: "al-khor", description: "Coastal city north of Doha with residential and industrial construction." },
+  { name: "Dukhan", slug: "dukhan", description: "Western Qatar oil town with energy sector and industrial construction." },
+  { name: "Al Gharafa", slug: "al-gharafa", description: "Residential area with villa and community construction." },
+  { name: "Al Thumama", slug: "al-thumama", description: "Southern Doha area with sports and infrastructure construction." },
+  { name: "Katara Cultural Village", slug: "katara-cultural-village", description: "Cultural district with heritage and institutional construction." },
+  { name: "Bin Mahmoud", slug: "bin-mahmoud", description: "Dense residential and commercial district with construction and renovation." },
+  { name: "Al Markhiya", slug: "al-markhiya", description: "Residential area near West Bay with villa and apartment construction." },
+]
+
+// ============================================================
+// JORDAN
+// ============================================================
+
+const ammanAreas: Area[] = [
+  { name: "Abdali", slug: "abdali", description: "Amman's new downtown — premium commercial, residential, and hospitality construction." },
+  { name: "Abdoun", slug: "abdoun", description: "Upscale residential and diplomatic area with villa and premium construction." },
+  { name: "Shmeisani", slug: "shmeisani", description: "Central commercial district with office and hotel construction." },
+  { name: "Sweifieh", slug: "sweifieh", description: "Major commercial and retail district with mall and high-rise construction." },
+  { name: "Dabouq", slug: "dabouq", description: "Premium residential area with villa and luxury home construction." },
+  { name: "Al Bayader", slug: "al-bayader", description: "Growing residential area with apartment and housing construction." },
+  { name: "Khalda", slug: "khalda", description: "Residential district with mid-rise and villa construction." },
+  { name: "Um Uthaina", slug: "um-uthaina", description: "Commercial area with retail and office construction." },
+  { name: "Jabal Amman", slug: "jabal-amman", description: "Historic hilltop area with heritage renovation and boutique construction." },
+  { name: "Tla Al Ali", slug: "tla-al-ali", description: "Residential and commercial area with mixed-use construction." },
+  { name: "Al Jubeiha", slug: "al-jubeiha", description: "University area with institutional and residential construction." },
+  { name: "Marj Al Hamam", slug: "marj-al-hamam", description: "Residential area south of Amman with new housing construction." },
+  { name: "Tabarbour", slug: "tabarbour", description: "East Amman residential area with construction and infrastructure." },
+  { name: "Al Hashmi Al Shamali", slug: "al-hashmi-al-shamali", description: "Commercial and industrial area with warehouse construction." },
+  { name: "Sahab", slug: "sahab", description: "Industrial zone near Amman with factory and logistics construction." },
+  { name: "King Hussein Business Park", slug: "king-hussein-business-park", description: "Modern business park with commercial and office construction." },
+  { name: "Airport Road Amman", slug: "airport-road-amman", description: "Major corridor with logistics and commercial development." },
+  { name: "Marka", slug: "marka", description: "Mixed residential and industrial area with construction activity." },
+  { name: "Zahran", slug: "zahran", description: "Premium central Amman area with office and embassy construction." },
+  { name: "Gardens Street", slug: "gardens-street", description: "Busy commercial street with retail and residential construction." },
+]
+
+const aqabaAreas: Area[] = [
+  { name: "Aqaba Port", slug: "aqaba-port", description: "Major port and logistics area with marine and industrial construction." },
+  { name: "ASEZA", slug: "aseza", description: "Aqaba Special Economic Zone with industrial and commercial construction." },
+  { name: "Tala Bay", slug: "tala-bay", description: "Resort and residential development with hospitality construction." },
+  { name: "Ayla Oasis", slug: "ayla-oasis", description: "Waterfront development with residential and leisure construction." },
+  { name: "Marsa Zayed", slug: "marsa-zayed", description: "New waterfront development with mixed-use construction." },
+  { name: "Al Sakaneyeh", slug: "al-sakaneyeh-aqaba", description: "Residential area in Aqaba with housing construction." },
+  { name: "Industrial Estate Aqaba", slug: "industrial-estate-aqaba", description: "Industrial zone with factory and warehouse construction." },
+  { name: "Downtown Aqaba", slug: "downtown-aqaba", description: "City center with commercial and hospitality renovation and construction." },
+]
+
+const irbidAreas: Area[] = [
+  { name: "University Street Irbid", slug: "university-street-irbid", description: "Academic and commercial area with construction activity." },
+  { name: "Al Husn", slug: "al-husn", description: "Residential area in Irbid with housing construction." },
+  { name: "Irbid Industrial Area", slug: "irbid-industrial-area", description: "Industrial zone with factory and warehouse construction." },
+  { name: "Al Ramtha", slug: "al-ramtha", description: "Border city near Syria with commercial and residential construction." },
+  { name: "Beit Ras", slug: "beit-ras", description: "Developing area near Irbid with residential construction." },
+  { name: "Downtown Irbid", slug: "downtown-irbid", description: "City center with commercial and retail construction." },
+]
+
+const zarqaAreas: Area[] = [
+  { name: "Zarqa Free Zone", slug: "zarqa-free-zone", description: "Industrial free zone with manufacturing and warehouse construction." },
+  { name: "New Zarqa", slug: "new-zarqa", description: "Modern residential area with apartment and villa construction." },
+  { name: "Russeifa", slug: "russeifa", description: "Adjacent city with residential and commercial construction." },
+  { name: "Al Hashemiyya", slug: "al-hashemiyya", description: "Developing area with industrial and residential construction." },
+  { name: "Zarqa Industrial Area", slug: "zarqa-industrial-area", description: "Major industrial zone with factory and logistics construction." },
+]
+
+// ============================================================
+// All Cities
+// ============================================================
+
+export const allCities: City[] = [
+  // UAE
+  {
+    name: "Abu Dhabi",
+    slug: "abu-dhabi",
+    country: "UAE",
+    countryCode: "AE",
+    title: "Construction & Contracting Services in Abu Dhabi",
+    description: "Hadeed Emirates Contracting delivers industrial developments, commercial buildings, infrastructure works, and MEP services across Abu Dhabi. With 25+ years of experience and 400+ completed projects, we are Abu Dhabi's trusted construction partner.",
+    metaDescription: "Leading construction & contracting company in Abu Dhabi. Industrial developments, commercial buildings, infrastructure works, MEP services. 400+ projects | 25+ years experience.",
+    areas: abuDhabiAreas,
+  },
+  {
+    name: "Al Ain",
+    slug: "al-ain",
+    country: "UAE",
+    countryCode: "AE",
+    title: "Construction & Contracting Services in Al Ain",
+    description: "Hadeed Emirates Contracting provides comprehensive construction, contracting, and project management services across Al Ain. From industrial facilities to residential developments, we deliver projects with engineering excellence.",
+    metaDescription: "Professional construction & contracting company in Al Ain. Industrial, commercial, residential construction. MEP works. Hadeed Emirates Contracting.",
+    areas: alAinAreas,
+  },
+  {
+    name: "Dubai",
+    slug: "dubai",
+    country: "UAE",
+    countryCode: "AE",
+    title: "Construction & Contracting Services in Dubai",
+    description: "Hadeed Emirates Contracting serves Dubai's dynamic construction sector with industrial developments, logistics facilities, commercial buildings, free zone construction, and specialized MEP works. From JAFZA to Downtown, we deliver excellence.",
+    metaDescription: "Premier construction & contracting company in Dubai. Industrial, commercial, residential construction. Free zone developments, logistics facilities. 400+ projects completed.",
+    areas: dubaiAreas,
+  },
+  {
+    name: "Sharjah",
+    slug: "sharjah",
+    country: "UAE",
+    countryCode: "AE",
+    title: "Construction & Contracting Services in Sharjah",
+    description: "Hadeed Emirates Contracting provides construction and contracting services across Sharjah including industrial zone construction, commercial developments, residential buildings, and specialized construction solutions.",
+    metaDescription: "Leading construction company in Sharjah. Industrial zone construction, commercial developments, SAIF Zone projects. Hadeed Emirates Contracting.",
+    areas: sharjahAreas,
+  },
+  {
+    name: "Ajman",
+    slug: "ajman",
+    country: "UAE",
+    countryCode: "AE",
+    title: "Construction & Contracting Services in Ajman",
+    description: "Comprehensive construction and contracting services in Ajman including industrial facilities, commercial buildings, residential projects, and MEP works from Hadeed Emirates Contracting.",
+    metaDescription: "Professional construction & contracting services in Ajman. Industrial facilities, commercial buildings, residential projects. Hadeed Emirates Contracting.",
+    areas: ajmanAreas,
+  },
+  {
+    name: "Umm Al Quwain",
+    slug: "umm-al-quwain",
+    country: "UAE",
+    countryCode: "AE",
+    title: "Construction & Contracting Services in Umm Al Quwain",
+    description: "Hadeed Emirates Contracting delivers construction, industrial development, and project management services across Umm Al Quwain, supporting the emirate's growing industrial and residential sectors.",
+    metaDescription: "Construction & contracting services in Umm Al Quwain. Industrial development, residential construction, project management. Hadeed Emirates Contracting.",
+    areas: uaqAreas,
+  },
+  {
+    name: "Ras Al Khaimah",
+    slug: "ras-al-khaimah",
+    country: "UAE",
+    countryCode: "AE",
+    title: "Construction & Contracting Services in Ras Al Khaimah",
+    description: "Hadeed Emirates Contracting provides construction and contracting services across Ras Al Khaimah including free zone developments, industrial construction, hospitality projects, and MEP works.",
+    metaDescription: "Construction company in Ras Al Khaimah. Free zone developments, industrial construction, hospitality projects. Hadeed Emirates Contracting — 25+ years experience.",
+    areas: rakAreas,
+  },
+  {
+    name: "Fujairah",
+    slug: "fujairah",
+    country: "UAE",
+    countryCode: "AE",
+    title: "Construction & Contracting Services in Fujairah",
+    description: "Hadeed Emirates Contracting serves Fujairah's construction sector with industrial facilities, port infrastructure, commercial buildings, and specialized construction services across the emirate.",
+    metaDescription: "Construction & contracting in Fujairah. Industrial facilities, port infrastructure, commercial buildings. Hadeed Emirates Contracting.",
+    areas: fujairahAreas,
+  },
+  // Qatar
+  {
+    name: "Doha",
+    slug: "doha",
+    country: "Qatar",
+    countryCode: "QA",
+    title: "Construction & Contracting Services in Doha, Qatar",
+    description: "Hadeed Emirates Contracting extends its proven construction expertise to Qatar, delivering industrial developments, commercial buildings, infrastructure projects, and specialized facilities across Doha and surrounding areas.",
+    metaDescription: "Construction & contracting company in Doha, Qatar. Industrial developments, commercial buildings, infrastructure projects. Hadeed Emirates — 400+ projects experience.",
+    areas: dohaAreas,
+  },
+  // Jordan
+  {
+    name: "Amman",
+    slug: "amman",
+    country: "Jordan",
+    countryCode: "JO",
+    title: "Construction & Contracting Services in Amman, Jordan",
+    description: "Hadeed Emirates Contracting brings 25+ years of construction excellence to Jordan's capital, delivering commercial developments, residential buildings, industrial facilities, and infrastructure projects across Amman.",
+    metaDescription: "Construction & contracting company in Amman, Jordan. Commercial, residential, industrial construction. Hadeed Emirates — trusted Middle East contractor.",
+    areas: ammanAreas,
+  },
+  {
+    name: "Aqaba",
+    slug: "aqaba",
+    country: "Jordan",
+    countryCode: "JO",
+    title: "Construction & Contracting Services in Aqaba, Jordan",
+    description: "Construction and contracting services in Aqaba Special Economic Zone. Hadeed Emirates Contracting delivers port infrastructure, industrial facilities, hospitality developments, and commercial construction.",
+    metaDescription: "Construction company in Aqaba, Jordan. Port infrastructure, industrial facilities, hospitality developments. ASEZA projects. Hadeed Emirates Contracting.",
+    areas: aqabaAreas,
+  },
+  {
+    name: "Irbid",
+    slug: "irbid",
+    country: "Jordan",
+    countryCode: "JO",
+    title: "Construction & Contracting Services in Irbid, Jordan",
+    description: "Hadeed Emirates Contracting provides construction and contracting services in Irbid, Jordan's second-largest city, covering commercial, residential, educational, and industrial projects.",
+    metaDescription: "Construction company in Irbid, Jordan. Commercial, residential, industrial construction. Hadeed Emirates Contracting — delivering Middle East construction excellence.",
+    areas: irbidAreas,
+  },
+  {
+    name: "Zarqa",
+    slug: "zarqa",
+    country: "Jordan",
+    countryCode: "JO",
+    title: "Construction & Contracting Services in Zarqa, Jordan",
+    description: "Construction and industrial development services in Zarqa, Jordan's industrial capital. Hadeed Emirates Contracting delivers factory construction, warehouse development, and infrastructure projects.",
+    metaDescription: "Construction & industrial development in Zarqa, Jordan. Factory construction, warehouse development, infrastructure projects. Hadeed Emirates Contracting.",
+    areas: zarqaAreas,
+  },
+]
+
+// Helper functions
+export function getCityBySlug(slug: string): City | undefined {
+  return allCities.find((c) => c.slug === slug)
 }
 
-export const allCities = [dubaiCity, abuDhabiCity, sharjahCity]
+export function getAreaBySlug(citySlug: string, areaSlug: string) {
+  const city = getCityBySlug(citySlug)
+  if (!city) return null
+  const area = city.areas.find((a) => a.slug === areaSlug)
+  if (!area) return null
+  return { city, area }
+}
+
+// Count total pages
+export function getTotalAreaPages(): number {
+  return allCities.reduce((sum, city) => sum + city.areas.length, 0) + allCities.length
+}

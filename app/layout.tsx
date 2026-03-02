@@ -12,48 +12,48 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Hadeed Transport | Equipment & Space Rentals in Abu Dhabi",
-    template: "%s | Hadeed Transport",
+    default: "Hadeed Emirates Contracting | Construction & Industrial Projects UAE, Qatar, Jordan",
+    template: "%s | Hadeed Emirates Contracting",
   },
   description:
-    "Hadeed specializes in heavy equipment rentals and versatile space solutions across Abu Dhabi. Construction machinery, cranes, storage, warehouses & more. Call +971 50 626 6515",
+    "Hadeed Emirates Contracting Company — 25+ years delivering industrial developments, commercial buildings, infrastructure works, logistics facilities, oil & gas construction, and more across UAE, Qatar & Jordan. 400+ projects, 1.5M+ sqm constructed.",
   keywords:
-    "equipment rental Abu Dhabi, heavy machinery rental, crane rental UAE, construction equipment, space rental Abu Dhabi, warehouse rental, self storage Abu Dhabi, open yards, forklift rental, generator rental, water tanker rental",
-  authors: [{ name: "Hadeed Transport" }],
-  creator: "Hadeed Transport",
-  publisher: "Hadeed Transport",
+    "construction company UAE, industrial construction Abu Dhabi, contracting company Dubai, warehouse construction, infrastructure works UAE, commercial building construction, oil gas facility construction, villa construction UAE, logistics warehouse construction, pharmaceutical facility construction, free zone construction UAE, construction company Qatar, construction company Jordan, residential building construction, military defense construction, aviation airport construction, solar energy construction, ports marine construction",
+  authors: [{ name: "Hadeed Emirates Contracting Company" }],
+  creator: "Hadeed Emirates Contracting Company",
+  publisher: "Hadeed Emirates Contracting Company",
   formatDetection: {
     email: true,
     address: true,
     telephone: true,
   },
-  metadataBase: new URL("https://hadeed-transport.com"),
+  metadataBase: new URL("https://hadeedconstruction.com"),
   alternates: {
-    canonical: "https://hadeed-transport.com",
+    canonical: "https://hadeedconstruction.com",
   },
   openGraph: {
-    title: "Hadeed Transport | Equipment & Space Rentals in Abu Dhabi",
+    title: "Hadeed Emirates Contracting | Construction & Industrial Projects",
     description:
-      "From heavy machinery to secure storage, we provide practical solutions tailored to your business needs. Serving Abu Dhabi & UAE.",
-    url: "https://hadeed-transport.com",
-    siteName: "Hadeed Transport",
+      "With 25+ years of experience and 400+ completed projects, Hadeed Emirates Contracting delivers complex construction across UAE, Qatar & Jordan.",
+    url: "https://hadeedconstruction.com",
+    siteName: "Hadeed Emirates Contracting",
     locale: "en_AE",
     type: "website",
     images: [
       {
-        url: "https://hadeed-transport.com/og-image.jpg",
+        url: "https://hadeedconstruction.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Hadeed Transport - Equipment & Space Rentals Abu Dhabi",
+        alt: "Hadeed Emirates Contracting Company — Building Excellence Across the Middle East",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hadeed Transport | Equipment & Space Rentals Abu Dhabi",
+    title: "Hadeed Emirates Contracting | Construction & Industrial Projects",
     description:
-      "Heavy equipment rentals & space solutions across Abu Dhabi. Construction machinery, cranes, storage & more.",
-    images: ["https://hadeed-transport.com/og-image.jpg"],
+      "25+ years delivering industrial, commercial & infrastructure construction across UAE, Qatar & Jordan. 400+ projects completed.",
+    images: ["https://hadeedconstruction.com/og-image.jpg"],
   },
   robots: {
     index: true,

@@ -1,753 +1,300 @@
 // ============================================================
-// Hadeed Transport - Site Data
+// Hadeed Emirates Contracting Company - Site Data
 // ============================================================
 
 export const SITE_CONFIG = {
-  name: "Hadeed Transport",
-  tagline: "POWERING YOUR PROGRESS.",
+  name: "Hadeed Emirates Contracting",
+  fullName: "Hadeed Emirates Contracting Company",
+  shortName: "HEC",
+  tagline: "BUILDING EXCELLENCE ACROSS THE MIDDLE EAST",
   description:
-    "From heavy machinery to secure storage, we provide practical solutions tailored to your business needs.",
-  email: "info@hadeed-transport.com",
+    "With over 25 years of continuous operations, Hadeed Emirates Contracting Company has established itself as a trusted industrial and construction partner delivering complex projects across the UAE, Qatar, and Jordan.",
+  email: "info@hadeedconstruction.com",
   phone: "+971506266515",
   whatsapp: "971506266515",
   whatsappLink: "https://wa.link/4fqgo9",
-  location: "ICAD III, Abu Dhabi",
-  url: "https://hadeed-transport.com",
+  location: "Abu Dhabi, United Arab Emirates",
+  url: "https://hadeedconstruction.com",
+  profilePdf: "/HEC LLC - Prequalification.pdf",
   social: {
     facebook: "#",
     instagram: "#",
     linkedin: "#",
   },
-};
-
-// ============================================================
-// Equipment Categories
-// ============================================================
-
-export interface Product {
-  name: string;
-  slug: string;
-  description: string;
-  image: string;
-  whatsappMessage: string;
 }
 
-export interface EquipmentCategory {
-  name: string;
-  slug: string;
-  subtitle: string;
-  description: string;
-  image: string;
-  products: Product[];
-  ctaTitle: string;
-  ctaDescription: string;
-}
-
-function makeWhatsappLink(productName: string): string {
-  return `https://wa.me/971506266515?text=${encodeURIComponent(`Hi, I'm interested in "${productName}". Please send more details.`)}`;
-}
-
-export const equipmentCategories: EquipmentCategory[] = [
-  {
-    name: "Transportation & Construction Machineries",
-    slug: "transportation-construction-machineries",
-    subtitle: "Comprehensive Rental Solutions for Heavy Machinery and Equipment",
-    description:
-      "Robust machinery designed for excavation, grading, and site preparation to power construction projects of all scales.",
-    image: "/images/equipment-hero.jpg",
-    ctaTitle: "Get the Equipment You Need — Available for Rent Today!",
-    ctaDescription:
-      "Achieve smooth, compact surfaces – rent road rollers for your paving needs!",
-    products: [
-      {
-        name: "Shovel Various Sizes",
-        slug: "shovel-various-sizes",
-        description: "Earth work and earth moving",
-        image: "/images/equipment/shovel.jpg",
-        whatsappMessage: makeWhatsappLink("Shovel - Various Sizes"),
-      },
-      {
-        name: "Backhoe Loader & Excavator Various Sizes",
-        slug: "backhoe-loader-excavator",
-        description: "Major trench excavation and dredging works",
-        image: "/images/equipment/backhoe-loader.jpg",
-        whatsappMessage: makeWhatsappLink(
-          "Backhoe Loader and Excavator - Various Sizes"
-        ),
-      },
-      {
-        name: "25 Ton Mobile Crane",
-        slug: "25-ton-mobile-crane",
-        description:
-          "Material handling at various heights with various capacities",
-        image: "/images/equipment/25-mobile-crane.jpg",
-        whatsappMessage: makeWhatsappLink("25 Mobile Crane"),
-      },
-      {
-        name: "50 Ton Mobile Crane",
-        slug: "50-ton-mobile-crane",
-        description:
-          "Material handling at various heights with various capacities",
-        image: "/images/equipment/50-mobile-crane.jpg",
-        whatsappMessage: makeWhatsappLink("50 Ton Mobile Crane"),
-      },
-      {
-        name: "J.C.B Backhoe Loader",
-        slug: "jcb-backhoe-loader",
-        description:
-          "For limited excavation of trenches sizes and general medium size earth work",
-        image: "/images/equipment/jcb-backhoe.jpg",
-        whatsappMessage: makeWhatsappLink("J.C.B Backhoe Loader"),
-      },
-      {
-        name: "Forklift Different Sizes (1 to 15 Ton)",
-        slug: "forklift-various-sizes",
-        description:
-          "Material handling at various heights with various capacities",
-        image: "/images/equipment/forklift.jpg",
-        whatsappMessage: makeWhatsappLink(
-          "Forklift different sizes from 1 ton to 15 ton"
-        ),
-      },
-      {
-        name: "Bobcat Mini Loader JCB",
-        slug: "bobcat-mini-loader",
-        description: "Earthwork in limited access area",
-        image: "/images/equipment/bobcat.jpg",
-        whatsappMessage: makeWhatsappLink("BOBCAT MINI LOADER JCB"),
-      },
-      {
-        name: "Low Level Manlifts",
-        slug: "low-level-manlifts",
-        description: "Workers lifting to elevated locations",
-        image: "/images/equipment/low-manlift.jpg",
-        whatsappMessage: makeWhatsappLink("Low level manlifts"),
-      },
-      {
-        name: "High Level Manlifts",
-        slug: "high-level-manlifts",
-        description: "Workers lifting to elevated locations",
-        image: "/images/equipment/high-manlift.jpg",
-        whatsappMessage: makeWhatsappLink("High level manlifts"),
-      },
-      {
-        name: "Tanker Diesel",
-        slug: "tanker-diesel",
-        description: "Diesel transportation",
-        image: "/images/equipment/tanker-diesel.jpg",
-        whatsappMessage: makeWhatsappLink("Tanker Diesel"),
-      },
-      {
-        name: "Sewerage Tanker",
-        slug: "sewerage-tanker",
-        description: "Sewerage transportation",
-        image: "/images/equipment/sewerage-tanker.jpg",
-        whatsappMessage: makeWhatsappLink("Sewarage Tanker"),
-      },
-      {
-        name: "3000 Gallon Water Tanker",
-        slug: "3000-gallon-water-tanker",
-        description: "Water transportation",
-        image: "/images/equipment/3000-water-tanker.jpg",
-        whatsappMessage: makeWhatsappLink("3000 Galon Water Tanker"),
-      },
-      {
-        name: "5000 Gallon Water Tanker",
-        slug: "5000-gallon-water-tanker",
-        description: "Water transportation",
-        image: "/images/equipment/5000-water-tanker.jpg",
-        whatsappMessage: makeWhatsappLink("5000 Water Tanker"),
-      },
-      {
-        name: "Trailer",
-        slug: "trailer",
-        description: "Material transportation — large in size",
-        image: "/images/equipment/trailer.jpg",
-        whatsappMessage: makeWhatsappLink("TRAILOR"),
-      },
-      {
-        name: "3 Ton Pickup",
-        slug: "3-ton-pickup",
-        description: "Material transportation — large in size",
-        image: "/images/equipment/3-ton-pickup.jpg",
-        whatsappMessage: makeWhatsappLink("3 ton Pickup"),
-      },
-      {
-        name: "2 Ton Pickup",
-        slug: "2-ton-pickup",
-        description: "Material and workers transportation",
-        image: "/images/equipment/2-ton-pickup.jpg",
-        whatsappMessage: makeWhatsappLink("2 ton Pickup"),
-      },
-      {
-        name: "1 Ton Pickup",
-        slug: "1-ton-pickup",
-        description: "Material and workers transportation",
-        image: "/images/equipment/1-ton-pickup.jpg",
-        whatsappMessage: makeWhatsappLink("1 Ton Pickup"),
-      },
-      {
-        name: "Recovery Truck",
-        slug: "recovery-truck",
-        description:
-          "Transport of machines and equipment — different sizes",
-        image: "/images/equipment/recovery-truck.jpg",
-        whatsappMessage: makeWhatsappLink("Recovery Truck"),
-      },
-      {
-        name: "60 Passenger Bus",
-        slug: "60-passenger-bus",
-        description: "Transport staff or labor",
-        image: "/images/equipment/60-bus.jpg",
-        whatsappMessage: makeWhatsappLink("60 passenger Bus"),
-      },
-      {
-        name: "30 Seater Bus",
-        slug: "30-seater-bus",
-        description: "Transport staff or labor",
-        image: "/images/equipment/30-bus.jpg",
-        whatsappMessage: makeWhatsappLink("30 seater Bus"),
-      },
-      {
-        name: "15 Seater Bus",
-        slug: "15-seater-bus",
-        description: "Transport staff or labor",
-        image: "/images/equipment/15-bus.jpg",
-        whatsappMessage: makeWhatsappLink("15 seater Bus"),
-      },
-      {
-        name: "12 Seater Bus",
-        slug: "12-seater-bus",
-        description: "Staff transportation",
-        image: "/images/equipment/12-bus.jpg",
-        whatsappMessage: makeWhatsappLink("12 seater Bus"),
-      },
-      {
-        name: "5 Passenger Saloon Car (Different Models)",
-        slug: "5-passenger-saloon-car",
-        description: "Staff transportation",
-        image: "/images/equipment/saloon-car.jpg",
-        whatsappMessage: makeWhatsappLink(
-          "5 passenger Saloon Car, (Different models)"
-        ),
-      },
-    ],
-  },
-  {
-    name: "Small Construction Equipment & Tools",
-    slug: "construction-small-tools",
-    subtitle: "Comprehensive Rental Solutions for Small Machinery and Equipment",
-    description:
-      "High-performance, quality equipment and tools ensuring safe, efficient, and rapid construction.",
-    image: "/images/small-tools-hero.jpg",
-    ctaTitle: "Cut, grind, and weld with ease – rent your tools today!",
-    ctaDescription:
-      "Affordable hand tools for precision in construction work.",
-    products: [
-      {
-        name: "Driving Roller 4 Ton",
-        slug: "driving-roller-4-ton",
-        description: "Earth work compactor — medium area",
-        image: "/images/tools/driving-roller-4t.jpg",
-        whatsappMessage: makeWhatsappLink("DRIVING ROLLER 4 TON"),
-      },
-      {
-        name: "Driving Roller 2 Ton",
-        slug: "driving-roller-2-ton",
-        description: "Earth work compactor — medium area",
-        image: "/images/tools/driving-roller-2t.jpg",
-        whatsappMessage: makeWhatsappLink("DRIVING ROLLER 2 TON"),
-      },
-      {
-        name: "Roller 2 Ton",
-        slug: "roller-2-ton",
-        description: "Earth work compactor — limited area",
-        image: "/images/tools/roller-2t.jpg",
-        whatsappMessage: makeWhatsappLink("ROLLER 2 TON"),
-      },
-      {
-        name: "Roller 1 Ton",
-        slug: "roller-1-ton",
-        description: "Earth work compactor — limited area",
-        image: "/images/tools/roller-1t.jpg",
-        whatsappMessage: makeWhatsappLink("ROLLER 1 TON"),
-      },
-      {
-        name: "Plate Compactor",
-        slug: "plate-compactor",
-        description: "Limited area compaction",
-        image: "/images/tools/plate-compactor.jpg",
-        whatsappMessage: makeWhatsappLink("Plate compactor"),
-      },
-      {
-        name: "Jumping Jack Compactor",
-        slug: "jumping-jack-compactor",
-        description: "Limited area compaction",
-        image: "/images/tools/jumping-jack.jpg",
-        whatsappMessage: makeWhatsappLink("Jumping Jack Compactor"),
-      },
-      {
-        name: "Concrete Mixer (Petrol)",
-        slug: "concrete-mixer-petrol",
-        description: "Small quantity concrete mixer",
-        image: "/images/tools/mixer-petrol.jpg",
-        whatsappMessage: makeWhatsappLink("CONCRETE MIXER petrol"),
-      },
-      {
-        name: "Concrete Mixer (Electrical)",
-        slug: "concrete-mixer-electrical",
-        description: "Small quantity concrete mixer",
-        image: "/images/tools/mixer-electrical.jpg",
-        whatsappMessage: makeWhatsappLink("CONCRETE MIXER ELECTRICAL"),
-      },
-      {
-        name: "Concrete Vibrator (Diesel)",
-        slug: "concrete-vibrator-diesel",
-        description: "Concrete casting vibration",
-        image: "/images/tools/vibrator-diesel.jpg",
-        whatsappMessage: makeWhatsappLink("Concrete Vibrator Deisel"),
-      },
-      {
-        name: "Concrete Electric Vibrator",
-        slug: "concrete-electric-vibrator",
-        description: "Concrete casting vibration",
-        image: "/images/tools/vibrator-electric.jpg",
-        whatsappMessage: makeWhatsappLink("Concrete ELECTRIC VIBRATOR"),
-      },
-      {
-        name: "Concrete Power Float",
-        slug: "concrete-power-float",
-        description: "Concrete slabs finishing machine",
-        image: "/images/tools/power-float.jpg",
-        whatsappMessage: makeWhatsappLink("Concrete Power Float"),
-      },
-      {
-        name: "Dewatering System",
-        slug: "dewatering-system",
-        description: "Dewatering works",
-        image: "/images/tools/dewatering.jpg",
-        whatsappMessage: makeWhatsappLink("Dewatering system"),
-      },
-      {
-        name: "Generator (500 KVA)",
-        slug: "generator-500-kva",
-        description: "Power generation — high capacity",
-        image: "/images/tools/gen-500.jpg",
-        whatsappMessage: makeWhatsappLink("GENERATOR (500-KVA)"),
-      },
-      {
-        name: "Generator (250 KVA)",
-        slug: "generator-250-kva",
-        description: "Power generation — high capacity",
-        image: "/images/tools/gen-250.jpg",
-        whatsappMessage: makeWhatsappLink("GENERATOR (250-KVA)"),
-      },
-      {
-        name: "Generator (225 KVA)",
-        slug: "generator-225-kva",
-        description: "Power generation — medium capacity",
-        image: "/images/tools/gen-225.jpg",
-        whatsappMessage: makeWhatsappLink("GENERATOR (225-KVA)"),
-      },
-      {
-        name: "Generator (150 KVA)",
-        slug: "generator-150-kva",
-        description: "Power generation — medium capacity",
-        image: "/images/tools/gen-150.jpg",
-        whatsappMessage: makeWhatsappLink("GENERATOR (150-KVA)"),
-      },
-      {
-        name: "Generator (130 KVA)",
-        slug: "generator-130-kva",
-        description: "Power generation — different capacity",
-        image: "/images/tools/gen-130.jpg",
-        whatsappMessage: makeWhatsappLink("GENERATOR (130-KVA)"),
-      },
-      {
-        name: "Generator (60 KVA)",
-        slug: "generator-60-kva",
-        description: "Power generation — compact",
-        image: "/images/tools/gen-60.jpg",
-        whatsappMessage: makeWhatsappLink("GENERATOR (60-KVA)"),
-      },
-      {
-        name: "Generator (20 KVA)",
-        slug: "generator-20-kva",
-        description: "Power generation — portable",
-        image: "/images/tools/gen-20.jpg",
-        whatsappMessage: makeWhatsappLink("GENERATOR (20-KVA)"),
-      },
-      {
-        name: "Generator (10 KVA)",
-        slug: "generator-10-kva",
-        description: "Power generation — portable",
-        image: "/images/tools/gen-10.jpg",
-        whatsappMessage: makeWhatsappLink("GENERATOR (10-KVA)"),
-      },
-      {
-        name: "Steel Electric Bending Machine",
-        slug: "steel-bending-machine",
-        description: "Steel rebar bending machine — different sizes",
-        image: "/images/tools/steel-bender.jpg",
-        whatsappMessage: makeWhatsappLink("Steel Elec BENDING MACHINE"),
-      },
-      {
-        name: "Steel Cutter",
-        slug: "steel-cutter",
-        description: "Steel rebar cutting machine — different sizes",
-        image: "/images/tools/steel-cutter.jpg",
-        whatsappMessage: makeWhatsappLink("STEEL CUTTER"),
-      },
-      {
-        name: "Concrete Saw Cutter",
-        slug: "concrete-saw-cutter",
-        description: "Concrete cutter",
-        image: "/images/tools/saw-cutter.jpg",
-        whatsappMessage: makeWhatsappLink("CONCRETE Saw CUTTER"),
-      },
-      {
-        name: "Diesel Air Compressor (900 CFM)",
-        slug: "diesel-air-compressor-900",
-        description: "Air generation for cleaning",
-        image: "/images/tools/compressor-900.jpg",
-        whatsappMessage: makeWhatsappLink("Diesel air compressor 900 CFM"),
-      },
-      {
-        name: "Diesel Air Compressor (300 CFM)",
-        slug: "diesel-air-compressor-300",
-        description: "Air generation for cleaning",
-        image: "/images/tools/compressor-300.jpg",
-        whatsappMessage: makeWhatsappLink("Diesel Air Compressor 300 CFM"),
-      },
-      {
-        name: "Electric Air Compressor (Various Capacities)",
-        slug: "electric-air-compressor",
-        description: "Air generation for cleaning",
-        image: "/images/tools/compressor-electric.jpg",
-        whatsappMessage: makeWhatsappLink(
-          "Electric air compressor different capacities"
-        ),
-      },
-      {
-        name: "Concrete Jack Hammer (Various Sizes)",
-        slug: "concrete-jack-hammer",
-        description: "Concrete chipping and breaking",
-        image: "/images/tools/jack-hammer.jpg",
-        whatsappMessage: makeWhatsappLink(
-          "Concrete JACK HAMMER different sizes"
-        ),
-      },
-      {
-        name: "Heavy & Light Duty Scaffolding",
-        slug: "scaffolding",
-        description: "Scaffolding solutions for construction",
-        image: "/images/tools/scaffolding.jpg",
-        whatsappMessage: makeWhatsappLink(
-          "Heavy and light duty scaffolding"
-        ),
-      },
-      {
-        name: "Block Cutter Machine",
-        slug: "block-cutter-machine",
-        description: "Block cutting",
-        image: "/images/tools/block-cutter.jpg",
-        whatsappMessage: makeWhatsappLink("Block Cutter Machine"),
-      },
-      {
-        name: "Concrete Grinding Machine",
-        slug: "concrete-grinding-machine",
-        description: "Concrete grinder",
-        image: "/images/tools/grinder.jpg",
-        whatsappMessage: makeWhatsappLink("Concrete Grinding Machine"),
-      },
-      {
-        name: "Electric Wood Cutter",
-        slug: "electric-wood-cutter",
-        description: "Wood cutting",
-        image: "/images/tools/wood-cutter.jpg",
-        whatsappMessage: makeWhatsappLink("Elec Wood cutter"),
-      },
-      {
-        name: "Marble Cutting Machine",
-        slug: "marble-cutting-machine",
-        description: "Marble cutting machine",
-        image: "/images/tools/marble-cutter.jpg",
-        whatsappMessage: makeWhatsappLink("Marble Cutting Machine"),
-      },
-      {
-        name: "Plaster Machine",
-        slug: "plaster-machine",
-        description: "Plaster works",
-        image: "/images/tools/plaster.jpg",
-        whatsappMessage: makeWhatsappLink("Plaster Machine"),
-      },
-      {
-        name: "Coring Machine",
-        slug: "coring-machine",
-        description: "Concrete coring machine",
-        image: "/images/tools/coring.jpg",
-        whatsappMessage: makeWhatsappLink("COARING MACHINE"),
-      },
-      {
-        name: "Total Station TC405 Leica",
-        slug: "total-station-tc405-leica",
-        description: "Survey machines",
-        image: "/images/tools/total-station.jpg",
-        whatsappMessage: makeWhatsappLink("TOTAL STATION TC405 LEICA"),
-      },
-      {
-        name: "Auto Level Machine",
-        slug: "auto-level-machine",
-        description: "Survey machines",
-        image: "/images/tools/auto-level.jpg",
-        whatsappMessage: makeWhatsappLink("Auto Level Machine"),
-      },
-      {
-        name: "Laser Level Machine",
-        slug: "laser-level-machine",
-        description: "Survey machines",
-        image: "/images/tools/laser-level.jpg",
-        whatsappMessage: makeWhatsappLink("Laser level machine"),
-      },
-    ],
-  },
-];
-
 // ============================================================
-// Space Rentals
+// Project Sectors / Services
 // ============================================================
 
-export interface SpaceRental {
-  name: string;
-  slug: string;
-  subtitle: string;
-  heroDescription: string;
-  image: string;
-  details: string[];
-  fullDescription: string;
+export interface ProjectSector {
+  name: string
+  slug: string
+  icon: string
+  shortDescription: string
+  fullDescription: string
+  image: string
+  keyProjects: string[]
+  capabilities: string[]
+  metaTitle: string
+  metaDescription: string
 }
 
-export const spaceRentals: SpaceRental[] = [
+export const projectSectors: ProjectSector[] = [
   {
-    name: "Warehouses",
-    slug: "warehouses",
-    subtitle: "Efficient Storage Solutions for Every Need",
-    heroDescription:
-      "Versatile storage spaces ideal for logistics, manufacturing, and inventory management.",
-    image: "/images/spaces/warehouses.jpg",
-    details: [
-      "Located in Abu Dhabi",
-      "Total area: 6,000 sqm",
-      "Options include single or multiple warehouses ranging from 300 sqm to 1,000 sqm each",
-    ],
-    fullDescription: "Warehouses for Storage & Logistics Solutions",
+    name: "General Industrial Developments",
+    slug: "general-industrial-developments",
+    icon: "🏭",
+    shortDescription: "Delivery of large-scale industrial complexes, manufacturing plants, fabrication facilities, and production environments designed for operational efficiency, durability, and future expansion.",
+    fullDescription: "Hadeed Emirates Contracting Company is a leading provider of general industrial construction services across the UAE, Qatar, and Jordan. We specialize in the design and construction of large-scale industrial complexes, manufacturing plants, fabrication facilities, and production environments. Our industrial developments are engineered for operational efficiency, long-term durability, and seamless future expansion. With over 25 years of experience, we understand the unique challenges of industrial construction — from heavy foundations and structural steel erection to specialized MEP systems and process-specific layouts.",
+    image: "/images/sectors/industrial.jpg",
+    keyProjects: ["Manufacturing plant construction", "Fabrication workshop development", "Industrial complex master planning", "Process plant construction", "Factory floor and production line setup"],
+    capabilities: ["Heavy structural steel erection", "Industrial foundation engineering", "Process piping and utilities", "Industrial ventilation systems", "Fire protection and safety systems", "Environmental compliance construction"],
+    metaTitle: "General Industrial Construction | Hadeed Emirates Contracting",
+    metaDescription: "Hadeed Emirates Contracting delivers large-scale industrial complexes, manufacturing plants, and fabrication facilities across UAE, Qatar & Jordan. 25+ years of proven experience.",
   },
   {
-    name: "Office Spaces",
-    slug: "office-spaces",
-    subtitle: "Transform Your Work Environment",
-    heroDescription:
-      "Functional units tailored for factories, workshops, or business operations.",
-    image: "/images/spaces/office-spaces.jpg",
-    details: [
-      "Open-plan and closed office options",
-      "Business center facilities available",
-    ],
-    fullDescription: "Your Perfect Office, Tailored to You",
+    name: "Logistics & Warehousing",
+    slug: "logistics-warehousing",
+    icon: "🚚",
+    shortDescription: "Design and construction of modern logistics hubs, distribution centers, cold storage facilities, and high-capacity warehousing supporting regional supply chains and international trade.",
+    fullDescription: "Our logistics and warehousing construction division delivers state-of-the-art facilities that form the backbone of regional and international supply chains. From massive distribution centers and temperature-controlled cold storage facilities to automated warehousing systems and last-mile delivery hubs, we construct logistics infrastructure that drives operational efficiency.",
+    image: "/images/sectors/logistics.jpg",
+    keyProjects: ["Distribution center construction", "Cold storage facility development", "E-commerce fulfillment centers", "Automated warehouse systems", "Cross-docking facilities"],
+    capabilities: ["High-capacity racking systems integration", "Temperature-controlled environments", "Advanced loading dock construction", "High-flatness industrial flooring", "Fire suppression and sprinkler systems", "Energy-efficient building envelopes"],
+    metaTitle: "Logistics & Warehouse Construction | Hadeed Emirates Contracting",
+    metaDescription: "Modern logistics hubs, distribution centers & cold storage construction across UAE, Qatar & Jordan. Hadeed Emirates Contracting — 400+ projects completed.",
   },
   {
-    name: "Self-Storage",
-    slug: "self-storage",
-    subtitle: "Safe, Secure, and Accessible Storage",
-    heroDescription:
-      "Clean, secure units offering easy access for both personal and business needs.",
-    image: "/images/spaces/self-storage.jpg",
-    details: [
-      "Around 32 storage units",
-      "Sizes ranging from 30 sqm to 100 sqm",
-    ],
-    fullDescription: "Daily Storage Solutions for Individuals and Businesses",
+    name: "Pharmaceutical & Healthcare Facilities",
+    slug: "pharmaceutical-healthcare-facilities",
+    icon: "💊",
+    shortDescription: "Execution of specialized pharmaceutical buildings including GMP-compliant facilities, laboratories, clean rooms, and controlled-environment production spaces meeting strict regulatory standards.",
+    fullDescription: "Hadeed Emirates Contracting has extensive experience in constructing pharmaceutical and healthcare facilities that meet the strictest international regulatory standards. Our portfolio includes GMP-compliant manufacturing facilities, ISO-classified clean rooms, pharmaceutical laboratories, vaccine storage facilities, and hospital infrastructure.",
+    image: "/images/sectors/pharma.jpg",
+    keyProjects: ["GMP-compliant production facilities", "Pharmaceutical laboratory construction", "Clean room environments (ISO 5-8)", "Vaccine and cold chain storage", "Hospital and clinic construction"],
+    capabilities: ["Clean room construction and validation", "HVAC systems for controlled environments", "Pharmaceutical-grade piping systems", "Contamination control construction", "Regulatory compliance documentation", "Specialized flooring and wall systems"],
+    metaTitle: "Pharmaceutical & Healthcare Construction | Hadeed Emirates Contracting",
+    metaDescription: "GMP-compliant pharmaceutical facilities, clean rooms, and healthcare construction in UAE, Qatar & Jordan. Hadeed Emirates — trusted construction partner.",
   },
   {
-    name: "Open Yards",
-    slug: "open-yards",
-    subtitle: "Open Yards for Endless Possibilities",
-    heroDescription:
-      "Spacious outdoor areas suitable for heavy-duty use, storage, or movement.",
-    image: "/images/spaces/open-yards.jpg",
-    details: [
-      "Areas available up to 25,000 sqm",
-      "Suitable for a variety of business needs",
-    ],
-    fullDescription: "Outdoor Yards for Storage & Logistics",
+    name: "Education & Institutional Buildings",
+    slug: "education-institutional-buildings",
+    icon: "🎓",
+    shortDescription: "Construction of educational campuses, schools, training centers, and academic institutions providing functional, safe, and future-ready learning environments.",
+    fullDescription: "We deliver world-class educational and institutional facilities that inspire learning and foster academic excellence. Our education construction portfolio spans K-12 schools, university campuses, vocational training centers, research laboratories, and multi-purpose academic buildings.",
+    image: "/images/sectors/education.jpg",
+    keyProjects: ["School and university campus construction", "Training center development", "Research laboratory facilities", "Student accommodation buildings", "Sports and recreation facilities"],
+    capabilities: ["Acoustic treatment and design", "Smart classroom infrastructure", "Laboratory construction", "Multi-purpose hall construction", "Sustainable building practices", "Accessibility compliance"],
+    metaTitle: "Education & Institutional Building Construction | Hadeed Emirates",
+    metaDescription: "School, university campus, and institutional building construction across UAE, Qatar & Jordan. Hadeed Emirates Contracting — safe, functional learning environments.",
   },
   {
-    name: "Caravans",
-    slug: "caravans",
-    subtitle: "Efficient Storage Solutions for Every Need",
-    heroDescription:
-      "Specialized zones designed to handle and store large machinery securely.",
-    image: "/images/spaces/caravans.jpg",
-    details: [
-      "Ideal for temporary offices, labor camps, or on-site project offices",
-      "Mobile toilets and cabins available across the UAE",
-      "Can be equipped with temporary water drainage and AC systems",
-      "Available for both short- and long-term rentals",
-    ],
-    fullDescription: "Temporary Porta Cabins and Mobile Facilities",
+    name: "Oil & Gas Facilities",
+    slug: "oil-gas-facilities",
+    icon: "🛢",
+    shortDescription: "Proven experience supporting the energy sector through delivery of industrial service facilities, operational compounds, storage facilities, and technically demanding infrastructure projects.",
+    fullDescription: "Hadeed Emirates Contracting has a proven track record in supporting the oil and gas industry through the delivery of technically demanding construction projects. Our experience covers operational compounds, tank farms, pipe racks, service buildings, personnel accommodation, pump stations, and associated civil and structural works.",
+    image: "/images/sectors/oil-gas.jpg",
+    keyProjects: ["Operational compound construction", "Tank farm and storage facilities", "Pipe rack and support structures", "Service and maintenance buildings", "Personnel accommodation camps"],
+    capabilities: ["Hazardous area construction", "HSE management systems", "Blast-resistant construction", "Cathodic protection systems", "Fire and gas detection infrastructure", "Hot work and confined space operations"],
+    metaTitle: "Oil & Gas Facility Construction | Hadeed Emirates Contracting",
+    metaDescription: "Oil & gas facility construction including compounds, tank farms, and service buildings across UAE, Qatar & Jordan. 25+ years of energy sector experience.",
   },
   {
-    name: "Mobile Toilets",
-    slug: "mobile-toilets",
-    subtitle: "Comfortable Mobile Toilets for Outdoor Events",
-    heroDescription:
-      "Flexible land options to suit your operational scale and future expansion.",
-    image: "/images/spaces/mobile-toilets.jpg",
-    details: [
-      "Ideal for temporary offices, labor camps, or on-site projects and events",
-      "Available for both short- and long-term rentals",
-    ],
-    fullDescription: "Convenience on the Go with Mobile Toilets",
+    name: "Commercial & Retail Developments",
+    slug: "commercial-retail-developments",
+    icon: "🏬",
+    shortDescription: "Successful execution of commercial centers, retail destinations, business complexes, and mixed-use developments contributing to vibrant commercial communities.",
+    fullDescription: "We create commercial and retail environments that attract customers, drive revenue, and build lasting communities. Our commercial construction services encompass shopping malls, retail parks, business centers, office towers, mixed-use developments, and hospitality venues.",
+    image: "/images/sectors/commercial.jpg",
+    keyProjects: ["Shopping mall construction", "Office tower development", "Business park construction", "Mixed-use development projects", "Retail fit-out and renovation"],
+    capabilities: ["High-end architectural finishes", "Complex MEP coordination", "Curtain wall and facade systems", "Multi-level parking structures", "Escalator and elevator installation", "Tenant fit-out management"],
+    metaTitle: "Commercial & Retail Construction | Hadeed Emirates Contracting",
+    metaDescription: "Commercial centers, retail developments, and business complexes built by Hadeed Emirates Contracting across UAE, Qatar & Jordan.",
   },
   {
-    name: "Storage Containers for Rent",
-    slug: "storage-containers-for-rent",
-    subtitle: "Efficient Storage Solutions for Every Need",
-    heroDescription:
-      "Secure, portable storage — rent for site or event use.",
-    image: "/images/spaces/storage-containers.jpg",
-    details: [
-      "Durable and versatile solutions designed to keep your belongings organized, secure, and easily accessible",
-      "Ideal for office, events or industrial use",
-    ],
-    fullDescription: "Storage Containers for Rent",
+    name: "Residential Buildings",
+    slug: "residential-buildings",
+    icon: "🏢",
+    shortDescription: "Development of residential towers, staff accommodations, and integrated housing communities designed for quality living standards and long-term asset value.",
+    fullDescription: "Hadeed Emirates Contracting constructs residential buildings that prioritize quality living, structural integrity, and long-term asset value. Our residential portfolio includes high-rise apartment towers, mid-rise developments, staff accommodation complexes, and integrated housing communities.",
+    image: "/images/sectors/residential.jpg",
+    keyProjects: ["High-rise residential towers", "Mid-rise apartment buildings", "Staff accommodation complexes", "Integrated housing communities", "Luxury penthouse developments"],
+    capabilities: ["Reinforced concrete construction", "Post-tension slab systems", "Facade engineering and installation", "Swimming pool and amenity construction", "Landscape and hardscape works", "Smart home infrastructure"],
+    metaTitle: "Residential Building Construction | Hadeed Emirates Contracting",
+    metaDescription: "Residential towers, housing communities, and staff accommodation construction in UAE, Qatar & Jordan. Hadeed Emirates — quality living, lasting value.",
   },
-];
+  {
+    name: "Energy & Solar Projects",
+    slug: "energy-solar-projects",
+    icon: "☀️",
+    shortDescription: "Participation in the energy transition through construction of solar installations, industrial rooftop systems, and energy infrastructure projects supporting sustainable development goals.",
+    fullDescription: "As the Middle East accelerates its energy transition, Hadeed Emirates Contracting is actively supporting the region's sustainability goals through the construction of solar energy projects and energy infrastructure. We construct ground-mounted solar farms, industrial rooftop solar systems, battery storage facilities, and electrical substations.",
+    image: "/images/sectors/solar.jpg",
+    keyProjects: ["Ground-mounted solar farm construction", "Industrial rooftop solar installations", "Battery energy storage systems", "Electrical substation construction", "Power distribution infrastructure"],
+    capabilities: ["Solar mounting structure installation", "Electrical balance of systems", "Civil and structural works", "Cable routing and trenching", "Inverter room construction", "Grid connection infrastructure"],
+    metaTitle: "Energy & Solar Project Construction | Hadeed Emirates Contracting",
+    metaDescription: "Solar farm construction, rooftop solar installations, and energy infrastructure across UAE, Qatar & Jordan. Supporting the Middle East energy transition.",
+  },
+  {
+    name: "Villas & Premium Residential Projects",
+    slug: "villas-premium-residential",
+    icon: "🏡",
+    shortDescription: "Construction of high-end private villas and residential communities delivered with attention to architectural quality, functionality, and client expectations.",
+    fullDescription: "We specialize in the construction of high-end private villas and premium residential communities that reflect the unique vision and lifestyle of our clients. From contemporary minimalist designs to traditional Arabic architecture, our villa construction services deliver with meticulous attention to architectural quality, material selection, and finishing standards.",
+    image: "/images/sectors/villas.jpg",
+    keyProjects: ["Luxury villa construction", "Gated community development", "Beach and waterfront villas", "Heritage and traditional villas", "Smart home villa projects"],
+    capabilities: ["Custom architectural construction", "Premium material sourcing", "Swimming pool and water feature construction", "Landscape architecture implementation", "Interior fit-out and finishing", "Home automation integration"],
+    metaTitle: "Villa & Premium Residential Construction | Hadeed Emirates",
+    metaDescription: "High-end villa construction and premium residential communities in UAE, Qatar & Jordan. Hadeed Emirates — architectural quality, client-focused delivery.",
+  },
+  {
+    name: "Military & Defense Facilities",
+    slug: "military-defense-facilities",
+    icon: "🛡",
+    shortDescription: "Execution of high-security projects requiring strict compliance, confidentiality, and disciplined construction management standards.",
+    fullDescription: "Hadeed Emirates Contracting has earned the trust of government and defense agencies through the disciplined execution of high-security construction projects. Our military and defense facility portfolio includes barracks, command centers, training facilities, perimeter security systems, vehicle maintenance workshops, and ammunition storage buildings.",
+    image: "/images/sectors/military.jpg",
+    keyProjects: ["Military barracks and accommodation", "Command and control centers", "Training facility construction", "Perimeter security infrastructure", "Vehicle maintenance workshops"],
+    capabilities: ["Security-cleared construction teams", "Confidential project management", "Blast-resistant construction", "Secure communication infrastructure", "CCTV and surveillance integration", "Controlled access systems"],
+    metaTitle: "Military & Defense Facility Construction | Hadeed Emirates",
+    metaDescription: "High-security military and defense facility construction across UAE, Qatar & Jordan. Strict compliance, confidential project delivery.",
+  },
+  {
+    name: "Aviation & Airport Facilities",
+    slug: "aviation-airport-facilities",
+    icon: "✈️",
+    shortDescription: "Delivery of airport support buildings, hangars, operational infrastructure, and aviation-related developments meeting specialized operational requirements.",
+    fullDescription: "Our aviation and airport construction services support the rapidly growing aviation sector across the Middle East. We construct aircraft hangars, maintenance repair and overhaul (MRO) facilities, cargo terminals, airport operations buildings, fuel farm infrastructure, and passenger terminal extensions.",
+    image: "/images/sectors/aviation.jpg",
+    keyProjects: ["Aircraft hangar construction", "MRO facility development", "Cargo terminal construction", "Airport operations buildings", "Fuel farm infrastructure"],
+    capabilities: ["Large-span structural steel", "Airfield-side construction management", "Fuel system infrastructure", "Specialized flooring systems", "Fire suppression systems", "Compliance with ICAO standards"],
+    metaTitle: "Aviation & Airport Facility Construction | Hadeed Emirates",
+    metaDescription: "Aircraft hangars, airport terminals, and aviation facility construction in UAE, Qatar & Jordan. Meeting specialized aviation requirements.",
+  },
+  {
+    name: "Ports & Marine Facilities",
+    slug: "ports-marine-facilities",
+    icon: "⚓",
+    shortDescription: "Construction of port warehouses, logistics yards, and marine-support infrastructure enabling efficient cargo handling and maritime operations.",
+    fullDescription: "Hadeed Emirates Contracting supports the maritime sector through the construction of port facilities, marine logistics infrastructure, and waterfront developments. Our port construction experience includes cargo warehouses, container handling yards, port administration buildings, roll-on/roll-off terminals, and marine workshops.",
+    image: "/images/sectors/ports.jpg",
+    keyProjects: ["Port warehouse construction", "Container yard development", "Marine workshop facilities", "Port administration buildings", "Waterfront commercial developments"],
+    capabilities: ["Heavy-duty pavement construction", "Marine foundation engineering", "Port operations continuity management", "Container handling infrastructure", "Customs and security building construction", "Environmental protection measures"],
+    metaTitle: "Port & Marine Facility Construction | Hadeed Emirates Contracting",
+    metaDescription: "Port warehouses, marine logistics, and waterfront facility construction across UAE, Qatar & Jordan. Enabling efficient maritime operations.",
+  },
+  {
+    name: "Free Zone Developments",
+    slug: "free-zone-developments",
+    icon: "🌐",
+    shortDescription: "Extensive experience delivering industrial and commercial facilities across UAE free zones supporting international investment and business expansion.",
+    fullDescription: "With extensive experience across the UAE's major free zones, Hadeed Emirates Contracting is a preferred construction partner for businesses establishing operations in these dynamic economic environments. We construct industrial units, warehouses, office buildings, showrooms, and mixed-use facilities across JAFZA, KIZAD, SAIF Zone, DAFZA, and numerous other free zones.",
+    image: "/images/sectors/freezone.jpg",
+    keyProjects: ["Industrial unit construction in free zones", "Free zone warehouse development", "Office and showroom construction", "Light industrial facility build-outs", "Free zone master plan infrastructure"],
+    capabilities: ["Free zone authority liaison", "Pre-engineered building construction", "Quick-build modular facilities", "Industrial fit-out services", "Compliance with free zone regulations", "Multi-authority coordination"],
+    metaTitle: "Free Zone Development Construction | Hadeed Emirates Contracting",
+    metaDescription: "Industrial and commercial facilities across UAE free zones — JAFZA, KIZAD, SAIF Zone & more. Your free zone construction partner.",
+  },
+  {
+    name: "Infrastructure Works",
+    slug: "infrastructure-works",
+    icon: "🏗",
+    shortDescription: "Implementation of civil infrastructure projects including roads, utilities, drainage networks, and enabling works forming the backbone of major developments.",
+    fullDescription: "Hadeed Emirates Contracting delivers civil infrastructure projects that form the foundation of communities and commercial developments. Our infrastructure works include road construction, stormwater drainage systems, sewage networks, water supply systems, electrical and telecommunications ducting, earthworks, and site enabling works.",
+    image: "/images/sectors/infrastructure.jpg",
+    keyProjects: ["Road and highway construction", "Stormwater drainage networks", "Water and sewage systems", "Electrical infrastructure ducting", "Site enabling and earthworks"],
+    capabilities: ["Earthworks and grading", "Asphalt and concrete road construction", "Utility trench excavation and backfill", "Stormwater management systems", "Retaining wall construction", "Traffic management during construction"],
+    metaTitle: "Infrastructure & Civil Works | Hadeed Emirates Contracting",
+    metaDescription: "Roads, utilities, drainage networks, and enabling infrastructure construction across UAE, Qatar & Jordan. Building the backbone of development.",
+  },
+]
+
+// ============================================================\n// FAQ Data\n// ============================================================
 
 // ============================================================
 // FAQ Data
 // ============================================================
 
 export interface FAQ {
-  question: string;
-  answer: string;
+  question: string
+  answer: string
 }
 
 export const faqs: FAQ[] = [
-  {
-    question: "What types of equipment do you offer for rent?",
-    answer:
-      "We offer a wide range of heavy machinery, including earthmoving equipment, cranes, lifting gear, transport machinery, and more.",
-  },
-  {
-    question: "Do you provide operators with the equipment?",
-    answer:
-      "Yes, we provide trained and certified operators with our equipment to ensure safe and efficient operations on your project site.",
-  },
-  {
-    question: "Can I rent equipment for short-term projects?",
-    answer:
-      "Absolutely. We offer flexible rental durations including daily, weekly, and monthly options to suit projects of any scale.",
-  },
-  {
-    question: "What are your space rental options?",
-    answer:
-      "We offer warehouses, office spaces, self-storage units, open yards, caravans, mobile toilets, and storage containers for rent across Abu Dhabi.",
-  },
-  {
-    question: "Is your equipment and spaces compliant with regulations?",
-    answer:
-      "Yes, all our equipment is regularly maintained and meets UAE regulatory requirements. Our spaces are fully compliant with local safety standards.",
-  },
-  {
-    question: "How quickly can I get the equipment delivered?",
-    answer:
-      "We offer same-day or next-day delivery depending on availability and location within Abu Dhabi.",
-  },
-  {
-    question: "Do you require a security deposit?",
-    answer:
-      "A refundable security deposit may be required depending on the type and duration of rental. Our team will provide full details during the quoting process.",
-  },
-  {
-    question: "How do I request a quote?",
-    answer:
-      "You can request a quote by contacting us via WhatsApp, phone, email, or through our website contact form. We respond promptly to all inquiries.",
-  },
-  {
-    question: "Is there support available if the equipment breaks down?",
-    answer:
-      "Yes, we provide 24/7 support and rapid response for equipment issues. Our maintenance team ensures minimal downtime for your projects.",
-  },
-  {
-    question: "Where do you operate?",
-    answer:
-      "We primarily operate across Abu Dhabi and the wider UAE region, with our main base located in ICAD III, Abu Dhabi.",
-  },
-];
+  { question: "What services does Hadeed Emirates Contracting Company offer?", answer: "We offer comprehensive construction and contracting services including industrial developments, logistics facilities, commercial buildings, residential towers, infrastructure works, and specialized construction. Our portfolio spans 15+ sectors across UAE, Qatar, and Jordan." },
+  { question: "How many projects has Hadeed Emirates completed?", answer: "We have successfully completed over 400 projects representing more than 1.5 million square meters of constructed facilities across diverse sectors." },
+  { question: "In which countries does Hadeed Emirates operate?", answer: "We operate across the United Arab Emirates, Qatar, and Jordan, with our headquarters in Abu Dhabi, UAE." },
+  { question: "What types of industrial construction do you handle?", answer: "We deliver large-scale industrial complexes, manufacturing plants, fabrication facilities, warehouses, cold storage, and production environments designed for operational efficiency and future expansion." },
+  { question: "Can you handle government and defense projects?", answer: "Yes, we have extensive experience in military and defense facility construction with strict compliance, confidentiality protocols, and security-cleared construction teams." },
+  { question: "Do you build in free zones?", answer: "Absolutely. We have extensive experience delivering industrial and commercial facilities across major UAE free zones including JAFZA, KIZAD, SAIF Zone, and DAFZA." },
+  { question: "What is your experience in oil and gas construction?", answer: "We have proven experience supporting the energy sector through delivery of operational compounds, tank farms, service buildings, and technically demanding infrastructure projects." },
+  { question: "Do you handle MEP works?", answer: "Yes, our construction projects include full MEP (Mechanical, Electrical, and Plumbing) integration ensuring complete, turnkey delivery of every project." },
+  { question: "How do I request a quote or consultation?", answer: "Contact us via WhatsApp, phone (+971 50 626 6515), email (info@hadeedconstruction.com), or through our website contact form. We respond promptly to all inquiries." },
+]
 
 // ============================================================
 // Testimonials
 // ============================================================
 
 export interface Testimonial {
-  name: string;
-  role: string;
-  text: string;
+  name: string
+  role: string
+  text: string
 }
 
 export const testimonials: Testimonial[] = [
-  {
-    name: "Ahmed R.",
-    role: "Project Manager",
-    text: "Top-notch service and well-maintained equipment. Hadeed made our construction project seamless from start to finish.",
-  },
-  {
-    name: "Fatima K.",
-    role: "Logistics Coordinator",
-    text: "We needed last-minute storage space for our equipment. Hadeed delivered fast and professionally. Highly recommended!",
-  },
-  {
-    name: "Mohammed A.",
-    role: "Site Supervisor",
-    text: "Their team was responsive, knowledgeable, and flexible. Great experience with both their cranes and open yard rentals.",
-  },
-];
+  { name: "Ahmed R.", role: "Project Director, Major Developer", text: "Hadeed Emirates delivered our industrial complex on time and within budget. Their engineering expertise and project management capabilities are outstanding." },
+  { name: "Fatima K.", role: "Operations Manager, Logistics Company", text: "We've worked with HEC on three warehouse projects. Their understanding of logistics facility requirements and quality of construction is unmatched in the region." },
+  { name: "Mohammed A.", role: "Government Project Manager", text: "Strict compliance, professional team, and disciplined execution. Hadeed Emirates is our trusted partner for sensitive infrastructure projects." },
+  { name: "Sarah L.", role: "Facilities Director, Pharma Company", text: "The clean room facilities HEC built for us passed regulatory validation on the first attempt. Their attention to detail in specialized construction is remarkable." },
+]
 
 // ============================================================
-// Stats
+// Company Stats
 // ============================================================
 
 export const stats = [
-  { label: "Happy Clients", value: "500", suffix: "+" },
-  { label: "Projects Done", value: "1200", suffix: "+" },
-  { label: "Client Reviews", value: "350", suffix: "+" },
-  { label: "Years Experience", value: "15", suffix: "+" },
-];
+  { label: "Years of Experience", value: "25", suffix: "+" },
+  { label: "Projects Completed", value: "400", suffix: "+" },
+  { label: "Sqm Constructed", value: "1.5", suffix: "M+" },
+  { label: "Sectors Served", value: "15", suffix: "+" },
+]
 
 // ============================================================
 // How It Works Steps
 // ============================================================
 
 export const steps = [
-  {
-    number: 1,
-    title: "Browse Catalog",
-    description: "Explore our wide range of equipment and space rental options.",
-  },
-  {
-    number: 2,
-    title: "Get an Estimate",
-    description: "Receive a detailed estimate tailored to your project needs.",
-  },
-  {
-    number: 3,
-    title: "Request a Quote",
-    description: "Submit your requirements and get a competitive quote.",
-  },
-  {
-    number: 4,
-    title: "Fast Delivery",
-    description: "Get your equipment delivered quickly to your project site.",
-  },
-];
+  { number: 1, title: "Initial Consultation", description: "Discuss your project requirements, timeline, and budget with our expert team." },
+  { number: 2, title: "Proposal & Planning", description: "Receive a detailed proposal with engineering solutions, cost estimates, and project schedule." },
+  { number: 3, title: "Project Execution", description: "Our experienced teams deliver your project with engineering excellence and safety discipline." },
+  { number: 4, title: "Quality Handover", description: "Comprehensive testing, commissioning, and handover ensuring complete client satisfaction." },
+]
+
+// ============================================================
+// Company Strengths
+// ============================================================
+
+export const companyStrengths = [
+  "Deep regional experience across UAE, Qatar & Jordan",
+  "Industrial construction specialization",
+  "Multidisciplinary project delivery capability",
+  "Strong safety and quality culture",
+  "Proven execution across government, private, and industrial sectors",
+  "ISO 9001:2015 Quality Management System",
+  "ISO 14001:2015 Environmental Management System",
+  "ISO 45001:2018 Occupational Health & Safety",
+  "400+ successfully completed projects",
+  "1.5 million+ square meters constructed",
+]
+
+export const certifications = [
+  "ISO 9001:2015 – Quality Management System",
+  "ISO 14001:2015 – Environmental Management System",
+  "ISO 45001:2018 – Occupational Health & Safety Management",
+  "Abu Dhabi Municipality – Building Contractor License",
+  "Department of Economic Development – Trade License",
+  "Civil Defense Approved",
+]

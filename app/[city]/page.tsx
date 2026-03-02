@@ -1,13 +1,14 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowRight, MapPin, Truck, Warehouse, Phone, MessageCircle } from "lucide-react"
+import { ArrowRight, MapPin, Phone, MessageCircle } from "lucide-react"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
+import { BookingForm } from "@/components/booking-form"
 import { WhatsAppFloat } from "@/components/whatsapp-float"
 import { HowItWorks } from "@/components/how-it-works"
 import { allCities } from "@/lib/areas"
-import { equipmentCategories, spaceRentals, SITE_CONFIG } from "@/lib/data"
+import { SITE_CONFIG } from "@/lib/data"
 
 interface Props {
   params: Promise<{ city: string }>
@@ -22,14 +23,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const city = allCities.find((c) => c.slug === slug)
   if (!city) return {}
   return {
-    title: `Equipment Rental & Space Solutions in ${city.name} | Hadeed Transport`,
+    title: `Construction & Contracting in ${city.name} | Hadeed Emirates`,
     description: city.metaDescription,
     openGraph: {
-      title: `${city.title} | Hadeed Transport`,
+      title: `${city.title} | Hadeed Emirates Contracting`,
       description: city.metaDescription,
     },
     alternates: {
-      canonical: `https://hadeed-transport.com/${city.slug}`,
+      canonical: `https://hadeedconstruction.com/${city.slug}`,
     },
   }
 }
@@ -40,121 +41,66 @@ export default async function CityPage({ params }: Props) {
   if (!city) notFound()
 
   return (
-    <main className="min-h-screen bg-[#0d0d1a]">
+    <main className="min-h-screen bg-[#ffffff]">
       <Navigation />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0d0d1a] via-[#1a1a2e] to-[#0d0d1a]" />
-        <div className="absolute top-20 right-10 w-96 h-96 bg-[#c8a35a]/5 rounded-full blur-3xl" />
-        <div className="relative max-w-7xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-[#c8a35a]/10 border border-[#c8a35a]/20 rounded-full px-5 py-2 mb-6">
-            <MapPin className="w-4 h-4 text-[#c8a35a]" />
-            <span className="text-[#c8a35a] text-sm font-semibold">{city.name}, UAE</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            {city.title}
-          </h1>
-          <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
-            {city.description}
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href={SITE_CONFIG.whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 gold-gradient text-[#0d0d1a] px-8 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity"
-            >
-              <MessageCircle className="w-5 h-5" />
-              Get Free Quote
-            </a>
-            <a
-              href={`tel:${SITE_CONFIG.phone}`}
-              className="inline-flex items-center gap-2 border-2 border-[#c8a35a] text-[#c8a35a] px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#c8a35a]/10 transition-colors"
-            >
-              <Phone className="w-5 h-5" />
-              Call Now
-            </a>
-          </div>
+        <div className="absolute inset-0">
+          <img src="/images/hero/hero-4.jpg" alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-900/70 to-slate-900/40" />
         </div>
-      </section>
-
-      {/* Equipment Categories */}
-      <section className="py-20 bg-[#0f0f1a]">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-14">
-            <span className="text-[#c8a35a] text-sm font-semibold tracking-[0.3em] uppercase">
-              EQUIPMENT FOR RENT
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-4">
-              Heavy Equipment Rental in {city.name}
-            </h2>
-            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-              From earthmoving machines to small construction tools — rent what you need, when you need it.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {equipmentCategories.map((cat) => (
-              <Link
-                key={cat.slug}
-                href={`/equipments/${cat.slug}`}
-                className="group bg-[#1a1a2e] border border-[#c8a35a]/15 rounded-2xl p-8 hover:border-[#c8a35a]/40 transition-all"
-              >
-                <Truck className="w-12 h-12 text-[#c8a35a] mb-4" />
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-[#c8a35a] transition-colors">
-                  {cat.name}
-                </h3>
-                <p className="text-gray-400 mb-4">{cat.description}</p>
-                <span className="text-[#c8a35a] font-semibold text-sm">
-                  {cat.products.length} Products Available →
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Space Rentals */}
-      <section className="py-20 bg-[#0d0d1a]">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-14">
-            <span className="text-[#c8a35a] text-sm font-semibold tracking-[0.3em] uppercase">
-              SPACE SOLUTIONS
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-4">
-              Warehouses & Storage in {city.name}
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {spaceRentals.map((space) => (
-              <Link
-                key={space.slug}
-                href={`/space-rentals/${space.slug}`}
-                className="group bg-[#1a1a2e] border border-[#c8a35a]/15 rounded-xl p-6 hover:border-[#c8a35a]/40 transition-all"
-              >
-                <Warehouse className="w-8 h-8 text-[#c8a35a] mb-3" />
-                <h3 className="text-lg font-bold text-white group-hover:text-[#c8a35a] transition-colors">
-                  {space.name}
-                </h3>
-                <p className="text-gray-400 text-sm mt-2">{space.heroDescription}</p>
-              </Link>
-            ))}
+        <div className="relative max-w-7xl mx-auto px-4">
+          <div className="grid lg:grid-cols-5 gap-10 items-start">
+            <div className="lg:col-span-3">
+              <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-5 py-2 mb-6">
+                <MapPin className="w-4 h-4 text-blue-400" />
+                <span className="text-blue-400 text-sm font-semibold">{city.name}, {city.country}</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                {city.title}
+              </h1>
+              <p className="text-gray-300 text-lg md:text-xl max-w-3xl mb-10 leading-relaxed">
+                {city.description}
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href={SITE_CONFIG.whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 blue-gradient text-white px-8 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity shadow-lg shadow-blue-500/30"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  Get Free Quote
+                </a>
+                <a
+                  href={`tel:${SITE_CONFIG.phone}`}
+                  className="inline-flex items-center gap-2 border-2 border-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg hover:border-white transition-colors"
+                >
+                  <Phone className="w-5 h-5" />
+                  Call Now
+                </a>
+              </div>
+            </div>
+            <div className="lg:col-span-2">
+              <BookingForm compact />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Areas Grid */}
-      <section className="py-20 bg-[#0f0f1a]">
+      <section className="py-20 bg-[#f1f5f9]">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-14">
-            <span className="text-[#c8a35a] text-sm font-semibold tracking-[0.3em] uppercase">
+            <span className="text-[#2563eb] text-sm font-semibold tracking-[0.3em] uppercase">
               SERVICE AREAS
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-4">
               We Serve All Areas in {city.name}
             </h2>
-            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-              Click on any area to learn more about our equipment rental and space solutions in that location.
+            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+              Click on any area to learn more about our construction and contracting services in that location.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -162,11 +108,11 @@ export default async function CityPage({ params }: Props) {
               <Link
                 key={area.slug}
                 href={`/${city.slug}/${area.slug}`}
-                className="group bg-[#1a1a2e] border border-[#c8a35a]/10 rounded-xl p-5 hover:border-[#c8a35a]/40 hover:bg-[#1a1a2e]/80 transition-all"
+                className="group bg-[#ffffff] shadow-sm border border-[#2563eb]/10 rounded-xl p-5 hover:border-[#2563eb]/40 hover:bg-[#ffffff]/80 transition-all"
               >
                 <div className="flex items-center gap-3">
-                  <MapPin className="w-4 h-4 text-[#c8a35a] shrink-0" />
-                  <h3 className="text-white font-semibold group-hover:text-[#c8a35a] transition-colors">
+                  <MapPin className="w-4 h-4 text-[#2563eb] shrink-0" />
+                  <h3 className="text-gray-900 font-semibold group-hover:text-[#2563eb] transition-colors">
                     {area.name}
                   </h3>
                 </div>
@@ -178,20 +124,43 @@ export default async function CityPage({ params }: Props) {
 
       <HowItWorks />
 
+      {/* Project Gallery Strip */}
+      <section className="py-20 bg-[#ffffff]">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-14">
+            <span className="text-[#2563eb] text-sm font-semibold tracking-[0.3em] uppercase">Our Work</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-4">Projects in {city.name}</h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              "/images/projects/project-01.jpeg",
+              "/images/projects/project-10.jpeg",
+              "/images/projects/project-15.jpeg",
+              "/images/projects/project-37.jpeg",
+            ].map((src, i) => (
+              <div key={i} className="relative aspect-[4/3] rounded-xl overflow-hidden group">
+                <img src={src} alt={`Project in ${city.name}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Bottom CTA */}
-      <section className="py-20 bg-gradient-to-r from-[#c8a35a]/20 via-[#0f0f1a] to-[#c8a35a]/20">
+      <section className="py-20 bg-gradient-to-r from-[#2563eb]/20 via-[#f1f5f9] to-[#2563eb]/20">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Need Equipment in {city.name}?
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Start Your Project in {city.name}
           </h2>
-          <p className="text-gray-400 text-lg mb-8">
-            Contact us today for the best equipment rental rates in {city.name}. Fast delivery guaranteed.
+          <p className="text-gray-600 text-lg mb-8">
+            Contact Hadeed Emirates Contracting today for a free consultation on your construction project in {city.name}.
           </p>
           <a
             href={SITE_CONFIG.whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 gold-gradient text-[#0d0d1a] px-8 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-2 blue-gradient text-[#ffffff] px-8 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity"
           >
             <MessageCircle className="w-5 h-5" />
             WhatsApp Us Now

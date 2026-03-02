@@ -1,847 +1,2214 @@
 // ============================================================
-// SEO Keyword Pages Data
-// 200 High-Value Keywords for Equipment & Space Rental in UAE
+// Hadeed Emirates Contracting — 200+ Keyword Pages for SEO
 // ============================================================
 
+export interface KeywordPageFAQ {
+  question: string
+  answer: string
+}
+
 export interface KeywordPage {
-  slug: string
   keyword: string
+  slug: string
+  category: "service" | "location" | "industry" | "construction"
   h1: string
+  heroSubtitle: string
   metaTitle: string
   metaDescription: string
-  heroSubtitle: string
   introParagraph: string
   secondParagraph: string
-  category: "equipment" | "space" | "service" | "location" | "industry"
-  relatedSlugs: string[]
   features: string[]
-  faqs: { question: string; answer: string }[]
+  faqs: KeywordPageFAQ[]
   tags: string[]
 }
 
-// ────────────────────────────────────────────────
-// Helper to generate consistent content
-// ────────────────────────────────────────────────
-
-function kw(
-  slug: string,
-  keyword: string,
-  category: KeywordPage["category"],
-  {
-    h1,
-    metaTitle,
-    metaDescription,
-    heroSubtitle,
-    intro,
-    second,
-    features,
-    faqs,
-    tags,
-    relatedSlugs,
-  }: {
-    h1?: string
-    metaTitle?: string
-    metaDescription?: string
-    heroSubtitle?: string
-    intro?: string
-    second?: string
-    features?: string[]
-    faqs?: { question: string; answer: string }[]
-    tags?: string[]
-    relatedSlugs?: string[]
-  } = {}
-): KeywordPage {
-  const defaultH1 = h1 || `${keyword} | Hadeed Transport`
-  const defaultMetaTitle =
-    metaTitle || `${keyword} in UAE | Hadeed Transport – Rent Now`
-  const defaultMetaDescription =
-    metaDescription ||
-    `Looking for ${keyword.toLowerCase()} in UAE? Hadeed Transport offers well-maintained equipment, competitive rates & fast delivery across Abu Dhabi, Dubai & Sharjah. Call +971506266515.`
-  const defaultHeroSubtitle =
-    heroSubtitle ||
-    `Professional ${keyword.toLowerCase()} services across Abu Dhabi, Dubai, Sharjah & all UAE. Fast delivery, competitive rates, and 15+ years of trusted experience.`
-  const defaultIntro =
-    intro ||
-    `Hadeed Transport is the UAE's trusted provider for ${keyword.toLowerCase()}. With over 15 years of experience in the construction and rental industry, we deliver reliable, well-maintained equipment and services to project sites across Abu Dhabi, Dubai, Sharjah, and the wider UAE. Our commitment to quality, safety, and on-time delivery has made us the preferred partner for contractors, developers, and businesses throughout the region.`
-  const defaultSecond =
-    second ||
-    `Whether you need ${keyword.toLowerCase()} for a short-term project or a long-term contract, our flexible rental terms and competitive pricing ensure you get the best value. We offer daily, weekly, and monthly rental options, with same-day delivery available from our ICAD III base in Abu Dhabi. Our team of equipment specialists is ready to help you choose the right solution for your specific requirements.`
-  const defaultFeatures = features || [
-    "Extensive fleet of well-maintained equipment",
-    "Flexible daily, weekly, and monthly rental terms",
-    "Fast delivery across Abu Dhabi, Dubai & Sharjah",
-    "Competitive pricing with no hidden charges",
-    "Trained operators available on request",
-    "24/7 customer support and technical assistance",
-  ]
-  const defaultFaqs = faqs || [
+// Helper to generate consistent FAQ
+function makeFAQ(keyword: string, category: string): KeywordPageFAQ[] {
+  const base: KeywordPageFAQ[] = [
     {
-      question: `What does ${keyword.toLowerCase()} include?`,
-      answer: `Our ${keyword.toLowerCase()} services include delivery, setup, and pickup of equipment. Trained operators are available on request. We provide flexible rental terms to suit your project timeline and budget.`,
+      question: `What ${keyword} services does Hadeed Emirates Contracting offer?`,
+      answer: `Hadeed Emirates Contracting Company provides comprehensive ${keyword.toLowerCase()} services across the UAE, Qatar, and Jordan. With 25+ years of experience and 400+ completed projects, we deliver end-to-end solutions tailored to your specific requirements.`,
     },
     {
-      question: `How much does ${keyword.toLowerCase()} cost in the UAE?`,
-      answer: `Pricing depends on the specific equipment, rental duration, and delivery location. We offer competitive rates across the UAE. Contact us via WhatsApp at +971506266515 or call for a free, personalized quote.`,
+      question: `How can I get a quote for ${keyword}?`,
+      answer: `You can request a free quote by contacting us via WhatsApp at +971 50 626 6515, calling directly, or filling out the contact form on our website. We typically respond within 2 hours during business days.`,
     },
     {
-      question: `Where can I get ${keyword.toLowerCase()} near me?`,
-      answer: `Hadeed Transport delivers ${keyword.toLowerCase()} across Abu Dhabi, Dubai, Sharjah, and the entire UAE. Based in ICAD III, Abu Dhabi, we offer same-day delivery for most equipment and services.`,
+      question: `Which areas do you serve for ${keyword}?`,
+      answer: `We serve all seven emirates of the UAE (Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah, Fujairah), plus Doha (Qatar) and major cities in Jordan including Amman, Aqaba, Irbid and Zarqa.`,
     },
     {
-      question: `Do you provide operators with the equipment?`,
-      answer: `Yes, we provide trained and certified operators for most heavy equipment. This ensures safe and efficient operations on your project site. Operator availability and costs will be included in your quote.`,
+      question: `What makes Hadeed Emirates the best choice for ${keyword}?`,
+      answer: `With over 25 years of continuous operations, 400+ completed projects, 1.5 million+ square meters constructed, ISO certifications, and proven experience across 15+ sectors, Hadeed Emirates Contracting is the trusted choice for ${keyword.toLowerCase()} in the Middle East.`,
     },
   ]
+  return base
+}
 
-  return {
-    slug,
-    keyword,
-    h1: defaultH1,
-    metaTitle: defaultMetaTitle,
-    metaDescription: defaultMetaDescription,
-    heroSubtitle: defaultHeroSubtitle,
-    introParagraph: defaultIntro,
-    secondParagraph: defaultSecond,
-    category,
-    relatedSlugs: relatedSlugs || [],
-    features: defaultFeatures,
-    faqs: defaultFaqs,
-    tags: tags || [keyword],
-  }
+// Helper for tags
+function makeTags(keyword: string, extras: string[]): string[] {
+  return [keyword, ...extras, "UAE", "Abu Dhabi", "Dubai", "Qatar", "Jordan", "Hadeed Emirates Contracting"]
 }
 
 // ============================================================
-// ALL 200 KEYWORD PAGES
+// KEYWORDS 1–50: Construction & Contracting Services
 // ============================================================
 
 export const keywordPages: KeywordPage[] = [
-  // ── EQUIPMENT RENTAL KEYWORDS (1-50) ──────────────────────
-  kw("crane-rental-uae", "Crane Rental UAE", "equipment", {
-    h1: "Crane Rental in UAE – 25 to 50 Ton Mobile Cranes",
-    intro: "Need a crane for your construction project? Hadeed Transport offers mobile crane rental services across the UAE, featuring 25-ton and 50-ton cranes with certified operators. Whether it's for high-rise construction in Dubai, industrial lifting in Abu Dhabi, or infrastructure projects in Sharjah, our crane fleet delivers the lifting power your project demands.",
-    features: ["25 and 50 ton mobile cranes available", "Certified crane operators included", "360-degree rotation for maximum flexibility", "Load moment indicators for safe lifting", "Same-day deployment available", "24/7 support for critical lifts"],
-    tags: ["crane rental", "mobile crane", "crane hire uae"],
-  }),
-  kw("excavator-rental-uae", "Excavator Rental UAE", "equipment", {
-    h1: "Excavator Rental in UAE – Multiple Sizes Available",
-    intro: "Hadeed Transport provides excavator rental services across the UAE for excavation, trenching, grading, and earthmoving projects. Our fleet includes backhoe loaders, mini excavators, and full-size excavators suitable for any project scale. All equipment is well-maintained and available with experienced operators.",
-    features: ["Mini and full-size excavators available", "Backhoe loaders for versatile operations", "Certified operators on request", "Reinforced buckets for heavy-duty work", "Climate-controlled cabins", "Fast delivery across UAE"],
-    tags: ["excavator rental", "backhoe rental", "excavator hire"],
-  }),
-  kw("forklift-rental-uae", "Forklift Rental UAE", "equipment", {
-    h1: "Forklift Rental in UAE – 1 to 15 Ton Capacity",
-    intro: "Rent forklifts from 1 ton to 15 ton capacity from Hadeed Transport. Our forklift fleet serves warehouses, construction sites, industrial plants, and logistics operations across Abu Dhabi, Dubai, and Sharjah. Choose from diesel and electric models to match your specific material handling requirements.",
-    features: ["1 to 15 ton capacity range", "Diesel and electric models", "Rough terrain options available", "Ergonomic operator controls", "Daily, weekly, and monthly rental", "Delivered to your location"],
-    tags: ["forklift rental", "forklift hire", "forklift rent uae"],
-  }),
-  kw("generator-rental-uae", "Generator Rental UAE", "equipment", {
-    h1: "Generator Rental in UAE – 10 KVA to 500 KVA",
-    intro: "Hadeed Transport offers generator rental services from 10 KVA to 500 KVA across the UAE. Whether you need temporary power for a construction site, backup for an event, or emergency power supply, our generators deliver reliable performance in the demanding UAE climate.",
-    features: ["10 KVA to 500 KVA capacity range", "Low-noise models for events", "Automatic voltage regulation", "Fuel-efficient diesel engines", "Weather-resistant enclosures", "24/7 emergency support"],
-    tags: ["generator rental", "generator hire", "power generator rent"],
-  }),
-  kw("manlift-rental-uae", "Manlift Rental UAE", "equipment", {
-    h1: "Manlift & Aerial Platform Rental in UAE",
-    intro: "Access elevated work areas safely with Hadeed Transport's manlift rental services across the UAE. We offer low-level and high-level manlifts for building maintenance, facade work, electrical installation, painting, and industrial inspections. All units are inspected, certified, and ready for deployment.",
-    features: ["Low and high level manlifts available", "Reach heights of 20+ meters", "Non-slip platforms with safety rails", "Emergency lowering systems", "Indoor and outdoor models", "Certified for UAE safety standards"],
-    tags: ["manlift rental", "aerial platform hire", "cherry picker rental"],
-  }),
-  kw("water-tanker-rental-uae", "Water Tanker Rental UAE", "equipment", {
-    h1: "Water Tanker Rental in UAE – 3,000 to 5,000 Gallons",
-    intro: "Hadeed Transport provides water tanker rental services across the UAE for construction sites, dust suppression, landscaping, and emergency water supply. Our tankers come with experienced drivers and are available for scheduled or on-demand delivery across Abu Dhabi, Dubai, and Sharjah.",
-    features: ["3,000 and 5,000 gallon tankers", "Experienced drivers included", "Scheduled delivery services", "Dust suppression solutions", "Construction site water supply", "Emergency water delivery"],
-    tags: ["water tanker rental", "water tanker hire", "water supply uae"],
-  }),
-  kw("roller-compactor-rental-uae", "Roller & Compactor Rental UAE", "equipment", {
-    h1: "Road Roller & Compactor Rental in UAE",
-    intro: "Rent road rollers and compactors from Hadeed Transport for earthwork, road construction, and soil compaction projects across the UAE. Our fleet includes driving rollers from 1 to 4 tons, plate compactors, and jumping jack compactors to suit any compaction requirement.",
-    features: ["1 to 4 ton driving rollers", "Plate compactors available", "Jumping jack compactors", "Vibrating drums for compaction", "Fuel-efficient operation", "Delivery anywhere in UAE"],
-    tags: ["roller rental", "compactor rental", "road roller hire"],
-  }),
-  kw("concrete-mixer-rental-uae", "Concrete Mixer Rental UAE", "equipment", {
-    h1: "Concrete Mixer Rental in UAE – Petrol & Electric",
-    intro: "Hadeed Transport offers concrete mixer rental services across the UAE. Our petrol and electric concrete mixers are perfect for small to medium concrete works on construction sites. We also provide concrete vibrators and power floats for a complete concrete solution.",
-    features: ["Petrol and electric models", "Various capacity options", "Concrete vibrators available", "Power floats for finishing", "Easy to operate", "Delivered to your site"],
-    tags: ["concrete mixer rental", "mixer hire", "concrete equipment uae"],
-  }),
-  kw("scaffolding-rental-uae", "Scaffolding Rental UAE", "equipment", {
-    h1: "Scaffolding Rental in UAE – Heavy & Light Duty",
-    intro: "Rent heavy and light duty scaffolding from Hadeed Transport for building construction, facade work, painting, and maintenance projects across the UAE. Our modular scaffolding systems are galvanized for durability and certified to UAE safety standards.",
-    features: ["Heavy and light duty options", "Galvanized steel construction", "Modular and flexible design", "Safety-certified to UAE standards", "Erection and dismantling available", "Full accessories included"],
-    tags: ["scaffolding rental", "scaffolding hire", "scaffold rent uae"],
-  }),
-  kw("jack-hammer-rental-uae", "Jack Hammer Rental UAE", "equipment", {
-    h1: "Jack Hammer Rental in UAE – Various Sizes",
-    intro: "Need a jack hammer for demolition or concrete breaking? Hadeed Transport provides jack hammer rental in various sizes across the UAE. Whether you're breaking concrete, removing foundations, or demolishing structures, our jack hammers deliver powerful performance.",
-    features: ["Various sizes available", "Pneumatic and electric options", "High impact breaking force", "Ergonomic design", "Point and chisel bits included", "Same-day delivery"],
-    tags: ["jack hammer rental", "jackhammer hire", "concrete breaker rent"],
-  }),
-  kw("air-compressor-rental-uae", "Air Compressor Rental UAE", "equipment", {
-    h1: "Air Compressor Rental in UAE – 300 to 900 CFM",
-    intro: "Hadeed Transport offers diesel and electric air compressor rental from 300 to 900 CFM across the UAE. Our compressors power sandblasting, pneumatic tools, spray painting, and industrial cleaning operations on construction and industrial sites.",
-    features: ["300 to 900 CFM capacity", "Diesel and electric models", "Portable and trailer-mounted", "Oil-free options available", "Aftercooler and separator included", "Suitable for all pneumatic tools"],
-    tags: ["air compressor rental", "compressor hire", "pneumatic equipment uae"],
-  }),
-  kw("dewatering-pump-rental-uae", "Dewatering Pump Rental UAE", "equipment", {
-    h1: "Dewatering Pump & System Rental in UAE",
-    intro: "Keep your construction site dry with Hadeed Transport's dewatering pump rental services across the UAE. Our high-capacity pumps handle foundation dewatering, flood drainage, and groundwater management for projects of all sizes.",
-    features: ["High-capacity dewatering systems", "Submersible and surface pumps", "Handles dirty water with solids", "Quick-connect hose fittings", "24/7 emergency availability", "Complete system with accessories"],
-    tags: ["dewatering pump rental", "pump hire", "site dewatering uae"],
-  }),
-  kw("survey-equipment-rental-uae", "Survey Equipment Rental UAE", "equipment", {
-    h1: "Survey Equipment Rental in UAE – Total Stations & Levels",
-    intro: "Rent professional survey equipment from Hadeed Transport including total stations, auto levels, and laser levels. Our calibrated instruments are perfect for construction layout, land surveys, road alignment, and elevation work across the UAE.",
-    features: ["Total stations (Leica TC405)", "Auto level machines", "Laser level instruments", "Calibrated before every rental", "Tripod and accessories included", "Technical support available"],
-    tags: ["survey equipment rental", "total station hire", "laser level rent"],
-  }),
-  kw("steel-bending-machine-rental-uae", "Steel Bending Machine Rental UAE", "equipment", {
-    h1: "Steel Bending Machine Rental in UAE",
-    intro: "Speed up your steel reinforcement work with Hadeed Transport's steel bending machine and steel cutter rental services across the UAE. Our electric machines handle various rebar sizes and deliver precise bending angles for foundation, column, and slab reinforcement work.",
-    features: ["Electric steel bending machines", "Steel cutters available", "Various rebar sizes", "Safety guards included", "Portable for on-site use", "High production capacity"],
-    tags: ["steel bending machine", "rebar bending", "steel cutter rental"],
-  }),
-  kw("bus-rental-uae", "Bus Rental UAE", "service", {
-    h1: "Bus Rental in UAE – 12 to 60 Passenger",
-    intro: "Hadeed Transport provides bus rental services from 12 to 60 passenger capacity across the UAE. Our air-conditioned buses with professional drivers are ideal for staff transportation, labor camps, airport transfers, and corporate events.",
-    features: ["12 to 60 passenger capacity", "Air-conditioned comfort", "Professional licensed drivers", "GPS tracking on all buses", "Daily and monthly rental", "Custom route planning"],
-    tags: ["bus rental uae", "staff transport", "labor bus rental"],
-  }),
-  kw("pickup-truck-rental-uae", "Pickup Truck Rental UAE", "equipment", {
-    h1: "Pickup Truck Rental in UAE – 1 to 3 Ton",
-    intro: "Rent 1 to 3 ton pickup trucks from Hadeed Transport for material transportation, equipment delivery, and logistics across the UAE. Our well-maintained pickups serve construction sites, warehouses, and businesses throughout Abu Dhabi, Dubai, and Sharjah.",
-    features: ["1, 2, and 3 ton pickups", "Well-maintained vehicles", "Experienced drivers available", "GPS tracking included", "Flexible rental terms", "Across all UAE"],
-    tags: ["pickup truck rental", "truck hire", "delivery truck rent"],
-  }),
-  kw("trailer-rental-uae", "Trailer Rental UAE", "equipment", {
-    h1: "Trailer Rental in UAE for Heavy Transport",
-    intro: "Hadeed Transport provides trailer rental for heavy equipment and oversized material transportation across the UAE. Our trailers handle large construction materials, machinery, and heavy loads with safety and reliability.",
-    features: ["Heavy-duty trailers", "Equipment and machinery transport", "Experienced drivers", "GPS tracked fleet", "Licensed for UAE roads", "Daily and project-based rental"],
-    tags: ["trailer rental", "flatbed trailer", "transport trailer uae"],
-  }),
-  kw("recovery-truck-rental-uae", "Recovery Truck Rental UAE", "equipment", {
-    h1: "Recovery Truck Rental in UAE",
-    intro: "Need to transport heavy equipment or vehicles? Hadeed Transport provides recovery truck rental services across the UAE for vehicle recovery, equipment transport, and machinery relocation.",
-    features: ["Heavy-duty recovery vehicles", "Equipment and machinery transport", "Experienced operators", "Available 24/7", "Cross-UAE delivery", "Various payload capacities"],
-    tags: ["recovery truck", "tow truck rental", "vehicle recovery uae"],
-  }),
-  kw("bobcat-rental-uae", "Bobcat Mini Loader Rental UAE", "equipment", {
-    h1: "Bobcat Mini Loader Rental in UAE",
-    intro: "Hadeed Transport offers Bobcat mini loader rental for earthwork in limited access areas across the UAE. Our compact loaders are perfect for tight construction sites, landscaping, and indoor operations where full-size equipment cannot reach.",
-    features: ["Compact design for tight spaces", "Versatile attachments available", "Easy to operate", "Indoor and outdoor use", "Low ground pressure", "Fast mobilization"],
-    tags: ["bobcat rental", "mini loader", "skid steer rental"],
-  }),
-  kw("concrete-vibrator-rental-uae", "Concrete Vibrator Rental UAE", "equipment", {
-    h1: "Concrete Vibrator Rental in UAE – Diesel & Electric",
-    intro: "Rent concrete vibrators from Hadeed Transport for concrete casting and consolidation projects across the UAE. We offer both diesel and electric vibrators for foundation, slab, column, and beam concreting operations.",
-    features: ["Diesel and electric models", "Various head sizes", "Flexible shaft options", "Powerful vibration force", "Portable design", "Same-day delivery"],
-    tags: ["concrete vibrator", "vibrator rental", "concrete consolidation"],
-  }),
+  // 1
+  {
+    keyword: "Construction Company in UAE",
+    slug: "construction-company-uae",
+    category: "construction",
+    h1: "Leading Construction Company in UAE",
+    heroSubtitle: "Hadeed Emirates Contracting — 25+ years delivering complex construction projects across the United Arab Emirates with engineering excellence.",
+    metaTitle: "Construction Company in UAE | Hadeed Emirates Contracting",
+    metaDescription: "Leading construction company in UAE with 25+ years experience. Industrial, commercial, residential construction. 400+ projects completed across all 7 emirates.",
+    introParagraph: "Hadeed Emirates Contracting Company has established itself as one of the most trusted construction companies in the UAE. With over 25 years of continuous operations and more than 400 successfully completed projects, we deliver construction excellence across every emirate — from Abu Dhabi and Dubai to Sharjah, Ajman, and the Northern Emirates.",
+    secondParagraph: "Our portfolio exceeds 1.5 million square meters of constructed facilities spanning industrial developments, commercial centers, residential buildings, logistics hubs, oil & gas facilities, and infrastructure works. We combine deep regional experience with international quality standards to deliver projects that meet the highest expectations.",
+    features: ["Industrial complex construction", "Commercial building development", "Residential tower construction", "Infrastructure and civil works", "Free zone facility construction", "Warehouse and logistics construction", "Oil & gas facility construction", "Government and defense projects"],
+    faqs: makeFAQ("Construction Company in UAE", "construction"),
+    tags: makeTags("Construction Company UAE", ["general contractor UAE", "building contractor UAE", "construction firm UAE"]),
+  },
+  // 2
+  {
+    keyword: "Construction Company in Abu Dhabi",
+    slug: "construction-company-abu-dhabi",
+    category: "construction",
+    h1: "Premier Construction Company in Abu Dhabi",
+    heroSubtitle: "Headquartered in Abu Dhabi — delivering industrial, commercial, and residential construction projects across the capital for over 25 years.",
+    metaTitle: "Construction Company in Abu Dhabi | Hadeed Emirates Contracting",
+    metaDescription: "Top construction company in Abu Dhabi. Industrial developments, commercial buildings, infrastructure works. 400+ projects. Hadeed Emirates Contracting.",
+    introParagraph: "Based in Abu Dhabi, Hadeed Emirates Contracting Company is the capital's trusted construction partner for projects of all scales and complexity. From Mussafah industrial zone and ICAD to the prestigious Saadiyat and Yas Islands, our construction footprint covers every corner of the emirate.",
+    secondParagraph: "We specialize in industrial complex development, commercial building construction, infrastructure works, and government facility projects. Our Abu Dhabi operations are supported by a fleet of 200+ construction machines, certified operators, and a management team with deep knowledge of local regulations and approval processes.",
+    features: ["ICAD & KIZAD industrial construction", "Mussafah warehouse development", "Saadiyat Island premium construction", "Government facility construction", "Road and infrastructure works", "Villa and residential construction", "Commercial center development", "Military and defense facilities"],
+    faqs: makeFAQ("Construction in Abu Dhabi", "construction"),
+    tags: makeTags("Construction Abu Dhabi", ["contractor Abu Dhabi", "building company Abu Dhabi", "Abu Dhabi construction"]),
+  },
+  // 3
+  {
+    keyword: "Construction Company in Dubai",
+    slug: "construction-company-dubai",
+    category: "construction",
+    h1: "Trusted Construction Company in Dubai",
+    heroSubtitle: "Delivering world-class construction projects across Dubai — from JAFZA to Downtown, Business Bay to Dubai South.",
+    metaTitle: "Construction Company in Dubai | Hadeed Emirates Contracting",
+    metaDescription: "Professional construction company in Dubai. Industrial, commercial, residential, free zone construction. Hadeed Emirates — 400+ projects delivered.",
+    introParagraph: "Hadeed Emirates Contracting serves Dubai's dynamic construction market with proven capability in industrial, commercial, and residential projects. From Jebel Ali Free Zone and Dubai Industrial City to the iconic Business Bay and Downtown districts, we deliver construction that meets Dubai's world-class standards.",
+    secondParagraph: "Our Dubai operations cover warehouse and logistics facility construction, commercial tower development, residential building projects, and infrastructure works. We maintain strong relationships with Dubai Municipality, JAFZA, DIP, and other free zone authorities to ensure seamless project delivery.",
+    features: ["JAFZA warehouse construction", "Dubai Industrial City projects", "Commercial tower development", "Free zone facility construction", "Dubai South aviation facilities", "Infrastructure and road works", "Residential development", "Retail and hospitality construction"],
+    faqs: makeFAQ("Construction in Dubai", "construction"),
+    tags: makeTags("Construction Dubai", ["contractor Dubai", "building company Dubai", "Dubai construction"]),
+  },
+  // 4
+  {
+    keyword: "Construction Company in Sharjah",
+    slug: "construction-company-sharjah",
+    category: "construction",
+    h1: "Reliable Construction Company in Sharjah",
+    heroSubtitle: "Industrial, commercial, and residential construction services across Sharjah — including SAIF Zone, Hamriyah, and Aljada developments.",
+    metaTitle: "Construction Company in Sharjah | Hadeed Emirates Contracting",
+    metaDescription: "Leading construction company in Sharjah. Industrial zone construction, SAIF Zone projects, commercial developments. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting delivers comprehensive construction services across Sharjah, supporting the emirate's industrial growth and urban development. From Sharjah Industrial Area and SAIF Zone to the Aljada mega-development and Sharjah Waterfront City, we are a proven construction partner.",
+    secondParagraph: "Our experience in Sharjah covers factory and warehouse construction, educational institution buildings, commercial developments, and residential projects. We understand Sharjah's unique regulatory environment and maintain all necessary approvals for seamless project execution.",
+    features: ["Industrial area factory construction", "SAIF Zone commercial projects", "University City institutional buildings", "Aljada development construction", "Residential tower construction", "Retail and commercial fit-outs", "Infrastructure works", "Warehouse and logistics facilities"],
+    faqs: makeFAQ("Construction in Sharjah", "construction"),
+    tags: makeTags("Construction Sharjah", ["contractor Sharjah", "building company Sharjah"]),
+  },
+  // 5
+  {
+    keyword: "Construction Company in Qatar",
+    slug: "construction-company-qatar",
+    category: "construction",
+    h1: "Construction Company in Qatar — Doha & Beyond",
+    heroSubtitle: "Extending our 25+ years of UAE construction excellence to Qatar — delivering industrial, commercial, and infrastructure projects across Doha.",
+    metaTitle: "Construction Company in Qatar | Hadeed Emirates Contracting",
+    metaDescription: "Experienced construction company in Qatar. Industrial, commercial, infrastructure construction in Doha, Lusail, West Bay. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting brings its proven construction expertise to Qatar, serving Doha and surrounding areas with industrial developments, commercial buildings, and infrastructure projects. Our Qatar operations leverage 25+ years of Middle East construction experience.",
+    secondParagraph: "From Lusail City's mega-developments to Industrial Area factories, West Bay commercial towers to Education City institutional buildings, we deliver construction projects that meet Qatar's ambitious development standards. Our understanding of GCC construction markets gives us a unique advantage.",
+    features: ["Lusail City construction projects", "West Bay commercial buildings", "Industrial Area factory construction", "Education City institutional projects", "Ras Laffan industrial facilities", "Mesaieed industrial construction", "Infrastructure and civil works", "Residential development"],
+    faqs: makeFAQ("Construction in Qatar", "construction"),
+    tags: makeTags("Construction Qatar", ["contractor Qatar", "Doha construction", "building company Qatar"]),
+  },
+  // 6
+  {
+    keyword: "Construction Company in Jordan",
+    slug: "construction-company-jordan",
+    category: "construction",
+    h1: "Construction Company in Jordan — Amman, Aqaba & More",
+    heroSubtitle: "Bringing Middle East construction excellence to Jordan — commercial, industrial, and infrastructure projects from Amman to Aqaba.",
+    metaTitle: "Construction Company in Jordan | Hadeed Emirates Contracting",
+    metaDescription: "Professional construction company in Jordan. Commercial, industrial, residential construction in Amman, Aqaba, Irbid. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting extends its construction services to Jordan, delivering projects across Amman, Aqaba, Irbid, and Zarqa. Our Jordan operations cover commercial developments, industrial facilities, infrastructure projects, and residential construction.",
+    secondParagraph: "From Abdali's premium commercial district to Aqaba's special economic zone, we bring the same engineering excellence and project discipline that has made us a trusted contractor in the UAE. Our cross-border capability ensures consistent quality standards across all markets.",
+    features: ["Amman commercial construction", "Aqaba ASEZA industrial projects", "Irbid institutional buildings", "Zarqa industrial zone construction", "King Hussein Business Park projects", "Infrastructure and road works", "Residential development", "Hospitality construction"],
+    faqs: makeFAQ("Construction in Jordan", "construction"),
+    tags: makeTags("Construction Jordan", ["contractor Jordan", "Amman construction", "building company Jordan"]),
+  },
+  // 7
+  {
+    keyword: "General Contractor UAE",
+    slug: "general-contractor-uae",
+    category: "construction",
+    h1: "Experienced General Contractor in UAE",
+    heroSubtitle: "Full-service general contracting across the UAE — from design coordination to construction delivery and project handover.",
+    metaTitle: "General Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Experienced general contractor in UAE. Full-service construction from planning to handover. 400+ projects, 25+ years. Hadeed Emirates Contracting.",
+    introParagraph: "As a full-service general contractor in the UAE, Hadeed Emirates Contracting manages every aspect of construction — from initial planning and design coordination through procurement, construction, quality assurance, and final handover. Our general contracting services cover all building types and project scales.",
+    secondParagraph: "We coordinate all trades including civil, structural, mechanical, electrical, and plumbing works, ensuring seamless integration and on-time delivery. Our project management methodology is proven across 400+ projects and ensures transparency, cost control, and quality at every stage.",
+    features: ["Design-build delivery", "Construction management", "Trade coordination (civil, MEP, structural)", "Quality assurance and control", "HSE management", "Cost control and value engineering", "Procurement and supply chain management", "Project scheduling and reporting"],
+    faqs: makeFAQ("General Contracting", "construction"),
+    tags: makeTags("General Contractor UAE", ["main contractor UAE", "EPC contractor UAE", "turnkey contractor"]),
+  },
+  // 8
+  {
+    keyword: "Industrial Construction Company UAE",
+    slug: "industrial-construction-company-uae",
+    category: "industry",
+    h1: "Industrial Construction Specialists in UAE",
+    heroSubtitle: "Large-scale industrial complexes, manufacturing plants, and fabrication facilities — engineered for operational efficiency and future expansion.",
+    metaTitle: "Industrial Construction Company UAE | Hadeed Emirates",
+    metaDescription: "Industrial construction specialists in UAE. Manufacturing plants, industrial complexes, fabrication facilities. 25+ years experience. Hadeed Emirates.",
+    introParagraph: "Hadeed Emirates Contracting is a leading industrial construction company in the UAE, specializing in the delivery of large-scale manufacturing plants, industrial complexes, fabrication workshops, and production environments. Our industrial construction expertise spans ICAD, KIZAD, JAFZA, DIP, and all major industrial zones.",
+    secondParagraph: "We understand the unique requirements of industrial construction — heavy foundations, structural steel erection, crane rails, industrial flooring, process utilities, and specialized ventilation systems. Our 25+ years of experience ensures your industrial facility is built for operational efficiency, safety compliance, and future expansion.",
+    features: ["Manufacturing plant construction", "Factory and workshop development", "Heavy structural steel erection", "Industrial foundation engineering", "Process piping and utilities", "Industrial ventilation and HVAC", "Fire protection systems", "Environmental compliance"],
+    faqs: makeFAQ("Industrial Construction", "industry"),
+    tags: makeTags("Industrial Construction UAE", ["factory construction UAE", "manufacturing plant construction", "industrial builder UAE"]),
+  },
+  // 9
+  {
+    keyword: "Warehouse Construction UAE",
+    slug: "warehouse-construction-uae",
+    category: "construction",
+    h1: "Warehouse Construction Company in UAE",
+    heroSubtitle: "Modern warehouse and logistics facility construction — from standard storage to temperature-controlled and automated warehousing.",
+    metaTitle: "Warehouse Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Warehouse construction company in UAE. Distribution centers, cold storage, logistics hubs. All emirates served. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting delivers state-of-the-art warehouse construction across the UAE. From massive distribution centers and cold storage facilities to e-commerce fulfillment centers and automated warehousing, we build logistics infrastructure that supports modern supply chains.",
+    secondParagraph: "Our warehouse construction experience covers pre-engineered metal buildings, reinforced concrete structures, temperature-controlled environments, high-capacity racking integration, advanced loading dock systems, and high-flatness industrial flooring — all delivered to international quality standards.",
+    features: ["Pre-engineered warehouse construction", "Cold storage facility development", "Distribution center construction", "E-commerce fulfillment centers", "High-bay warehouse construction", "Loading dock and leveler installation", "Fire suppression systems", "Industrial flooring solutions"],
+    faqs: makeFAQ("Warehouse Construction", "construction"),
+    tags: makeTags("Warehouse Construction UAE", ["logistics facility construction", "distribution center builder", "cold storage construction UAE"]),
+  },
+  // 10
+  {
+    keyword: "Commercial Building Construction UAE",
+    slug: "commercial-building-construction-uae",
+    category: "construction",
+    h1: "Commercial Building Construction in UAE",
+    heroSubtitle: "Office towers, retail centers, business complexes, and mixed-use developments — designed and built for commercial success.",
+    metaTitle: "Commercial Building Construction UAE | Hadeed Emirates",
+    metaDescription: "Commercial building construction in UAE. Office towers, retail centers, mixed-use developments. Quality construction. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting creates commercial environments that attract tenants, drive revenue, and build lasting value. Our commercial construction portfolio includes office towers, shopping malls, retail parks, business centers, and mixed-use developments across the UAE.",
+    secondParagraph: "We deliver commercial projects with attention to architectural finishes, complex MEP systems, curtain wall and facade installation, and tenant fit-out management. Our experience ensures your commercial building meets the highest standards of functionality, aesthetics, and sustainability.",
+    features: ["Office tower construction", "Shopping mall development", "Business park construction", "Mixed-use developments", "Retail fit-out works", "Curtain wall and facade systems", "Multi-level parking structures", "Smart building systems"],
+    faqs: makeFAQ("Commercial Building Construction", "construction"),
+    tags: makeTags("Commercial Construction UAE", ["office building construction", "retail construction UAE", "mixed-use development"]),
+  },
+  // 11
+  {
+    keyword: "Residential Building Construction UAE",
+    slug: "residential-building-construction-uae",
+    category: "construction",
+    h1: "Residential Building Construction in UAE",
+    heroSubtitle: "High-rise towers, mid-rise apartments, staff accommodations, and integrated housing communities built for quality living.",
+    metaTitle: "Residential Building Construction UAE | Hadeed Emirates",
+    metaDescription: "Residential construction in UAE. Apartment towers, housing communities, staff accommodation. Quality living standards. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting constructs residential buildings that prioritize quality living, structural integrity, and long-term asset value. From high-rise apartment towers to staff accommodation complexes, we deliver residential projects across all seven emirates.",
+    secondParagraph: "Our residential construction capabilities include reinforced concrete and post-tension slab systems, facade engineering, swimming pool and amenity construction, landscape works, and smart home infrastructure integration — delivering complete living environments ready for occupancy.",
+    features: ["High-rise residential towers", "Mid-rise apartment buildings", "Staff accommodation complexes", "Housing community development", "Swimming pool construction", "Landscape and hardscape works", "Smart home infrastructure", "Amenity and recreation facilities"],
+    faqs: makeFAQ("Residential Construction", "construction"),
+    tags: makeTags("Residential Construction UAE", ["apartment construction UAE", "housing construction", "tower construction UAE"]),
+  },
+  // 12
+  {
+    keyword: "Villa Construction UAE",
+    slug: "villa-construction-uae",
+    category: "construction",
+    h1: "Villa Construction Company in UAE",
+    heroSubtitle: "Premium private villas and residential communities — contemporary and traditional designs built to the highest standards.",
+    metaTitle: "Villa Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Luxury villa construction in UAE. Custom homes, gated communities, premium residential projects. Hadeed Emirates Contracting — quality guaranteed.",
+    introParagraph: "Hadeed Emirates Contracting specializes in premium villa construction across the UAE. From contemporary minimalist designs to traditional Arabic architecture, we deliver custom villas with meticulous attention to architectural quality, material selection, and finishing standards.",
+    secondParagraph: "Our villa construction services include custom architectural builds, premium material sourcing, swimming pool and water feature construction, landscape architecture, interior fit-out, and smart home automation integration — delivering your dream home with uncompromising quality.",
+    features: ["Custom villa design and build", "Luxury finishing and fit-out", "Swimming pool construction", "Landscape architecture", "Smart home integration", "Premium material sourcing", "Gated community development", "Beach and waterfront villas"],
+    faqs: makeFAQ("Villa Construction", "construction"),
+    tags: makeTags("Villa Construction UAE", ["luxury villa builder UAE", "custom home construction", "villa contractor"]),
+  },
+  // 13
+  {
+    keyword: "Infrastructure Construction UAE",
+    slug: "infrastructure-construction-uae",
+    category: "construction",
+    h1: "Infrastructure Construction in UAE",
+    heroSubtitle: "Roads, utilities, drainage networks, and enabling works — building the backbone of major developments across the UAE.",
+    metaTitle: "Infrastructure Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Infrastructure construction in UAE. Roads, utilities, drainage, earthworks. Civil engineering excellence. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting delivers civil infrastructure projects that form the foundation of communities and commercial developments. Our infrastructure works include road construction, stormwater drainage, sewage networks, water supply systems, electrical ducting, and site enabling works.",
+    secondParagraph: "From major highway projects to internal development roads, from deep utility trenches to complete site preparation, we execute infrastructure works with precision engineering, strict quality control, and compliance with all municipal standards and specifications.",
+    features: ["Road and highway construction", "Stormwater drainage networks", "Water and sewage systems", "Electrical infrastructure ducting", "Site enabling and earthworks", "Retaining wall construction", "Pavement and asphalt works", "Utility corridor construction"],
+    faqs: makeFAQ("Infrastructure Construction", "construction"),
+    tags: makeTags("Infrastructure Construction UAE", ["civil works UAE", "road construction UAE", "utility construction"]),
+  },
+  // 14
+  {
+    keyword: "Oil and Gas Construction UAE",
+    slug: "oil-gas-construction-uae",
+    category: "industry",
+    h1: "Oil & Gas Construction Services in UAE",
+    heroSubtitle: "Supporting the energy sector with industrial compounds, tank farms, and technically demanding infrastructure construction.",
+    metaTitle: "Oil & Gas Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Oil and gas construction in UAE. Industrial compounds, tank farms, service buildings, pipe racks. HSE compliant. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting has a proven track record in supporting the oil and gas industry through delivery of technically demanding construction projects. Our experience covers operational compounds, tank farms, pipe racks, pump stations, and associated civil and structural works.",
+    secondParagraph: "We operate with the highest HSE standards required by the energy sector, including hazardous area construction protocols, confined space operations, and hot work management. Our security-cleared teams deliver projects at sensitive energy installations with zero-compromise safety discipline.",
+    features: ["Operational compound construction", "Tank farm development", "Pipe rack and support structures", "Pump station construction", "Personnel accommodation camps", "Hazardous area construction", "Fire and gas detection systems", "Cathodic protection installation"],
+    faqs: makeFAQ("Oil & Gas Construction", "industry"),
+    tags: makeTags("Oil Gas Construction UAE", ["energy sector construction", "petrochemical construction", "tank farm construction"]),
+  },
+  // 15
+  {
+    keyword: "Solar Farm Construction UAE",
+    slug: "solar-farm-construction-uae",
+    category: "industry",
+    h1: "Solar Farm & Energy Project Construction in UAE",
+    heroSubtitle: "Ground-mounted solar farms, rooftop installations, and battery storage systems — supporting the UAE's clean energy transition.",
+    metaTitle: "Solar Farm Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Solar farm and energy project construction in UAE. Ground-mounted solar, rooftop systems, battery storage. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting actively supports the UAE's energy transition through construction of solar energy projects. We build ground-mounted solar farms, industrial rooftop solar systems, battery storage facilities, and electrical substations for utility-scale and commercial applications.",
+    secondParagraph: "Our solar construction services cover every aspect from civil and structural works to solar mounting structure installation, electrical balance of systems, cable routing and trenching, inverter room construction, and grid connection infrastructure — delivering turnkey solar energy solutions.",
+    features: ["Ground-mounted solar farm construction", "Industrial rooftop solar installations", "Battery energy storage systems", "Electrical substation construction", "Solar mounting structure installation", "Cable routing and trenching", "Inverter room construction", "Grid connection infrastructure"],
+    faqs: makeFAQ("Solar Farm Construction", "industry"),
+    tags: makeTags("Solar Construction UAE", ["renewable energy construction", "solar panel installation", "clean energy projects UAE"]),
+  },
+  // 16
+  {
+    keyword: "Pharmaceutical Facility Construction",
+    slug: "pharmaceutical-facility-construction",
+    category: "industry",
+    h1: "Pharmaceutical Facility Construction in UAE",
+    heroSubtitle: "GMP-compliant manufacturing facilities, ISO clean rooms, and pharmaceutical laboratories built to the strictest international standards.",
+    metaTitle: "Pharmaceutical Facility Construction | Hadeed Emirates",
+    metaDescription: "Pharmaceutical facility construction in UAE. GMP-compliant, clean rooms, laboratories, vaccine storage. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting constructs pharmaceutical and healthcare facilities meeting the strictest international regulatory standards. Our portfolio includes GMP-compliant manufacturing plants, ISO-classified clean rooms, pharmaceutical laboratories, and vaccine cold chain storage facilities.",
+    secondParagraph: "We understand the critical requirements of pharmaceutical construction — contamination control, HVAC precision for controlled environments, pharmaceutical-grade piping, specialized flooring and wall systems, and comprehensive validation documentation. Every facility we build is designed to pass regulatory audits on the first attempt.",
+    features: ["GMP-compliant production facilities", "ISO 5-8 clean room construction", "Pharmaceutical laboratory buildings", "Vaccine cold chain storage", "Contamination control systems", "HVAC for controlled environments", "Pharmaceutical-grade piping", "Validation documentation"],
+    faqs: makeFAQ("Pharmaceutical Construction", "industry"),
+    tags: makeTags("Pharma Construction UAE", ["GMP facility construction", "clean room builder UAE", "healthcare construction"]),
+  },
+  // 17
+  {
+    keyword: "School Construction UAE",
+    slug: "school-construction-uae",
+    category: "construction",
+    h1: "School & Educational Building Construction in UAE",
+    heroSubtitle: "K-12 schools, university campuses, training centers, and academic institutions — safe, functional, and future-ready learning environments.",
+    metaTitle: "School Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "School and educational building construction in UAE. K-12, universities, training centers. Safe learning environments. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting delivers world-class educational facilities that inspire learning and foster academic excellence. Our education construction portfolio spans K-12 schools, university campuses, vocational training centers, research laboratories, and multi-purpose academic buildings.",
+    secondParagraph: "We construct educational facilities with specialized features including acoustic treatment, smart classroom infrastructure, science laboratories, multi-purpose halls, sports facilities, and full accessibility compliance — creating environments that support modern teaching methods and student wellbeing.",
+    features: ["K-12 school construction", "University campus development", "Training center construction", "Research laboratory facilities", "Student accommodation", "Sports and recreation facilities", "Acoustic treatment design", "Smart classroom infrastructure"],
+    faqs: makeFAQ("School Construction", "construction"),
+    tags: makeTags("School Construction UAE", ["education building construction", "university campus builder", "training center construction"]),
+  },
+  // 18
+  {
+    keyword: "Airport Construction UAE",
+    slug: "airport-construction-uae",
+    category: "industry",
+    h1: "Airport & Aviation Facility Construction in UAE",
+    heroSubtitle: "Aircraft hangars, MRO facilities, cargo terminals, and airport operation buildings meeting specialized aviation standards.",
+    metaTitle: "Airport Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Airport and aviation facility construction in UAE. Aircraft hangars, cargo terminals, MRO facilities. ICAO compliant. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting supports the UAE's rapidly growing aviation sector through specialized airport and aviation facility construction. We build aircraft hangars, MRO facilities, cargo terminals, airport operations buildings, and fuel farm infrastructure meeting ICAO standards.",
+    secondParagraph: "Our aviation construction capabilities include large-span structural steel erection, airfield-side construction management, fuel system infrastructure, specialized flooring systems, and fire suppression systems — all delivered with strict compliance to aviation safety and operational requirements.",
+    features: ["Aircraft hangar construction", "MRO facility development", "Cargo terminal buildings", "Airport operations buildings", "Fuel farm infrastructure", "Large-span structural steel", "Fire suppression systems", "Airfield-side construction management"],
+    faqs: makeFAQ("Airport Construction", "industry"),
+    tags: makeTags("Airport Construction UAE", ["aviation facility builder", "hangar construction UAE", "cargo terminal construction"]),
+  },
+  // 19
+  {
+    keyword: "Port Construction UAE",
+    slug: "port-construction-uae",
+    category: "industry",
+    h1: "Port & Marine Facility Construction in UAE",
+    heroSubtitle: "Port warehouses, container yards, and marine infrastructure enabling efficient cargo handling and maritime operations.",
+    metaTitle: "Port Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Port and marine facility construction in UAE. Port warehouses, container yards, marine workshops. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting supports the maritime sector through construction of port facilities, marine logistics infrastructure, and waterfront developments. Our experience includes cargo warehouses at major UAE ports, container handling yards, and marine workshop facilities.",
+    secondParagraph: "We deliver heavy-duty pavement construction, marine foundation engineering, customs and security buildings, and environmental protection measures — all while managing construction activities around active port operations to minimize disruption.",
+    features: ["Port warehouse construction", "Container yard development", "Marine workshop facilities", "Port administration buildings", "Heavy-duty pavement construction", "Marine foundation engineering", "Customs and security buildings", "Environmental protection measures"],
+    faqs: makeFAQ("Port Construction", "industry"),
+    tags: makeTags("Port Construction UAE", ["marine facility builder", "port warehouse construction", "maritime construction"]),
+  },
+  // 20
+  {
+    keyword: "Military Facility Construction UAE",
+    slug: "military-facility-construction-uae",
+    category: "industry",
+    h1: "Military & Defense Facility Construction in UAE",
+    heroSubtitle: "High-security projects with strict compliance, confidentiality protocols, and disciplined construction management.",
+    metaTitle: "Military Facility Construction UAE | Hadeed Emirates",
+    metaDescription: "Military and defense facility construction in UAE. High-security, confidential projects. Barracks, command centers, training facilities.",
+    introParagraph: "Hadeed Emirates Contracting has earned the trust of government and defense agencies through disciplined execution of high-security construction projects. Our military portfolio includes barracks, command centers, training facilities, perimeter security systems, and ammunition storage buildings.",
+    secondParagraph: "All military construction is executed by security-cleared teams following strict protocols for confidentiality, access control, and construction management standards that meet defense sector requirements.",
+    features: ["Military barracks construction", "Command and control centers", "Training facility development", "Perimeter security infrastructure", "Blast-resistant construction", "Secure communication infrastructure", "CCTV and surveillance systems", "Vehicle maintenance workshops"],
+    faqs: makeFAQ("Military Construction", "industry"),
+    tags: makeTags("Military Construction UAE", ["defense facility builder", "high-security construction", "government contractor UAE"]),
+  },
+  // 21
+  {
+    keyword: "Free Zone Construction UAE",
+    slug: "free-zone-construction-uae",
+    category: "construction",
+    h1: "Free Zone Facility Construction in UAE",
+    heroSubtitle: "Industrial units, warehouses, offices, and showrooms across JAFZA, KIZAD, SAIF Zone, DAFZA, and all major UAE free zones.",
+    metaTitle: "Free Zone Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Free zone facility construction across UAE. JAFZA, KIZAD, SAIF Zone, DAFZA. Industrial units, warehouses, offices. Hadeed Emirates.",
+    introParagraph: "Hadeed Emirates Contracting is a preferred construction partner across the UAE's major free zones. We build industrial units, warehouses, office buildings, showrooms, and mixed-use facilities in JAFZA, KIZAD, SAIF Zone, DAFZA, RAK FTZ, and numerous other free zones.",
+    secondParagraph: "We navigate the unique regulatory requirements of each free zone, coordinate with multiple authorities, and deliver facilities that meet the specific standards and timelines demanded by free zone clients and investors.",
+    features: ["JAFZA industrial construction", "KIZAD facility development", "SAIF Zone commercial projects", "DAFZA office construction", "RAK FTZ warehouse construction", "Pre-engineered building systems", "Quick-build modular facilities", "Multi-authority coordination"],
+    faqs: makeFAQ("Free Zone Construction", "construction"),
+    tags: makeTags("Free Zone Construction UAE", ["JAFZA construction", "KIZAD construction", "SAIF Zone builder"]),
+  },
+  // 22
+  // 23
+  // 24
+  // 25
+  // 26
+  // 27
+  // 28
+  // 29
+  // 30
+  // 31
+  // 32
+  // 33
+  // 34
+  // 35
+  // 36
+  // 37
+  // 38
+  // 39
+  // 40
+  // 41
+  // 42
+  // 43
+  // 44
+  // 45
+  // 46
+  // 47
+  // 48
+  // 49
+  {
+    keyword: "Construction Company Near Me",
+    slug: "construction-company-near-me",
+    category: "location",
+    h1: "Construction Company Near You — UAE, Qatar & Jordan",
+    heroSubtitle: "Hadeed Emirates Contracting operates across all UAE emirates, Qatar, and Jordan — wherever you are, we're nearby.",
+    metaTitle: "Construction Company Near Me | Hadeed Emirates Contracting",
+    metaDescription: "Find a construction company near you. Hadeed Emirates Contracting serves all UAE emirates, Qatar & Jordan. Call +971 50 626 6515.",
+    introParagraph: "Looking for a reliable construction company near your location? Hadeed Emirates Contracting operates across all seven emirates of the UAE, Qatar, and Jordan. With 25+ years of experience and 400+ completed projects, we're the trusted construction partner in your area.",
+    secondParagraph: "Whether you're in Abu Dhabi's industrial zones, Dubai's commercial districts, Sharjah's developing communities, or anywhere across Qatar and Jordan — our team is ready to serve your construction needs with competitive pricing and professional execution.",
+    features: ["All 7 UAE emirates covered", "Abu Dhabi headquarters", "Dubai operations", "Sharjah and Northern Emirates", "Qatar (Doha and beyond)", "Jordan (Amman, Aqaba, Irbid, Zarqa)", "Free zone presence", "Same-day site visits"],
+    faqs: makeFAQ("Construction Near Me", "location"),
+    tags: makeTags("Construction Near Me", ["contractor near me", "builder near me", "local construction company"]),
+  },
+  // ===== BATCH 1: Keywords 51-60 — Construction Services by Type =====
+  // 51
+  {
+    keyword: "Steel Structure Construction UAE",
+    slug: "steel-structure-construction-uae",
+    category: "construction",
+    h1: "Steel Structure Construction Services in UAE",
+    heroSubtitle: "Expert steel structure fabrication and erection for industrial, commercial, and logistics buildings across UAE.",
+    metaTitle: "Steel Structure Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Professional steel structure construction in UAE. Industrial sheds, warehouses, mezzanines, pre-engineered buildings. ISO certified. Hadeed Emirates.",
+    introParagraph: "Hadeed Emirates Contracting Company specializes in steel structure construction across the UAE, delivering pre-engineered buildings, industrial sheds, warehouse frames, mezzanine floors, and heavy structural steelwork. With 25+ years of experience, we handle projects from design to erection.",
+    secondParagraph: "Our steel construction division manages everything from foundation bolts to final cladding — portal frames, trusses, purlins, girts, bracing, and connections. We work with hot-rolled and cold-formed sections, galvanized and painted finishes, and meet international welding standards.",
+    features: ["Pre-engineered buildings", "Industrial shed construction", "Warehouse steel frames", "Mezzanine floor systems", "Portal frame structures", "Hot-dip galvanized steel", "AWS certified welding", "Design-build capability"],
+    faqs: makeFAQ("Steel Structure Construction", "construction"),
+    tags: makeTags("Steel Structure UAE", ["PEB construction", "steel shed UAE", "warehouse frame"]),
+  },
+  // 52
+  {
+    keyword: "Concrete Works Contractor UAE",
+    slug: "concrete-works-contractor-uae",
+    category: "construction",
+    h1: "Concrete Works & Structural Concrete Contractor UAE",
+    heroSubtitle: "Full-service concrete works — foundations, slabs, columns, beams, retaining walls — across UAE, Qatar, and Jordan.",
+    metaTitle: "Concrete Works Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Concrete works contractor in UAE. Foundations, slabs, columns, retaining walls, post-tensioning. 25+ years experience. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting delivers comprehensive concrete works for industrial, commercial, and infrastructure projects throughout the UAE. Our concrete division handles everything from mass foundations and pile caps to elevated slabs, beams, columns, and architectural concrete.",
+    secondParagraph: "We use advanced formwork systems — conventional timber, system formwork (Doka, PERI), and slip-form techniques — combined with ready-mix concrete from approved batching plants. All works comply with ACI 318 and BS EN 206 standards, with rigorous quality control and cube testing.",
+    features: ["Foundation & pile caps", "Elevated slab construction", "Retaining walls", "Post-tensioned slabs", "System formwork (Doka/PERI)", "Architectural concrete", "Waterproof concrete", "Quality cube testing"],
+    faqs: makeFAQ("Concrete Works", "construction"),
+    tags: makeTags("Concrete Works UAE", ["RCC contractor", "structural concrete", "foundation works"]),
+  },
+  // 53
+  {
+    keyword: "MEP Contractor Abu Dhabi",
+    slug: "mep-contractor-abu-dhabi",
+    category: "construction",
+    h1: "MEP Contractor in Abu Dhabi",
+    heroSubtitle: "Mechanical, Electrical & Plumbing installation for industrial facilities, commercial buildings, and infrastructure projects.",
+    metaTitle: "MEP Contractor Abu Dhabi | Hadeed Emirates Contracting",
+    metaDescription: "MEP contractor in Abu Dhabi. HVAC, electrical, plumbing, fire fighting systems. Industrial & commercial projects. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides complete MEP (Mechanical, Electrical & Plumbing) installation services in Abu Dhabi and across the UAE. From HVAC ductwork and chilled water piping to HV/LV electrical distribution and fire fighting systems, we deliver integrated MEP solutions.",
+    secondParagraph: "Our MEP team coordinates closely with civil and structural divisions to ensure seamless installation, proper routing, and clash-free execution. We use BIM coordination for complex projects and maintain strict compliance with ADCD, civil defense, and DEWA/ADDC regulations.",
+    features: ["HVAC installation", "Electrical HV/LV systems", "Plumbing & drainage", "Fire fighting systems", "BIM coordination", "ADDC/DEWA compliance", "Energy-efficient systems", "Testing & commissioning"],
+    faqs: makeFAQ("MEP Contractor", "construction"),
+    tags: makeTags("MEP Abu Dhabi", ["HVAC contractor", "electrical contractor", "plumbing contractor"]),
+  },
+  // 54
+  {
+    keyword: "Fit Out Contractor Dubai",
+    slug: "fit-out-contractor-dubai",
+    category: "construction",
+    h1: "Fit Out Contractor in Dubai",
+    heroSubtitle: "Complete interior fit-out services for offices, retail, hospitality, and industrial spaces in Dubai and UAE.",
+    metaTitle: "Fit Out Contractor Dubai | Hadeed Emirates Contracting",
+    metaDescription: "Fit out contractor in Dubai. Office interiors, retail spaces, restaurants, industrial fit-out. Turnkey solutions. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting delivers turnkey fit-out solutions for commercial offices, retail outlets, restaurants, hotels, and industrial facilities across Dubai and the UAE. From design development through procurement and installation, we manage every aspect of your interior transformation.",
+    secondParagraph: "Our fit-out capabilities include partitioning (gypsum, glass, demountable), suspended ceilings (mineral fiber, metal, gypsum), raised access flooring, joinery and millwork, decorative finishes, MEP modifications, and furniture installation — all executed to LEED and Estidama standards.",
+    features: ["Office fit-out", "Retail & F&B interiors", "Industrial fit-out", "Gypsum & glass partitions", "Suspended ceiling systems", "Raised access floors", "Custom joinery", "LEED/Estidama compliant"],
+    faqs: makeFAQ("Fit Out Contractor", "construction"),
+    tags: makeTags("Fit Out Dubai", ["office interior", "retail fit out", "commercial renovation"]),
+  },
+  // 55
+  {
+    keyword: "Road Construction Company UAE",
+    slug: "road-construction-company-uae",
+    category: "construction",
+    h1: "Road Construction Company in UAE",
+    heroSubtitle: "Highway construction, asphalt paving, road infrastructure, and earthworks contractor across UAE and Middle East.",
+    metaTitle: "Road Construction Company UAE | Hadeed Emirates Contracting",
+    metaDescription: "Road construction company UAE. Highway building, asphalt paving, earthworks, drainage, road infrastructure. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting handles road construction projects ranging from internal industrial roads to major highway infrastructure across the UAE. Our road division manages grading, sub-base preparation, asphalt paving, concrete kerbing, storm drainage, and road furniture installation.",
+    secondParagraph: "With a fleet of graders, rollers, pavers, and milling machines, we deliver smooth, durable road surfaces that meet Abu Dhabi Municipality and RTA specifications. Our earthworks capability supports mass excavation, fill compaction, and site leveling for large-scale developments.",
+    features: ["Highway construction", "Asphalt paving", "Sub-base & grading", "Storm drainage", "Concrete kerbing", "Road marking & signage", "Earthworks & compaction", "Municipal spec compliance"],
+    faqs: makeFAQ("Road Construction", "construction"),
+    tags: makeTags("Road Construction UAE", ["highway contractor", "asphalt paving", "earthworks"]),
+  },
+  // 56
+  {
+    keyword: "Waterproofing Contractor UAE",
+    slug: "waterproofing-contractor-uae",
+    category: "construction",
+    h1: "Waterproofing Contractor in UAE",
+    heroSubtitle: "Basement, roof, wet area, and structural waterproofing solutions for construction projects across UAE.",
+    metaTitle: "Waterproofing Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Waterproofing contractor UAE. Basement, roof, wet area waterproofing. Membrane, crystalline, injection systems. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides comprehensive waterproofing services for basements, roofs, wet areas, water tanks, swimming pools, and below-grade structures across the UAE. We use proven membrane systems, crystalline admixtures, and injection grouting to protect your investment.",
+    secondParagraph: "Our waterproofing solutions include torch-applied bituminous membranes, PVC/TPO single-ply systems, liquid-applied polyurethane coatings, cementitious coatings, bentonite sheets, and hydrophilic strips. All systems carry manufacturer warranties and meet BS/ASTM standards.",
+    features: ["Basement waterproofing", "Roof membrane systems", "Wet area protection", "Water tank lining", "Injection grouting", "Crystalline waterproofing", "PVC/TPO roofing", "10-year warranties"],
+    faqs: makeFAQ("Waterproofing", "construction"),
+    tags: makeTags("Waterproofing UAE", ["membrane waterproofing", "roof waterproofing", "basement sealing"]),
+  },
+  // 57
+  {
+    keyword: "Demolition Contractor UAE",
+    slug: "demolition-contractor-uae",
+    category: "construction",
+    h1: "Demolition Contractor in UAE",
+    heroSubtitle: "Safe, controlled demolition services for buildings, structures, and industrial facilities across UAE.",
+    metaTitle: "Demolition Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Demolition contractor UAE. Building demolition, selective demolition, industrial dismantling. Licensed & insured. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides professional demolition services across the UAE — from selective interior strip-outs to complete building demolition and industrial plant dismantling. Our team follows strict safety protocols and environmental management procedures.",
+    secondParagraph: "We deploy hydraulic excavators with demolition attachments (crushers, shears, breakers), as well as manual demolition teams for sensitive areas. All projects include a detailed demolition method statement, waste management plan, dust suppression, and noise monitoring.",
+    features: ["Complete building demolition", "Selective demolition", "Industrial dismantling", "Waste recycling", "Asbestos management", "Dust & noise control", "Licensed operators", "HSE compliant methods"],
+    faqs: makeFAQ("Demolition", "construction"),
+    tags: makeTags("Demolition UAE", ["building demolition", "structure dismantling", "site clearance"]),
+  },
+  // 58
+  {
+    keyword: "Painting Contractor UAE",
+    slug: "painting-contractor-uae",
+    category: "construction",
+    h1: "Painting & Coating Contractor in UAE",
+    heroSubtitle: "Industrial painting, protective coatings, epoxy flooring, and decorative finishes for all building types.",
+    metaTitle: "Painting Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Painting contractor UAE. Industrial coatings, epoxy flooring, intumescent fireproofing, decorative finishes. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting delivers professional painting and coating services for industrial, commercial, and residential projects across the UAE. From structural steel protective coatings to decorative interior finishes, we use premium paint systems with proper surface preparation.",
+    secondParagraph: "Our coatings division specializes in epoxy floor coatings, polyurethane systems, intumescent fireproofing, anti-corrosion coatings for steel structures, tank linings, and high-performance architectural paints. All work follows SSPC/NACE surface preparation standards.",
+    features: ["Industrial protective coatings", "Epoxy floor coatings", "Intumescent fireproofing", "Anti-corrosion systems", "Decorative finishes", "Tank lining", "SSPC/NACE compliant", "Surface preparation"],
+    faqs: makeFAQ("Painting Contractor", "construction"),
+    tags: makeTags("Painting UAE", ["epoxy flooring", "protective coatings", "industrial painting"]),
+  },
+  // 59
+  {
+    keyword: "Landscaping Contractor Abu Dhabi",
+    slug: "landscaping-contractor-abu-dhabi",
+    category: "construction",
+    h1: "Landscaping Contractor in Abu Dhabi",
+    heroSubtitle: "Hardscape and softscape landscaping for industrial parks, commercial complexes, and residential developments.",
+    metaTitle: "Landscaping Contractor Abu Dhabi | Hadeed Emirates Contracting",
+    metaDescription: "Landscaping contractor Abu Dhabi. Hardscape, softscape, irrigation, paving, planting. Commercial & industrial. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides comprehensive landscaping services in Abu Dhabi for industrial, commercial, and residential developments. Our landscaping division handles hardscape (paving, kerbing, retaining walls) and softscape (soil preparation, planting, turfing, irrigation).",
+    secondParagraph: "We design and install drought-resistant landscaping suited to the UAE climate, incorporating drip irrigation, mulching, and water-efficient plant selections. Our hardscape capabilities include interlocking paving, natural stone, concrete finishes, outdoor furniture, and boundary walls.",
+    features: ["Hardscape paving & kerbing", "Softscape & planting", "Irrigation systems", "Drought-resistant design", "Retaining walls", "Outdoor lighting", "Water features", "Maintenance plans"],
+    faqs: makeFAQ("Landscaping Contractor", "construction"),
+    tags: makeTags("Landscaping Abu Dhabi", ["garden landscaping", "hardscape contractor", "irrigation"]),
+  },
+  // 60
+  {
+    keyword: "Fire Protection Contractor UAE",
+    slug: "fire-protection-contractor-uae",
+    category: "construction",
+    h1: "Fire Protection & Fire Fighting Contractor UAE",
+    heroSubtitle: "Fire alarm, sprinkler, suppression, and passive fire protection systems installation across UAE.",
+    metaTitle: "Fire Protection Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Fire protection contractor UAE. Sprinkler systems, fire alarms, FM200 suppression, passive fire protection. Civil defense approved. Hadeed Emirates.",
+    introParagraph: "Hadeed Emirates Contracting installs complete fire protection systems for industrial facilities, commercial buildings, warehouses, and residential developments across the UAE. Our fire protection division covers active systems (sprinklers, alarms, suppression) and passive protection (fire-rated walls, doors, seals).",
+    secondParagraph: "We design and install wet/dry sprinkler systems, deluge systems, FM200/Novec clean agent suppression, fire alarm and detection networks, emergency lighting, and smoke management systems. All installations meet UAE Civil Defense regulations and NFPA standards.",
+    features: ["Sprinkler systems", "Fire alarm & detection", "FM200/Novec suppression", "Passive fire protection", "Fire-rated doors & walls", "Smoke management", "Civil defense approval", "NFPA compliant"],
+    faqs: makeFAQ("Fire Protection", "construction"),
+    tags: makeTags("Fire Protection UAE", ["sprinkler installation", "fire alarm", "fire fighting system"]),
+  },
+  // ===== BATCH 2: Keywords 61-70 — Location-Based Services =====
+  // 61
+  {
+    keyword: "Construction Company in Al Ain",
+    slug: "construction-company-al-ain",
+    category: "location",
+    h1: "Construction Company in Al Ain",
+    heroSubtitle: "Full-service construction, contracting, and project management services in Al Ain and Al Dhafra region.",
+    metaTitle: "Construction Company in Al Ain | Hadeed Emirates Contracting",
+    metaDescription: "Top construction company in Al Ain. Industrial, commercial, residential building. 25+ years experience. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting serves Al Ain and the broader Al Dhafra region with comprehensive construction services including industrial buildings, commercial complexes, residential developments, and infrastructure projects. Our Al Ain operations benefit from proximity to our Abu Dhabi headquarters.",
+    secondParagraph: "Al Ain's growing economy and strategic development projects demand experienced contractors who understand local regulations and climate conditions. We have completed numerous projects in Al Ain's industrial areas, university district, and residential zones, delivering quality construction on time and within budget.",
+    features: ["Industrial construction", "Commercial buildings", "Residential projects", "Infrastructure works", "MEP installations", "Fit-out services", "Free zone construction", "Project management"],
+    faqs: makeFAQ("Construction Company Al Ain", "location"),
+    tags: makeTags("Construction Al Ain", ["contractor Al Ain", "builder Al Ain", "Al Ain construction"]),
+  },
+  // 62
+  {
+    keyword: "Construction Company in Ajman",
+    slug: "construction-company-ajman",
+    category: "location",
+    h1: "Construction Company in Ajman",
+    heroSubtitle: "Reliable construction and contracting services in Ajman — industrial, commercial, and residential projects.",
+    metaTitle: "Construction Company in Ajman | Hadeed Emirates Contracting",
+    metaDescription: "Construction company in Ajman. Industrial buildings, warehouses, commercial fit-out, residential construction. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting brings 25+ years of construction expertise to Ajman, serving the emirate's growing industrial zones, commercial districts, and residential neighborhoods. From warehouse construction in Ajman Industrial Area to commercial fit-outs in the city center, we deliver complete building solutions.",
+    secondParagraph: "Ajman's rapid growth creates demand for fast-track construction with quality finishes. Our team understands Ajman Municipality requirements and works efficiently to meet tight deadlines. We handle all trades in-house — civil, structural, MEP, and finishing — for seamless project delivery.",
+    features: ["Warehouse construction", "Commercial fit-out", "Residential buildings", "Industrial facilities", "Renovation works", "MEP services", "Municipal approvals", "Fast-track delivery"],
+    faqs: makeFAQ("Construction Company Ajman", "location"),
+    tags: makeTags("Construction Ajman", ["contractor Ajman", "builder Ajman", "Ajman construction"]),
+  },
+  // 63
+  {
+    keyword: "Construction Company in Ras Al Khaimah",
+    slug: "construction-company-ras-al-khaimah",
+    category: "location",
+    h1: "Construction Company in Ras Al Khaimah",
+    heroSubtitle: "Expert construction services in RAK — industrial zones, tourism projects, and residential developments.",
+    metaTitle: "Construction Company Ras Al Khaimah | Hadeed Emirates Contracting",
+    metaDescription: "Construction company in Ras Al Khaimah. Industrial, tourism, residential projects. Free zone construction. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides full-spectrum construction services in Ras Al Khaimah, supporting the emirate's booming industrial, tourism, and residential sectors. From RAK's free zones (RAKEZ, Al Hamra) to Jebel Jais tourist developments, we build quality structures across RAK.",
+    secondParagraph: "Ras Al Khaimah's diverse terrain — from coastal areas to mountain regions — requires contractors with versatile expertise. Our RAK team manages projects in challenging environments, delivering industrial warehouses, tourism facilities, retail centers, and residential compounds with consistent quality.",
+    features: ["Free zone construction", "Industrial warehouses", "Tourism facilities", "Residential compounds", "Infrastructure works", "Mountain terrain projects", "Coastal construction", "RAKEZ projects"],
+    faqs: makeFAQ("Construction Company RAK", "location"),
+    tags: makeTags("Construction RAK", ["contractor RAK", "builder Ras Al Khaimah", "RAK construction"]),
+  },
+  // 64
+  {
+    keyword: "Construction Company in Fujairah",
+    slug: "construction-company-fujairah",
+    category: "location",
+    h1: "Construction Company in Fujairah",
+    heroSubtitle: "Construction and contracting services in Fujairah — port facilities, industrial projects, and commercial buildings.",
+    metaTitle: "Construction Company Fujairah | Hadeed Emirates Contracting",
+    metaDescription: "Construction company in Fujairah. Port & marine, industrial, commercial construction. Oil storage facilities. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting operates in Fujairah, serving the emirate's strategic port, oil storage, and industrial sectors. Fujairah's position as a major bunkering hub and free zone creates continuous demand for high-quality construction of storage terminals, industrial facilities, and commercial buildings.",
+    secondParagraph: "Our Fujairah projects include oil storage tank farms, port infrastructure, industrial warehouses, commercial retail spaces, and residential developments. We understand the unique requirements of Fujairah's marine and oil & gas environments, including corrosion protection and blast-resistant construction.",
+    features: ["Oil storage terminals", "Port infrastructure", "Industrial construction", "Commercial buildings", "Marine facilities", "Corrosion protection", "Free zone projects", "Residential works"],
+    faqs: makeFAQ("Construction Company Fujairah", "location"),
+    tags: makeTags("Construction Fujairah", ["contractor Fujairah", "port construction", "oil storage construction"]),
+  },
+  // 65
+  {
+    keyword: "Construction Company in Umm Al Quwain",
+    slug: "construction-company-umm-al-quwain",
+    category: "location",
+    h1: "Construction Company in Umm Al Quwain",
+    heroSubtitle: "Quality construction services in UAQ — industrial parks, residential compounds, and commercial projects.",
+    metaTitle: "Construction Company Umm Al Quwain | Hadeed Emirates Contracting",
+    metaDescription: "Construction company in Umm Al Quwain. Industrial parks, warehouses, residential, commercial. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting serves Umm Al Quwain with professional construction services for the emirate's expanding industrial parks, free zones, and residential neighborhoods. UAQ's cost-effective business environment attracts industrial and commercial investments that require quality construction partners.",
+    secondParagraph: "From UAQ Free Trade Zone warehouses to Ahmed Bin Rashid Port developments and residential villas, our team delivers end-to-end construction solutions. We handle civil works, structural steel, MEP installations, and finishing — all coordinated for efficient delivery in UAQ's growing market.",
+    features: ["Industrial park construction", "Free zone warehouses", "Residential villas", "Commercial buildings", "Port facilities", "MEP works", "Structural steel", "Cost-effective solutions"],
+    faqs: makeFAQ("Construction Company UAQ", "location"),
+    tags: makeTags("Construction UAQ", ["contractor UAQ", "builder Umm Al Quwain", "UAQ construction"]),
+  },
+  // 66
+  {
+    keyword: "Building Contractor Doha Qatar",
+    slug: "building-contractor-doha-qatar",
+    category: "location",
+    h1: "Building Contractor in Doha, Qatar",
+    heroSubtitle: "Professional building construction and contracting services in Doha and across Qatar.",
+    metaTitle: "Building Contractor Doha Qatar | Hadeed Emirates Contracting",
+    metaDescription: "Building contractor in Doha, Qatar. Industrial, commercial, residential construction. World Cup legacy projects. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting extends its 25+ years of Middle East construction expertise to Doha and Qatar. Our Qatar operations support the country's massive post-World Cup development, including industrial logistics centers, commercial offices, residential towers, and infrastructure upgrades.",
+    secondParagraph: "Qatar's ambitious National Vision 2030 drives sustained construction demand. We serve Doha's West Bay, Lusail City, Industrial Area, and emerging developments with the same quality standards and safety culture that define our UAE operations. Our Qatar team holds all necessary Ashghal approvals.",
+    features: ["Commercial construction", "Industrial buildings", "Residential projects", "Infrastructure works", "Lusail City projects", "Ashghal approved", "Quality management", "Safety culture"],
+    faqs: makeFAQ("Building Contractor Doha", "location"),
+    tags: makeTags("Contractor Doha Qatar", ["builder Qatar", "Doha construction", "Qatar contractor"]),
+  },
+  // 67
+  {
+    keyword: "Construction Company Amman Jordan",
+    slug: "construction-company-amman-jordan",
+    category: "location",
+    h1: "Construction Company in Amman, Jordan",
+    heroSubtitle: "Experienced construction and contracting services in Amman and throughout Jordan.",
+    metaTitle: "Construction Company Amman Jordan | Hadeed Emirates Contracting",
+    metaDescription: "Construction company in Amman, Jordan. Industrial, commercial, residential projects. 25+ years Middle East experience. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting operates in Amman and across Jordan, bringing Gulf-standard construction quality to the Kingdom's growing market. From Abdali downtown redevelopment to industrial zones in Sahab and King Hussein Business Park, we deliver comprehensive construction services in the Jordanian capital.",
+    secondParagraph: "Jordan's strategic location and stable business environment make it ideal for regional expansion. Our Amman team handles industrial construction, commercial fit-outs, residential developments, and renovation projects — all managed with the same ISO-certified quality systems and safety protocols used across our UAE operations.",
+    features: ["Industrial construction", "Commercial buildings", "Residential projects", "Renovation works", "Abdali developments", "Industrial zone projects", "ISO certified", "Gulf-standard quality"],
+    faqs: makeFAQ("Construction Company Amman", "location"),
+    tags: makeTags("Construction Amman Jordan", ["contractor Jordan", "builder Amman", "Jordan construction"]),
+  },
+  // 68
+  {
+    keyword: "Contractor in Musaffah Abu Dhabi",
+    slug: "contractor-musaffah-abu-dhabi",
+    category: "location",
+    h1: "Construction Contractor in Musaffah, Abu Dhabi",
+    heroSubtitle: "Expert contractor serving Musaffah Industrial Area — warehouses, factories, workshops, and infrastructure.",
+    metaTitle: "Contractor Musaffah Abu Dhabi | Hadeed Emirates Contracting",
+    metaDescription: "Construction contractor in Musaffah, Abu Dhabi. Warehouses, factories, industrial facilities. Near ICAD. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting is a leading contractor in Musaffah, Abu Dhabi's largest industrial zone. Our proximity to Musaffah and ICAD gives us a strategic advantage in serving the area's dense concentration of warehouses, factories, workshops, and logistics facilities. We understand the specific requirements of Musaffah's industrial buildings.",
+    secondParagraph: "From new warehouse construction and factory fit-outs to expansion projects and maintenance works, we provide end-to-end construction solutions for Musaffah businesses. Our local knowledge means faster mobilization, competitive pricing, and deep understanding of ZonesCorp and municipality regulations.",
+    features: ["Warehouse construction", "Factory buildings", "Workshop fit-out", "Industrial expansion", "ICAD zone projects", "ZonesCorp compliant", "Fast mobilization", "Competitive pricing"],
+    faqs: makeFAQ("Contractor Musaffah", "location"),
+    tags: makeTags("Contractor Musaffah", ["Musaffah construction", "ICAD contractor", "industrial zone builder"]),
+  },
+  // 69
+  {
+    keyword: "Contractor in Jebel Ali Dubai",
+    slug: "contractor-jebel-ali-dubai",
+    category: "location",
+    h1: "Construction Contractor in Jebel Ali, Dubai",
+    heroSubtitle: "Industrial construction and fit-out contractor serving Jebel Ali Free Zone, DIP, and South Dubai logistics hubs.",
+    metaTitle: "Contractor Jebel Ali Dubai | Hadeed Emirates Contracting",
+    metaDescription: "Construction contractor in Jebel Ali, Dubai. Industrial warehouses, logistics centers, free zone facilities. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting serves Jebel Ali and South Dubai's major industrial zones including JAFZA, DIP, Dubai South, and Al Quoz Industrial. As the region's premier logistics hub, Jebel Ali demands construction partners who understand the unique requirements of warehousing, distribution, and cold storage facilities.",
+    secondParagraph: "We build temperature-controlled warehouses, high-bay logistics centers, production facilities, and office-warehouse combinations in Jebel Ali. Our experience covers JAFZA regulations, TRAKHEES approvals, and the specific construction standards required for free zone operations.",
+    features: ["JAFZA zone construction", "Logistics centers", "Cold storage facilities", "Production buildings", "Office-warehouse combos", "TRAKHEES approved", "High-bay warehouses", "Dubai South projects"],
+    faqs: makeFAQ("Contractor Jebel Ali", "location"),
+    tags: makeTags("Contractor Jebel Ali", ["JAFZA construction", "DIP contractor", "Dubai South builder"]),
+  },
+  // 70
+  {
+    keyword: "Construction Company KIZAD Abu Dhabi",
+    slug: "construction-company-kizad-abu-dhabi",
+    category: "location",
+    h1: "Construction Company in KIZAD, Abu Dhabi",
+    heroSubtitle: "Specialized construction services for Khalifa Industrial Zone — manufacturing, logistics, and heavy industry facilities.",
+    metaTitle: "Construction Company KIZAD Abu Dhabi | Hadeed Emirates Contracting",
+    metaDescription: "Construction company in KIZAD Abu Dhabi. Manufacturing plants, logistics hubs, heavy industry facilities. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting is a trusted construction partner within KIZAD (Khalifa Industrial Zone Abu Dhabi), supporting the development of one of the world's largest industrial zones. From heavy manufacturing plants to logistics distribution centers, we build the infrastructure that powers KIZAD's growth.",
+    secondParagraph: "KIZAD's master-planned environment requires contractors who meet stringent compliance standards. We work within KIZAD's development guidelines, coordinate with AD Ports Group, and deliver facilities that meet international industrial standards — including clean rooms, hazardous material storage, and heavy-load floor specifications.",
+    features: ["Manufacturing plants", "Logistics distribution", "Heavy industry facilities", "Clean room construction", "Hazmat storage", "Heavy-load floors", "AD Ports compliant", "Master plan adherence"],
+    faqs: makeFAQ("Construction Company KIZAD", "location"),
+    tags: makeTags("Construction KIZAD", ["KIZAD contractor", "Khalifa zone builder", "industrial zone construction"]),
+  },
+  // ===== BATCH 3: Keywords 71-80 — Industry-Specific Construction =====
+  // 71
+  {
+    keyword: "Pharmaceutical Clean Room Construction",
+    slug: "pharmaceutical-clean-room-construction",
+    category: "industry",
+    h1: "Pharmaceutical Clean Room Construction",
+    heroSubtitle: "GMP-compliant clean room design and construction for pharma, biotech, and healthcare manufacturing facilities.",
+    metaTitle: "Pharmaceutical Clean Room Construction | Hadeed Emirates Contracting",
+    metaDescription: "Pharmaceutical clean room construction. GMP compliant, ISO 14644, HVAC systems, modular walls. UAE & Middle East. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting builds GMP-compliant pharmaceutical clean rooms for manufacturing, packaging, and laboratory environments across the UAE and Middle East. Our pharma construction team understands the stringent requirements of ISO 14644, EU GMP Annex 1, and FDA cGMP standards.",
+    secondParagraph: "We construct clean rooms from Class ISO 5 (Class 100) to ISO 8 (Class 100,000) using modular wall and ceiling panel systems, HEPA/ULPA filtration, positive pressure cascading, and contamination control airlocks. Our integrated approach covers architectural finishes, HVAC, BMS, and validation support.",
+    features: ["ISO 14644 clean rooms", "GMP-compliant design", "Modular wall systems", "HEPA/ULPA filtration", "Pressure cascade control", "Airlock construction", "Temperature/humidity control", "Validation support"],
+    faqs: makeFAQ("Clean Room Construction", "industry"),
+    tags: makeTags("Clean Room Construction", ["pharmaceutical facility", "GMP clean room", "pharma construction"]),
+  },
+  // 72
+  {
+    keyword: "Cold Storage Warehouse Construction UAE",
+    slug: "cold-storage-warehouse-construction-uae",
+    category: "industry",
+    h1: "Cold Storage Warehouse Construction UAE",
+    heroSubtitle: "Design-build cold storage facilities — blast freezers, chilled rooms, and temperature-controlled logistics warehouses.",
+    metaTitle: "Cold Storage Warehouse Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Cold storage warehouse construction UAE. Blast freezers, chilled warehouses, insulated panels, refrigeration. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting designs and builds cold storage warehouses across the UAE, serving food logistics, pharma distribution, and retail supply chains. Our cold storage expertise covers blast freezer rooms (-30°C), chilled storage (2-8°C), and ambient temperature-controlled environments.",
+    secondParagraph: "We use PIR/PUR insulated sandwich panels, heavy-duty concrete floors with vapor barriers, energy-efficient refrigeration plant rooms, and automated cold store management systems. Our cold chain facilities meet HACCP, Dubai Municipality, and Abu Dhabi Food Safety Authority standards.",
+    features: ["Blast freezer rooms", "Chilled storage (2-8°C)", "PIR insulated panels", "Refrigeration systems", "Vapor barrier floors", "HACCP compliance", "Dock levelers", "Energy-efficient design"],
+    faqs: makeFAQ("Cold Storage Construction", "industry"),
+    tags: makeTags("Cold Storage UAE", ["freezer warehouse", "chilled storage", "cold chain construction"]),
+  },
+  // 73
+  {
+    keyword: "Data Center Construction UAE",
+    slug: "data-center-construction-uae",
+    category: "industry",
+    h1: "Data Center Construction in UAE",
+    heroSubtitle: "Mission-critical data center construction — shells, fit-outs, power systems, and cooling infrastructure.",
+    metaTitle: "Data Center Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Data center construction UAE. Server halls, power rooms, cooling systems, raised floors, Tier III/IV facilities. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting constructs data center facilities across the UAE — from ground-up shells to complete interior fit-outs including raised access flooring, containment systems, and supporting infrastructure. We understand the precision requirements of mission-critical construction.",
+    secondParagraph: "Our data center expertise includes building sealed server halls, UPS and generator rooms, precision cooling infrastructure (CRAC/CRAH units, hot/cold aisle containment), fire suppression (clean agent systems), and physical security infrastructure. We deliver to Tier III and Tier IV specifications per Uptime Institute standards.",
+    features: ["Server hall construction", "Raised access flooring", "UPS/Generator rooms", "Precision cooling", "Fire suppression (FM200)", "Hot/cold containment", "Tier III/IV specs", "Physical security"],
+    faqs: makeFAQ("Data Center Construction", "industry"),
+    tags: makeTags("Data Center Construction UAE", ["server room builder", "colocation facility", "DC construction"]),
+  },
+  // 74
+  {
+    keyword: "Food Factory Construction UAE",
+    slug: "food-factory-construction-uae",
+    category: "industry",
+    h1: "Food Factory & Processing Plant Construction UAE",
+    heroSubtitle: "Hygienic food production facility construction — bakeries, dairies, meat processing, and beverage plants.",
+    metaTitle: "Food Factory Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Food factory construction UAE. Processing plants, bakeries, dairies, bottling. HACCP, hygienic design. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting builds purpose-designed food processing factories across the UAE — from bakeries and dairies to meat processing, canning, and beverage bottling plants. We construct hygienic production environments that meet HACCP, Dubai Municipality, ADFCA, and international food safety standards.",
+    secondParagraph: "Our food factory construction includes epoxy-coated walls and floors with coving, stainless steel fixtures, food-grade drainage systems, positive-pressure clean zones, temperature-controlled production areas, and integrated pest control features. We also construct utility buildings, cold stores, and waste treatment rooms.",
+    features: ["Hygienic wall & floor finishes", "Food-grade drainage", "Temperature-controlled zones", "Clean room production areas", "Cold storage integration", "Waste treatment facilities", "HACCP compliant design", "Municipality approved"],
+    faqs: makeFAQ("Food Factory Construction", "industry"),
+    tags: makeTags("Food Factory UAE", ["processing plant", "dairy construction", "bakery construction"]),
+  },
+  // 75
+  {
+    keyword: "Car Showroom Construction UAE",
+    slug: "car-showroom-construction-uae",
+    category: "industry",
+    h1: "Car Showroom & Automotive Facility Construction UAE",
+    heroSubtitle: "Turnkey construction of car showrooms, service centers, and automotive dealerships meeting brand standards.",
+    metaTitle: "Car Showroom Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Car showroom construction UAE. Automotive dealerships, service centers, brand-standard showrooms. Turnkey. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting designs and builds automotive showrooms and service centers that meet international brand standards. We construct facilities for leading car brands, delivering striking glass facades, premium interior finishes, vehicle display systems, and integrated service workshops.",
+    secondParagraph: "Our automotive construction covers structural steel showroom shells with large clear-span areas, curtain wall glazing systems, polished floor finishes, sophisticated lighting designs, customer lounge areas, service pit construction, paint booth rooms, and vehicle wash bays — all built to specific brand CI guidelines.",
+    features: ["Large clear-span showrooms", "Curtain wall glazing", "Service workshop bays", "Paint booth rooms", "Vehicle wash facilities", "Brand CI compliance", "Premium finishes", "Customer lounge areas"],
+    faqs: makeFAQ("Car Showroom Construction", "industry"),
+    tags: makeTags("Car Showroom UAE", ["automotive dealership", "service center construction", "showroom builder"]),
+  },
+  // 76
+  {
+    keyword: "Hotel Construction Company UAE",
+    slug: "hotel-construction-company-uae",
+    category: "industry",
+    h1: "Hotel & Hospitality Construction Company UAE",
+    heroSubtitle: "Full-service hotel construction — from budget hotels to luxury resorts — across UAE, Qatar, and Jordan.",
+    metaTitle: "Hotel Construction Company UAE | Hadeed Emirates Contracting",
+    metaDescription: "Hotel construction company UAE. Budget to luxury hotels, resorts, serviced apartments. MEP, fit-out, FF&E. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting builds hospitality properties across the UAE — from budget business hotels and serviced apartments to luxury resort developments. We deliver complete hotel construction including structure, MEP, interior fit-out, and FF&E installation to international brand standards.",
+    secondParagraph: "Our hospitality expertise covers guest room construction, restaurant and kitchen fit-outs, spa and pool facilities, ballroom and meeting spaces, back-of-house areas, and landscaped grounds. We work with international hotel operators (Marriott, Hilton, IHG, Accor) and understand the brand-specific construction requirements.",
+    features: ["Guest room construction", "Restaurant & kitchen fit-out", "Spa & pool facilities", "Ballroom & meeting rooms", "Back-of-house areas", "FF&E installation", "Brand standard delivery", "International operators"],
+    faqs: makeFAQ("Hotel Construction", "industry"),
+    tags: makeTags("Hotel Construction UAE", ["hospitality contractor", "resort construction", "hotel fit-out"]),
+  },
+  // 77
+  {
+    keyword: "Hospital Construction Company UAE",
+    slug: "hospital-construction-company-uae",
+    category: "industry",
+    h1: "Hospital & Healthcare Construction UAE",
+    heroSubtitle: "Specialized healthcare facility construction — hospitals, clinics, laboratories, and medical centers.",
+    metaTitle: "Hospital Construction Company UAE | Hadeed Emirates Contracting",
+    metaDescription: "Hospital construction UAE. Clinics, medical centers, laboratories. Clean rooms, medical gas, HEPA. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting constructs healthcare facilities across the UAE including hospitals, medical centers, dental clinics, diagnostic laboratories, and rehabilitation centers. Healthcare construction demands precision coordination between architectural, structural, MEP, and medical equipment installation teams.",
+    secondParagraph: "We build specialized healthcare spaces including operating theaters, ICU wards, imaging suites (MRI, CT), laboratories, pharmacy clean rooms, and isolation rooms. Our healthcare MEP capabilities cover medical gas systems, HEPA-filtered air handling, nurse call systems, and emergency power backup.",
+    features: ["Operating theaters", "ICU/CCU wards", "Imaging suite construction", "Medical gas systems", "HEPA-filtered HVAC", "Laboratory fit-out", "Nurse call systems", "Emergency power systems"],
+    faqs: makeFAQ("Hospital Construction", "industry"),
+    tags: makeTags("Hospital Construction UAE", ["healthcare facility", "clinic construction", "medical center"]),
+  },
+  // 78
+  {
+    keyword: "Mosque Construction Company UAE",
+    slug: "mosque-construction-company-uae",
+    category: "industry",
+    h1: "Mosque Construction Company in UAE",
+    heroSubtitle: "Respectful and detailed mosque construction — from neighborhood masjids to grand congregational mosques.",
+    metaTitle: "Mosque Construction Company UAE | Hadeed Emirates Contracting",
+    metaDescription: "Mosque construction UAE. Traditional & modern masjid design, domes, minarets, prayer halls, ablution areas. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting constructs mosques across the UAE with deep respect for Islamic architectural traditions. From neighborhood masjids to larger congregational mosques, we deliver prayer halls, ablution areas, minarets, domes, and associated community facilities with quality craftsmanship.",
+    secondParagraph: "Our mosque construction capabilities include reinforced concrete domes and vaulted ceilings, decorative plasterwork (gypsum arabesque), marble and granite flooring, specialized acoustic design for prayer halls, climate control for comfort, dedicated women's prayer areas, outdoor courtyards, and ablution facilities with proper drainage.",
+    features: ["Dome & minaret construction", "Prayer hall design", "Ablution facilities", "Decorative Islamic plasterwork", "Marble & granite finishes", "Acoustic treatment", "Climate control", "Community facilities"],
+    faqs: makeFAQ("Mosque Construction", "industry"),
+    tags: makeTags("Mosque Construction UAE", ["masjid builder", "Islamic architecture", "prayer hall construction"]),
+  },
+  // 79
+  {
+    keyword: "Sports Facility Construction UAE",
+    slug: "sports-facility-construction-uae",
+    category: "industry",
+    h1: "Sports Facility & Stadium Construction UAE",
+    heroSubtitle: "Construction of sports complexes, stadiums, training centers, swimming pools, and recreational facilities.",
+    metaTitle: "Sports Facility Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Sports facility construction UAE. Stadiums, sports halls, swimming pools, tracks, courts. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting builds sports and recreational facilities across the UAE — from multi-purpose sports halls and swimming pool complexes to running tracks, tennis courts, and football stadiums. Our experience covers institutional, community, and commercial sports venues.",
+    secondParagraph: "We construct specialized sports surfaces (synthetic turf, rubber tracks, hardwood courts), swimming pools with filtration systems, spectator seating, changing rooms, sports lighting, and supporting infrastructure. Our projects meet FIFA, FIBA, and FINA standards as applicable.",
+    features: ["Stadium construction", "Sports hall fit-out", "Swimming pool complexes", "Synthetic turf installation", "Running tracks", "Sports lighting systems", "Spectator seating", "FIFA/FIBA standards"],
+    faqs: makeFAQ("Sports Facility Construction", "industry"),
+    tags: makeTags("Sports Facility UAE", ["stadium construction", "swimming pool builder", "sports complex"]),
+  },
+  // 80
+  {
+    keyword: "Petrol Station Construction UAE",
+    slug: "petrol-station-construction-uae",
+    category: "industry",
+    h1: "Petrol Station & Fuel Station Construction UAE",
+    heroSubtitle: "Full construction services for fuel stations — canopy structures, tank installation, retail shops, and car washes.",
+    metaTitle: "Petrol Station Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Petrol station construction UAE. Fuel station canopy, underground tanks, convenience stores, car wash. ADNOC, ENOC standards. Hadeed Emirates.",
+    introParagraph: "Hadeed Emirates Contracting builds fuel stations and service stations across the UAE — from greenfield construction of new ADNOC/ENOC stations to renovation and rebranding of existing facilities. We handle canopy structures, underground tank installation, pump islands, convenience retail, and car wash bays.",
+    secondParagraph: "Our fuel station construction includes fire-rated structures, explosion-proof electrical installations, underground fuel storage tank (UST) installation with leak detection, fuel piping systems, POS and automation infrastructure, and brand-standard canopy and signage. All projects meet Civil Defense and petroleum authority regulations.",
+    features: ["Canopy steel structures", "Underground tank installation", "Pump island construction", "Convenience store fit-out", "Car wash bays", "Fire-rated structures", "Explosion-proof electrics", "ADNOC/ENOC standards"],
+    faqs: makeFAQ("Petrol Station Construction", "industry"),
+    tags: makeTags("Petrol Station UAE", ["fuel station builder", "gas station construction", "ADNOC station"]),
+  },
+  // ===== BATCH 5: Keywords 91-100 — Professional Services =====
+  // 91
+  {
+    keyword: "Project Management Company UAE",
+    slug: "project-management-company-uae",
+    category: "service",
+    h1: "Construction Project Management Company UAE",
+    heroSubtitle: "End-to-end project management — planning, scheduling, cost control, quality assurance, and handover coordination.",
+    metaTitle: "Project Management Company UAE | Hadeed Emirates Contracting",
+    metaDescription: "Construction project management UAE. Planning, scheduling, cost control, quality management. PMP certified. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides professional project management services for construction projects across the UAE, Qatar, and Jordan. Our PMP-certified project managers handle planning, scheduling, procurement coordination, cost control, quality assurance, and stakeholder management from concept to handover.",
+    secondParagraph: "With 25+ years managing projects valued from AED 5M to AED 500M+, we bring Primavera P6 scheduling, earned value management, BIM coordination, and risk management expertise. Our project management methodology ensures delivery on time, within budget, to the required quality standards.",
+    features: ["Primavera P6 scheduling", "Cost control & reporting", "Quality management", "Risk assessment", "BIM coordination", "Procurement management", "Stakeholder reporting", "PMP certified managers"],
+    faqs: makeFAQ("Project Management", "service"),
+    tags: makeTags("Project Management UAE", ["PMC services", "construction management", "PMO"]),
+  },
+  // 92
+  {
+    keyword: "Site Preparation Contractor UAE",
+    slug: "site-preparation-contractor-uae",
+    category: "service",
+    h1: "Site Preparation & Earthworks Contractor UAE",
+    heroSubtitle: "Complete site preparation — clearing, grading, excavation, backfilling, compaction, and utility trenching.",
+    metaTitle: "Site Preparation Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Site preparation contractor UAE. Land clearing, grading, excavation, compaction, utility works. Heavy machinery fleet. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides comprehensive site preparation services across the UAE — from initial land clearing and demolition to final grading and compaction. Our earthworks division operates a fleet of excavators, bulldozers, graders, and compactors to prepare your site for construction.",
+    secondParagraph: "Our site preparation scope covers topsoil stripping, rock breaking, bulk excavation, cut-and-fill operations, subgrade preparation, proof rolling, utility trenching, and temporary drainage. We use GPS-guided equipment and conduct density testing to ensure compaction meets geotechnical specifications.",
+    features: ["Land clearing", "Bulk excavation", "Cut-and-fill operations", "Grading & leveling", "Compaction testing", "Utility trenching", "GPS-guided equipment", "Geotechnical compliance"],
+    faqs: makeFAQ("Site Preparation", "service"),
+    tags: makeTags("Site Preparation UAE", ["earthworks contractor", "land clearing", "excavation services"]),
+  },
+  // 93
+  {
+    keyword: "Piling Contractor UAE",
+    slug: "piling-contractor-uae",
+    category: "service",
+    h1: "Piling Contractor in UAE",
+    heroSubtitle: "Bored piles, driven piles, CFA piles, and sheet piling for deep foundations across UAE and Middle East.",
+    metaTitle: "Piling Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Piling contractor UAE. Bored piles, driven piles, CFA, sheet piling. Deep foundations for industrial & commercial. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides piling and deep foundation services across the UAE for high-rise, industrial, and infrastructure projects. Our piling operations include bored piles (rotary and CFA), driven piles (precast concrete and steel), micro-piles, and sheet piling for excavation support.",
+    secondParagraph: "From 300mm micro-piles to 1500mm large-diameter bored piles, we match foundation solutions to geotechnical conditions. Our piling teams work from comprehensive soil investigation data, coordinate with structural designers, and perform integrity testing (PIT, cross-hole sonic) to verify pile quality.",
+    features: ["Bored piles (rotary/CFA)", "Driven precast piles", "Steel sheet piling", "Micro-pile installation", "Pile load testing", "Integrity testing (PIT)", "Cross-hole sonic logging", "Geotechnical coordination"],
+    faqs: makeFAQ("Piling Contractor", "service"),
+    tags: makeTags("Piling UAE", ["bored piles", "deep foundations", "sheet piling"]),
+  },
+  // 94
+  {
+    keyword: "Scaffolding Company UAE",
+    slug: "scaffolding-company-uae",
+    category: "service",
+    h1: "Scaffolding Company in UAE",
+    heroSubtitle: "System scaffolding, tube & fitting, ringlock, and suspended access solutions for construction and maintenance.",
+    metaTitle: "Scaffolding Company UAE | Hadeed Emirates Contracting",
+    metaDescription: "Scaffolding company UAE. Ringlock, cuplock, tube & fitting, suspended access. Design, erection, inspection. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides comprehensive scaffolding services across the UAE — from system scaffolding (ringlock, cuplock, kwikstage) to traditional tube & fitting, suspended access platforms, and mobile scaffold towers. Our scaffolding division supports construction, industrial, and maintenance sectors.",
+    secondParagraph: "We handle scaffold design (drawings and calculations by qualified scaffold engineers), material supply, erection, weekly inspections, modification, and dismantling. All scaffolding meets BS EN 12811 standards and TRA regulations, with CISRS-trained scaffolders and advanced scaff-tag inspection systems.",
+    features: ["Ringlock & cuplock systems", "Tube & fitting scaffolding", "Suspended access platforms", "Mobile scaffold towers", "BS EN 12811 compliant", "CISRS-trained scaffolders", "Weekly inspections", "Scaffold design service"],
+    faqs: makeFAQ("Scaffolding Company", "service"),
+    tags: makeTags("Scaffolding UAE", ["scaffold rental", "access solutions", "ringlock scaffolding"]),
+  },
+  // 95
+  {
+    keyword: "Formwork Supplier UAE",
+    slug: "formwork-supplier-uae",
+    category: "service",
+    h1: "Formwork Supplier & Contractor in UAE",
+    heroSubtitle: "System formwork rental and installation — wall formwork, slab formwork, climbing systems, and table forms.",
+    metaTitle: "Formwork Supplier UAE | Hadeed Emirates Contracting",
+    metaDescription: "Formwork supplier UAE. Doka, PERI, MEVA. Wall formwork, slab tables, climbing systems. Rental & installation. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting supplies and installs system formwork for concrete construction projects across the UAE. We stock Doka, PERI, and MEVA formwork systems — including wall forms, slab tables, column forms, climbing systems, and tunnel formwork for large-scale projects.",
+    secondParagraph: "Our formwork service includes project analysis, system selection, shop drawings, material delivery, erection supervision, and technical support on-site. Whether you need formwork for a single villa or a 50-floor tower, we provide cost-effective solutions with fast cycle times.",
+    features: ["Doka, PERI, MEVA systems", "Wall formwork", "Slab table formwork", "Climbing systems", "Column formwork", "Tunnel formwork", "Shop drawings", "Erection supervision"],
+    faqs: makeFAQ("Formwork Supplier", "service"),
+    tags: makeTags("Formwork UAE", ["formwork rental", "Doka formwork", "PERI formwork"]),
+  },
+  // 96
+  {
+    keyword: "Precast Concrete UAE",
+    slug: "precast-concrete-uae",
+    category: "service",
+    h1: "Precast Concrete Solutions UAE",
+    heroSubtitle: "Precast concrete panels, beams, columns, boundary walls, hollow core slabs, and architectural cladding.",
+    metaTitle: "Precast Concrete UAE | Hadeed Emirates Contracting",
+    metaDescription: "Precast concrete UAE. Panels, beams, columns, hollow core slabs, boundary walls. Design, manufacture, erection. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting delivers precast concrete solutions for industrial, commercial, and infrastructure projects across the UAE. We manage the full cycle — design, manufacturing coordination, transport, and erection — for precast walls, beams, columns, hollow core slabs, and architectural facade panels.",
+    secondParagraph: "Precast concrete offers faster construction, consistent quality, reduced site labor, and better surface finishes compared to cast-in-place methods. We work with approved precast manufacturers and use our crane fleet for precise erection, delivering projects up to 30% faster than traditional concrete construction.",
+    features: ["Precast wall panels", "Hollow core slabs", "Precast beams & columns", "Boundary wall systems", "Architectural cladding", "GRC facade panels", "Design coordination", "Crane erection service"],
+    faqs: makeFAQ("Precast Concrete", "service"),
+    tags: makeTags("Precast Concrete UAE", ["precast walls", "hollow core slabs", "precast erection"]),
+  },
+  // 97
+  {
+    keyword: "Temporary Fencing Rental UAE",
+    slug: "temporary-fencing-rental-uae",
+    category: "service",
+    h1: "Temporary Fencing Rental in UAE",
+    heroSubtitle: "Construction site hoarding, temporary fencing, barriers, and crowd control for events and building projects.",
+    metaTitle: "Temporary Fencing Rental UAE | Hadeed Emirates Contracting",
+    metaDescription: "Temporary fencing rental UAE. Construction hoarding, metal fencing, barriers, crowd control. Installation & removal. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides temporary fencing and hoarding rental for construction sites, events, and industrial projects across the UAE. Our range includes steel panel fencing, chain-link barriers, painted construction hoarding, and pedestrian barriers — all installed by our team.",
+    secondParagraph: "Construction site security starts with proper perimeter fencing. We supply and install branded hoarding panels with printed graphics, illuminated fencing for nighttime visibility, pedestrian walkway protection, and vehicle barriers. All installations meet municipality requirements and are available on flexible rental terms.",
+    features: ["Steel panel fencing", "Construction hoarding", "Pedestrian barriers", "Chain-link barriers", "Branded/printed panels", "Illuminated fencing", "Installation & removal", "Municipality compliant"],
+    faqs: makeFAQ("Temporary Fencing", "service"),
+    tags: makeTags("Temporary Fencing UAE", ["construction hoarding", "site fencing", "barrier rental"]),
+  },
+  // 98
+  {
+    keyword: "Building Maintenance Company UAE",
+    slug: "building-maintenance-company-uae",
+    category: "service",
+    h1: "Building Maintenance Company in UAE",
+    heroSubtitle: "Comprehensive building maintenance — civil, MEP, HVAC, painting, plumbing, and electrical for all property types.",
+    metaTitle: "Building Maintenance Company UAE | Hadeed Emirates Contracting",
+    metaDescription: "Building maintenance company UAE. Civil, MEP, HVAC, painting, plumbing, electrical. AMC contracts. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides building maintenance services across the UAE for commercial properties, industrial facilities, residential compounds, and government buildings. Our maintenance division handles preventive, corrective, and emergency maintenance for all building systems.",
+    secondParagraph: "We offer Annual Maintenance Contracts (AMC) covering civil repairs, MEP systems (HVAC, electrical, plumbing), fire systems, painting and waterproofing, pest control, and general upkeep. Our teams respond 24/7 to emergency calls and perform scheduled preventive maintenance to minimize downtime.",
+    features: ["Annual maintenance contracts", "Civil & structural repairs", "HVAC maintenance", "Electrical maintenance", "Plumbing & drainage", "Painting & waterproofing", "24/7 emergency response", "Preventive maintenance"],
+    faqs: makeFAQ("Building Maintenance", "service"),
+    tags: makeTags("Building Maintenance UAE", ["property maintenance", "AMC contractor", "facility management"]),
+  },
+  // 99
+  {
+    keyword: "Renovation Contractor Dubai",
+    slug: "renovation-contractor-dubai",
+    category: "service",
+    h1: "Renovation & Refurbishment Contractor Dubai",
+    heroSubtitle: "Complete renovation services — office refurbishment, retail remodeling, villa renovation, and building upgrades.",
+    metaTitle: "Renovation Contractor Dubai | Hadeed Emirates Contracting",
+    metaDescription: "Renovation contractor Dubai. Office refurbishment, villa renovation, retail remodeling. Design to build. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides comprehensive renovation and refurbishment services in Dubai for offices, retail spaces, restaurants, villas, and apartment buildings. From cosmetic upgrades to complete structural renovations, we transform existing spaces to meet your new requirements.",
+    secondParagraph: "Our renovation process begins with assessment and design, followed by careful demolition, structural modifications if needed, new MEP routing, finishes installation, and final fit-out. We manage occupied building renovations with minimal disruption, working in phases and during off-hours as needed.",
+    features: ["Office refurbishment", "Villa renovation", "Retail remodeling", "Restaurant renovation", "Structural modifications", "MEP upgrades", "Phased renovation", "Occupied building work"],
+    faqs: makeFAQ("Renovation Contractor", "service"),
+    tags: makeTags("Renovation Dubai", ["refurbishment contractor", "building renovation", "remodeling"]),
+  },
+  // 100
+  {
+    keyword: "Turnkey Construction Company UAE",
+    slug: "turnkey-construction-company-uae",
+    category: "service",
+    h1: "Turnkey Construction Company in UAE",
+    heroSubtitle: "Single-source turnkey solutions — design, build, MEP, fit-out, and handover under one contract.",
+    metaTitle: "Turnkey Construction Company UAE | Hadeed Emirates Contracting",
+    metaDescription: "Turnkey construction company UAE. Design-build, single contract, all trades in-house. Industrial, commercial, residential. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting delivers turnkey construction — from concept design through construction, MEP, fit-out, landscaping, and handover — all under a single contract. Our turnkey approach eliminates coordination headaches, reduces project timelines, and provides cost certainty from day one.",
+    secondParagraph: "As a turnkey contractor, we take full responsibility for design development, value engineering, procurement, construction management, quality control, and commissioning. With all major trades in-house (civil, structural, MEP, finishing), we maintain full control over scheduling, quality, and cost — delivering your project ready to operate.",
+    features: ["Single-point responsibility", "Design-build delivery", "All trades in-house", "Cost certainty", "Faster completion", "Value engineering", "Quality assurance", "Commissioning & handover"],
+    faqs: makeFAQ("Turnkey Construction", "service"),
+    tags: makeTags("Turnkey Construction UAE", ["design-build contractor", "EPC contractor", "single-source builder"]),
+  },
+  // ===== BATCH 6: Keywords 101-110 — Specialized Construction =====
+  // 101
+  // 102
+  // 103
+  // 104
+  // 105
+  // 106
+  // 107
+  // 108
+  // 109
+  // 110
+  // ===== BATCH 7: Keywords 111-120 — Dubai & Sharjah Specific =====
+  // 111
+  // 112
+  // 113
+  // 114
+  // 115
+  {
+    keyword: "Construction Company in Sharjah Industrial Area",
+    slug: "construction-company-sharjah-industrial-area",
+    category: "location",
+    h1: "Construction Company in Sharjah Industrial Area",
+    heroSubtitle: "Industrial construction, warehouse building, and factory fit-out in Sharjah Industrial Area and free zones.",
+    metaTitle: "Construction Company Sharjah Industrial Area | Hadeed Emirates",
+    metaDescription: "Construction company in Sharjah Industrial Area. Warehouses, factories, showrooms. SAIF Zone, Hamriyah FZ. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting serves Sharjah Industrial Area and its adjacent free zones (SAIF Zone, Hamriyah Free Zone) with industrial construction, warehouse building, factory fit-outs, and showroom construction. Sharjah's industrial zones are home to thousands of businesses requiring quality construction.",
+    secondParagraph: "We build purpose-designed industrial facilities including production halls, assembly plants, food processing units, chemical storage, and multi-story showrooms. Our experience with Sharjah Municipality permits and free zone approvals ensures smooth project execution from permit to handover.",
+    features: ["Industrial warehouse building", "Factory construction", "Showroom fit-out", "SAIF Zone projects", "Hamriyah FZ projects", "Food factory construction", "Chemical storage facilities", "Municipality approved"],
+    faqs: makeFAQ("Construction Sharjah Industrial", "location"),
+    tags: makeTags("Construction Sharjah Industrial", ["factory builder Sharjah", "warehouse Sharjah", "industrial Sharjah"]),
+  },
+  // 116
+  {
+    keyword: "Interior Design and Build Company UAE",
+    slug: "interior-design-and-build-company-uae",
+    category: "service",
+    h1: "Interior Design & Build Company in UAE",
+    heroSubtitle: "Integrated design and construction — concept to completion interior solutions for offices, retail, hospitality, and homes.",
+    metaTitle: "Interior Design and Build Company UAE | Hadeed Emirates Contracting",
+    metaDescription: "Interior design and build company UAE. Concept to completion. Offices, retail, hospitality, residential. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides integrated interior design and build services across the UAE — combining creative design talent with construction execution capability under one roof. Our design-build approach ensures your vision is translated faithfully into built reality, without coordination gaps.",
+    secondParagraph: "Our interior team includes designers, draftsmen, and craftsmen who collaborate from concept sketches through 3D visualization, material selection, procurement, and site installation. We handle corporate offices, luxury retail, F&B outlets, healthcare clinics, and residential interiors.",
+    features: ["Concept to completion", "3D visualization", "Material sourcing", "Corporate offices", "Luxury retail interiors", "F&B outlet design", "Healthcare interiors", "Residential design"],
+    faqs: makeFAQ("Interior Design and Build", "service"),
+    tags: makeTags("Design Build UAE", ["interior contractor", "office design", "retail design"]),
+  },
+  // 117
+  {
+    keyword: "Electrical Contractor Abu Dhabi",
+    slug: "electrical-contractor-abu-dhabi",
+    category: "construction",
+    h1: "Electrical Contractor in Abu Dhabi",
+    heroSubtitle: "Licensed electrical contractor — HV/LV installation, panel boards, cable laying, lighting, and power distribution.",
+    metaTitle: "Electrical Contractor Abu Dhabi | Hadeed Emirates Contracting",
+    metaDescription: "Electrical contractor Abu Dhabi. HV/LV systems, panel boards, cable laying, lighting. ADDC approved. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting is a licensed electrical contractor in Abu Dhabi, delivering HV (33kV/11kV) and LV (415V) electrical installations for industrial, commercial, and residential projects. Our scope covers main switchboards, distribution panels, cable installation, lighting, and earthing systems.",
+    secondParagraph: "We comply with ADDC regulations, Abu Dhabi QCC standards, and IEC/BS wiring regulations. Our electrical team handles transformer rooms, generator synchronization, UPS systems, busbar trunking, cable tray routing, and smart lighting controls. All installations are tested and commissioned with ADDC acceptance.",
+    features: ["HV 33kV/11kV systems", "LV 415V distribution", "Main switchboards", "Cable laying", "Lighting systems", "Earthing & bonding", "ADDC approved", "Testing & commissioning"],
+    faqs: makeFAQ("Electrical Contractor", "construction"),
+    tags: makeTags("Electrical Abu Dhabi", ["HV contractor", "LV installation", "electrical works"]),
+  },
+  // 118
+  {
+    keyword: "Plumbing Contractor Dubai",
+    slug: "plumbing-contractor-dubai",
+    category: "construction",
+    h1: "Plumbing Contractor in Dubai",
+    heroSubtitle: "Professional plumbing installation — hot/cold water, drainage, sewerage, and fire fighting pipe systems.",
+    metaTitle: "Plumbing Contractor Dubai | Hadeed Emirates Contracting",
+    metaDescription: "Plumbing contractor Dubai. Hot/cold water, drainage, sewerage, fire fighting. DEWA approved. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides complete plumbing and drainage installation in Dubai for new construction, renovation, and fit-out projects. Our plumbing scope covers hot/cold water supply, waste drainage, sewerage, storm water, fire fighting networks, and irrigation systems.",
+    secondParagraph: "We install copper, PPR, PEX, UPVC, and HDPE pipe systems per project specifications. Our team handles risers, horizontal distribution, fixture rough-in and trim, pump rooms, water tanks, and grease trap installations. All works comply with DEWA regulations and Dubai Building Code.",
+    features: ["Hot/cold water systems", "Waste & drainage", "Sewerage networks", "Fire fighting pipework", "Pump room installation", "Water tank systems", "DEWA compliant", "Testing & flushing"],
+    faqs: makeFAQ("Plumbing Contractor Dubai", "construction"),
+    tags: makeTags("Plumbing Dubai", ["plumber Dubai", "drainage contractor", "water installation"]),
+  },
+  // 119
+  {
+    keyword: "HVAC Contractor UAE",
+    slug: "hvac-contractor-uae",
+    category: "construction",
+    h1: "HVAC Contractor in UAE",
+    heroSubtitle: "Heating, ventilation, and air conditioning installation — ducted systems, VRF/VRV, chilled water, and DX units.",
+    metaTitle: "HVAC Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "HVAC contractor UAE. Ducting, VRF/VRV, chilled water, AHU, FCU installation. Energy efficient. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting installs HVAC systems across the UAE for industrial, commercial, and residential properties. Our HVAC capabilities include ducted split systems, VRF/VRV multi-split systems, chilled water systems (AHU, FCU, FAHU), package units, and specialized industrial ventilation.",
+    secondParagraph: "We handle ductwork fabrication and installation (GI, pre-insulated), piping (chilled water, refrigerant), controls and BMS integration, testing and balancing, and commissioning. Our HVAC designs prioritize energy efficiency, meeting ASHRAE and Estidama sustainability requirements.",
+    features: ["Ducted split systems", "VRF/VRV multi-split", "Chilled water systems", "AHU & FCU installation", "GI ductwork fabrication", "BMS integration", "Testing & balancing", "Energy efficient design"],
+    faqs: makeFAQ("HVAC Contractor", "construction"),
+    tags: makeTags("HVAC UAE", ["air conditioning contractor", "duct installation", "VRF installation"]),
+  },
+  // 120
+  {
+    keyword: "Structural Steel Fabrication UAE",
+    slug: "structural-steel-fabrication-uae",
+    category: "construction",
+    h1: "Structural Steel Fabrication in UAE",
+    heroSubtitle: "Steel fabrication and erection — beams, columns, trusses, platforms, and miscellaneous metalwork.",
+    metaTitle: "Structural Steel Fabrication UAE | Hadeed Emirates Contracting",
+    metaDescription: "Structural steel fabrication UAE. Beams, columns, trusses. AWS certified welding. Shop drawings. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides structural steel fabrication and erection services across the UAE for industrial buildings, warehouses, mezzanines, pipe racks, platforms, and miscellaneous metalwork. Our fabrication workshop produces quality steelwork with AWS-certified welders and modern CNC equipment.",
+    secondParagraph: "From shop drawing review through material procurement, cutting, welding, surface preparation, painting/galvanizing, and field erection, we manage the full steel fabrication cycle. Our quality system covers weld procedure qualifications (WPQ), NDT inspection, dimensional checks, and material test certificates.",
+    features: ["AWS certified welding", "CNC cutting & drilling", "Hot-dip galvanizing", "Shop drawings", "NDT inspection", "Field erection", "Material certificates", "Mezzanines & platforms"],
+    faqs: makeFAQ("Steel Fabrication", "construction"),
+    tags: makeTags("Steel Fabrication UAE", ["structural steel", "welding services", "metal fabrication"]),
+  },
+  // ===== BATCH 8: Keywords 121-130 — Specialized Construction =====
+  // 121
+  {
+    keyword: "Boundary Wall Construction UAE",
+    slug: "boundary-wall-construction-uae",
+    category: "construction",
+    h1: "Boundary Wall Construction in UAE",
+    heroSubtitle: "Precast and masonry boundary walls for industrial zones, residential compounds, and commercial properties.",
+    metaTitle: "Boundary Wall Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Boundary wall construction UAE. Precast, block, decorative walls. Industrial, residential, commercial. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting builds boundary walls across the UAE for industrial facilities, residential compounds, commercial properties, and government installations. We construct precast concrete walls, concrete block walls, decorative stone walls, and combination barrier-wall systems.",
+    secondParagraph: "Boundary walls are among the most common construction requirements in UAE industrial zones. We design and build walls from 2m to 6m height with integrated gates, guard rooms, CCTV mounting provisions, and razor wire/electric fence. All walls meet municipality load and wind resistance specifications.",
+    features: ["Precast concrete walls", "Block masonry walls", "Decorative stone walls", "2-6 metre heights", "Gate & guard room integration", "Security fence topping", "Wind load rated", "Municipality approved"],
+    faqs: makeFAQ("Boundary Wall Construction", "construction"),
+    tags: makeTags("Boundary Wall UAE", ["compound wall", "perimeter wall", "security wall"]),
+  },
+  // 122
+  {
+    keyword: "Swimming Pool Construction UAE",
+    slug: "swimming-pool-construction-uae",
+    category: "construction",
+    h1: "Swimming Pool Construction in UAE",
+    heroSubtitle: "Residential and commercial swimming pool construction — design, excavation, structure, tiling, and filtration systems.",
+    metaTitle: "Swimming Pool Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Swimming pool construction UAE. Residential, commercial, Olympic. Design, build, filtration, heating. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting designs and builds swimming pools across the UAE for luxury villas, hotel resorts, sports clubs, and residential compounds. From infinity-edge pools to lap pools, wading pools, and Olympic-size facilities, we handle the full construction cycle.",
+    secondParagraph: "Our pool construction includes excavation, reinforced concrete shell, waterproof membrane, ceramic or glass mosaic tiling, filtration and pump systems, chemical dosing, pool heating, LED lighting, and surrounding deck construction. All pools comply with Dubai Municipality and Abu Dhabi QCC pool safety standards.",
+    features: ["Residential & commercial", "Infinity-edge & lap pools", "RC shell construction", "Waterproof membrane", "Mosaic & ceramic tiling", "Filtration & pump systems", "Pool heating systems", "Safety compliant"],
+    faqs: makeFAQ("Swimming Pool Construction", "construction"),
+    tags: makeTags("Swimming Pool UAE", ["pool builder", "pool construction", "pool contractor"]),
+  },
+  // 123
+  {
+    keyword: "Aluminum and Glass Works UAE",
+    slug: "aluminum-glass-works-uae",
+    category: "construction",
+    h1: "Aluminum & Glass Works in UAE",
+    heroSubtitle: "Curtain wall, windows, doors, shopfronts, and skylight systems — design, fabrication, and installation.",
+    metaTitle: "Aluminum and Glass Works UAE | Hadeed Emirates Contracting",
+    metaDescription: "Aluminum and glass works UAE. Curtain wall, windows, doors, shopfronts, skylights. Design to installation. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides comprehensive aluminum and glass solutions across the UAE — from curtain wall facades and structural glazing to windows, doors, shopfronts, and skylight systems. Our aluminum division handles design, shop drawings, fabrication, and on-site installation.",
+    secondParagraph: "We work with thermally broken aluminum profiles, low-E double/triple glazed units, spider glazing fittings, and point-fixed systems. Our capabilities cover unitized curtain walls, stick-system glazing, folding doors, louvre systems, and fire-rated glass partitions — all tested to UAE wind and thermal performance standards.",
+    features: ["Curtain wall systems", "Structural glazing", "Windows & doors", "Shopfront systems", "Skylight & atrium", "Thermally broken profiles", "Low-E glazing", "Fire-rated glass"],
+    faqs: makeFAQ("Aluminum Glass Works", "construction"),
+    tags: makeTags("Aluminum Glass UAE", ["curtain wall contractor", "glazing works", "facade contractor"]),
+  },
+  // 124
+  {
+    keyword: "Insulation Contractor UAE",
+    slug: "insulation-contractor-uae",
+    category: "construction",
+    h1: "Insulation Contractor in UAE",
+    heroSubtitle: "Thermal, acoustic, and fire insulation for buildings, pipework, ductwork, and industrial equipment.",
+    metaTitle: "Insulation Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Insulation contractor UAE. Thermal, acoustic, fire insulation. Buildings, pipes, ducts, tanks. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting installs insulation systems across the UAE for building envelopes, HVAC ductwork, piping networks, process equipment, and industrial storage tanks. Proper insulation is critical in the UAE climate for energy efficiency, condensation control, and fire protection.",
+    secondParagraph: "We install rockwool, glass wool, PIR/PUR foam boards, elastomeric rubber, calcium silicate, aerogel blankets, and spray-applied cellulose insulation. Our team handles wall cavities, roof insulation, cold pipe lagging, hot pipe cladding, and acoustic barriers — all to ASHRAE and Estidama requirements.",
+    features: ["Building envelope insulation", "HVAC duct insulation", "Pipe lagging (hot & cold)", "Tank insulation", "Rockwool & glass wool", "PIR/PUR foam boards", "Acoustic insulation", "Estidama compliant"],
+    faqs: makeFAQ("Insulation Contractor", "construction"),
+    tags: makeTags("Insulation UAE", ["thermal insulation", "pipe insulation", "acoustic insulation"]),
+  },
+  // 125
+  {
+    keyword: "Flooring Contractor UAE",
+    slug: "flooring-contractor-uae",
+    category: "construction",
+    h1: "Flooring Contractor in UAE",
+    heroSubtitle: "Industrial epoxy, polished concrete, tiles, hardwood, vinyl, and raised access flooring installation.",
+    metaTitle: "Flooring Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Flooring contractor UAE. Epoxy, tiles, concrete, vinyl, raised access, hardwood. Commercial & industrial. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting installs flooring systems for industrial, commercial, and residential projects across the UAE. Our flooring capabilities span industrial epoxy coatings, polished and hardened concrete, ceramic and porcelain tiles, natural stone, vinyl/LVT, carpet, hardwood, and raised access floors.",
+    secondParagraph: "We match flooring solutions to your specific requirements — heavy-duty epoxy for warehouses, slip-resistant vinyl for hospitals, premium marble for lobbies, and raised access floors for offices and data centers. Our preparation includes shot-blasting, self-leveling screeds, and moisture testing for long-lasting results.",
+    features: ["Industrial epoxy coatings", "Polished concrete", "Ceramic & porcelain tiles", "Natural stone marble", "Vinyl/LVT flooring", "Hardwood flooring", "Raised access floors", "Surface preparation"],
+    faqs: makeFAQ("Flooring Contractor", "construction"),
+    tags: makeTags("Flooring UAE", ["epoxy flooring", "tile installation", "industrial flooring"]),
+  },
+  // 126
+  {
+    keyword: "Tank Construction Company UAE",
+    slug: "tank-construction-company-uae",
+    category: "industry",
+    h1: "Tank Construction Company in UAE",
+    heroSubtitle: "Design and construction of storage tanks — water tanks, fuel tanks, chemical tanks, and process vessels.",
+    metaTitle: "Tank Construction Company UAE | Hadeed Emirates Contracting",
+    metaDescription: "Tank construction UAE. Water tanks, fuel tanks, chemical storage. Steel, concrete, GRP. API 650. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting designs and builds storage tanks across the UAE for water, fuel, chemicals, and process fluids. We construct above-ground steel tanks (API 650), concrete water reservoirs, GRP/FRP tanks, and underground storage tanks (UST) for various industrial applications.",
+    secondParagraph: "Our tank construction covers foundation design, floor plating, shell erection, roof installation (fixed, floating, dome), internal/external coatings, cathodic protection, and hydrostatic testing. We build tanks from 5 m³ to 50,000+ m³ capacity for oil & gas, water utilities, industrial, and fire fighting applications.",
+    features: ["API 650 steel tanks", "Concrete reservoirs", "GRP/FRP tanks", "Underground tanks (UST)", "5 to 50,000+ m³ capacity", "Fixed & floating roofs", "Cathodic protection", "Hydrostatic testing"],
+    faqs: makeFAQ("Tank Construction", "industry"),
+    tags: makeTags("Tank Construction UAE", ["water tank builder", "fuel tank", "API 650 tank"]),
+  },
+  // 127
+  {
+    keyword: "Substation Construction UAE",
+    slug: "substation-construction-uae",
+    category: "industry",
+    h1: "Electrical Substation Construction UAE",
+    heroSubtitle: "HV/MV electrical substation civil & MEP works — transformer rooms, switchgear rooms, and cable trenching.",
+    metaTitle: "Substation Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Substation construction UAE. Transformer rooms, switchgear, cable trenching. ADDC/DEWA/FEWA compliant. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting builds electrical substations across the UAE for utility companies, developers, and industrial clients. Our substation construction covers purpose-built buildings, transformer plinths, cable trenches, earthing systems, fire protection, and HVAC for equipment cooling.",
+    secondParagraph: "We construct 132kV, 33kV, and 11kV substations complying with ADDC, DEWA, SEWA, and FEWA standards. Our scope includes civil works (foundations, buildings, cable tunnels), structural steel (gantries, bus supports), MEP installations (ventilation, lighting, earthing), and external works (access roads, fencing, landscaping).",
+    features: ["132/33/11kV substations", "Transformer rooms & plinths", "Cable trench construction", "Earthing systems", "Switchgear room fit-out", "Fire protection", "ADDC/DEWA/SEWA compliant", "External works"],
+    faqs: makeFAQ("Substation Construction", "industry"),
+    tags: makeTags("Substation UAE", ["transformer room", "electrical substation", "HV construction"]),
+  },
+  // 128
+  {
+    keyword: "Pipeline Construction Contractor UAE",
+    slug: "pipeline-construction-contractor-uae",
+    category: "industry",
+    h1: "Pipeline Construction Contractor UAE",
+    heroSubtitle: "Water, sewage, oil, and gas pipeline construction — trenching, laying, welding, testing, and commissioning.",
+    metaTitle: "Pipeline Construction Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Pipeline construction UAE. Water, sewage, oil, gas pipelines. Trenching, welding, testing. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting constructs pipeline systems across the UAE for water transmission, sewage networks, industrial process piping, oil and gas flowlines, and firefighting ring mains. Our pipeline division handles trenching, bedding, pipe laying, jointing, backfilling, and pressure testing.",
+    secondParagraph: "We work with DI, GRP, HDPE, steel, and concrete pipes in diameters from 100mm to 2000mm. Our pipeline services include horizontal directional drilling (HDD) for trenchless crossings, thrust boring, micro-tunneling, and pipe jacking for road and utility crossings without surface disruption.",
+    features: ["Water pipelines", "Sewage networks", "Oil & gas flowlines", "Fire fighting mains", "DI, GRP, HDPE, steel pipes", "Trenchless methods (HDD)", "Pressure testing", "100-2000mm diameter"],
+    faqs: makeFAQ("Pipeline Construction", "industry"),
+    tags: makeTags("Pipeline UAE", ["water pipeline", "sewer contractor", "pipe laying"]),
+  },
+  // 129
+  {
+    keyword: "Warehouse Racking Installation UAE",
+    slug: "warehouse-racking-installation-uae",
+    category: "service",
+    h1: "Warehouse Racking Installation in UAE",
+    heroSubtitle: "Selective, drive-in, cantilever, and automated racking systems — design, supply, and installation.",
+    metaTitle: "Warehouse Racking Installation UAE | Hadeed Emirates Contracting",
+    metaDescription: "Warehouse racking installation UAE. Selective, drive-in, cantilever, VNA. Design, supply, install. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting supplies and installs warehouse racking systems across the UAE for logistics, retail, manufacturing, and cold storage operations. We work with leading racking manufacturers to deliver selective pallet racking, drive-in, push-back, cantilever, VNA, and automated ASRS systems.",
+    secondParagraph: "Our racking service starts with warehouse layout optimization, fire engineering review, floor load assessment, and 3D design visualization. We handle anchor bolt embedment, racking assembly, safety accessories (barriers, column protectors, mesh panels), and post-installation inspection per EN 15512/SEMA standards.",
+    features: ["Selective pallet racking", "Drive-in racking", "Cantilever racking", "VNA narrow aisle", "ASRS automated systems", "Layout optimization", "Fire engineering review", "EN 15512 compliant"],
+    faqs: makeFAQ("Warehouse Racking", "service"),
+    tags: makeTags("Racking UAE", ["pallet racking", "warehouse shelving", "storage systems"]),
+  },
+  // 130
+  {
+    keyword: "Solar Panel Installation UAE",
+    slug: "solar-panel-installation-uae",
+    category: "service",
+    h1: "Solar Panel Installation in UAE",
+    heroSubtitle: "Rooftop and ground-mounted solar PV systems for commercial, industrial, and residential buildings.",
+    metaTitle: "Solar Panel Installation UAE | Hadeed Emirates Contracting",
+    metaDescription: "Solar panel installation UAE. Rooftop & ground-mounted. Commercial, industrial. Net metering. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting installs solar PV systems across the UAE for commercial rooftops, industrial facilities, and residential properties. With abundant sunshine, solar energy in the UAE delivers excellent ROI — especially with net metering programs from DEWA, ADDC, and SEWA.",
+    secondParagraph: "We handle site assessment, system design, structural analysis (roof load capacity), panel installation, inverter setup, DC/AC wiring, net meter connection, and utility authority approvals. Our systems use Tier-1 panels (Jinko, Trina, Canadian Solar) and SMA/Huawei inverters with 25-year performance warranties.",
+    features: ["Rooftop systems", "Ground-mounted arrays", "Net metering setup", "Tier-1 solar panels", "SMA/Huawei inverters", "Structural analysis", "Utility authority approvals", "25-year warranties"],
+    faqs: makeFAQ("Solar Panel Installation", "service"),
+    tags: makeTags("Solar UAE", ["solar rooftop", "solar PV installer", "renewable energy"]),
+  },
+  // ===== BATCH 9: Keywords 131-140 — Qatar, Jordan & Regional =====
+  // 131
+  {
+    keyword: "Warehouse Construction Qatar",
+    slug: "warehouse-construction-qatar",
+    category: "location",
+    h1: "Warehouse Construction in Qatar",
+    heroSubtitle: "Industrial warehouse design and construction in Doha, Mesaieed, and Ras Laffan — steel and concrete buildings.",
+    metaTitle: "Warehouse Construction Qatar | Hadeed Emirates Contracting",
+    metaDescription: "Warehouse construction Qatar. Steel & concrete warehouses. Doha, Mesaieed, Ras Laffan. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting builds industrial warehouses in Qatar — from Doha's Industrial Area and Mesaieed to the New Industrial Area and special economic zones. Our Qatar team delivers steel-framed and precast concrete warehouses with fast-track construction programs.",
+    secondParagraph: "Our Qatar warehouse projects range from 500 sqm workshop units to 50,000+ sqm distribution centers with docking facilities. We handle foundations, structural steel/precast, MEP, fire fighting, and finishing, all compliant with Ashghal construction standards and Qatar Building Code.",
+    features: ["Steel-framed warehouses", "Precast concrete buildings", "Distribution centers", "Docking facilities", "500-50,000+ sqm", "Ashghal approved", "Fast-track programs", "Qatar Building Code"],
+    faqs: makeFAQ("Warehouse Construction Qatar", "location"),
+    tags: makeTags("Warehouse Qatar", ["industrial building Qatar", "logistics center Doha", "steel warehouse"]),
+  },
+  // 132
+  {
+    keyword: "Construction Company Aqaba Jordan",
+    slug: "construction-company-aqaba-jordan",
+    category: "location",
+    h1: "Construction Company in Aqaba, Jordan",
+    heroSubtitle: "Port city construction — industrial, tourism, and commercial building contractor in Aqaba Special Economic Zone.",
+    metaTitle: "Construction Company Aqaba Jordan | Hadeed Emirates Contracting",
+    metaDescription: "Construction company Aqaba, Jordan. Port, tourism, industrial, commercial projects. ASEZA zone. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting operates in Aqaba, Jordan's strategic Red Sea port city and Special Economic Zone (ASEZA). Our Aqaba projects support the city's growing tourism, logistics, and industrial sectors — from hotel and resort construction to port-related industrial facilities.",
+    secondParagraph: "Aqaba's status as a Special Economic Zone attracts international investment in logistics, tourism, and light manufacturing. We build hotels, commercial centers, industrial warehouses, and port facilities meeting ASEZA development guidelines and Jordanian Building Code requirements.",
+    features: ["Tourism & hotel projects", "Port facilities", "Industrial warehouses", "Commercial buildings", "ASEZA compliant", "Red Sea coastal projects", "Light manufacturing", "Jordanian Building Code"],
+    faqs: makeFAQ("Construction Aqaba", "location"),
+    tags: makeTags("Construction Aqaba", ["contractor Aqaba", "builder Jordan south", "ASEZA construction"]),
+  },
+  // 133
+  {
+    keyword: "Contractor Lusail City Qatar",
+    slug: "contractor-lusail-city-qatar",
+    category: "location",
+    h1: "Construction Contractor in Lusail City, Qatar",
+    heroSubtitle: "Residential, commercial, and mixed-use construction in Qatar's flagship smart city development.",
+    metaTitle: "Contractor Lusail City Qatar | Hadeed Emirates Contracting",
+    metaDescription: "Contractor Lusail City Qatar. Residential towers, commercial, mixed-use. Smart city construction. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting is active in Lusail City — Qatar's ambitious waterfront smart city north of Doha. As Lusail evolves from a World Cup focal point to a thriving residential and commercial hub, we support the city's ongoing construction of residential towers, retail, and mixed-use developments.",
+    secondParagraph: "Lusail City's infrastructure demands high-quality construction with smart building integration. We deliver residential interiors, commercial fit-outs, retail podium construction, underground parking, and infrastructure works — all to the elevated standards required by the Lusail Real Estate Development Company (LREDC).",
+    features: ["Residential tower fit-out", "Commercial construction", "Retail podium works", "Underground parking", "Smart building integration", "Infrastructure works", "LREDC standards", "Post-World Cup development"],
+    faqs: makeFAQ("Contractor Lusail", "location"),
+    tags: makeTags("Contractor Lusail Qatar", ["Lusail construction", "new city Qatar", "smart city builder"]),
+  },
+  // 134
+  // 135
+  // 136
+  {
+    keyword: "Industrial Zone Construction Abu Dhabi",
+    slug: "industrial-zone-construction-abu-dhabi",
+    category: "location",
+    h1: "Industrial Zone Construction in Abu Dhabi",
+    heroSubtitle: "Building in ICAD, KIZAD, Musaffah, and ZonesCorp — factories, warehouses, and industrial infrastructure.",
+    metaTitle: "Industrial Zone Construction Abu Dhabi | Hadeed Emirates Contracting",
+    metaDescription: "Industrial zone construction Abu Dhabi. ICAD, KIZAD, Musaffah, ZonesCorp. Factories, warehouses. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting is a specialist contractor for Abu Dhabi's major industrial zones — ICAD I/II/III, KIZAD, Musaffah Industrial, and ZonesCorp developments. With decades of experience building in these zones, we understand the specific requirements, approval processes, and construction standards.",
+    secondParagraph: "From ZonesCorp industrial plots requiring built-to-suit facilities to KIZAD's heavy manufacturing plants and ICAD's logistics centers, we deliver complete construction solutions. Our proximity to these zones means faster mobilization, local material sourcing, and efficient project execution.",
+    features: ["ICAD I, II, III projects", "KIZAD manufacturing", "Musaffah warehouses", "ZonesCorp facilities", "Built-to-suit solutions", "Zone approval expertise", "Local material sourcing", "Fast mobilization"],
+    faqs: makeFAQ("Industrial Zone Abu Dhabi", "location"),
+    tags: makeTags("Industrial Zone Abu Dhabi", ["ICAD construction", "KIZAD builder", "ZonesCorp contractor"]),
+  },
+  // 137
+  {
+    keyword: "Free Zone Construction Dubai",
+    slug: "free-zone-construction-dubai",
+    category: "location",
+    h1: "Free Zone Construction in Dubai",
+    heroSubtitle: "Construction contractor for JAFZA, DAFZA, Dubai South, DMCC, DIP, and other Dubai free zones.",
+    metaTitle: "Free Zone Construction Dubai | Hadeed Emirates Contracting",
+    metaDescription: "Free zone construction Dubai. JAFZA, DAFZA, Dubai South, DMCC, DIP. Offices, warehouses, showrooms. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting builds across Dubai's key free zones — JAFZA, DAFZA, Dubai South, DMCC, DIP, Dubai Silicon Oasis, and Dubai Healthcare City. Free zone construction requires specialized knowledge of zone-specific regulations, TRAKHEES/DCCA approvals, and developer guidelines.",
+    secondParagraph: "We construct office buildings, warehouses, light industrial units, showrooms, and mixed-use facilities within free zone plots. Our Dubai free zone experience ensures smooth approvals, compliance with zone master plans, and efficient construction delivery for businesses operating in these special economic environments.",
+    features: ["JAFZA warehouses", "DAFZA offices", "Dubai South logistics", "DMCC commercial", "DIP industrial", "TRAKHEES approved", "Zone master plan compliant", "Mixed-use facilities"],
+    faqs: makeFAQ("Free Zone Construction Dubai", "location"),
+    tags: makeTags("Free Zone Dubai", ["JAFZA contractor", "DAFZA builder", "Dubai South construction"]),
+  },
+  // 138
+  {
+    keyword: "Contractor for Oil and Gas Projects UAE",
+    slug: "contractor-oil-gas-projects-uae",
+    category: "industry",
+    h1: "Contractor for Oil & Gas Projects in UAE",
+    heroSubtitle: "Civil, structural, and piping construction for refineries, tank farms, gas plants, and oil field facilities.",
+    metaTitle: "Contractor Oil Gas Projects UAE | Hadeed Emirates Contracting",
+    metaDescription: "Oil & gas construction contractor UAE. Refineries, tank farms, piping, gas plants. ADNOC approved. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting is an approved contractor for oil & gas construction projects in the UAE, serving ADNOC, TAQA, and international energy companies. Our oil & gas capabilities cover civil works, structural steel, piping installation, tank construction, and facility maintenance.",
+    secondParagraph: "We build in hazardous zone environments — Zone 0, 1, and 2 classified areas — with strict PTW (Permit to Work) systems, gas testing, and safety watch protocols. Our team holds company-specific safety approvals (ADNOC HSE, GASCO, Takreer) and follows international codes (ASME, API, NFPA).",
+    features: ["Refinery construction", "Tank farm building", "Piping installation", "Gas plant facilities", "Zone 0/1/2 work", "ADNOC HSE approved", "ASME/API standards", "PTW safety systems"],
+    faqs: makeFAQ("Oil Gas Contractor", "industry"),
+    tags: makeTags("Oil Gas UAE", ["ADNOC contractor", "refinery construction", "piping contractor"]),
+  },
+  // 139
+  {
+    keyword: "Contractor for Solar Energy Projects UAE",
+    slug: "contractor-solar-energy-projects-uae",
+    category: "industry",
+    h1: "Contractor for Solar Energy Projects in UAE",
+    heroSubtitle: "EPC contractor for solar farms, rooftop arrays, and carport solar systems — civil, structural, and electrical works.",
+    metaTitle: "Contractor Solar Energy Projects UAE | Hadeed Emirates Contracting",
+    metaDescription: "Solar energy project contractor UAE. Solar farms, rooftop systems, carports. EPC civil & electrical. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides EPC (Engineering, Procurement, Construction) services for solar energy projects in the UAE. Our solar division handles civil and structural works for utility-scale solar farms, commercial rooftop installations, and solar carport/shade structures.",
+    secondParagraph: "We construct pile foundations, tracker mounting systems, module installation, cable routing, inverter pads, transformer stations, and balance-of-plant infrastructure. Our experience includes projects in the harsh UAE desert environment where sand, heat, and humidity demand robust construction methods.",
+    features: ["Utility-scale solar farms", "Commercial rooftop arrays", "Solar carport structures", "Pile foundations", "Tracker mounting systems", "Cable routing & trenching", "Inverter & transformer pads", "Desert environment expertise"],
+    faqs: makeFAQ("Solar Energy Contractor", "industry"),
+    tags: makeTags("Solar Construction UAE", ["solar farm builder", "EPC solar", "renewable energy construction"]),
+  },
+  // 140
+  {
+    keyword: "Contractor for Education Projects UAE",
+    slug: "contractor-education-projects-uae",
+    category: "industry",
+    h1: "Contractor for Education & School Projects UAE",
+    heroSubtitle: "School, university, and training center construction — classrooms, labs, libraries, and sports facilities.",
+    metaTitle: "Contractor Education Projects UAE | Hadeed Emirates Contracting",
+    metaDescription: "Education construction contractor UAE. Schools, universities, training centers. Classrooms, labs, sports. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting builds educational facilities across the UAE — from K-12 schools and nurseries to university campuses and vocational training centers. Education construction requires child-safe design, acoustic performance, flexible learning spaces, and durable finishes.",
+    secondParagraph: "Our education projects include classroom blocks, science laboratories, IT labs, libraries, student cafeterias, administration buildings, sports halls, swimming pools, outdoor play areas, and auditoriums. We follow ADEK, KHDA, and MoE guidelines as applicable and deliver projects during school holidays for operational continuity.",
+    features: ["K-12 school construction", "University campus buildings", "Science & IT laboratories", "Libraries & auditoriums", "Sports halls & pools", "Child-safe design", "ADEK/KHDA compliant", "Holiday construction schedule"],
+    faqs: makeFAQ("Education Construction", "industry"),
+    tags: makeTags("Education Construction UAE", ["school builder", "university construction", "training center"]),
+  },
+  // ===== BATCH 10: Keywords 141-150 — Equipment & Niche Services =====
+  // 141
+  // 142
+  // 143
+  // 144
+  {
+    keyword: "Soil Investigation Company UAE",
+    slug: "soil-investigation-company-uae",
+    category: "service",
+    h1: "Soil Investigation & Geotechnical Services UAE",
+    heroSubtitle: "Borehole drilling, SPT testing, laboratory analysis, and geotechnical reporting for construction projects.",
+    metaTitle: "Soil Investigation Company UAE | Hadeed Emirates Contracting",
+    metaDescription: "Soil investigation UAE. Boreholes, SPT, lab testing, geotechnical reports. Foundation design. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting coordinates soil investigation and geotechnical services for construction projects across the UAE. Before any foundation design, we arrange borehole drilling, standard penetration testing (SPT), lab analysis, and comprehensive geotechnical reports through our approved specialist partners.",
+    secondParagraph: "Our geotechnical services cover desk studies, borehole planning, field supervision, lab coordination (grain size, Atterberg limits, consolidation, triaxial), and report preparation with foundation recommendations. This data drives foundation design decisions — shallow vs deep, pile type selection, and allowable bearing capacity.",
+    features: ["Borehole drilling", "SPT testing", "Lab analysis", "Geotechnical reports", "Foundation recommendations", "Bearing capacity analysis", "Settlement predictions", "Dewatering assessments"],
+    faqs: makeFAQ("Soil Investigation", "service"),
+    tags: makeTags("Soil Investigation UAE", ["geotechnical survey", "borehole drilling", "ground investigation"]),
+  },
+  // 145
+  {
+    keyword: "Surveying Services UAE",
+    slug: "surveying-services-uae",
+    category: "service",
+    h1: "Land Surveying Services in UAE",
+    heroSubtitle: "Topographic surveys, setting out, as-built surveys, drone mapping, and 3D laser scanning for construction projects.",
+    metaTitle: "Surveying Services UAE | Hadeed Emirates Contracting",
+    metaDescription: "Land surveying services UAE. Topographic, setting out, drone mapping, 3D scanning. Construction surveys. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides professional surveying services for construction projects across the UAE. Our survey team uses total stations, GPS/GNSS receivers, drone photogrammetry, and 3D laser scanners to deliver accurate topographic surveys, construction setting out, and as-built documentation.",
+    secondParagraph: "Accurate surveying is the foundation of successful construction. We provide pre-construction topographic surveys, control point establishment, building setting out, pile position surveys, structural monitoring, deformation surveys, and final as-built surveys for handover documentation.",
+    features: ["Topographic surveys", "Construction setting out", "As-built surveys", "Drone photogrammetry", "3D laser scanning", "GPS/GNSS control", "Structural monitoring", "Quantity measurement"],
+    faqs: makeFAQ("Surveying Services", "service"),
+    tags: makeTags("Surveying UAE", ["land survey", "topographic survey", "drone survey"]),
+  },
+  // 146
+  {
+    keyword: "Concrete Testing Services UAE",
+    slug: "concrete-testing-services-uae",
+    category: "service",
+    h1: "Concrete Testing & Quality Control UAE",
+    heroSubtitle: "Cube testing, slump testing, core extraction, NDT, and concrete mix design for construction quality assurance.",
+    metaTitle: "Concrete Testing Services UAE | Hadeed Emirates Contracting",
+    metaDescription: "Concrete testing UAE. Cube testing, slump test, core extraction, Schmidt hammer, mix design. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides concrete testing and quality control services for construction projects across the UAE. Our QC team performs fresh concrete testing (slump, temperature, air content), hardened concrete testing (cube crushing, core extraction), and non-destructive testing (Schmidt hammer, UPV).",
+    secondParagraph: "Concrete quality is verified at every stage — from mix design approval and trial mixes through production monitoring and final strength confirmation. We maintain ASTM/BS-calibrated testing equipment and UKAS/NABL-accredited laboratory partnerships for certified test results.",
+    features: ["Cube testing (7/28 day)", "Slump & workability tests", "Core extraction & testing", "Schmidt hammer NDT", "UPV testing", "Mix design review", "Temperature monitoring", "Calibrated equipment"],
+    faqs: makeFAQ("Concrete Testing", "service"),
+    tags: makeTags("Concrete Testing UAE", ["cube testing", "quality control concrete", "NDT concrete"]),
+  },
+  // 147
+  {
+    keyword: "Waste Management Construction UAE",
+    slug: "waste-management-construction-uae",
+    category: "service",
+    h1: "Construction Waste Management UAE",
+    heroSubtitle: "Skip hire, waste segregation, recycling, and disposal services for construction and demolition projects.",
+    metaTitle: "Construction Waste Management UAE | Hadeed Emirates Contracting",
+    metaDescription: "Construction waste management UAE. Skip hire, waste segregation, recycling, disposal. Tadweer approved. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides construction waste management services across the UAE — from skip hire and waste segregation to recycling coordination and approved landfill disposal. We help contractors meet Estidama waste diversion targets and Tadweer/Bee'ah regulatory requirements.",
+    secondParagraph: "Our waste management covers concrete rubble, steel scrap, timber, packaging, hazardous materials, and mixed construction waste. We provide 8, 12, 20, and 40 cubic yard skips, roll-on/roll-off containers, waste transfer station coordination, and monthly waste reports for environmental compliance.",
+    features: ["Skip hire (8-40 yd)", "Waste segregation", "Recycling coordination", "Landfill disposal", "Hazardous waste handling", "Tadweer/Bee'ah approved", "Estidama waste targets", "Monthly waste reports"],
+    faqs: makeFAQ("Construction Waste", "service"),
+    tags: makeTags("Waste Management UAE", ["skip hire", "construction waste", "recycling contractor"]),
+  },
+  // 148
+  {
+    keyword: "Security Guard Services Construction UAE",
+    slug: "security-guard-services-construction-uae",
+    category: "service",
+    h1: "Construction Site Security Services UAE",
+    heroSubtitle: "Security guards, CCTV monitoring, access control, and patrol services for construction sites and compounds.",
+    metaTitle: "Construction Security Services UAE | Hadeed Emirates Contracting",
+    metaDescription: "Construction site security UAE. Guards, CCTV, access control. 24/7 site protection. Licensed. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting arranges construction site security services across the UAE — including uniformed security guards, CCTV camera systems, access control gates, and mobile patrol units. Protecting valuable equipment, materials, and works-in-progress is essential for project success.",
+    secondParagraph: "Our security services include 24/7 manned guarding, visitor management, vehicle access control, material movement monitoring, fire watch patrols, and incident reporting. Security personnel are SIRA-licensed (Dubai) and vetted according to UAE security regulations.",
+    features: ["24/7 manned guarding", "CCTV camera systems", "Access control gates", "Visitor management", "Fire watch patrols", "SIRA licensed guards", "Incident reporting", "Material monitoring"],
+    faqs: makeFAQ("Construction Security", "service"),
+    tags: makeTags("Security Construction UAE", ["site security", "construction guards", "CCTV monitoring"]),
+  },
+  // 149
+  // 150
+  {
+    keyword: "Construction Safety Training UAE",
+    slug: "construction-safety-training-uae",
+    category: "service",
+    h1: "Construction Safety Training in UAE",
+    heroSubtitle: "NEBOSH, IOSH, OSHA, and OSHAD safety training courses for construction workers and supervisors.",
+    metaTitle: "Construction Safety Training UAE | Hadeed Emirates Contracting",
+    metaDescription: "Construction safety training UAE. NEBOSH, IOSH, OSHA courses. HSE training for workers & supervisors. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting coordinates construction safety training programs across the UAE — including NEBOSH, IOSH, OSHA, and OSHAD-compliant courses for new workers, experienced tradesmen, supervisors, and managers. A trained workforce is the foundation of our zero-harm safety culture.",
+    secondParagraph: "Our safety training covers induction programs, toolbox talks, task-specific risk assessments, working at height certification, confined space entry, excavation safety, crane signal person training, fire warden courses, and first aid certification. All training aligns with UAE OSHAD SF requirements.",
+    features: ["NEBOSH certification", "IOSH Managing Safely", "OSHA 30-hour courses", "OSHAD compliance training", "Working at height", "Confined space entry", "First aid certification", "Toolbox talk programs"],
+    faqs: makeFAQ("Safety Training", "service"),
+    tags: makeTags("Safety Training UAE", ["NEBOSH course", "construction safety", "HSE training"]),
+  },
+  // ===== BATCH 11: Keywords 151-160 — More Construction Keywords =====
+  // 151
+  {
+    keyword: "Roof Construction Company UAE",
+    slug: "roof-construction-company-uae",
+    category: "construction",
+    h1: "Roof Construction Company in UAE",
+    heroSubtitle: "Metal roofing, concrete slab roofing, PEB roof systems, skylights, and roof cladding for all building types.",
+    metaTitle: "Roof Construction Company UAE | Hadeed Emirates Contracting",
+    metaDescription: "Roof construction UAE. Metal roofing, PEB systems, concrete slabs, insulated panels, skylights. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting builds roof systems across the UAE for industrial warehouses, commercial buildings, and residential properties. Our roofing capabilities include standing seam metal roofing, insulated sandwich panels, PEB roof sheeting, concrete flat roofs, and specialized skylight installations.",
+    secondParagraph: "From single-skin profiled sheets for warehouses to double-skin insulated roof systems with vapor barriers and translucent panels, we design and install roofing that handles UAE's extreme heat, wind loads, and occasional rainfall. All roof works include proper flashings, gutters, and downpipe drainage systems.",
+    features: ["Standing seam metal roofing", "Insulated sandwich panels", "PEB roof systems", "Concrete flat roofs", "Skylight installations", "Gutter & drainage systems", "Heat & wind rated", "Roof maintenance"],
+    faqs: makeFAQ("Roof Construction", "construction"),
+    tags: makeTags("Roof Construction UAE", ["metal roofing", "roof cladding", "industrial roofing"]),
+  },
+  // 152
+  {
+    keyword: "Basement Construction Company UAE",
+    slug: "basement-construction-company-uae",
+    category: "construction",
+    h1: "Basement Construction Company in UAE",
+    heroSubtitle: "Deep excavation, shoring, dewatering, and reinforced concrete basement construction for multi-level underground structures.",
+    metaTitle: "Basement Construction Company UAE | Hadeed Emirates Contracting",
+    metaDescription: "Basement construction UAE. Deep excavation, shoring, dewatering, RC construction. Multi-level basements. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting constructs single and multi-level basements across the UAE for commercial towers, residential buildings, and mixed-use developments. Basement construction in the UAE's high water table environment requires specialized ground engineering, dewatering, and waterproofing expertise.",
+    secondParagraph: "We handle the complete basement cycle — sheet piling, soldier pile and secant pile walls, diaphragm walls, dewatering (well points and deep wells), excavation, blinding, waterproofing, reinforced concrete construction, and backfilling. All works comply with geotechnical reports and structural design requirements.",
+    features: ["Multi-level basements", "Sheet pile shoring", "Secant pile walls", "Dewatering systems", "Waterproof RC construction", "Deep excavation", "Ground anchors", "Underpinning"],
+    faqs: makeFAQ("Basement Construction", "construction"),
+    tags: makeTags("Basement UAE", ["deep excavation", "shoring contractor", "underground construction"]),
+  },
+  // 153
+  {
+    keyword: "Partition Wall Contractor UAE",
+    slug: "partition-wall-contractor-uae",
+    category: "construction",
+    h1: "Partition Wall Contractor in UAE",
+    heroSubtitle: "Gypsum board, glass, demountable, and fire-rated partition walls for office, commercial, and industrial spaces.",
+    metaTitle: "Partition Wall Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Partition wall contractor UAE. Gypsum, glass, demountable, fire-rated partitions. Office, commercial. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting installs partition wall systems across the UAE for office spaces, commercial buildings, industrial facilities, and healthcare environments. We work with gypsum board, single/double glazed glass, demountable systems, and fire-rated partitions up to 4-hour ratings.",
+    secondParagraph: "Our partition work includes metal stud framing, single and double-layer gypsum boarding, acoustic insulation, frameless glass partitions, smart glass walls, and fire-rated assemblies. We follow GA-600 standards for fire ratings and achieve STC values up to 60 for acoustic-critical spaces.",
+    features: ["Gypsum board partitions", "Glass partitions", "Demountable systems", "Fire-rated (up to 4hr)", "Acoustic partitions (STC 60)", "Metal stud framing", "Smart glass walls", "Healthcare partitions"],
+    faqs: makeFAQ("Partition Wall", "construction"),
+    tags: makeTags("Partition UAE", ["gypsum partition", "glass partition", "office partition"]),
+  },
+  // 154
+  {
+    keyword: "False Ceiling Contractor UAE",
+    slug: "false-ceiling-contractor-uae",
+    category: "construction",
+    h1: "False Ceiling Contractor in UAE",
+    heroSubtitle: "Suspended ceiling systems — mineral fiber, metal, gypsum, wood, stretch fabric, and open cell designs.",
+    metaTitle: "False Ceiling Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "False ceiling contractor UAE. Mineral fiber, metal, gypsum, stretch ceiling. Armstrong, Hunter Douglas. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting installs suspended ceiling systems across the UAE for offices, hospitals, schools, retail spaces, hotels, and industrial buildings. Our ceiling capabilities include mineral fiber tiles, metal panel ceilings, gypsum board ceilings, stretch fabric systems, and open-cell grid ceilings.",
+    secondParagraph: "We work with premium brands including Armstrong, Rockfon, Hunter Douglas, and Barrisol to deliver aesthetically pleasing and functional ceiling solutions. Our installations address acoustic performance, fire rating, accessibility (for MEP maintenance), lighting integration, and clean room requirements.",
+    features: ["Mineral fiber tile ceilings", "Metal panel ceilings", "Gypsum board ceilings", "Stretch fabric ceilings", "Open-cell grid ceilings", "Armstrong, Rockfon brands", "Fire-rated systems", "Acoustic performance"],
+    faqs: makeFAQ("False Ceiling", "construction"),
+    tags: makeTags("False Ceiling UAE", ["suspended ceiling", "ceiling contractor", "acoustic ceiling"]),
+  },
+  // 155
+  {
+    keyword: "Door Installation Contractor UAE",
+    slug: "door-installation-contractor-uae",
+    category: "construction",
+    h1: "Door Installation Contractor in UAE",
+    heroSubtitle: "Wooden, steel, glass, fire-rated, industrial, and automatic door installation for all building types.",
+    metaTitle: "Door Installation Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Door installation UAE. Wooden, steel, glass, fire-rated, automatic doors. Supply & install. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting supplies and installs door systems across the UAE — from standard interior flush doors to heavy-duty industrial roller shutters, fire-rated assemblies, automatic sliding doors, and decorative entrance portals. We handle both new construction and replacement projects.",
+    secondParagraph: "Our door range includes timber flush doors, hollow metal (HM) doors, fire-rated doors (30/60/120 min), glass frameless doors, automatic sliding/revolving doors, industrial sectional overhead doors, rapid roll-up doors, and hangar doors. All fire doors carry UL/BS certifications and include intumescent seals.",
+    features: ["Timber flush doors", "Hollow metal (HM) doors", "Fire-rated (30-120 min)", "Glass frameless doors", "Automatic sliding doors", "Industrial roller shutters", "Rapid roll-up doors", "UL/BS certified"],
+    faqs: makeFAQ("Door Installation", "construction"),
+    tags: makeTags("Door Installation UAE", ["fire door contractor", "automatic doors", "industrial doors"]),
+  },
+  // 156
+  {
+    keyword: "Tiling Contractor UAE",
+    slug: "tiling-contractor-uae",
+    category: "construction",
+    h1: "Tiling Contractor in UAE",
+    heroSubtitle: "Floor and wall tiling — porcelain, ceramic, marble, granite, mosaic, and large-format tile installation.",
+    metaTitle: "Tiling Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Tiling contractor UAE. Porcelain, ceramic, marble, granite, mosaic. Floor & wall. Expert installation. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides professional tiling services across the UAE for commercial, residential, and industrial projects. Our tilers handle porcelain, ceramic, natural marble, granite, mosaic, quarry tiles, and large-format slabs (up to 3m x 1.5m) for floors, walls, facades, and wet areas.",
+    secondParagraph: "Quality tiling requires professional substrate preparation — leveling screeds, waterproof membranes, anti-fracture mats, and proper adhesive selection. We use Mapei, Weber, and Laticrete products and follow BS 5385 tiling standards. Our work includes complex patterns, diagonal layouts, border designs, and feature walls.",
+    features: ["Porcelain & ceramic tiles", "Natural marble & granite", "Mosaic installations", "Large-format slabs", "Floor & wall tiling", "Waterproof substrate prep", "Complex patterns", "BS 5385 standards"],
+    faqs: makeFAQ("Tiling Contractor", "construction"),
+    tags: makeTags("Tiling UAE", ["tile installation", "marble flooring", "porcelain tiling"]),
+  },
+  // 157
+  {
+    keyword: "Prequalification for Contractors UAE",
+    slug: "prequalification-contractors-uae",
+    category: "service",
+    h1: "Contractor Prequalification Services in UAE",
+    heroSubtitle: "Hadeed Emirates holds prequalification with major UAE clients — ADNOC, Aldar, Musanada, and government entities.",
+    metaTitle: "Prequalification Contractors UAE | Hadeed Emirates Contracting",
+    metaDescription: "Prequalified contractor UAE. ADNOC, Aldar, Musanada approved. ISO 9001, 14001, 45001 certified. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting holds active prequalification status with major UAE clients including government entities, semi-government organizations, and private developers. Our prequalification portfolio demonstrates our financial capability, technical experience, safety record, and quality management systems.",
+    secondParagraph: "We maintain ISO 9001 (Quality), ISO 14001 (Environment), and ISO 45001 (Safety) certifications — requirements for most major prequalification programs. Our prequalification dossier includes audited financials, project references, HSE statistics, equipment lists, and organizational charts updated annually.",
+    features: ["ADNOC prequalified", "Aldar approved vendor", "Musanada registered", "ISO 9001 certified", "ISO 14001 certified", "ISO 45001 certified", "Financial capability proven", "25+ year track record"],
+    faqs: makeFAQ("Contractor Prequalification", "service"),
+    tags: makeTags("Prequalification UAE", ["approved contractor", "registered contractor", "ISO certified"]),
+  },
+  // 158
+  {
+    keyword: "Design Build Contractor UAE",
+    slug: "design-build-contractor-uae",
+    category: "service",
+    h1: "Design-Build Contractor in UAE",
+    heroSubtitle: "Single-source design and construction — architectural design, engineering, and building under one contract.",
+    metaTitle: "Design Build Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Design build contractor UAE. Architecture, engineering, construction under one roof. Industrial, commercial. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting offers design-build services — combining architectural design, structural engineering, MEP design, and construction delivery under a single contract. This approach eliminates the traditional gap between designer and builder, reducing project timelines by 20-30%.",
+    secondParagraph: "Our design-build team includes licensed architects, structural and MEP engineers, quantity surveyors, and project managers who collaborate from day one. This integrated approach enables real-time value engineering, constructability reviews, and parallel processing of design and procurement activities.",
+    features: ["Architectural design", "Structural engineering", "MEP design", "Construction delivery", "Value engineering", "Faster than traditional", "Single-point responsibility", "Parallel processing"],
+    faqs: makeFAQ("Design Build Contractor", "service"),
+    tags: makeTags("Design Build UAE", ["DB contractor", "integrated construction", "architect builder"]),
+  },
+  // 159
+  {
+    keyword: "Concrete Repair Contractor UAE",
+    slug: "concrete-repair-contractor-uae",
+    category: "service",
+    h1: "Concrete Repair & Rehabilitation Contractor UAE",
+    heroSubtitle: "Spalling repair, crack injection, cathodic protection, carbon fiber strengthening, and structural rehabilitation.",
+    metaTitle: "Concrete Repair Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Concrete repair contractor UAE. Spalling repair, crack injection, strengthening, cathodic protection. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides concrete repair and structural rehabilitation services across the UAE for aging buildings, bridges, parking structures, and marine facilities. UAE's harsh climate (salt air, humidity, temperature extremes) accelerates concrete deterioration, making repair essential for structural safety.",
+    secondParagraph: "Our repair methods include spalling repair (break-out, rebar treatment, polymer-modified mortar), crack injection (epoxy and polyurethane), carbon fiber reinforced polymer (CFRP) strengthening, impressed current cathodic protection, and protective coatings. All works follow ACI 562 and EN 1504 repair standards.",
+    features: ["Spalling repair", "Crack injection", "Carbon fiber strengthening", "Cathodic protection", "Rebar corrosion treatment", "Protective coatings", "Structural assessments", "ACI 562 / EN 1504"],
+    faqs: makeFAQ("Concrete Repair", "service"),
+    tags: makeTags("Concrete Repair UAE", ["structural repair", "spalling fix", "crack injection"]),
+  },
+  // 160
+  {
+    keyword: "Temporary Power Supply Construction UAE",
+    slug: "temporary-power-supply-construction-uae",
+    category: "service",
+    h1: "Temporary Power Supply for Construction Sites UAE",
+    heroSubtitle: "Temporary electrical distribution, transformer hire, and construction power networks for project sites.",
+    metaTitle: "Temporary Power Supply Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Temporary power supply construction UAE. Generators, transformers, distribution. ADDC/DEWA temporary connection. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides temporary power supply solutions for construction sites across the UAE. From generator-powered setups during early works to ADDC/DEWA temporary mains connections for main construction phases, we design and install complete temporary electrical distribution networks.",
+    secondParagraph: "Our temporary power services include generator sizing and installation, transformer procurement, temporary switchgear and distribution boards, cable routing (armored and flexible), earth fault protection, and lighting towers for night works. All installations comply with utility authority temporary connection requirements.",
+    features: ["Generator power systems", "Temporary transformers", "Distribution boards", "Cable routing", "Lighting towers", "ADDC/DEWA applications", "Earth fault protection", "Night work lighting"],
+    faqs: makeFAQ("Temporary Power Supply", "service"),
+    tags: makeTags("Temp Power UAE", ["construction power", "temporary electric", "generator power"]),
+  },
+  // ===== BATCH 12: Keywords 161-170 — Industry & Location =====
+  // 161
+  {
+    keyword: "Aviation Hangar Construction UAE",
+    slug: "aviation-hangar-construction-uae",
+    category: "industry",
+    h1: "Aviation Hangar Construction in UAE",
+    heroSubtitle: "Aircraft hangars, MRO facilities, FBO terminals, and airport support buildings — clear-span steel structures up to 100m.",
+    metaTitle: "Aviation Hangar Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Aviation hangar construction UAE. MRO hangars, FBO buildings, clear-span steel up to 100m. Airport approved. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting constructs aviation hangars and airport support facilities across the UAE. Our hangar projects include maintenance, repair and overhaul (MRO) hangars, fixed-base operator (FBO) facilities, aircraft parking shelters, and ground support equipment (GSE) buildings at major UAE airports.",
+    secondParagraph: "Aviation hangars require specialized engineering — clear spans up to 100m without columns, 20+ meter eave heights, bi-fold or sliding hangar doors, fire suppression (foam deluge), specialized flooring (aircraft loading), and compliance with GCAA/ICAO standards. We deliver hangars from concept to operational handover.",
+    features: ["MRO hangars up to 100m span", "FBO terminal buildings", "Aircraft parking shelters", "Bi-fold hangar doors", "Foam deluge fire suppression", "Aircraft-rated flooring", "GCAA/ICAO compliant", "GSE maintenance buildings"],
+    faqs: makeFAQ("Aviation Hangar", "industry"),
+    tags: makeTags("Aviation Hangar UAE", ["aircraft hangar", "MRO facility", "airport construction"]),
+  },
+  // 162
+  {
+    keyword: "Marine Construction Contractor UAE",
+    slug: "marine-construction-contractor-uae",
+    category: "industry",
+    h1: "Marine Construction Contractor in UAE",
+    heroSubtitle: "Jetties, quay walls, breakwaters, marine piling, and waterfront development across the UAE coastline.",
+    metaTitle: "Marine Construction Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Marine construction UAE. Jetties, quay walls, breakwaters, marine piling. Ports & waterfront. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting undertakes marine construction projects along the UAE coastline — from jetty and quay wall construction to breakwater installation, marine piling, seawall repairs, and waterfront development. Our marine division serves ports, marinas, industrial waterfronts, and coastal developments.",
+    secondParagraph: "Marine construction requires specialized equipment (jack-up barges, marine cranes, divers) and corrosion-resistant materials. We use sulfate-resistant concrete, epoxy-coated and stainless-steel reinforcement, cathodic protection systems, and marine-grade coatings to ensure long-term durability in aggressive salt water environments.",
+    features: ["Jetty construction", "Quay wall building", "Breakwater installation", "Marine piling", "Seawall repairs", "Waterfront development", "Marine-grade materials", "Jack-up barge operations"],
+    faqs: makeFAQ("Marine Construction", "industry"),
+    tags: makeTags("Marine Construction UAE", ["jetty builder", "quay wall", "waterfront contractor"]),
+  },
+  // 163
+  {
+    keyword: "Logistics Warehouse Construction UAE",
+    slug: "logistics-warehouse-construction-uae",
+    category: "industry",
+    h1: "Logistics Warehouse Construction in UAE",
+    heroSubtitle: "E-commerce fulfillment centers, 3PL warehouses, cross-dock facilities, and automated distribution centers.",
+    metaTitle: "Logistics Warehouse Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Logistics warehouse construction UAE. E-commerce, 3PL, cross-dock, cold chain. JAFZA, DWC, KIZAD. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting builds logistics warehouses and distribution centers across UAE free zones including JAFZA, DWC, KIZAD, and Sharjah Airport Free Zone. Our logistics facilities range from standard dry warehouses to temperature-controlled cold chain facilities and fully automated e-commerce fulfillment centers.",
+    secondParagraph: "Modern logistics demands high-bay storage (12-18m clear height), super-flat floors (DM2/FM2 tolerance), dock levelers, rapid roll-up doors, fire sprinkler systems (ESFR), and IT infrastructure for warehouse management systems. We design and construct facilities meeting all operational requirements.",
+    features: ["E-commerce fulfillment centers", "3PL warehouses", "Cross-dock facilities", "Cold chain logistics", "Super-flat floors DM2", "12-18m clear height", "ESFR sprinkler systems", "Dock leveler integration"],
+    faqs: makeFAQ("Logistics Warehouse", "industry"),
+    tags: makeTags("Logistics Warehouse UAE", ["fulfillment center", "distribution center", "3PL warehouse"]),
+  },
+  // 164
+  {
+    keyword: "Retail Fit-Out Contractor UAE",
+    slug: "retail-fit-out-contractor-uae",
+    category: "industry",
+    h1: "Retail Fit-Out Contractor in UAE",
+    heroSubtitle: "Shopfitting, mall kiosks, brand flagship stores, F&B outlets, and hypermarket fit-outs across UAE malls.",
+    metaTitle: "Retail Fit-Out Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Retail fit-out UAE. Shops, brand stores, F&B, hypermarkets. Dubai Mall, Mall of Emirates. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting delivers retail fit-out projects across the UAE's major shopping destinations — from brand flagship stores and F&B outlets to hypermarkets and mall kiosks. Our retail team understands the fast-paced nature of retail construction where every day of delay means lost revenue.",
+    secondParagraph: "Retail fit-outs require coordination with landlord base-build, compliance with mall fit-out guides (Emaar, MAF, Al Futtaim), and execution during restricted working hours (overnight and early morning). We manage everything from hoarding to handover — MEP, joinery, signage, flooring, AV, and VM installations.",
+    features: ["Brand flagship stores", "F&B restaurant fit-outs", "Mall kiosk construction", "Hypermarket fit-outs", "Landlord coordination", "Night work capability", "Branded joinery", "Full MEP integration"],
+    faqs: makeFAQ("Retail Fit-Out", "industry"),
+    tags: makeTags("Retail Fit-Out UAE", ["shopfitting", "mall contractor", "restaurant fit-out"]),
+  },
+  // 165
+  {
+    keyword: "Construction Company Mussafah Abu Dhabi",
+    slug: "construction-company-mussafah-abu-dhabi",
+    category: "location",
+    h1: "Construction Company in Mussafah, Abu Dhabi",
+    heroSubtitle: "Industrial construction, warehouse building, factory fit-out, and workshop facilities in ICAD Mussafah.",
+    metaTitle: "Construction Company Mussafah Abu Dhabi | Hadeed Emirates Contracting",
+    metaDescription: "Construction company Mussafah Abu Dhabi. Industrial, warehouse, factory. ICAD 1-4 specialist. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting serves the Mussafah industrial area (ICAD) in Abu Dhabi — the UAE's largest industrial zone. Our Mussafah operations include factory construction, warehouse building, workshop fit-outs, office construction within industrial facilities, and maintenance/renovation of existing industrial buildings.",
+    secondParagraph: "Mussafah's ICAD zones (1-4) house manufacturing, oil & gas support, logistics, and heavy industry. We understand ICAD municipality requirements, Abu Dhabi Building Code, ADCD fire regulations, and ADDC/TRANSCO utility connection procedures specific to this area.",
+    features: ["Factory construction", "Warehouse building", "Workshop fit-outs", "Office within industrial", "ICAD 1-4 coverage", "Municipality approved", "ADCD fire compliant", "ADDC/TRANSCO coordination"],
+    faqs: makeFAQ("Mussafah Construction", "location"),
+    tags: makeTags("Mussafah Abu Dhabi", ["ICAD construction", "Mussafah contractor", "industrial Abu Dhabi"]),
+  },
+  // 166
+  {
+    keyword: "Construction Company Dubai Investment Park",
+    slug: "construction-company-dubai-investment-park",
+    category: "location",
+    h1: "Construction Company in Dubai Investment Park (DIP)",
+    heroSubtitle: "Warehouse, factory, showroom, and office construction in DIP 1 & DIP 2 — Trakhees approved contractor.",
+    metaTitle: "Construction Company DIP Dubai | Hadeed Emirates Contracting",
+    metaDescription: "Construction company DIP Dubai. Warehouse, factory, showroom. Trakhees approved. DIP 1 & 2. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting is active in Dubai Investment Park (DIP) — one of the UAE's premier mixed-use industrial and commercial zones. Our DIP projects include warehouse construction, light industrial factories, showroom buildings, office complexes, and labor accommodation facilities.",
+    secondParagraph: "DIP is regulated by Trakhees (part of PCFC) with its own building permit process, civil defense requirements, and inspection protocols. We are thoroughly experienced with Trakhees approvals, DIP infrastructure connections (water, sewer, power), and the specific construction requirements of DIP 1 and DIP 2 zones.",
+    features: ["Warehouse construction", "Factory buildings", "Showroom complexes", "Office buildings", "Labor accommodation", "Trakhees approved", "DIP 1 & DIP 2", "Multi-use developments"],
+    faqs: makeFAQ("DIP Construction", "location"),
+    tags: makeTags("Dubai Investment Park", ["DIP contractor", "Trakhees approved", "DIP construction"]),
+  },
+  // 167
+  {
+    keyword: "Construction Company Al Quoz Dubai",
+    slug: "construction-company-al-quoz-dubai",
+    category: "location",
+    h1: "Construction Company in Al Quoz, Dubai",
+    heroSubtitle: "Al Quoz Industrial — warehouse renovation, workshop construction, art gallery fit-outs, and commercial buildings.",
+    metaTitle: "Construction Company Al Quoz Dubai | Hadeed Emirates Contracting",
+    metaDescription: "Construction company Al Quoz Dubai. Industrial, warehouse, gallery, commercial. DM approved. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting serves Al Quoz — Dubai's vibrant industrial and creative district. Al Quoz is transforming from a purely industrial zone into a mixed-use hub with art galleries, creative studios, cafes, and boutique offices alongside traditional warehouses and workshops.",
+    secondParagraph: "Our Al Quoz projects range from traditional warehouse and workshop construction to trendy art gallery fit-outs, industrial-chic office conversions, and F&B venue build-outs. We navigate Dubai Municipality approvals, existing utility constraints, and the unique challenge of working in an active industrial neighborhood.",
+    features: ["Warehouse construction", "Workshop buildings", "Art gallery fit-outs", "Office conversions", "F&B venue build-outs", "Industrial-to-creative conversions", "Dubai Municipality approved", "Renovation & new build"],
+    faqs: makeFAQ("Al Quoz Construction", "location"),
+    tags: makeTags("Al Quoz Dubai", ["Al Quoz contractor", "industrial Dubai", "creative district"]),
+  },
+  // 168
+  {
+    keyword: "Construction Company Ras Al Khaimah",
+    slug: "construction-company-ras-al-khaimah",
+    category: "location",
+    h1: "Construction Company in Ras Al Khaimah",
+    heroSubtitle: "Industrial, commercial, hospitality, and residential construction across RAK free zones and mainland.",
+    metaTitle: "Construction Company Ras Al Khaimah | Hadeed Emirates Contracting",
+    metaDescription: "Construction company Ras Al Khaimah. Industrial, commercial, hospitality. RAKEZ, Al Hamra. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting operates in Ras Al Khaimah — the UAE's fastest-growing emirate for industrial and tourism development. RAK offers competitive land costs, free zone incentives (RAKEZ), and proximity to Oman, making it attractive for manufacturing, logistics, and hospitality projects.",
+    secondParagraph: "Our RAK portfolio includes ceramic and cement factory expansions, RAKEZ industrial facilities, Al Hamra and Al Marjan Island resort/hospitality projects, and residential developments. We hold RAK Municipality approvals and understand the emirate's specific building regulations and permitting procedures.",
+    features: ["Industrial factories", "RAKEZ facilities", "Resort & hospitality", "Residential projects", "Factory expansions", "Free zone construction", "RAK Municipality approved", "Commercial buildings"],
+    faqs: makeFAQ("RAK Construction", "location"),
+    tags: makeTags("Ras Al Khaimah", ["RAK contractor", "RAKEZ construction", "RAK building"]),
+  },
+  // 169
+  {
+    keyword: "BIM Services Construction UAE",
+    slug: "bim-services-construction-uae",
+    category: "service",
+    h1: "BIM Services for Construction in UAE",
+    heroSubtitle: "3D modeling, clash detection, 4D scheduling, 5D cost, and as-built BIM models for construction projects.",
+    metaTitle: "BIM Services Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "BIM services construction UAE. 3D modeling, clash detection, 4D/5D BIM. Revit, Navisworks. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting integrates Building Information Modeling (BIM) into our construction process — delivering clash-free designs, reduced RFIs, and improved coordination between architectural, structural, and MEP disciplines. BIM is mandatory for many UAE projects and we maintain in-house BIM capability.",
+    secondParagraph: "Our BIM services include LOD 300-500 modeling in Revit, clash detection using Navisworks, 4D construction sequencing linked to Primavera schedules, 5D cost extraction, and as-built model delivery for facility management. We follow ISO 19650 and UAE BIM mandates for government projects.",
+    features: ["3D BIM modeling (LOD 300-500)", "Clash detection", "4D construction sequencing", "5D cost extraction", "As-built models", "Revit & Navisworks", "ISO 19650 compliant", "FM model handover"],
+    faqs: makeFAQ("BIM Services", "service"),
+    tags: makeTags("BIM Construction UAE", ["BIM modeling", "clash detection", "Revit contractor"]),
+  },
+  // 170
+  {
+    keyword: "Quantity Surveying Services UAE",
+    slug: "quantity-surveying-services-uae",
+    category: "service",
+    h1: "Quantity Surveying Services in UAE",
+    heroSubtitle: "BOQ preparation, cost estimation, interim valuations, variation management, and final account settlement.",
+    metaTitle: "Quantity Surveying Services UAE | Hadeed Emirates Contracting",
+    metaDescription: "Quantity surveying UAE. BOQ, cost estimates, valuations, variations, final accounts. RICS qualified. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting's quantity surveying team manages all commercial aspects of construction projects — from pre-contract BOQ preparation and tender pricing through post-contract cost control, interim payment valuations, variation assessment, and final account settlement.",
+    secondParagraph: "Our QS professionals are experienced with FIDIC contract forms (Red, Yellow, Silver Books), NEC contracts, and bespoke UAE client contracts. We use CostX, Buildsoft, and Excel-based estimation tools backed by our proprietary UAE construction cost database updated quarterly with current market rates.",
+    features: ["BOQ preparation", "Cost estimation", "Interim valuations", "Variation management", "Final account settlement", "FIDIC contract expertise", "CostX / Buildsoft tools", "Market rate database"],
+    faqs: makeFAQ("Quantity Surveying", "service"),
+    tags: makeTags("Quantity Surveying UAE", ["QS services", "BOQ preparation", "cost estimation"]),
+  },
+  // ===== BATCH 13: Keywords 171-180 — Equipment & Specialized =====
+  // 171
+  // 172
+  // 173
+  {
+    keyword: "Crane Operator Services UAE",
+    slug: "crane-operator-services-uae",
+    category: "service",
+    h1: "Crane Operator Services in UAE",
+    heroSubtitle: "CICPA-certified crane operators for tower cranes, mobile cranes, crawler cranes, and overhead cranes.",
+    metaTitle: "Crane Operator Services UAE | Hadeed Emirates Contracting",
+    metaDescription: "Crane operator services UAE. CICPA certified. Tower, mobile, crawler cranes. 24/7 availability. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides CICPA-certified crane operators for construction sites across the UAE. Our operators have extensive experience with tower cranes, mobile cranes (all-terrain and rough-terrain), crawler cranes, and overhead/gantry cranes on commercial, industrial, and infrastructure projects.",
+    secondParagraph: "Each operator holds valid CICPA certification, minimum 5 years UAE experience, and is trained in load chart interpretation, rigging practices, and emergency procedures. We provide operators on short-term or long-term contracts with 24/7 shift coverage for projects requiring round-the-clock crane operations.",
+    features: ["CICPA-certified operators", "Tower crane specialists", "Mobile crane operators", "Crawler crane operators", "5+ years UAE experience", "24/7 shift coverage", "Load chart expertise", "Short & long-term hire"],
+    faqs: makeFAQ("Crane Operator", "service"),
+    tags: makeTags("Crane Operator UAE", ["CICPA operator", "tower crane operator", "crane hire"]),
+  },
+  // 174
+  {
+    keyword: "Asphalt Road Construction UAE",
+    slug: "asphalt-road-construction-uae",
+    category: "construction",
+    h1: "Asphalt Road Construction in UAE",
+    heroSubtitle: "Road base, sub-base, asphalt paving, kerbing, line marking, and signage for internal and public roads.",
+    metaTitle: "Asphalt Road Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Asphalt road construction UAE. Sub-base, pavement, kerbing. Internal roads, parking lots. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting constructs asphalt roads across the UAE — from internal industrial estate roads and parking lots to public road works and highway service roads. Our road construction capabilities include earthworks, sub-base and base course, asphalt paving, concrete kerbing, and road furniture.",
+    secondParagraph: "We operate a fleet of motor graders, vibratory rollers, asphalt pavers, and pneumatic tired rollers. Our asphalt teams work with hot-mix asphalt (wearing, binder, and base courses), cold milling for resurfacing, and polymer-modified bitumen for high-traffic roads. All works meet Abu Dhabi/Dubai municipality specifications.",
+    features: ["Earthworks & cut-fill", "Sub-base & base course", "Hot-mix asphalt paving", "Concrete kerbing", "Line marking & signage", "Cold milling resurfacing", "Parking lot construction", "Municipality approved"],
+    faqs: makeFAQ("Asphalt Road", "construction"),
+    tags: makeTags("Road Construction UAE", ["asphalt paving", "parking lot", "road contractor"]),
+  },
+  // 175
+  {
+    keyword: "Interlock Paving Contractor UAE",
+    slug: "interlock-paving-contractor-uae",
+    category: "construction",
+    h1: "Interlock Paving Contractor in UAE",
+    heroSubtitle: "Interlocking concrete block paving for walkways, driveways, parking areas, and commercial plazas.",
+    metaTitle: "Interlock Paving Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Interlock paving UAE. Walkways, driveways, parking, plazas. Colored patterns. Municipality approved. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting installs interlocking concrete block paving across the UAE for walkways, driveways, parking areas, commercial plazas, and public spaces. Interlock paving is the most common hardscaping solution in the UAE due to its durability, easy maintenance, and design versatility.",
+    secondParagraph: "We install standard (60mm) and heavy-duty (80mm) interlocking blocks in various shapes — rectangular, herringbone, basket weave, and circular patterns. Our work includes sub-base preparation, bedding sand, block laying (machine or manual), edge restraints, sand sweeping, and compaction. Color options include grey, red, charcoal, and buff.",
+    features: ["60mm & 80mm blocks", "Herringbone patterns", "Basket weave designs", "Circular/radial layouts", "Machine & manual laying", "Sub-base preparation", "Edge restraints", "Municipality specifications"],
+    faqs: makeFAQ("Interlock Paving", "construction"),
+    tags: makeTags("Interlock UAE", ["paving contractor", "block paving", "hardscaping"]),
+  },
+  // 176
+  {
+    keyword: "Swimming Pool Construction Contractor UAE",
+    slug: "swimming-pool-construction-contractor-uae",
+    category: "construction",
+    h1: "Swimming Pool Construction Contractor in UAE",
+    heroSubtitle: "Residential, commercial, competition, and rooftop swimming pools — RC, shotcrete, and prefabricated systems.",
+    metaTitle: "Swimming Pool Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Swimming pool construction UAE. Residential, commercial, rooftop. RC, shotcrete. Filtration, heating. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting constructs swimming pools across the UAE for residential villas, hotel resorts, apartment communities, sports facilities, and rooftop installations. Our pool construction covers the complete scope — structural shell, waterproofing, finishes, filtration, heating, and surrounding deck work.",
+    secondParagraph: "We build pools using reinforced concrete (RC), shotcrete/gunite, and prefabricated fiberglass systems. Features include infinity edges, splash pads, underwater lighting (LED), pool heating (heat pumps and solar), filtration/chlorination, automatic covers, and decorative tile/mosaic finishes. All pools meet DM and municipality health regulations.",
+    features: ["Residential villa pools", "Hotel resort pools", "Competition pools", "Rooftop installations", "Infinity edge designs", "Filtration & heating", "LED underwater lighting", "Mosaic tile finishes"],
+    faqs: makeFAQ("Swimming Pool", "construction"),
+    tags: makeTags("Swimming Pool UAE", ["pool contractor", "pool construction", "infinity pool"]),
+  },
+  // 177
+  // 178
+  {
+    keyword: "Surveying & Setting Out Services UAE",
+    slug: "surveying-setting-out-services-uae",
+    category: "service",
+    h1: "Surveying & Setting Out Services in UAE",
+    heroSubtitle: "Topographical surveys, GPS setting out, as-built surveys, and drone aerial mapping for construction sites.",
+    metaTitle: "Surveying Setting Out UAE | Hadeed Emirates Contracting",
+    metaDescription: "Surveying & setting out UAE. Topographical, GPS, as-built, drone mapping. Licensed surveyors. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides land surveying and construction setting-out services across the UAE. Accurate surveying is the foundation of every construction project — errors in setting out lead to costly rework and delays. Our survey team uses the latest total stations, GPS/GNSS receivers, and drone mapping technology.",
+    secondParagraph: "Our services include topographical surveys, boundary surveys, GPS construction setting out, level monitoring, as-built surveys, volume calculations (cut/fill), and drone aerial mapping with photogrammetry. All work is referenced to Dubai/Abu Dhabi local coordinate systems and delivered in AutoCAD DWG and PDF formats.",
+    features: ["Topographical surveys", "GPS/GNSS setting out", "As-built surveys", "Drone aerial mapping", "Volume calculations", "Level monitoring", "AutoCAD deliverables", "Local coordinate systems"],
+    faqs: makeFAQ("Surveying Services", "service"),
+    tags: makeTags("Surveying UAE", ["land survey", "setting out", "drone mapping"]),
+  },
+  // 179
+  {
+    keyword: "Construction Manpower Supply UAE",
+    slug: "construction-manpower-supply-uae",
+    category: "service",
+    h1: "Construction Manpower Supply in UAE",
+    heroSubtitle: "Skilled tradesmen, laborers, engineers, and supervisors — short & long-term manpower for construction projects.",
+    metaTitle: "Construction Manpower Supply UAE | Hadeed Emirates Contracting",
+    metaDescription: "Construction manpower supply UAE. Skilled trades, laborers, engineers. MOHRE compliant. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides construction manpower supply services across the UAE — from skilled tradesmen and general laborers to engineers, supervisors, and project managers. Whether you need 10 workers or 500, we mobilize the right team at the right time for your project.",
+    secondParagraph: "Our manpower categories include masons, carpenters, steel fixers, plumbers, electricians, HVAC technicians, welders, painters, heavy equipment operators, foremen, site engineers, safety officers, and QA/QC inspectors. All personnel hold valid UAE trade test certificates and MOHRE-compliant employment visas.",
+    features: ["Skilled tradesmen", "General laborers", "Engineers & supervisors", "Safety officers", "10 to 500+ workers", "MOHRE compliant", "Trade test certified", "Short & long-term supply"],
+    faqs: makeFAQ("Manpower Supply", "service"),
+    tags: makeTags("Manpower Supply UAE", ["labor supply", "construction workers", "skilled trades"]),
+  },
+  // 180
+  {
+    keyword: "Modular Building Construction UAE",
+    slug: "modular-building-construction-uae",
+    category: "construction",
+    h1: "Modular Building Construction in UAE",
+    heroSubtitle: "Prefabricated modular buildings — offices, classrooms, clinics, labor camps, and site facilities.",
+    metaTitle: "Modular Building Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Modular building UAE. Prefab offices, classrooms, clinics, camps. Fast delivery. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting delivers modular building solutions across the UAE — factory-built buildings assembled on-site in a fraction of the time required for conventional construction. Modular construction reduces project timelines by 40-60% while maintaining quality equal to traditional buildings.",
+    secondParagraph: "Our modular range includes site offices, classrooms, medical clinics, ablution blocks, labor accommodation, guard houses, and retail units. Buildings are manufactured in controlled factory environments using steel frames, insulated panels, and pre-installed MEP systems. On-site assembly typically takes days, not months.",
+    features: ["Office modules", "Classroom buildings", "Medical clinics", "Labor accommodation", "Guard houses", "40-60% faster delivery", "Factory quality control", "Relocatable options"],
+    faqs: makeFAQ("Modular Building", "construction"),
+    tags: makeTags("Modular Building UAE", ["prefab building", "portable office", "modular construction"]),
+  },
+  // ===== BATCH 14: Keywords 181-190 — Niche Services & Locations =====
+  // 181
+  {
+    keyword: "Epoxy Flooring Contractor UAE",
+    slug: "epoxy-flooring-contractor-uae",
+    category: "construction",
+    h1: "Epoxy Flooring Contractor in UAE",
+    heroSubtitle: "Industrial epoxy, polyurethane, self-leveling, anti-static, and food-grade floor coatings.",
+    metaTitle: "Epoxy Flooring Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Epoxy flooring UAE. Industrial, self-leveling, anti-static, food-grade. Warehouses, factories. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting applies industrial flooring systems across the UAE — epoxy coatings, polyurethane screeds, self-leveling compounds, anti-static ESD floors, and food-grade hygienic finishes for warehouses, factories, clean rooms, kitchens, hospitals, and parking structures.",
+    secondParagraph: "Our flooring systems include thin-film epoxy coatings (150-500 microns), self-leveling epoxy (2-5mm), polyurethane mortar (6-9mm for heavy industry), epoxy flake systems, metallic epoxy for decorative applications, and anti-static/conductive floors for electronics manufacturing. Surface preparation includes diamond grinding and shot blasting.",
+    features: ["Thin-film epoxy coatings", "Self-leveling epoxy", "Polyurethane mortar screed", "Anti-static ESD floors", "Food-grade finishes", "Metallic decorative epoxy", "Diamond grinding prep", "Shot blasting"],
+    faqs: makeFAQ("Epoxy Flooring", "construction"),
+    tags: makeTags("Epoxy Flooring UAE", ["industrial flooring", "self-leveling", "warehouse floor"]),
+  },
+  // 182
+  {
+    keyword: "Structural Steel Erection UAE",
+    slug: "structural-steel-erection-uae",
+    category: "construction",
+    h1: "Structural Steel Erection in UAE",
+    heroSubtitle: "Steel frame erection for warehouses, factories, malls, stadiums, bridges, and high-rise buildings.",
+    metaTitle: "Structural Steel Erection UAE | Hadeed Emirates Contracting",
+    metaDescription: "Structural steel erection UAE. Warehouses, factories, high-rise. Bolted & welded connections. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides structural steel erection services across the UAE for industrial, commercial, and infrastructure projects. Our steel erection teams handle everything from single-span warehouse frames to complex multi-story steel structures, long-span trusses, and architectural steelwork.",
+    secondParagraph: "Our erection capabilities include heavy steel columns and beams (up to 50 tonnes individual piece weight), bolted and site-welded connections, crane-erected and manually installed components, plumbing and alignment, grouting, and post-erection touch-up painting. All work follows AISC erection tolerances and site-specific lifting plans.",
+    features: ["Warehouse steel frames", "Multi-story structures", "Long-span trusses", "Bolted connections", "Site welded joints", "Up to 50T piece weight", "AISC tolerances", "Lifting plan compliant"],
+    faqs: makeFAQ("Steel Erection", "construction"),
+    tags: makeTags("Steel Erection UAE", ["steel frame", "structural steel", "erection contractor"]),
+  },
+  // 183
+  {
+    keyword: "Fire Alarm System Installation UAE",
+    slug: "fire-alarm-system-installation-uae",
+    category: "service",
+    h1: "Fire Alarm System Installation in UAE",
+    heroSubtitle: "Addressable & conventional fire alarm, detection, suppression, and public address/voice evacuation systems.",
+    metaTitle: "Fire Alarm Installation UAE | Hadeed Emirates Contracting",
+    metaDescription: "Fire alarm system UAE. Addressable, detection, suppression, PAVA. ADCD/DCD approved. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting installs fire alarm and life safety systems across the UAE — from addressable fire detection panels and smoke/heat detectors to gas suppression systems, fire sprinklers, and public address/voice alarm (PAVA) systems. All installations comply with ADCD and DCD fire codes.",
+    secondParagraph: "We work with leading fire safety brands — Honeywell, Notifier, Edwards, Siemens, and Hochiki. Our scope includes fire alarm design (as per NFPA 72), panel programming, detector and MCP installation, cause-and-effect matrix, integration with BMS, sprinkler systems (NFPA 13), and civil defense approval.",
+    features: ["Addressable fire panels", "Smoke & heat detectors", "Gas suppression (FM200)", "Sprinkler systems", "PAVA systems", "NFPA 72 design", "BMS integration", "ADCD/DCD approved"],
+    faqs: makeFAQ("Fire Alarm System", "service"),
+    tags: makeTags("Fire Alarm UAE", ["fire detection", "fire suppression", "NFPA contractor"]),
+  },
+  // 184
+  {
+    keyword: "HVAC Duct Installation Contractor UAE",
+    slug: "hvac-duct-installation-contractor-uae",
+    category: "service",
+    h1: "HVAC Duct Installation Contractor in UAE",
+    heroSubtitle: "GI ductwork, pre-insulated panels, fabric ducts, kitchen extract — fabrication and installation.",
+    metaTitle: "HVAC Duct Installation UAE | Hadeed Emirates Contracting",
+    metaDescription: "HVAC duct installation UAE. GI, pre-insulated, fabric ducts. Fabrication & install. SMACNA standards. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting fabricates and installs HVAC ductwork across the UAE for commercial offices, industrial facilities, hospitals, clean rooms, and residential towers. Our in-house fabrication shop produces galvanized iron (GI), stainless steel, aluminum, and pre-insulated panel ductwork.",
+    secondParagraph: "Ductwork is fabricated to SMACNA standards with appropriate gauges, reinforcement, and sealing (Class A/B/C leakage). We install rectangular, round, and spiral ducts, flexible connections, fire dampers, volume control dampers, grilles and diffusers. Duct leakage testing is performed per DW/143 or SMACNA requirements.",
+    features: ["GI ductwork", "Pre-insulated panels", "Stainless steel ducts", "Fabric ducts", "Kitchen extract systems", "SMACNA standards", "In-house fabrication", "Leakage testing DW/143"],
+    faqs: makeFAQ("HVAC Duct Installation", "service"),
+    tags: makeTags("HVAC Duct UAE", ["duct fabrication", "GI duct", "ventilation contractor"]),
+  },
+  // 185
+  {
+    keyword: "Landscape Construction Contractor UAE",
+    slug: "landscape-construction-contractor-uae",
+    category: "construction",
+    h1: "Landscape Construction Contractor in UAE",
+    heroSubtitle: "Hardscaping, softscaping, irrigation, water features, outdoor lighting, and playground construction.",
+    metaTitle: "Landscape Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Landscape construction UAE. Hardscaping, softscaping, irrigation, water features. Villas, commercial. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting delivers landscape construction projects across the UAE for residential villas, hotel resorts, commercial developments, public parks, and community master plans. Our landscape capabilities include hardscaping, softscaping, irrigation, water features, outdoor lighting, and playground installations.",
+    secondParagraph: "Hardscape works include natural stone paving, precast concrete elements, pergolas, gazebos, retaining walls, BBQ areas, and outdoor kitchens. Softscape includes soil preparation, turf laying, tree and shrub planting, and automatic drip/sprinkler irrigation systems. We design irrigation for water efficiency using treated sewage effluent (TSE) where available.",
+    features: ["Hardscaping & paving", "Softscaping & planting", "Irrigation systems", "Water features & fountains", "Outdoor lighting", "Playground construction", "Pergolas & gazebos", "TSE irrigation design"],
+    faqs: makeFAQ("Landscape Construction", "construction"),
+    tags: makeTags("Landscaping UAE", ["landscape contractor", "garden construction", "hardscaping"]),
+  },
+  // 186
+  {
+    keyword: "Cladding Contractor UAE",
+    slug: "cladding-contractor-uae",
+    category: "construction",
+    h1: "Cladding Contractor in UAE",
+    heroSubtitle: "Aluminum composite (ACP), natural stone, terracotta, GRC, and ventilated facade cladding systems.",
+    metaTitle: "Cladding Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Cladding contractor UAE. ACP, stone, terracotta, GRC, ventilated facades. Fire-rated systems. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting installs exterior cladding systems across the UAE for commercial towers, residential buildings, industrial facilities, and hotel facades. Our cladding capabilities include aluminum composite panels (ACP), natural stone, terracotta rainscreen, GRC/GRG panels, and ventilated aluminum facades.",
+    secondParagraph: "Following UAE fire safety regulations, we exclusively use fire-rated ACP (A2/B-s1,d0 rated) and non-combustible cladding substrates. Our facade team handles design coordination, shop drawings, bracket calculations, waterproofing, and installation. All cladding complies with ADCD/DCD fire codes and building envelope performance requirements.",
+    features: ["Fire-rated ACP (A2/B)", "Natural stone cladding", "Terracotta rainscreen", "GRC/GRG panels", "Ventilated facades", "Shop drawing coordination", "Bracket engineering", "Fire code compliant"],
+    faqs: makeFAQ("Cladding Contractor", "construction"),
+    tags: makeTags("Cladding UAE", ["ACP cladding", "facade contractor", "stone cladding"]),
+  },
+  // 187
+  {
+    keyword: "Construction Company Fujairah",
+    slug: "construction-company-fujairah",
+    category: "location",
+    h1: "Construction Company in Fujairah",
+    heroSubtitle: "Industrial, commercial, port-related, and residential construction across Fujairah emirate.",
+    metaTitle: "Construction Company Fujairah | Hadeed Emirates Contracting",
+    metaDescription: "Construction company Fujairah. Industrial, commercial, port. Oil & gas support. FFTZ. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting operates in Fujairah — the only UAE emirate on the Gulf of Oman, known for its strategic port, oil storage terminals, and growing industrial base. Fujairah's construction sector is driven by port expansion, oil & gas support infrastructure, tourism, and residential development.",
+    secondParagraph: "Our Fujairah projects include industrial workshop construction, oil & gas support facilities near Fujairah port, FFTZ (Fujairah Free Trade Zone) warehouses, commercial buildings in Fujairah city, and resort/hotel projects along the eastern coastline. We hold Fujairah Municipality contractor registration.",
+    features: ["Industrial workshops", "Oil & gas support facilities", "FFTZ warehouses", "Commercial buildings", "Resort & hotel projects", "Port-related construction", "Fujairah Municipality registered", "Eastern coastline access"],
+    faqs: makeFAQ("Fujairah Construction", "location"),
+    tags: makeTags("Fujairah", ["Fujairah contractor", "FFTZ construction", "eastern UAE"]),
+  },
+  // 188
+  {
+    keyword: "Construction Company Umm Al Quwain",
+    slug: "construction-company-umm-al-quwain",
+    category: "location",
+    h1: "Construction Company in Umm Al Quwain",
+    heroSubtitle: "Industrial, commercial, and residential construction in UAQ Free Trade Zone and mainland areas.",
+    metaTitle: "Construction Company Umm Al Quwain | Hadeed Emirates Contracting",
+    metaDescription: "Construction company Umm Al Quwain. Industrial, commercial, residential. UAQ FTZ. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting serves Umm Al Quwain — the UAE's quietest emirate that offers competitive land costs and a strategic location between Sharjah and Ras Al Khaimah. UAQ is growing as an industrial and logistics hub with its free trade zone attracting businesses seeking affordable warehouse and factory space.",
+    secondParagraph: "Our UAQ projects include industrial warehouse construction in UAQ Free Trade Zone, commercial buildings, labor accommodation, and residential villas. We navigate UAQ Municipality permit requirements and understand the emirate's infrastructure capacity including water, power, and sewage connection availability.",
+    features: ["UAQ FTZ warehouses", "Industrial buildings", "Commercial complexes", "Residential villas", "Labor accommodation", "Municipality registered", "Affordable emirate", "Strategic location"],
+    faqs: makeFAQ("UAQ Construction", "location"),
+    tags: makeTags("Umm Al Quwain", ["UAQ contractor", "UAQ FTZ", "UAQ construction"]),
+  },
+  // 189
+  {
+    keyword: "MEP Contractor Abu Dhabi",
+    slug: "mep-contractor-abu-dhabi",
+    category: "service",
+    h1: "MEP Contractor in Abu Dhabi",
+    heroSubtitle: "Mechanical, electrical, plumbing — HVAC, power, water, fire fighting, and BMS for Abu Dhabi projects.",
+    metaTitle: "MEP Contractor Abu Dhabi | Hadeed Emirates Contracting",
+    metaDescription: "MEP contractor Abu Dhabi. HVAC, electrical, plumbing, fire fighting. ADDC/TRANSCO approved. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting delivers complete MEP (Mechanical, Electrical & Plumbing) services for construction projects across Abu Dhabi emirate — including the city, Khalifa City, Mussafah, Al Ain, Al Dhafra, and industrial zones. Our MEP division handles design, installation, testing, commissioning, and maintenance.",
+    secondParagraph: "Mechanical: HVAC systems (chillers, AHUs, FCUs, ductwork, controls). Electrical: MV/LV panels, cable trays, lighting, power outlets, earthing, lightning protection. Plumbing: water supply, drainage, fire fighting (wet riser, sprinklers). We coordinate with ADDC, TRANSCO, AADC, and Abu Dhabi Civil Defense for utility connections and approvals.",
+    features: ["HVAC systems", "MV/LV electrical", "Plumbing & drainage", "Fire fighting systems", "BMS integration", "ADDC/TRANSCO coordination", "Testing & commissioning", "Annual maintenance"],
+    faqs: makeFAQ("MEP Abu Dhabi", "service"),
+    tags: makeTags("MEP Abu Dhabi", ["HVAC contractor", "electrical contractor", "plumbing"]),
+  },
+  // 190
+  {
+    keyword: "Construction Company Dubai Silicon Oasis",
+    slug: "construction-company-dubai-silicon-oasis",
+    category: "location",
+    h1: "Construction Company in Dubai Silicon Oasis",
+    heroSubtitle: "Tech park construction, office fit-outs, data center builds, and warehouse facilities in DSO.",
+    metaTitle: "Construction Company Dubai Silicon Oasis | Hadeed Emirates Contracting",
+    metaDescription: "Construction company DSO. Tech parks, offices, data centers, warehouses. DSO Authority approved. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting serves Dubai Silicon Oasis (DSO) — the UAE's premier technology-focused free zone. DSO combines residential, commercial, and industrial zones in a planned community that attracts tech companies, data centers, and innovation-driven businesses.",
+    secondParagraph: "Our DSO projects include tech park office fit-outs, data center construction (Tier III/IV), warehouse and light industrial facilities, retail spaces, and residential apartment buildings. We work within DSO Authority permit processes, civil defense requirements, and the unique infrastructure standards of this technology-focused community.",
+    features: ["Tech park office fit-outs", "Data center Tier III/IV", "Warehouse facilities", "Light industrial buildings", "Retail spaces", "DSO Authority approved", "IT infrastructure ready", "Technology community focus"],
+    faqs: makeFAQ("DSO Construction", "location"),
+    tags: makeTags("Dubai Silicon Oasis", ["DSO contractor", "tech park", "data center construction"]),
+  },
+  // ===== BATCH 15: Keywords 191-200 — FINAL BATCH =====
+  // 191
+  {
+    keyword: "Plumbing Contractor Dubai",
+    slug: "plumbing-contractor-dubai",
+    category: "service",
+    h1: "Plumbing Contractor in Dubai",
+    heroSubtitle: "Water supply, drainage, sanitary ware, fire fighting, and gas piping installation for all building types.",
+    metaTitle: "Plumbing Contractor Dubai | Hadeed Emirates Contracting",
+    metaDescription: "Plumbing contractor Dubai. Water supply, drainage, sanitary ware, fire fighting. DEWA approved. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides professional plumbing services across Dubai for residential, commercial, and industrial projects. Our plumbing scope covers water supply systems, soil and waste drainage, rainwater systems, sanitary ware installation, fire fighting wet risers, and LP gas piping.",
+    secondParagraph: "We install UPVC, PPR, copper, and HDPE piping systems per Dubai Municipality and DEWA standards. Our plumbing services include hot and cold water distribution, pumps and booster sets, water tanks, sewage treatment plants, grease traps, condensate drainage, and irrigation water networks.",
+    features: ["Water supply systems", "Drainage & sewage", "Sanitary ware installation", "Fire fighting wet risers", "Pump & booster sets", "Water tank installation", "DEWA approved", "PPR, UPVC, copper piping"],
+    faqs: makeFAQ("Plumbing Contractor", "service"),
+    tags: makeTags("Plumbing Dubai", ["plumber Dubai", "drainage contractor", "water supply"]),
+  },
+  // 192
+  {
+    keyword: "Electrical Contractor Dubai",
+    slug: "electrical-contractor-dubai",
+    category: "service",
+    h1: "Electrical Contractor in Dubai",
+    heroSubtitle: "MV/LV power distribution, lighting, earthing, data cabling, and DEWA metering for Dubai projects.",
+    metaTitle: "Electrical Contractor Dubai | Hadeed Emirates Contracting",
+    metaDescription: "Electrical contractor Dubai. MV/LV, lighting, earthing, data. DEWA approved. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting delivers electrical installation services across Dubai for commercial offices, residential towers, industrial facilities, and retail projects. Our electrical scope covers medium voltage (11kV/22kV) and low voltage (400V) power distribution, lighting, earthing, data cabling, and DEWA meter room construction.",
+    secondParagraph: "We install main distribution boards, sub-distribution boards, bus bar trunking, cable trays and ladders, power and lighting circuits, emergency lighting, UPS systems, generator synchronization panels, structured cabling (Cat6A/fiber), fire alarm interfaces, and lightning protection systems.",
+    features: ["MV/LV distribution", "Lighting systems", "Earthing & lightning", "Data cabling Cat6A/fiber", "DEWA metering rooms", "UPS & generator sync", "Emergency lighting", "Bus bar trunking"],
+    faqs: makeFAQ("Electrical Contractor", "service"),
+    tags: makeTags("Electrical Dubai", ["electrician Dubai", "MV/LV installation", "DEWA approved"]),
+  },
+  // 193
+  {
+    keyword: "Warehouse Shade Structure UAE",
+    slug: "warehouse-shade-structure-uae",
+    category: "construction",
+    h1: "Warehouse & Shade Structure in UAE",
+    heroSubtitle: "Car park shades, warehouse extensions, loading bay covers, walkway canopies, and tensile fabric structures.",
+    metaTitle: "Shade Structure Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Shade structures UAE. Car park shades, canopies, tensile fabric, warehouse extensions. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting designs and builds shade structures across the UAE — from car park shade canopies and loading bay covers to walkway shading, playground covers, and tensile fabric architectural features. UAE's extreme temperatures make shading essential for outdoor comfort and vehicle protection.",
+    secondParagraph: "Our shade solutions include steel cantilever car park shades, HDPE fabric sails, PTFE tensile membrane structures, polycarbonate canopies, and metal deck covered walkways. All structures are engineered for UAE wind loads (up to 45 m/s) and include UV-stabilized fabric with 10-15 year warranties.",
+    features: ["Car park shades", "Loading bay covers", "Walkway canopies", "HDPE fabric sails", "PTFE tensile membranes", "Polycarbonate canopies", "Wind rated (45 m/s)", "UV stabilized fabrics"],
+    faqs: makeFAQ("Shade Structure", "construction"),
+    tags: makeTags("Shade Structure UAE", ["car park shade", "canopy contractor", "tensile structure"]),
+  },
+  // 194
+  {
+    keyword: "Concrete Block Masonry Contractor UAE",
+    slug: "concrete-block-masonry-contractor-uae",
+    category: "construction",
+    h1: "Concrete Block Masonry Contractor in UAE",
+    heroSubtitle: "Block work walls, boundary walls, retaining walls, and insulated cavity masonry construction.",
+    metaTitle: "Block Masonry Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Block masonry contractor UAE. CMU walls, boundary, retaining. Insulated cavity. Abu Dhabi, Dubai. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting provides concrete block masonry services across the UAE for buildings, boundary walls, retaining walls, and compound walls. Block work is the backbone of UAE construction — forming external walls, internal partitions, and boundary enclosures for virtually every building project.",
+    secondParagraph: "We work with standard CMU (200mm, 250mm, 300mm), hollow and solid blocks, insulated blocks (Thermolite, Ecobloc), AAC lightweight blocks, and fair-face decorative blocks. Our masonry teams achieve precise coursing, level and plumb walls, correct mortar joints, and proper reinforcement placement as per structural drawings.",
+    features: ["Standard CMU walls", "Hollow & solid blocks", "Insulated cavity walls", "AAC lightweight blocks", "Fair-face decorative", "Boundary walls", "Retaining walls", "Reinforced masonry"],
+    faqs: makeFAQ("Block Masonry", "construction"),
+    tags: makeTags("Masonry UAE", ["block work", "CMU contractor", "boundary wall"]),
+  },
+  // 195
+  {
+    keyword: "Sewage Treatment Plant Construction UAE",
+    slug: "sewage-treatment-plant-construction-uae",
+    category: "construction",
+    h1: "Sewage Treatment Plant Construction in UAE",
+    heroSubtitle: "STP construction, installation, and commissioning — package plants, MBR systems, and extended aeration.",
+    metaTitle: "STP Construction UAE | Hadeed Emirates Contracting",
+    metaDescription: "Sewage treatment plant UAE. Package STP, MBR, extended aeration. Supply & install. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting designs, constructs, and commissions sewage treatment plants (STPs) across the UAE for residential communities, labor camps, commercial developments, and industrial facilities. STPs are required for developments outside municipal sewer coverage — common in industrial zones and remote areas.",
+    secondParagraph: "We supply and install package STPs (50-5000 m³/day), membrane bioreactor (MBR) systems for superior effluent quality, extended aeration plants, and moving bed biofilm reactor (MBBR) systems. Treated effluent meets AAD/DM standards for landscape irrigation reuse. Civil works include tank construction, pipe networks, and control rooms.",
+    features: ["Package STP 50-5000 m³/day", "MBR systems", "Extended aeration", "MBBR technology", "TSE reuse quality", "Civil works", "Commissioning", "Annual maintenance"],
+    faqs: makeFAQ("STP Construction", "construction"),
+    tags: makeTags("STP UAE", ["sewage treatment", "MBR plant", "wastewater treatment"]),
+  },
+  // 196
+  {
+    keyword: "Access Control System Installation UAE",
+    slug: "access-control-system-installation-uae",
+    category: "service",
+    h1: "Access Control System Installation in UAE",
+    heroSubtitle: "Biometric, card reader, turnstile, boom barrier, and integrated security access control systems.",
+    metaTitle: "Access Control Installation UAE | Hadeed Emirates Contracting",
+    metaDescription: "Access control UAE. Biometric, card reader, turnstile, boom barrier. Integrated security. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting installs access control systems across the UAE for office buildings, industrial facilities, data centers, residential communities, and government buildings. Modern access control goes beyond simple locks — integrating biometrics, smart cards, intercoms, turnstiles, and boom barriers into comprehensive security networks.",
+    secondParagraph: "Our access control solutions include fingerprint and facial recognition biometrics, proximity and smart card readers (HID, SALTO), full-height and waist-height turnstiles, boom barriers and bollards, video intercom systems, and visitor management kiosks. All systems integrate with CCTV and fire alarm for unified security management.",
+    features: ["Biometric readers", "Smart card access", "Turnstiles", "Boom barriers", "Video intercoms", "Visitor management", "CCTV integration", "Fire alarm interface"],
+    faqs: makeFAQ("Access Control", "service"),
+    tags: makeTags("Access Control UAE", ["security system", "biometric access", "turnstile"]),
+  },
+  // 197
+  {
+    keyword: "Green Building Construction UAE",
+    slug: "green-building-construction-uae",
+    category: "construction",
+    h1: "Green Building Construction in UAE",
+    heroSubtitle: "Estidama Pearl, LEED, and Mostadam rated sustainable buildings — energy efficient design and construction.",
+    metaTitle: "Green Building Contractor UAE | Hadeed Emirates Contracting",
+    metaDescription: "Green building UAE. Estidama, LEED, Mostadam. Sustainable construction. Energy efficient. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting constructs green and sustainable buildings across the UAE meeting Estidama Pearl, LEED, and Mostadam rating requirements. Green building is mandatory in Abu Dhabi (Estidama 1 Pearl minimum) and increasingly required in Dubai and other emirates for government and major private projects.",
+    secondParagraph: "Our green building expertise covers energy-efficient HVAC (high-efficiency chillers, heat recovery), high-performance building envelopes (low-E glass, insulated walls), water conservation (low-flow fixtures, greywater recycling), sustainable materials (recycled content, FSC timber), and renewable energy integration (rooftop solar PV).",
+    features: ["Estidama Pearl rated", "LEED certification support", "Energy-efficient HVAC", "High-performance envelopes", "Water conservation", "Sustainable materials", "Solar PV integration", "Green building documentation"],
+    faqs: makeFAQ("Green Building", "construction"),
+    tags: makeTags("Green Building UAE", ["sustainable construction", "Estidama", "LEED contractor"]),
+  },
+  // 198
+  {
+    keyword: "Construction Company Ajman",
+    slug: "construction-company-ajman",
+    category: "location",
+    h1: "Construction Company in Ajman",
+    heroSubtitle: "Industrial, commercial, residential, and free zone construction across Ajman emirate.",
+    metaTitle: "Construction Company Ajman | Hadeed Emirates Contracting",
+    metaDescription: "Construction company Ajman. Industrial, commercial, residential. AFZA approved. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting is active in Ajman — the UAE's smallest emirate by area but a significant construction market due to affordable real estate prices and proximity to Sharjah and Dubai. Ajman attracts residential development, light industrial projects, and commercial buildings for businesses seeking cost-effective locations.",
+    secondParagraph: "Our Ajman portfolio includes residential tower construction, villa community developments, warehouse and industrial facilities in Ajman Free Zone (AFZA), commercial office buildings, and renovation of existing properties. We hold Ajman Municipality contractor classification and navigate the emirate's permitting and inspection processes.",
+    features: ["Residential towers", "Villa developments", "AFZA warehouses", "Commercial offices", "Industrial facilities", "Municipality classified", "Affordable emirate", "Renovation services"],
+    faqs: makeFAQ("Ajman Construction", "location"),
+    tags: makeTags("Ajman", ["Ajman contractor", "AFZA construction", "Ajman building"]),
+  },
+  // 199
+  // 200
+  {
+    keyword: "Construction Company Abu Dhabi Industrial City",
+    slug: "construction-company-abu-dhabi-industrial-city",
+    category: "location",
+    h1: "Construction Company in Abu Dhabi Industrial City (KIZAD)",
+    heroSubtitle: "Industrial, logistics, and manufacturing facility construction in KIZAD — Abu Dhabi's mega industrial zone.",
+    metaTitle: "Construction Company KIZAD Abu Dhabi | Hadeed Emirates Contracting",
+    metaDescription: "Construction company KIZAD Abu Dhabi. Industrial, logistics, manufacturing. Mega zone specialist. Hadeed Emirates Contracting.",
+    introParagraph: "Hadeed Emirates Contracting operates in Khalifa Industrial Zone Abu Dhabi (KIZAD) — one of the world's largest industrial zones spanning 410 km². KIZAD attracts heavy industry, logistics, food processing, polymers, and metals manufacturing with its port connectivity, competitive utilities, and investor-friendly regulations.",
+    secondParagraph: "Our KIZAD projects include heavy industrial factory construction, logistics warehouses, labor accommodation villages, utility buildings, internal road networks, and facility maintenance. We understand KIZAD's design guidelines, infrastructure standards, and the specific challenges of constructing in this expansive industrial zone including long distances and independent utility networks.",
+    features: ["Heavy industrial factories", "Logistics warehouses", "Labor villages", "Utility buildings", "Internal roads", "KIZAD design guidelines", "Port connectivity", "410 km² zone coverage"],
+    faqs: makeFAQ("KIZAD Construction", "location"),
+    tags: makeTags("KIZAD Abu Dhabi", ["KIZAD contractor", "industrial zone", "Abu Dhabi construction"]),
+  },]
 
-  // ── SPACE RENTAL KEYWORDS (21-40) ─────────────────────────
-  kw("warehouse-for-rent-abu-dhabi", "Warehouse for Rent in Abu Dhabi", "space", {
-    h1: "Warehouse for Rent in Abu Dhabi – 300 to 1,000 sqm",
-    intro: "Hadeed Transport offers warehouses for rent in Abu Dhabi ranging from 300 sqm to 1,000 sqm. Located in accessible industrial zones, our warehouses feature secure access, CCTV surveillance, and flexible lease terms for logistics, manufacturing, and storage operations.",
-    features: ["300 to 1,000 sqm per unit", "Total area 6,000 sqm", "CCTV surveillance 24/7", "Secure controlled access", "Flexible lease terms", "Located in industrial zones"],
-    tags: ["warehouse rent abu dhabi", "warehouse rental", "storage warehouse"],
-  }),
-  kw("warehouse-for-rent-dubai", "Warehouse for Rent in Dubai", "space", {
-    h1: "Warehouse for Rent in Dubai – Flexible Sizes",
-    intro: "Looking for warehouse space in Dubai? Hadeed Transport provides warehouse rental solutions for businesses requiring storage, logistics, and operational space. Our well-maintained facilities offer security, accessibility, and flexible terms.",
-    features: ["Multiple size options", "Secure facilities with CCTV", "Accessible locations", "Flexible lease terms", "Loading dock facilities", "24/7 access available"],
-    tags: ["warehouse rent dubai", "dubai warehouse", "industrial warehouse"],
-  }),
-  kw("open-yard-for-rent-uae", "Open Yard for Rent in UAE", "space", {
-    h1: "Open Yard for Rent in UAE – Up to 25,000 sqm",
-    intro: "Hadeed Transport offers open yards for rent across the UAE with areas up to 25,000 sqm. Our open yards are perfect for vehicle parking, material storage, equipment staging, and outdoor industrial operations.",
-    features: ["Areas up to 25,000 sqm", "Fenced and secured", "Suitable for heavy vehicles", "Material storage areas", "Flexible lease terms", "Strategic locations"],
-    tags: ["open yard rent", "yard rental uae", "outdoor storage"],
-  }),
-  kw("office-space-for-rent-abu-dhabi", "Office Space for Rent in Abu Dhabi", "space", {
-    h1: "Office Space for Rent in Abu Dhabi",
-    intro: "Hadeed Transport provides office spaces for rent in Abu Dhabi suitable for project offices, business operations, and administrative setups. Choose from open-plan and closed office configurations with business center facilities available.",
-    features: ["Open-plan and closed offices", "Business center facilities", "Furnished options available", "Meeting room access", "Flexible lease terms", "Utilities included options"],
-    tags: ["office rent abu dhabi", "office space", "business office rental"],
-  }),
-  kw("self-storage-abu-dhabi", "Self-Storage in Abu Dhabi", "space", {
-    h1: "Self-Storage Units for Rent in Abu Dhabi",
-    intro: "Need extra storage space? Hadeed Transport offers approximately 32 self-storage units in Abu Dhabi ranging from 30 sqm to 100 sqm. Our secure, clean units provide easy access for both personal and business storage needs.",
-    features: ["30 to 100 sqm units", "Around 32 units available", "Clean and secure", "24/7 access", "Monthly rental terms", "Personal and business use"],
-    tags: ["self storage abu dhabi", "storage units", "personal storage"],
-  }),
-  kw("caravan-for-rent-uae", "Caravan for Rent in UAE", "space", {
-    h1: "Caravan & Porta Cabin Rental in UAE",
-    intro: "Hadeed Transport provides caravan and porta cabin rental across the UAE for temporary offices, labor camps, site accommodation, and project facilities. Our caravans can be equipped with AC, temporary water drainage, and furnished interiors.",
-    features: ["Temporary offices and camps", "AC-equipped units", "Water drainage systems", "Furnished interiors", "Short and long-term rental", "UAE-wide delivery"],
-    tags: ["caravan rental", "porta cabin", "site office rental"],
-  }),
-  kw("mobile-toilet-rental-uae", "Mobile Toilet Rental UAE", "space", {
-    h1: "Mobile Toilet Rental in UAE – Events & Construction",
-    intro: "Hadeed Transport provides mobile toilet rental across the UAE for construction sites, outdoor events, festivals, and temporary facilities. Our portable toilet units are clean, well-maintained, and available for short and long-term rental.",
-    features: ["Clean, hygienic units", "Event and construction models", "Regular servicing available", "Short and long-term rental", "UAE-wide delivery", "Quick deployment"],
-    tags: ["mobile toilet rental", "portable toilet", "porta potty rental"],
-  }),
-  kw("storage-container-rental-uae", "Storage Container Rental UAE", "space", {
-    h1: "Storage Container for Rent in UAE",
-    intro: "Rent secure, portable storage containers from Hadeed Transport for site storage, event use, and temporary warehousing across the UAE. Our durable containers keep your materials, tools, and equipment safe and organized.",
-    features: ["Durable steel construction", "Secure lockable doors", "Portable and relocatable", "Various sizes available", "Office and event use", "Weather-resistant"],
-    tags: ["storage container rental", "container hire", "shipping container rent"],
-  }),
-  kw("warehouse-storage-solutions-uae", "Warehouse Storage Solutions UAE", "space", {
-    h1: "Comprehensive Warehouse & Storage Solutions in UAE",
-    intro: "Hadeed Transport offers a full range of warehouse and storage solutions across the UAE including warehouses, self-storage units, open yards, and storage containers. Whether you need 30 sqm or 25,000 sqm, we have the right storage solution.",
-    features: ["Warehouses up to 6,000 sqm", "Self-storage 30-100 sqm units", "Open yards up to 25,000 sqm", "Storage containers", "Flexible lease terms", "Strategic UAE locations"],
-    tags: ["warehouse storage", "storage solutions", "warehousing uae"],
-  }),
-  kw("labor-camp-rental-uae", "Labor Camp Rental UAE", "space", {
-    h1: "Labor Camp & Worker Accommodation Rental in UAE",
-    intro: "Hadeed Transport provides caravan-based labor camp and worker accommodation solutions across the UAE. Our portable cabins are ideal for housing construction workers on remote sites, with options for AC, furnishing, and utility connections.",
-    features: ["Porta cabin accommodation", "AC and furnishing options", "Utility connections available", "Multiple unit capacity", "UAE-wide deployment", "Compliant with labor standards"],
-    tags: ["labor camp", "worker accommodation", "site camp rental"],
-  }),
-
-  // ── SERVICE KEYWORDS (41-80) ──────────────────────────────
-  kw("heavy-equipment-rental-uae", "Heavy Equipment Rental UAE", "service", {
-    h1: "Heavy Equipment Rental in UAE – Full Fleet Available",
-    intro: "Hadeed Transport is the UAE's leading heavy equipment rental company, offering a comprehensive fleet of construction machinery for projects of all scales. From excavators and cranes to rollers and generators, our well-maintained equipment is ready for deployment across Abu Dhabi, Dubai, Sharjah, and all emirates.",
-    features: ["Complete heavy equipment fleet", "Cranes, excavators, loaders", "Generators and compressors", "Certified operators available", "Same-day delivery", "15+ years experience"],
-    tags: ["heavy equipment rental", "construction equipment", "machinery hire"],
-  }),
-  kw("construction-equipment-rental-uae", "Construction Equipment Rental UAE", "service", {
-    h1: "Construction Equipment Rental in UAE",
-    intro: "From foundation to finishing, Hadeed Transport provides all the construction equipment you need for your UAE projects. Our fleet covers earthmoving, lifting, concrete work, compaction, transportation, and small tools — everything under one roof for your convenience.",
-    features: ["Full construction equipment range", "Foundation to finishing tools", "One-stop rental solution", "Competitive package deals", "Project-based rental plans", "Expert equipment advice"],
-    tags: ["construction equipment", "building equipment", "construction machinery rental"],
-  }),
-  kw("equipment-rental-company-abu-dhabi", "Equipment Rental Company Abu Dhabi", "service", {
-    h1: "Trusted Equipment Rental Company in Abu Dhabi",
-    intro: "Based in ICAD III, Hadeed Transport is Abu Dhabi's most reliable equipment rental company. With over 15 years of industry experience, we've built a reputation for quality equipment, competitive pricing, and dependable service. We serve all Abu Dhabi areas including Mussafah, Khalifa City, Al Reem Island, Yas Island, KIZAD, and beyond.",
-    features: ["Based in ICAD III, Abu Dhabi", "15+ years in the industry", "500+ satisfied clients", "1200+ projects completed", "Same-day delivery", "24/7 customer support"],
-    tags: ["equipment rental company", "rental company abu dhabi", "hadeed transport"],
-  }),
-  kw("equipment-rental-company-dubai", "Equipment Rental Company Dubai", "service", {
-    h1: "Reliable Equipment Rental Company in Dubai",
-    intro: "Hadeed Transport is one of Dubai's most dependable equipment rental companies, serving contractors, developers, and businesses across all areas. Whether your project is in Downtown Dubai, Jebel Ali, Dubai South, or JBR, we deliver the right equipment at the right time.",
-    features: ["Dubai-wide delivery coverage", "Full construction equipment range", "Space rental solutions", "Competitive pricing", "Emergency equipment supply", "Flexible rental terms"],
-    tags: ["equipment rental dubai", "rental company dubai", "machinery hire dubai"],
-  }),
-  kw("construction-machinery-rental-uae", "Construction Machinery Rental UAE", "service", {
-    h1: "Construction Machinery Rental Across UAE",
-    intro: "Hadeed Transport offers construction machinery rental services that cover every phase of your building project. From earthmoving and excavation to concrete work and finishing, our well-maintained fleet of machinery is available for daily, weekly, and monthly rental across the UAE.",
-    features: ["Earthmoving machinery", "Concrete equipment", "Lifting and hoisting tools", "Road construction machines", "Demolition equipment", "Finishing and surveying tools"],
-    tags: ["construction machinery", "machinery rental uae", "building machinery"],
-  }),
-  kw("heavy-machinery-hire-uae", "Heavy Machinery Hire UAE", "service", {
-    h1: "Heavy Machinery Hire in UAE – Trusted & Reliable",
-    intro: "Hire heavy machinery from Hadeed Transport for your UAE construction, industrial, and infrastructure projects. Our fleet includes excavators, cranes, forklifts, loaders, and much more — all maintained to the highest standards and delivered to your site.",
-    features: ["Excavators and loaders", "Mobile cranes to 50 tons", "Forklifts to 15 tons", "Maintained to high standards", "Competitive hire rates", "Nationwide coverage"],
-    tags: ["heavy machinery hire", "machinery hire uae", "equipment hire"],
-  }),
-  kw("equipment-rental-with-operator-uae", "Equipment Rental with Operator UAE", "service", {
-    h1: "Equipment Rental with Operator in UAE",
-    intro: "Don't just rent equipment — get the expertly trained operator too. Hadeed Transport provides equipment rental with certified operators for cranes, excavators, forklifts, man lifts, and transport vehicles across the UAE. Our operators are licensed, experienced, and trained in UAE safety standards.",
-    features: ["Certified operators included", "Licensed for UAE operations", "Experienced in all terrain types", "Safety protocol trained", "Available for all equipment types", "Short and long-term assignments"],
-    tags: ["equipment with operator", "operated equipment", "wet hire"],
-  }),
-  kw("same-day-equipment-delivery-uae", "Same Day Equipment Delivery UAE", "service", {
-    h1: "Same-Day Equipment Delivery Across UAE",
-    intro: "Need equipment today? Hadeed Transport offers same-day equipment delivery from our ICAD III base in Abu Dhabi to anywhere in the UAE. Whether you're facing an equipment failure, an urgent project start, or unexpected demand, we respond fast to keep your project moving.",
-    features: ["Same-day delivery available", "ICAD III base in Abu Dhabi", "Emergency equipment supply", "24/7 availability", "Dubai and Sharjah coverage", "Rapid response team"],
-    tags: ["same day delivery", "emergency equipment", "urgent rental"],
-  }),
-  kw("long-term-equipment-rental-uae", "Long-Term Equipment Rental UAE", "service", {
-    h1: "Long-Term Equipment Rental in UAE – Save More",
-    intro: "Save money on extended projects with Hadeed Transport's long-term equipment rental plans across the UAE. Our monthly and project-based rental agreements offer significant discounts compared to daily rates, with priority maintenance and equipment replacement guarantees.",
-    features: ["Discounted monthly rates", "Project-based agreements", "Priority maintenance service", "Equipment replacement guarantee", "Dedicated account manager", "Custom rental packages"],
-    tags: ["long term rental", "monthly equipment rental", "project rental"],
-  }),
-  kw("short-term-equipment-rental-uae", "Short-Term Equipment Rental UAE", "service", {
-    h1: "Short-Term Equipment Rental in UAE – Daily & Weekly",
-    intro: "Need equipment for just a few days? Hadeed Transport offers short-term daily and weekly equipment rental across the UAE with no long-term commitment. Perfect for one-off jobs, emergency projects, or when you need additional capacity for a brief period.",
-    features: ["Daily rental available", "Weekly rental options", "No long-term commitment", "Quick mobilization", "Full equipment range", "Transparent pricing"],
-    tags: ["short term rental", "daily rental", "weekly equipment hire"],
-  }),
-  kw("construction-site-equipment-uae", "Construction Site Equipment UAE", "service", {
-    h1: "Complete Construction Site Equipment in UAE",
-    intro: "Set up your construction site with everything you need from Hadeed Transport. From heavy machinery and generators to portable offices and mobile toilets, we're your one-stop shop for complete construction site equipment in the UAE.",
-    features: ["Heavy machinery fleet", "Power generators all sizes", "Portable site offices", "Mobile toilets and cabins", "Storage containers", "Transport and logistics"],
-    tags: ["construction site equipment", "site setup", "construction rental"],
-  }),
-  kw("industrial-equipment-rental-uae", "Industrial Equipment Rental UAE", "service", {
-    h1: "Industrial Equipment Rental in UAE",
-    intro: "Hadeed Transport serves the UAE's industrial sector with specialized equipment rental for manufacturing, processing, warehousing, and logistics operations. Our industrial equipment fleet includes forklifts, compressors, generators, and material handling machinery.",
-    features: ["Forklifts and loaders", "Air compressors", "Power generators", "Material handling equipment", "Industrial storage solutions", "24/7 support"],
-    tags: ["industrial equipment", "factory equipment rental", "manufacturing machinery"],
-  }),
-  kw("infrastructure-equipment-rental-uae", "Infrastructure Equipment Rental UAE", "service", {
-    h1: "Infrastructure Project Equipment Rental in UAE",
-    intro: "Building roads, bridges, or utilities? Hadeed Transport provides specialized infrastructure equipment rental across the UAE. Our fleet supports road construction, utility installation, pipeline work, and major infrastructure development projects.",
-    features: ["Road construction equipment", "Utility installation tools", "Pipeline excavation machinery", "Bridge construction cranes", "Survey instruments", "Traffic management tools"],
-    tags: ["infrastructure equipment", "road construction", "utility equipment rental"],
-  }),
-  kw("oil-gas-equipment-rental-uae", "Oil & Gas Equipment Rental UAE", "service", {
-    h1: "Oil & Gas Equipment Rental in UAE",
-    intro: "Hadeed Transport supports the UAE's oil and gas sector with heavy equipment rental for drilling support, pipeline construction, refinery maintenance, and offshore logistics. Our equipment meets the strict safety and quality standards required in the energy industry.",
-    features: ["Pipeline construction equipment", "Refinery maintenance tools", "Heavy lifting cranes", "Transport and logistics fleet", "Safety-certified equipment", "Remote site delivery"],
-    tags: ["oil gas equipment", "energy sector rental", "pipeline equipment"],
-  }),
-  kw("event-equipment-rental-uae", "Event Equipment Rental UAE", "service", {
-    h1: "Event Equipment Rental in UAE – Generators, Toilets & More",
-    intro: "Hosting an outdoor event in the UAE? Hadeed Transport provides essential event equipment including generators, mobile toilets, storage containers, and transport vehicles. We support festivals, exhibitions, corporate events, and sports events across Abu Dhabi, Dubai, and Sharjah.",
-    features: ["Power generators for events", "Mobile toilet units", "Storage containers", "Transport vehicles", "Quick setup and removal", "Event-specific logistics"],
-    tags: ["event equipment", "event rental", "outdoor event supplies"],
-  }),
-  kw("demolition-equipment-rental-uae", "Demolition Equipment Rental UAE", "service", {
-    h1: "Demolition Equipment Rental in UAE",
-    intro: "Hadeed Transport provides demolition equipment rental for controlled demolition, concrete breaking, and structure removal projects across the UAE. Our fleet includes jack hammers, excavators with demolition attachments, and concrete saws for safe, efficient demolition work.",
-    features: ["Jack hammers various sizes", "Excavators with attachments", "Concrete saw cutters", "Dust control equipment", "Safety equipment provided", "Licensed operators available"],
-    tags: ["demolition equipment", "concrete breaking", "demolition rental"],
-  }),
-  kw("earthmoving-equipment-rental-uae", "Earthmoving Equipment Rental UAE", "service", {
-    h1: "Earthmoving Equipment Rental in UAE",
-    intro: "Hadeed Transport offers comprehensive earthmoving equipment rental across the UAE including shovels, excavators, backhoe loaders, bobcats, and grading equipment. Whether you're preparing a building foundation or grading a highway, our earthmoving fleet gets the job done.",
-    features: ["Shovels and excavators", "Backhoe loaders (JCB)", "Bobcat mini loaders", "Various sizes available", "Certified operators", "Same-day deployment"],
-    tags: ["earthmoving equipment", "excavation rental", "grading equipment"],
-  }),
-  kw("lifting-equipment-rental-uae", "Lifting Equipment Rental UAE", "service", {
-    h1: "Lifting Equipment Rental in UAE – Cranes & Manlifts",
-    intro: "Hadeed Transport provides a full range of lifting equipment rental across the UAE including mobile cranes, man lifts, and forklifts. Our lifting solutions cover everything from ground-level material handling to high-rise construction at 50+ meters.",
-    features: ["Mobile cranes 25-50 ton", "Man lifts low and high level", "Forklifts 1-15 ton", "Certified operators", "Load testing certified", "24/7 lift planning support"],
-    tags: ["lifting equipment", "crane hire", "manlift rental"],
-  }),
-  kw("cutting-grinding-equipment-rental-uae", "Cutting & Grinding Equipment Rental UAE", "equipment", {
-    h1: "Cutting & Grinding Equipment Rental in UAE",
-    intro: "Rent concrete saws, block cutters, marble cutting machines, grinding machines, and wood cutters from Hadeed Transport. Our cutting and grinding equipment is ideal for precision work on construction sites across the UAE.",
-    features: ["Concrete saw cutters", "Block cutting machines", "Marble cutting machines", "Concrete grinding machines", "Electric wood cutters", "Diamond blade options"],
-    tags: ["cutting equipment", "grinding machine", "saw cutter rental"],
-  }),
-  kw("plastering-machine-rental-uae", "Plastering Machine Rental UAE", "equipment", {
-    h1: "Plastering Machine Rental in UAE",
-    intro: "Speed up your plastering work with Hadeed Transport's plastering machine rental services across the UAE. Our machines deliver consistent, professional-quality plaster application for interior and exterior walls, dramatically reducing labor time and costs.",
-    features: ["High-speed plastering", "Consistent application", "Adjustable spray patterns", "Interior and exterior use", "Easy to maintain", "Delivery across UAE"],
-    tags: ["plastering machine", "plaster rental", "plastering equipment"],
-  }),
-
-  // ── LOCATION-SPECIFIC KEYWORDS (81-130) ───────────────────
-  kw("equipment-rental-icad", "Equipment Rental in ICAD Abu Dhabi", "location", {
-    h1: "Equipment Rental in ICAD, Abu Dhabi – Same-Day Service",
-    intro: "Located right in ICAD III, Hadeed Transport is your nearest equipment rental partner in the Industrial City of Abu Dhabi. We offer same-day equipment delivery to all ICAD zones with the fastest response times in the market.",
-    tags: ["icad equipment rental", "icad industrial zone", "icad iii"],
-  }),
-  kw("equipment-rental-mussafah", "Equipment Rental in Mussafah", "location", {
-    h1: "Equipment Rental in Mussafah, Abu Dhabi",
-    intro: "Hadeed Transport provides fast equipment delivery to Mussafah industrial district in Abu Dhabi. Our heavy machinery, construction tools, and storage solutions serve the hundreds of industrial and commercial operations in Mussafah.",
-    tags: ["mussafah equipment", "mussafah rental", "mussafah industrial"],
-  }),
-  kw("equipment-rental-jebel-ali", "Equipment Rental in Jebel Ali", "location", {
-    h1: "Equipment Rental in Jebel Ali, Dubai",
-    intro: "Serving Jebel Ali's massive port and free zone operations, Hadeed Transport provides industrial equipment, container handling machinery, and construction tools for the logistics and manufacturing hub of Dubai.",
-    tags: ["jebel ali equipment", "jafza rental", "jebel ali port equipment"],
-  }),
-  kw("equipment-rental-downtown-dubai", "Equipment Rental in Downtown Dubai", "location", {
-    h1: "Equipment Rental in Downtown Dubai",
-    intro: "Hadeed Transport delivers cranes, man lifts, and specialized construction equipment for the premium high-rise projects in Downtown Dubai. We understand the unique logistics challenges of this iconic district and plan deliveries for minimum disruption.",
-    tags: ["downtown dubai equipment", "burj khalifa area rental", "downtown construction"],
-  }),
-  kw("equipment-rental-business-bay", "Equipment Rental in Business Bay", "location", {
-    h1: "Equipment Rental in Business Bay, Dubai",
-    intro: "Business Bay's rapid commercial tower development requires reliable equipment partners. Hadeed Transport provides comprehensive construction equipment for the office towers, mixed-use developments, and infrastructure projects in Business Bay.",
-    tags: ["business bay equipment", "dubai cbd rental", "business bay construction"],
-  }),
-  kw("equipment-rental-dubai-south", "Equipment Rental in Dubai South", "location", {
-    h1: "Equipment Rental in Dubai South",
-    intro: "Supporting the massive development around Al Maktoum International Airport and Expo City, Hadeed Transport delivers our full heavy equipment fleet to Dubai South for long-term construction and infrastructure projects.",
-    tags: ["dubai south equipment", "expo city rental", "al maktoum airport construction"],
-  }),
-  kw("equipment-rental-kizad", "Equipment Rental in KIZAD", "location", {
-    h1: "Equipment Rental in KIZAD (Khalifa Industrial Zone)",
-    intro: "Hadeed Transport serves KIZAD with industrial-grade heavy equipment, container storage, and transport services. We support the port logistics, manufacturing, and industrial construction operations in Khalifa Industrial Zone Abu Dhabi.",
-    tags: ["kizad equipment", "khalifa industrial zone", "khalifa port rental"],
-  }),
-  kw("equipment-rental-al-ain", "Equipment Rental in Al Ain", "location", {
-    h1: "Equipment Rental in Al Ain, Abu Dhabi",
-    intro: "Hadeed Transport extends our full equipment rental services to Al Ain, the Garden City. We support construction, agricultural, and infrastructure projects across Al Ain with timely equipment delivery and professional service.",
-    tags: ["al ain equipment", "al ain rental", "garden city construction"],
-  }),
-  kw("equipment-rental-sharjah-industrial", "Equipment Rental Sharjah Industrial Area", "location", {
-    h1: "Equipment Rental in Sharjah Industrial Area",
-    intro: "Hadeed Transport serves Sharjah's major industrial zone with heavy machinery, storage solutions, and transport equipment. Our fleet supports manufacturing, warehousing, and industrial construction operations across Sharjah Industrial Area.",
-    tags: ["sharjah industrial equipment", "sharjah industrial zone", "sharjah machinery"],
-  }),
-  kw("crane-rental-abu-dhabi", "Crane Rental Abu Dhabi", "location", {
-    h1: "Crane Rental in Abu Dhabi – 25 to 50 Ton",
-    intro: "Need a crane in Abu Dhabi? Hadeed Transport provides 25-ton and 50-ton mobile crane rental with certified operators across all Abu Dhabi areas. Based in ICAD III, we offer the fastest crane deployment in the emirate.",
-    tags: ["crane rental abu dhabi", "mobile crane abu dhabi", "crane hire"],
-  }),
-  kw("crane-rental-dubai", "Crane Rental Dubai", "location", {
-    h1: "Crane Rental in Dubai – Mobile Cranes Available",
-    intro: "Hadeed Transport delivers mobile cranes to construction sites across Dubai for heavy lifting, steel erection, and material handling operations. Our 25-ton and 50-ton cranes come with certified operators for safe, efficient lifting.",
-    tags: ["crane rental dubai", "mobile crane dubai", "lifting dubai"],
-  }),
-  kw("forklift-rental-abu-dhabi", "Forklift Rental Abu Dhabi", "location", {
-    h1: "Forklift Rental in Abu Dhabi – 1 to 15 Ton",
-    intro: "Rent forklifts in Abu Dhabi from our ICAD III facility with same-day delivery available. Hadeed Transport offers forklifts from 1 to 15 ton capacity for warehouses, construction sites, and industrial operations across Abu Dhabi.",
-    tags: ["forklift abu dhabi", "forklift rental", "material handling abu dhabi"],
-  }),
-  kw("forklift-rental-dubai", "Forklift Rental Dubai", "location", {
-    h1: "Forklift Rental in Dubai – All Capacities",
-    intro: "Hadeed Transport provides forklift rental across Dubai for warehouse, construction, and industrial applications. Our fleet ranges from 1-ton compact forklifts to 15-ton heavy-duty units, available for daily, weekly, or monthly hire.",
-    tags: ["forklift dubai", "warehouse forklift", "forklift hire dubai"],
-  }),
-  kw("generator-rental-abu-dhabi", "Generator Rental Abu Dhabi", "location", {
-    h1: "Generator Rental in Abu Dhabi – 10 to 500 KVA",
-    intro: "Hadeed Transport provides generators from 10 KVA to 500 KVA for rent in Abu Dhabi. From temporary construction site power to emergency backup, we deliver reliable generators with same-day service from our ICAD III base.",
-    tags: ["generator abu dhabi", "power generator rental", "temporary power abu dhabi"],
-  }),
-  kw("generator-rental-dubai", "Generator Rental Dubai", "location", {
-    h1: "Generator Rental in Dubai – All Capacities",
-    intro: "Need temporary power in Dubai? Hadeed Transport delivers generators from 10 KVA to 500 KVA for construction sites, events, commercial backup, and emergency power across all Dubai areas.",
-    tags: ["generator dubai", "power rental dubai", "generator hire dubai"],
-  }),
-  kw("warehouse-rental-mussafah", "Warehouse Rental Mussafah", "location", {
-    h1: "Warehouse for Rent in Mussafah, Abu Dhabi",
-    intro: "Hadeed Transport offers warehouse rental in the Mussafah industrial district of Abu Dhabi. Our secure warehouse facilities provide the storage and operational space your business needs in this prime industrial location.",
-    tags: ["warehouse mussafah", "mussafah storage", "industrial warehouse"],
-  }),
-  kw("storage-rental-icad", "Storage Rental ICAD Abu Dhabi", "location", {
-    h1: "Storage & Warehouse Rental in ICAD, Abu Dhabi",
-    intro: "Hadeed Transport's ICAD III facility offers warehouses, self-storage units, open yards, and storage containers for rent. Located in the heart of Abu Dhabi's industrial zone, we provide flexible storage solutions for every business need.",
-    tags: ["icad storage", "icad warehouse", "icad rental"],
-  }),
-  kw("open-yard-rental-abu-dhabi", "Open Yard Rental Abu Dhabi", "location", {
-    h1: "Open Yard for Rent in Abu Dhabi – Flexible Sizes",
-    intro: "Secure large open yard spaces for rent in Abu Dhabi from Hadeed Transport. Our yards accommodate heavy vehicles, equipment staging, material storage, and outdoor operations with areas up to 25,000 sqm.",
-    tags: ["open yard abu dhabi", "yard rental", "outdoor storage abu dhabi"],
-  }),
-  kw("equipment-rental-yas-island", "Equipment Rental Yas Island", "location", {
-    h1: "Equipment Rental on Yas Island, Abu Dhabi",
-    intro: "Hadeed Transport supports construction, entertainment, and hospitality projects on Yas Island with our full equipment fleet. From theme park construction to hotel fit-outs, we deliver the right equipment for Yas Island's unique needs.",
-    tags: ["yas island equipment", "yas island construction", "entertainment construction"],
-  }),
-  kw("equipment-rental-saadiyat", "Equipment Rental Saadiyat Island", "location", {
-    h1: "Equipment Rental on Saadiyat Island, Abu Dhabi",
-    intro: "Serving Abu Dhabi's cultural district, Hadeed Transport provides specialized construction equipment for museum, gallery, luxury residential, and infrastructure projects on Saadiyat Island.",
-    tags: ["saadiyat equipment", "cultural district construction", "saadiyat island rental"],
-  }),
-
-  // ── INDUSTRY & NICHE KEYWORDS (131-200) ───────────────────
-  kw("construction-equipment-rental-near-me", "Construction Equipment Rental Near Me", "service", {
-    h1: "Construction Equipment Rental Near Me – UAE Wide",
-    intro: "Looking for construction equipment rental near you? Hadeed Transport delivers equipment to every corner of the UAE from our ICAD III base in Abu Dhabi. No matter where your project is located, we're your nearest equipment rental solution with same-day delivery available.",
-    tags: ["equipment near me", "rental near me", "closest equipment rental"],
-  }),
-  kw("cheap-equipment-rental-uae", "Cheap Equipment Rental UAE", "service", {
-    h1: "Affordable Equipment Rental in UAE – Best Rates",
-    intro: "Get the best equipment rental rates in the UAE with Hadeed Transport. We offer competitive pricing without compromising on equipment quality or service. Our flexible rental terms, from daily to monthly, ensure you only pay for what you need.",
-    tags: ["cheap equipment rental", "affordable rental", "best rates uae"],
-  }),
-  kw("best-equipment-rental-company-uae", "Best Equipment Rental Company UAE", "service", {
-    h1: "Best Equipment Rental Company in UAE – Hadeed Transport",
-    intro: "With 15+ years of experience, 500+ happy clients, and 1,200+ completed projects, Hadeed Transport is one of the best equipment rental companies in the UAE. Our commitment to quality, reliability, and customer satisfaction sets us apart in the industry.",
-    features: ["15+ years of experience", "500+ satisfied clients", "1,200+ completed projects", "Well-maintained fleet", "24/7 customer support", "Competitive pricing"],
-    tags: ["best equipment rental", "top rental company", "most trusted rental uae"],
-  }),
-  kw("construction-vehicle-rental-uae", "Construction Vehicle Rental UAE", "service", {
-    h1: "Construction Vehicle Rental in UAE",
-    intro: "Hadeed Transport offers a fleet of construction vehicles for rent across the UAE including pickup trucks, trailers, recovery trucks, tankers, and buses. Supporting both material transport and personnel mobility, we keep your project moving.",
-    tags: ["construction vehicles", "site vehicles", "transport rental"],
-  }),
-  kw("site-preparation-equipment-uae", "Site Preparation Equipment UAE", "service", {
-    h1: "Site Preparation Equipment Rental in UAE",
-    intro: "Preparing a construction site? Hadeed Transport provides all the equipment you need for site clearing, grading, excavation, and compaction across the UAE. Our earthmoving fleet handles projects from small vacant lots to major development sites.",
-    tags: ["site preparation", "site clearing", "land grading equipment"],
-  }),
-  kw("road-construction-equipment-uae", "Road Construction Equipment UAE", "service", {
-    h1: "Road Construction Equipment Rental in UAE",
-    intro: "Hadeed Transport supplies road construction equipment across the UAE including rollers, compactors, excavators, graders, and tankers. We support highway construction, road repair, and paving operations for government and private projects.",
-    tags: ["road construction", "highway equipment", "paving equipment"],
-  }),
-  kw("building-construction-equipment-uae", "Building Construction Equipment UAE", "service", {
-    h1: "Building Construction Equipment Rental in UAE",
-    intro: "From foundation to rooftop, Hadeed Transport provides all the building construction equipment you need. Our complete fleet supports residential, commercial, and industrial building projects with cranes, concrete equipment, scaffolding, and more.",
-    tags: ["building construction", "residential construction", "commercial building equipment"],
-  }),
-  kw("villa-construction-equipment-uae", "Villa Construction Equipment UAE", "service", {
-    h1: "Villa Construction Equipment Rental in UAE",
-    intro: "Building a villa in the UAE? Hadeed Transport provides the complete equipment package for villa construction projects including excavators, concrete mixers, scaffolding, manlifts, and finishing tools. We serve all villa communities across Abu Dhabi, Dubai, and Sharjah.",
-    tags: ["villa construction", "residential equipment", "villa building"],
-  }),
-  kw("high-rise-construction-equipment-uae", "High-Rise Construction Equipment UAE", "service", {
-    h1: "High-Rise Construction Equipment Rental in UAE",
-    intro: "Hadeed Transport supplies specialized equipment for high-rise construction projects across the UAE including mobile cranes, high-level manlifts, concrete pumps, and tower work tools. We support the UAE's iconic skyline projects with reliable, certified equipment.",
-    tags: ["high-rise construction", "tower construction", "skyscraper equipment"],
-  }),
-  kw("renovation-equipment-rental-uae", "Renovation Equipment Rental UAE", "service", {
-    h1: "Renovation & Remodeling Equipment Rental in UAE",
-    intro: "Renovating a property in the UAE? Hadeed Transport provides all the equipment you need for demolition, cutting, plastering, painting access, and finishing. Our compact tools are perfect for interior renovation work in residential and commercial properties.",
-    tags: ["renovation equipment", "remodeling tools", "property renovation rental"],
-  }),
-  kw("maintenance-equipment-rental-uae", "Maintenance Equipment Rental UAE", "service", {
-    h1: "Building Maintenance Equipment Rental in UAE",
-    intro: "Keep your buildings in top condition with Hadeed Transport's maintenance equipment rental across the UAE. Our man lifts, scaffolding, generators, and power tools support facade cleaning, painting, repairs, and regular maintenance operations.",
-    tags: ["maintenance equipment", "building maintenance", "facility management rental"],
-  }),
-  kw("landscaping-equipment-rental-uae", "Landscaping Equipment Rental UAE", "service", {
-    h1: "Landscaping Equipment Rental in UAE",
-    intro: "Hadeed Transport provides earthmoving and landscaping equipment for garden, park, and outdoor space development across the UAE. Our mini loaders, excavators, and grading equipment transform landscapes efficiently and professionally.",
-    tags: ["landscaping equipment", "garden machinery", "outdoor development"],
-  }),
-  kw("power-tools-rental-uae", "Power Tools Rental UAE", "equipment", {
-    h1: "Power Tools Rental in UAE – Professional Grade",
-    intro: "Rent professional-grade power tools from Hadeed Transport across the UAE. Our range includes concrete cutters, grinders, jack hammers, plaster machines, coring machines, and more. All tools are maintained and ready for immediate use.",
-    tags: ["power tools", "professional tools", "tool rental uae"],
-  }),
-  kw("concrete-cutting-rental-uae", "Concrete Cutting Equipment Rental UAE", "equipment", {
-    h1: "Concrete Cutting & Coring Equipment Rental in UAE",
-    intro: "Hadeed Transport provides concrete cutting and coring equipment rental across the UAE including saw cutters, coring machines, and diamond blades. Our equipment handles precision cutting for expansion joints, utility penetrations, and demolition preparation.",
-    tags: ["concrete cutting", "coring machine", "saw cutter rental"],
-  }),
-  kw("staff-transportation-uae", "Staff Transportation Services UAE", "service", {
-    h1: "Staff & Labor Transportation Services in UAE",
-    intro: "Hadeed Transport provides reliable staff transportation services across the UAE with our fleet of 12 to 60 passenger buses and saloon cars. We support daily worker commutes, project team transport, and corporate mobility needs with professional drivers.",
-    tags: ["staff transport", "labor transportation", "worker bus service"],
-  }),
-  kw("diesel-tanker-rental-uae", "Diesel Tanker Rental UAE", "equipment", {
-    h1: "Diesel Tanker Rental in UAE",
-    intro: "Hadeed Transport provides diesel tanker rental for fuel delivery to construction sites, remote operations, and industrial facilities across the UAE. Our tankers are certified for safe diesel transport and come with experienced, licensed drivers.",
-    tags: ["diesel tanker", "fuel delivery", "diesel transport"],
-  }),
-  kw("sewerage-tanker-rental-uae", "Sewerage Tanker Rental UAE", "equipment", {
-    h1: "Sewerage Tanker Rental in UAE",
-    intro: "Hadeed Transport offers sewerage tanker rental for waste water management at construction sites, events, and temporary facilities across the UAE. Our tanks are properly sealed and operated by experienced drivers for safe waste disposal.",
-    tags: ["sewerage tanker", "waste water", "sewage transport"],
-  }),
-  kw("power-float-rental-uae", "Power Float Rental UAE", "equipment", {
-    h1: "Concrete Power Float Rental in UAE",
-    intro: "Achieve perfectly smooth concrete floors with Hadeed Transport's power float rental services across the UAE. Our concrete finishing machines are ideal for warehouse floors, commercial buildings, and residential slab finishing.",
-    tags: ["power float", "concrete finishing", "floor finishing rental"],
-  }),
-  kw("concrete-grinding-machine-rental-uae", "Concrete Grinding Machine Rental UAE", "equipment", {
-    h1: "Concrete Grinding Machine Rental in UAE",
-    intro: "Rent concrete grinding machines from Hadeed Transport for floor preparation, surface leveling, and concrete polishing across the UAE. Our machines deliver smooth, professional-quality concrete surfaces.",
-    tags: ["concrete grinder", "floor grinder", "surface grinding rental"],
-  }),
-  kw("block-cutter-rental-uae", "Block Cutter Machine Rental UAE", "equipment", {
-    h1: "Block Cutter Machine Rental in UAE",
-    intro: "Hadeed Transport provides block cutter machine rental for precision block cutting on construction sites across the UAE. Our machines handle various block sizes and materials for clean, accurate cuts.",
-    tags: ["block cutter", "block cutting machine", "masonry cutting"],
-  }),
-  kw("marble-cutting-machine-rental-uae", "Marble Cutting Machine Rental UAE", "equipment", {
-    h1: "Marble Cutting Machine Rental in UAE",
-    intro: "Rent marble cutting machines from Hadeed Transport for precision stone and marble work on construction and renovation projects across the UAE. Our machines deliver clean, professional cuts for flooring, cladding, and countertop installations.",
-    tags: ["marble cutter", "stone cutting", "marble machine rental"],
-  }),
-  kw("wood-cutter-rental-uae", "Wood Cutter Rental UAE", "equipment", {
-    h1: "Electric Wood Cutter Rental in UAE",
-    intro: "Hadeed Transport provides electric wood cutter rental across the UAE for carpentry, formwork, and woodworking operations on construction sites. Our machines deliver precise cuts for doors, window frames, and structural timber.",
-    tags: ["wood cutter", "timber cutting", "carpentry tools rental"],
-  }),
-  kw("coring-machine-rental-uae", "Coring Machine Rental UAE", "equipment", {
-    h1: "Concrete Coring Machine Rental in UAE",
-    intro: "Hadeed Transport offers coring machine rental for precision concrete drilling across the UAE. Our diamond-tipped core drilling equipment is ideal for utility penetrations, structural sampling, and anchor installations.",
-    tags: ["coring machine", "core drilling", "concrete coring rental"],
-  }),
-  kw("total-station-rental-uae", "Total Station Rental UAE", "equipment", {
-    h1: "Total Station Rental in UAE – Leica TC405",
-    intro: "Rent the Leica TC405 total station from Hadeed Transport for professional land surveying and construction layout across the UAE. Our calibrated instruments and accessories ensure accurate measurements for your project.",
-    tags: ["total station", "leica rental", "survey instrument"],
-  }),
-  kw("auto-level-rental-uae", "Auto Level Rental UAE", "equipment", {
-    h1: "Auto Level Machine Rental in UAE",
-    intro: "Hadeed Transport provides auto level machine rental for elevation surveying, leveling work, and construction layout across the UAE. Our instruments are calibrated and come with tripods and accessories ready for use.",
-    tags: ["auto level", "leveling instrument", "survey level rental"],
-  }),
-  kw("laser-level-rental-uae", "Laser Level Rental UAE", "equipment", {
-    h1: "Laser Level Machine Rental in UAE",
-    intro: "Rent laser level machines from Hadeed Transport for precise alignment and leveling on construction projects across the UAE. Our instruments are perfect for interior fit-outs, ceiling installation, and precision construction work.",
-    tags: ["laser level", "laser alignment", "precision leveling rental"],
-  }),
-  kw("50-ton-crane-rental-uae", "50 Ton Crane Rental UAE", "equipment", {
-    h1: "50 Ton Mobile Crane Rental in UAE",
-    intro: "Hadeed Transport offers 50-ton mobile crane rental for heavy lifting operations across the UAE. Our 50-ton cranes handle the heaviest construction loads with certified operators and complete safety equipment.",
-    tags: ["50 ton crane", "heavy crane rental", "large crane hire"],
-  }),
-  kw("25-ton-crane-rental-uae", "25 Ton Crane Rental UAE", "equipment", {
-    h1: "25 Ton Mobile Crane Rental in UAE",
-    intro: "Rent our 25-ton mobile cranes for medium to heavy lifting operations across the UAE. Hadeed Transport's 25-ton cranes are perfect for steel erection, precast installation, and general material handling on construction sites.",
-    tags: ["25 ton crane", "medium crane rental", "crane hire uae"],
-  }),
-  kw("500-kva-generator-rental-uae", "500 KVA Generator Rental UAE", "equipment", {
-    h1: "500 KVA Generator Rental in UAE",
-    intro: "Need high-capacity temporary power? Hadeed Transport provides 500 KVA generator rental for large construction sites, commercial operations, and events across the UAE. Our generators deliver reliable power for the most demanding applications.",
-    tags: ["500 kva generator", "high power generator", "large generator rental"],
-  }),
-  kw("portable-generator-rental-uae", "Portable Generator Rental UAE", "equipment", {
-    h1: "Portable Generator Rental in UAE – 10 to 60 KVA",
-    intro: "Rent portable generators from 10 to 60 KVA from Hadeed Transport for small construction sites, shops, events, and emergency backup across the UAE. Our compact generators are easy to transport and set up.",
-    tags: ["portable generator", "small generator", "compact power rental"],
-  }),
-  kw("jcb-rental-uae", "JCB Backhoe Loader Rental UAE", "equipment", {
-    h1: "JCB Backhoe Loader Rental in UAE",
-    intro: "Hadeed Transport offers JCB backhoe loader rental for limited excavation, trenching, and general earthwork across the UAE. The versatile JCB is perfect for medium-size construction projects where flexibility and compact operation are essential.",
-    tags: ["jcb rental", "backhoe loader", "jcb hire uae"],
-  }),
-  kw("60-passenger-bus-rental-uae", "60 Passenger Bus Rental UAE", "service", {
-    h1: "60 Passenger Bus Rental in UAE",
-    intro: "Rent 60-passenger buses from Hadeed Transport for staff transportation, labor camp shuttles, and large group transport across the UAE. Our air-conditioned buses come with professional drivers for safe, comfortable journeys.",
-    tags: ["60 seater bus", "large bus rental", "staff transport bus"],
-  }),
-  kw("15-seater-bus-rental-uae", "15 Seater Bus Rental UAE", "service", {
-    h1: "15 Seater Bus Rental in UAE",
-    intro: "Hadeed Transport provides 15-seater bus rental for small team transport, airport transfers, and project site commutes across the UAE. Our compact buses are air-conditioned with professional drivers.",
-    tags: ["15 seater bus", "minibus rental", "small bus hire"],
-  }),
-  kw("construction-site-power-solutions-uae", "Construction Site Power Solutions UAE", "service", {
-    h1: "Construction Site Power Solutions in UAE",
-    intro: "Power your construction site with Hadeed Transport's generator rental services. From 10 KVA for small operations to 500 KVA for major projects, we provide reliable temporary power solutions with fuel delivery and 24/7 support across the UAE.",
-    tags: ["site power", "temporary power", "construction electricity"],
-  }),
-  kw("construction-waste-management-uae", "Construction Waste Equipment UAE", "service", {
-    h1: "Construction Waste Management Equipment in UAE",
-    intro: "Manage construction waste efficiently with Hadeed Transport's equipment rental services. Our storage containers, skip loaders, and transport vehicles help you keep your site clean and compliant with UAE waste management regulations.",
-    tags: ["construction waste", "waste management", "skip hire uae"],
-  }),
-  kw("temporary-fencing-equipment-uae", "Temporary Site Equipment Rental UAE", "service", {
-    h1: "Temporary Site Equipment & Facilities in UAE",
-    intro: "Hadeed Transport provides temporary site facilities for construction projects across the UAE. Our caravans, mobile toilets, storage containers, and generators create comfortable, functional work environments for your project teams.",
-    tags: ["temporary facilities", "site equipment", "construction facilities"],
-  }),
-  kw("material-handling-equipment-uae", "Material Handling Equipment UAE", "service", {
-    h1: "Material Handling Equipment Rental in UAE",
-    intro: "Hadeed Transport offers a comprehensive range of material handling equipment for rent across the UAE including forklifts, cranes, hoists, and trolleys. Our equipment keeps materials moving efficiently on construction sites, warehouses, and industrial facilities.",
-    tags: ["material handling", "logistics equipment", "warehouse machinery"],
-  }),
-  kw("compaction-equipment-rental-uae", "Compaction Equipment Rental UAE", "equipment", {
-    h1: "Compaction Equipment Rental in UAE",
-    intro: "Achieve optimal soil and sub-base compaction with Hadeed Transport's range of compaction equipment available for rent across the UAE. Our fleet includes driving rollers, plate compactors, and jumping jack compactors for projects of every scale.",
-    tags: ["compaction equipment", "soil compactor", "vibrating roller"],
-  }),
-  kw("tower-crane-services-uae", "Tower Crane Services UAE", "service", {
-    h1: "Tower Crane & Mobile Crane Services in UAE",
-    intro: "Hadeed Transport provides professional crane services across the UAE for high-rise construction, steel erection, and heavy material handling. Our certified operators and well-maintained mobile cranes deliver safe, efficient lifting for your most demanding projects.",
-    tags: ["tower crane", "crane services", "professional lifting"],
-  }),
-  kw("equipment-maintenance-support-uae", "Equipment Rental Maintenance Support UAE", "service", {
-    h1: "Equipment Rental with Maintenance Support in UAE",
-    intro: "When you rent from Hadeed Transport, you get more than just equipment — you get comprehensive maintenance support. Our in-house maintenance team provides regular servicing, emergency repairs, and standby replacement to ensure your projects never stop.",
-    features: ["In-house maintenance team", "Regular equipment servicing", "Emergency repair response", "Standby equipment available", "Parts and consumables support", "24/7 maintenance hotline"],
-    tags: ["equipment maintenance", "rental support", "maintenance service"],
-  }),
-  kw("excavation-contractor-equipment-uae", "Excavation Equipment UAE", "service", {
-    h1: "Excavation Equipment & Services in UAE",
-    intro: "Hadeed Transport provides excavation equipment for contractors across the UAE. Our shovels, excavators, and loaders handle foundation work, trenching, grading, and bulk earthmoving for projects of all sizes and complexities.",
-    tags: ["excavation equipment", "foundation digging", "trenching machinery"],
-  }),
-  kw("piling-equipment-support-uae", "Foundation & Piling Support Equipment UAE", "service", {
-    h1: "Foundation & Piling Support Equipment in UAE",
-    intro: "Support your foundation and piling operations with Hadeed Transport's equipment fleet. We provide excavators for pile cap excavation, cranes for piling rig support, and dewatering systems for foundation pit management across the UAE.",
-    tags: ["piling support", "foundation equipment", "pile cap excavation"],
-  }),
-  kw("fit-out-equipment-rental-uae", "Fit-Out Equipment Rental UAE", "service", {
-    h1: "Interior Fit-Out Equipment Rental in UAE",
-    intro: "Hadeed Transport provides essential equipment for interior fit-out and finishing projects across the UAE. Our range includes man lifts for ceiling work, plaster machines, cutting tools, generators, and material handling equipment for commercial and residential fit-outs.",
-    tags: ["fit out equipment", "interior finishing", "commercial fit out rental"],
-  }),
-  kw("desert-construction-equipment-uae", "Desert Construction Equipment UAE", "service", {
-    h1: "Desert & Remote Site Construction Equipment in UAE",
-    intro: "Working on a remote desert project? Hadeed Transport delivers construction equipment to even the most remote desert locations in the UAE. Our logistics capability ensures your equipment arrives on time, no matter how far from the city your project is.",
-    tags: ["desert construction", "remote site equipment", "off-road machinery"],
-  }),
-  kw("marine-construction-equipment-uae", "Marine Construction Equipment UAE", "service", {
-    h1: "Marine & Waterfront Construction Equipment in UAE",
-    intro: "Hadeed Transport supports marine and waterfront construction projects across the UAE with specialized equipment. From island developments to port expansions, our cranes, earthmoving equipment, and transport vehicles serve the unique needs of marine construction.",
-    tags: ["marine construction", "waterfront equipment", "island construction"],
-  }),
-  kw("green-building-equipment-uae", "Green Building Equipment UAE", "service", {
-    h1: "Green & Sustainable Building Equipment in UAE",
-    intro: "Hadeed Transport supports the UAE's sustainability goals with equipment suitable for green building and eco-friendly construction projects. We serve sustainable developments like Masdar City and The Sustainable City with modern, efficient equipment.",
-    tags: ["green building", "sustainable construction", "eco equipment"],
-  }),
-  kw("project-logistics-uae", "Construction Project Logistics UAE", "service", {
-    h1: "Construction Project Logistics & Equipment in UAE",
-    intro: "Hadeed Transport provides end-to-end construction project logistics across the UAE, combining equipment rental with transport services, storage solutions, and on-site support. We simplify your project supply chain with a single, reliable partner.",
-    tags: ["project logistics", "construction logistics", "supply chain rental"],
-  }),
-  kw("equipment-rental-free-zone-uae", "Equipment Rental for Free Zones UAE", "service", {
-    h1: "Equipment Rental for Free Zones Across UAE",
-    intro: "Hadeed Transport serves free zones across the UAE including JAFZA, KIZAD, SAIF Zone, Hamriyah Free Zone, DIP, and many more. Our industrial equipment, storage solutions, and transport services support the manufacturing and commercial operations within these strategic zones.",
-    tags: ["free zone equipment", "jafza rental", "industrial zone machinery"],
-  }),
-  kw("government-project-equipment-uae", "Government Project Equipment UAE", "service", {
-    h1: "Equipment Rental for Government Projects in UAE",
-    intro: "Hadeed Transport is experienced in supporting government construction and infrastructure projects across the UAE. Our well-maintained fleet and professional service standards meet the rigorous requirements of public sector projects.",
-    tags: ["government project", "public sector rental", "infrastructure equipment"],
-  }),
-  kw("hospital-construction-equipment-uae", "Hospital Construction Equipment UAE", "industry", {
-    h1: "Hospital & Healthcare Facility Construction Equipment UAE",
-    intro: "Hadeed Transport provides specialized equipment for hospital and healthcare facility construction across the UAE. From foundation work to precision interior fit-out, our fleet supports the unique requirements of healthcare infrastructure projects.",
-    tags: ["hospital construction", "healthcare facility", "medical building equipment"],
-  }),
-  kw("school-construction-equipment-uae", "School Construction Equipment UAE", "industry", {
-    h1: "School & Educational Facility Construction Equipment UAE",
-    intro: "Supporting the UAE's education sector, Hadeed Transport provides construction equipment for school, university, and campus development projects. Our fleet helps build the learning environments of tomorrow.",
-    tags: ["school construction", "education facility", "campus construction equipment"],
-  }),
-  kw("hotel-construction-equipment-uae", "Hotel Construction Equipment UAE", "industry", {
-    h1: "Hotel & Hospitality Construction Equipment UAE",
-    intro: "Hadeed Transport supplies construction and fit-out equipment for hotel, resort, and hospitality projects across the UAE. From structural work to interior finishing, we support the luxury standards the UAE's hospitality industry demands.",
-    tags: ["hotel construction", "hospitality equipment", "resort building rental"],
-  }),
-  kw("retail-construction-equipment-uae", "Retail & Mall Construction Equipment UAE", "industry", {
-    h1: "Retail & Mall Construction Equipment in UAE",
-    intro: "Hadeed Transport provides construction and fit-out equipment for retail, mall, and shopping center projects across the UAE. Our equipment supports both new construction and renovation of commercial retail spaces.",
-    tags: ["retail construction", "mall construction", "shopping center equipment"],
-  }),
-  kw("warehouse-construction-equipment-uae", "Warehouse Construction Equipment UAE", "industry", {
-    h1: "Warehouse & Logistics Center Construction Equipment UAE",
-    intro: "Building a warehouse or logistics center? Hadeed Transport provides the heavy equipment needed for large-span structure construction, including cranes, forklifts, concrete equipment, and earthmoving machinery across the UAE.",
-    tags: ["warehouse construction", "logistics center", "industrial building equipment"],
-  }),
-  kw("sports-facility-equipment-uae", "Sports Facility Construction Equipment UAE", "industry", {
-    h1: "Sports Facility & Stadium Construction Equipment UAE",
-    intro: "Hadeed Transport supports the construction of sports facilities, stadiums, and recreation centers across the UAE with our comprehensive equipment fleet. From earthmoving to finishing, we have the machinery for world-class sports infrastructure.",
-    tags: ["sports facility", "stadium construction", "recreation center equipment"],
-  }),
-  kw("parking-structure-equipment-uae", "Parking Structure Construction Equipment UAE", "industry", {
-    h1: "Parking Structure Construction Equipment in UAE",
-    intro: "Hadeed Transport provides equipment for multi-storey parking structure construction across the UAE including cranes, concrete equipment, formwork support, and finishing tools for efficient car park development.",
-    tags: ["parking structure", "car park construction", "multi-storey parking"],
-  }),
-  kw("mixed-use-development-equipment-uae", "Mixed-Use Development Equipment UAE", "industry", {
-    h1: "Mixed-Use Development Construction Equipment UAE",
-    intro: "Hadeed Transport supports mixed-use development projects across the UAE that combine residential, commercial, and retail components. Our diverse equipment fleet handles every phase of these complex multi-function developments.",
-    tags: ["mixed use development", "multi-use construction", "complex development equipment"],
-  }),
-  kw("heritage-building-equipment-uae", "Heritage Building Restoration Equipment UAE", "industry", {
-    h1: "Heritage Building Restoration Equipment in UAE",
-    intro: "Hadeed Transport provides specialized, carefully operated equipment for heritage building restoration and preservation projects across the UAE. Our compact, low-vibration machinery protects historic structures while enabling necessary restoration work.",
-    tags: ["heritage restoration", "historic building", "preservation equipment"],
-  }),
-  kw("emergency-equipment-rental-uae", "Emergency Equipment Rental UAE", "service", {
-    h1: "Emergency & Urgent Equipment Rental in UAE",
-    intro: "Equipment emergency? Hadeed Transport provides 24/7 emergency equipment rental across the UAE. Whether it's an urgent generator need, emergency dewatering, or last-minute crane requirement, our rapid response team gets equipment to your site fast.",
-    features: ["24/7 emergency hotline", "Same-day deployment", "Generator emergency backup", "Emergency dewatering pumps", "Rapid crane deployment", "Priority service for emergencies"],
-    tags: ["emergency rental", "urgent equipment", "24/7 equipment hire"],
-  }),
-]
-
-// ────────────────────────────────────────────────
-// Exports
-// ────────────────────────────────────────────────
+// ============================================================
+// Helper Functions
+// ============================================================
 
 export function getKeywordPageBySlug(slug: string): KeywordPage | undefined {
   return keywordPages.find((p) => p.slug === slug)
 }
 
-export function getRelatedKeywordPages(current: KeywordPage, limit = 6): KeywordPage[] {
-  // First try related slugs
-  const related = current.relatedSlugs
-    .map((s) => keywordPages.find((p) => p.slug === s))
-    .filter(Boolean) as KeywordPage[]
+export function getRelatedKeywordPages(page: KeywordPage, limit = 6): KeywordPage[] {
+  return keywordPages
+    .filter((p) => p.slug !== page.slug && p.category === page.category)
+    .slice(0, limit)
+}
 
-  // Then add same-category pages
-  const sameCategory = keywordPages.filter(
-    (p) => p.category === current.category && p.slug !== current.slug && !current.relatedSlugs.includes(p.slug)
-  )
+export function getKeywordPagesByCategory(category: KeywordPage["category"]): KeywordPage[] {
+  return keywordPages.filter((p) => p.category === category)
+}
 
-  return [...related, ...sameCategory].slice(0, limit)
+export function getTotalKeywordPages(): number {
+  return keywordPages.length
 }

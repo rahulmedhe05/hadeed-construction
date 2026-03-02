@@ -8,14 +8,13 @@ import {
   ArrowRight,
   Phone,
   MessageCircle,
-  Truck,
-  Warehouse,
 } from "lucide-react"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { WhatsAppFloat } from "@/components/whatsapp-float"
+import { BookingForm } from "@/components/booking-form"
 import { allCities } from "@/lib/areas"
-import { equipmentCategories, spaceRentals, SITE_CONFIG } from "@/lib/data"
+import { SITE_CONFIG } from "@/lib/data"
 
 interface Props {
   params: Promise<{ city: string; area: string }>
@@ -45,14 +44,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!result) return {}
   const { city, area } = result
   return {
-    title: `Equipment Rental in ${area.name}, ${city.name} | Hadeed Transport`,
-    description: `Rent heavy equipment, cranes, forklifts & construction machinery in ${area.name}, ${city.name}. Warehouse & storage solutions available. Fast delivery, competitive rates.`,
+    title: `Construction & Contracting in ${area.name}, ${city.name} | Hadeed Emirates`,
+    description: `Construction, contracting & project management in ${area.name}, ${city.name}. Industrial, commercial, residential projects. Hadeed Emirates Contracting — 400+ projects completed.`,
     openGraph: {
-      title: `Equipment Rental in ${area.name} | Hadeed Transport`,
-      description: `Heavy equipment & space rental in ${area.name}, ${city.name}. Cranes, forklifts, excavators, generators & more.`,
+      title: `Construction Services in ${area.name} | Hadeed Emirates Contracting`,
+      description: `Construction & contracting in ${area.name}, ${city.name}. Industrial, commercial, infrastructure projects & MEP works.`,
     },
     alternates: {
-      canonical: `https://hadeed-transport.com/${city.slug}/${area.slug}`,
+      canonical: `https://hadeedconstruction.com/${city.slug}/${area.slug}`,
     },
   }
 }
@@ -64,33 +63,27 @@ export default async function AreaPage({ params }: Props) {
 
   const { city, area } = result
 
-  // Get all products for the popular equipment section
-  const popularEquipment = [
-    ...equipmentCategories[0].products.slice(0, 4),
-    ...equipmentCategories[1].products.slice(0, 2),
-  ]
-
   // Nearby areas (exclude current, pick up to 6)
   const nearbyAreas = city.areas.filter((a) => a.slug !== area.slug).slice(0, 6)
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: `Hadeed Transport - ${area.name}`,
+    name: `Hadeed Emirates Contracting - ${area.name}`,
     description: area.description,
     address: {
       "@type": "PostalAddress",
       addressLocality: area.name,
       addressRegion: city.name,
-      addressCountry: "AE",
+      addressCountry: city.countryCode,
     },
     telephone: SITE_CONFIG.phone,
     email: SITE_CONFIG.email,
-    url: `https://hadeed-transport.com/${city.slug}/${area.slug}`,
+    url: `https://hadeedconstruction.com/${city.slug}/${area.slug}`,
   }
 
   return (
-    <main className="min-h-screen bg-[#0d0d1a]">
+    <main className="min-h-screen bg-[#ffffff]">
       <Navigation />
 
       <script
@@ -99,226 +92,175 @@ export default async function AreaPage({ params }: Props) {
       />
 
       {/* Breadcrumbs */}
-      <div className="pt-28 pb-4 bg-[#0d0d1a] border-b border-white/5">
+      <div className="pt-28 pb-4 bg-[#ffffff] border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4">
-          <nav className="flex items-center gap-2 text-sm text-gray-400">
-            <Link href="/" className="hover:text-[#c8a35a] transition-colors">Home</Link>
+          <nav className="flex items-center gap-2 text-sm text-gray-600">
+            <Link href="/" className="hover:text-[#2563eb] transition-colors">Home</Link>
             <ChevronRight className="w-3 h-3" />
-            <Link href={`/${city.slug}`} className="hover:text-[#c8a35a] transition-colors">
+            <Link href={`/${city.slug}`} className="hover:text-[#2563eb] transition-colors">
               {city.name}
             </Link>
             <ChevronRight className="w-3 h-3" />
-            <span className="text-[#c8a35a]">{area.name}</span>
+            <span className="text-[#2563eb]">{area.name}</span>
           </nav>
         </div>
       </div>
 
       {/* Hero */}
-      <section className="py-20 bg-[#0d0d1a]">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 bg-[#c8a35a]/10 border border-[#c8a35a]/20 rounded-full px-5 py-2 mb-6">
-              <MapPin className="w-4 h-4 text-[#c8a35a]" />
-              <span className="text-[#c8a35a] text-sm font-semibold">
-                {area.name}, {city.name}
-              </span>
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Equipment Rental &amp; Space Solutions in {area.name}
-            </h1>
-            <p className="text-gray-300 text-lg leading-relaxed mb-8">
-              {area.description}
-            </p>
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <img src="/images/hero/hero-2.jpg" alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-900/70 to-slate-900/40" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4">
+          <div className="grid lg:grid-cols-5 gap-10 items-start">
+            <div className="lg:col-span-3">
+              <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-5 py-2 mb-6">
+                <MapPin className="w-4 h-4 text-blue-400" />
+                <span className="text-blue-400 text-sm font-semibold">
+                  {area.name}, {city.name}
+                </span>
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                Construction &amp; Contracting in {area.name}
+              </h1>
+              <p className="text-gray-300 text-lg leading-relaxed mb-8">
+                {area.description}
+              </p>
 
-            {/* Highlights */}
-            <div className="flex flex-wrap gap-3 mb-10">
-              {area.highlights.map((h, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-2 bg-[#1a1a2e] border border-[#c8a35a]/15 rounded-full px-4 py-2"
+              {/* Highlights */}
+              <div className="flex flex-wrap gap-3 mb-10">
+                {["Industrial Construction", "Commercial Buildings", "Civil Infrastructure", "Project Management"].map((h, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2"
+                  >
+                    <CheckCircle2 className="w-4 h-4 text-blue-400" />
+                    <span className="text-gray-300 text-sm">{h}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href={SITE_CONFIG.whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 blue-gradient text-white px-8 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity shadow-lg shadow-blue-500/30"
                 >
-                  <CheckCircle2 className="w-4 h-4 text-[#c8a35a]" />
-                  <span className="text-gray-300 text-sm">{h}</span>
-                </div>
-              ))}
+                  <MessageCircle className="w-5 h-5" />
+                  Get Free Quote
+                </a>
+                <a
+                  href={`tel:${SITE_CONFIG.phone}`}
+                  className="inline-flex items-center gap-2 border-2 border-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg hover:border-white transition-colors"
+                >
+                  <Phone className="w-5 h-5" />
+                  Call Now
+                </a>
+              </div>
             </div>
-
-            <div className="flex flex-wrap gap-4">
-              <a
-                href={SITE_CONFIG.whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 gold-gradient text-[#0d0d1a] px-8 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity"
-              >
-                <MessageCircle className="w-5 h-5" />
-                Get Free Quote
-              </a>
-              <a
-                href={`tel:${SITE_CONFIG.phone}`}
-                className="inline-flex items-center gap-2 border-2 border-[#c8a35a] text-[#c8a35a] px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#c8a35a]/10 transition-colors"
-              >
-                <Phone className="w-5 h-5" />
-                Call Now
-              </a>
+            <div className="lg:col-span-2">
+              <BookingForm compact />
             </div>
           </div>
         </div>
       </section>
 
       {/* Services in this area */}
-      <section className="py-20 bg-[#0f0f1a]">
+      <section className="py-20 bg-[#f1f5f9]">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-14">
-            <span className="text-[#c8a35a] text-sm font-semibold tracking-[0.3em] uppercase">
+            <span className="text-[#2563eb] text-sm font-semibold tracking-[0.3em] uppercase">
               OUR SERVICES IN {area.name.toUpperCase()}
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-4">
               What We Offer in {area.name}
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-[#1a1a2e] border border-[#c8a35a]/10 rounded-xl p-8">
-              <Truck className="w-10 h-10 text-[#c8a35a] mb-4" />
-              <h3 className="text-xl font-bold text-white mb-3">Heavy Equipment Rental</h3>
-              <p className="text-gray-400 mb-4">
-                Excavators, cranes, forklifts, loaders, and more — delivered to your project site in {area.name}.
+            <div className="bg-[#ffffff] shadow-sm border border-[#2563eb]/10 rounded-xl p-8">
+              <CheckCircle2 className="w-10 h-10 text-[#2563eb] mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Industrial Construction</h3>
+              <p className="text-gray-600 mb-4">
+                Factories, warehouses, manufacturing plants, and industrial complexes in {area.name}.
               </p>
-              <Link href="/equipments/transportation-construction-machineries" className="text-[#c8a35a] font-semibold text-sm inline-flex items-center gap-1 hover:underline">
-                View Equipment <ArrowRight className="w-4 h-4" />
-              </Link>
             </div>
-            <div className="bg-[#1a1a2e] border border-[#c8a35a]/10 rounded-xl p-8">
-              <Truck className="w-10 h-10 text-[#c8a35a] mb-4" />
-              <h3 className="text-xl font-bold text-white mb-3">Construction Tools</h3>
-              <p className="text-gray-400 mb-4">
-                Generators, compactors, concrete tools, cutting machines, and survey equipment for {area.name} projects.
+            <div className="bg-[#ffffff] shadow-sm border border-[#2563eb]/10 rounded-xl p-8">
+              <CheckCircle2 className="w-10 h-10 text-[#2563eb] mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Commercial Buildings</h3>
+              <p className="text-gray-600 mb-4">
+                Office towers, retail facilities, mixed-use developments, and commercial projects in {area.name}.
               </p>
-              <Link href="/equipments/construction-small-tools" className="text-[#c8a35a] font-semibold text-sm inline-flex items-center gap-1 hover:underline">
-                View Tools <ArrowRight className="w-4 h-4" />
-              </Link>
             </div>
-            <div className="bg-[#1a1a2e] border border-[#c8a35a]/10 rounded-xl p-8">
-              <Warehouse className="w-10 h-10 text-[#c8a35a] mb-4" />
-              <h3 className="text-xl font-bold text-white mb-3">Space Rentals</h3>
-              <p className="text-gray-400 mb-4">
-                Warehouses, office spaces, open yards, caravans, and storage containers available near {area.name}.
+            <div className="bg-[#ffffff] shadow-sm border border-[#2563eb]/10 rounded-xl p-8">
+              <CheckCircle2 className="w-10 h-10 text-[#2563eb] mb-4" />
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Infrastructure Works</h3>
+              <p className="text-gray-600 mb-4">
+                Roads, drainage, utilities, and site enabling works for developments in {area.name}.
               </p>
-              <Link href="/space-rentals" className="text-[#c8a35a] font-semibold text-sm inline-flex items-center gap-1 hover:underline">
-                View Spaces <ArrowRight className="w-4 h-4" />
-              </Link>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Popular Equipment */}
-      <section className="py-20 bg-[#0d0d1a]">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-14">
-            <span className="text-[#c8a35a] text-sm font-semibold tracking-[0.3em] uppercase">
-              POPULAR IN {area.name.toUpperCase()}
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-4">
-              Most Rented Equipment
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {popularEquipment.map((product) => {
-              const cat = equipmentCategories.find((c) =>
-                c.products.some((p) => p.slug === product.slug)
-              )
-              return (
-                <Link
-                  key={product.slug}
-                  href={`/equipments/${cat?.slug}/${product.slug}`}
-                  className="group bg-[#1a1a2e] border border-[#c8a35a]/15 rounded-xl overflow-hidden hover:border-[#c8a35a]/40 transition-all"
-                >
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      src={product.image}
-                      alt={`${product.name} for rent in ${area.name}`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="p-5">
-                    <h3 className="text-white font-bold group-hover:text-[#c8a35a] transition-colors">
-                      {product.name}
-                    </h3>
-                    <p className="text-gray-400 text-sm mt-1">{product.description}</p>
-                  </div>
-                </Link>
-              )
-            })}
-          </div>
-          <div className="text-center mt-10">
-            <Link
-              href="/equipments"
-              className="inline-flex items-center gap-2 gold-gradient text-[#0d0d1a] px-8 py-4 rounded-full font-semibold hover:opacity-90 transition-opacity"
-            >
-              Browse All Equipment <ArrowRight className="w-5 h-5" />
-            </Link>
           </div>
         </div>
       </section>
 
       {/* Why Hadeed in this area */}
-      <section className="py-20 bg-[#0f0f1a]">
+      <section className="py-20 bg-[#f1f5f9]">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="text-[#c8a35a] text-sm font-semibold tracking-[0.3em] uppercase">
-                WHY HADEED TRANSPORT
+              <span className="text-[#2563eb] text-sm font-semibold tracking-[0.3em] uppercase">
+                WHY HADEED EMIRATES
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mt-4 mb-8">
-                Your Trusted Partner in {area.name}
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-4 mb-8">
+                Your Trusted Construction Partner in {area.name}
               </h2>
               <div className="space-y-6">
                 {[
-                  { title: "Fast Delivery", desc: `Same-day or next-day equipment delivery to ${area.name} and surrounding areas.` },
-                  { title: "Well-Maintained Fleet", desc: "Every piece of equipment is regularly serviced and safety-inspected." },
-                  { title: "Certified Operators", desc: "Professional, licensed operators available with all heavy machinery." },
-                  { title: "Flexible Rental Terms", desc: "Daily, weekly, and monthly rental options to suit your project timeline." },
-                  { title: "Competitive Pricing", desc: "Transparent pricing with no hidden charges. Volume discounts available." },
-                  { title: "24/7 Support", desc: "Round-the-clock technical support for critical operations." },
+                  { title: "25+ Years Experience", desc: `Decades of proven construction expertise delivering projects in ${area.name} and beyond.` },
+                  { title: "400+ Projects Delivered", desc: "Track record of excellence across industrial, commercial, and infrastructure sectors." },
+                  { title: "Turnkey Solutions", desc: "End-to-end construction services from design support to final handover." },
+                  { title: "Quality Assurance", desc: "Strict quality control processes with international standards compliance." },
+                  { title: "Competitive Pricing", desc: "Transparent pricing with no hidden charges. Value engineering options available." },
+                  { title: "24/7 Support", desc: "Round-the-clock project management support for critical operations." },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-4">
-                    <CheckCircle2 className="w-6 h-6 text-[#c8a35a] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-6 h-6 text-[#2563eb] shrink-0 mt-0.5" />
                     <div>
-                      <h3 className="text-white font-semibold">{item.title}</h3>
-                      <p className="text-gray-400 text-sm mt-1">{item.desc}</p>
+                      <h3 className="text-gray-900 font-semibold">{item.title}</h3>
+                      <p className="text-gray-600 text-sm mt-1">{item.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="bg-[#1a1a2e] border border-[#c8a35a]/20 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-white mb-4">
+            <div className="bg-[#ffffff] border border-[#2563eb]/20 rounded-2xl p-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 Request a Quote for {area.name}
               </h3>
-              <p className="text-gray-400 mb-6">
-                Tell us what you need and our team will prepare a competitive quote for delivery to {area.name}.
+              <p className="text-gray-600 mb-6">
+                Tell us about your project and our team will prepare a competitive quote for construction in {area.name}.
               </p>
               <div className="space-y-4">
                 <a
-                  href={`https://wa.me/971506266515?text=${encodeURIComponent(`Hi, I need equipment rental in ${area.name}, ${city.name}. Please send me a quote.`)}`}
+                  href={`https://wa.me/971506266515?text=${encodeURIComponent(`Hi, I need construction services in ${area.name}, ${city.name}. Please send me a quote.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full gold-gradient text-[#0d0d1a] px-6 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity"
+                  className="flex items-center justify-center gap-2 w-full blue-gradient text-[#ffffff] px-6 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity"
                 >
                   <MessageCircle className="w-5 h-5" />
                   WhatsApp Quote
                 </a>
                 <a
                   href={`tel:${SITE_CONFIG.phone}`}
-                  className="flex items-center justify-center gap-2 w-full border-2 border-[#c8a35a] text-[#c8a35a] px-6 py-4 rounded-full font-semibold text-lg hover:bg-[#c8a35a]/10 transition-colors"
+                  className="flex items-center justify-center gap-2 w-full border-2 border-[#2563eb] text-[#2563eb] px-6 py-4 rounded-full font-semibold text-lg hover:bg-[#2563eb]/10 transition-colors"
                 >
                   <Phone className="w-5 h-5" />
                   +971 50 626 6515
                 </a>
                 <Link
                   href="/contact-us"
-                  className="flex items-center justify-center gap-2 w-full border border-white/20 text-white px-6 py-4 rounded-full font-semibold text-lg hover:bg-white/5 transition-colors"
+                  className="flex items-center justify-center gap-2 w-full border border-gray-200 text-gray-900 px-6 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors"
                 >
                   Contact Form <ArrowRight className="w-5 h-5" />
                 </Link>
@@ -330,13 +272,13 @@ export default async function AreaPage({ params }: Props) {
 
       {/* Nearby Areas */}
       {nearbyAreas.length > 0 && (
-        <section className="py-20 bg-[#0d0d1a]">
+        <section className="py-20 bg-[#ffffff]">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-14">
-              <span className="text-[#c8a35a] text-sm font-semibold tracking-[0.3em] uppercase">
+              <span className="text-[#2563eb] text-sm font-semibold tracking-[0.3em] uppercase">
                 NEARBY AREAS
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mt-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-4">
                 Also Serving Nearby {city.name} Areas
               </h2>
             </div>
@@ -345,22 +287,22 @@ export default async function AreaPage({ params }: Props) {
                 <Link
                   key={nearby.slug}
                   href={`/${city.slug}/${nearby.slug}`}
-                  className="group flex items-center gap-3 bg-[#1a1a2e] border border-[#c8a35a]/10 rounded-xl p-5 hover:border-[#c8a35a]/40 transition-all"
+                  className="group flex items-center gap-3 bg-[#ffffff] shadow-sm border border-[#2563eb]/10 rounded-xl p-5 hover:border-[#2563eb]/40 transition-all"
                 >
-                  <MapPin className="w-5 h-5 text-[#c8a35a] shrink-0" />
+                  <MapPin className="w-5 h-5 text-[#2563eb] shrink-0" />
                   <div>
-                    <h3 className="text-white font-semibold group-hover:text-[#c8a35a] transition-colors">
-                      Equipment Rental in {nearby.name}
+                    <h3 className="text-gray-900 font-semibold group-hover:text-[#2563eb] transition-colors">
+                      Construction Services in {nearby.name}
                     </h3>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-[#c8a35a] ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <ArrowRight className="w-4 h-4 text-[#2563eb] ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               ))}
             </div>
             <div className="text-center mt-8">
               <Link
                 href={`/${city.slug}`}
-                className="text-[#c8a35a] font-semibold hover:underline inline-flex items-center gap-2"
+                className="text-[#2563eb] font-semibold hover:underline inline-flex items-center gap-2"
               >
                 View All {city.name} Areas <ArrowRight className="w-4 h-4" />
               </Link>
