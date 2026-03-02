@@ -14,18 +14,18 @@ const heroSlides = [
   },
   {
     image: "/images/hero/hero-2.jpg",
-    title: "Zamil Steel Certified Builder",
-    subtitle: "Sole certified builder for Zamil Steel in Abu Dhabi — pre-engineered steel buildings at scale",
+    title: "400+ Projects Successfully Delivered",
+    subtitle: "From warehouses to logistics parks — proven turnkey execution at scale across the UAE",
   },
   {
     image: "/images/hero/hero-3.jpg",
-    title: "400+ Projects Successfully Delivered",
-    subtitle: "From industrial cable factories to logistics parks — proven execution across 15+ sectors",
+    title: "Diverse Sector Expertise",
+    subtitle: "Aviation hangars, industrial factories, marine facilities — 15+ sectors served since 2001",
   },
   {
     image: "/images/hero/hero-4.jpg",
-    title: "Diverse Sector Expertise",
-    subtitle: "25+ years serving oil & gas, logistics, defense, aviation, and commercial sectors across UAE & Qatar",
+    title: "Turnkey Construction Solutions",
+    subtitle: "Design, engineering, procurement & construction of commercial and industrial buildings",
   },
 ]
 
