@@ -14,6 +14,8 @@ import {
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { WhatsAppFloat } from "@/components/whatsapp-float"
+import { FAQSection } from "@/components/faq-section"
+import { BreadcrumbSchema } from "@/components/schema-markup"
 import { projectSectors, SITE_CONFIG } from "@/lib/data"
 import { allCities } from "@/lib/areas"
 
@@ -51,6 +53,26 @@ export default async function SectorPage({ params }: Props) {
     .filter((s) => s.slug !== sector.slug)
     .slice(0, 6)
 
+  // Generate sector-specific FAQs
+  const sectorFaqs = [
+    { question: `What types of ${sector.name.toLowerCase()} projects does Hadeed Emirates handle?`, answer: `We handle all types of ${sector.name.toLowerCase()} projects including ${sector.keyProjects.slice(0, 3).join(', ')}. Our team has extensive experience delivering these projects across the UAE, Qatar, and Jordan.` },
+    { question: `How long does a typical ${sector.name.toLowerCase()} project take to complete?`, answer: `Project timelines vary based on scope and complexity. Small to medium ${sector.name.toLowerCase()} projects typically take 3-6 months, while large-scale projects may require 12-24 months. We provide detailed timelines during the consultation phase.` },
+    { question: `What areas in the UAE do you provide ${sector.name.toLowerCase()} services?`, answer: `We provide ${sector.name.toLowerCase()} services across all Emirates including Abu Dhabi, Dubai, Sharjah, Ajman, Ras Al Khaimah, Fujairah, and Umm Al Quwain. We also serve Qatar and Jordan.` },
+    { question: `Do you offer turnkey ${sector.name.toLowerCase()} solutions?`, answer: `Yes, we offer complete turnkey solutions for ${sector.name.toLowerCase()} projects. This includes design, engineering, procurement, construction, and commissioning — all managed by our experienced team.` },
+    { question: `What certifications does Hadeed Emirates hold for ${sector.name.toLowerCase()} work?`, answer: `We hold ISO 9001:2015 Quality Management, ISO 14001:2015 Environmental Management, and ISO 45001:2018 Safety certifications. We are also classified as First Class contractors in Abu Dhabi.` },
+    { question: `Can you provide references for completed ${sector.name.toLowerCase()} projects?`, answer: `Absolutely. We have completed over 400 projects and can provide references from clients in the ${sector.name.toLowerCase()} sector. Contact us for case studies and client testimonials.` },
+    { question: `What is the process to start a ${sector.name.toLowerCase()} project with Hadeed Emirates?`, answer: `Contact us via WhatsApp or phone for a free consultation. We'll discuss your requirements, conduct a site visit if needed, and provide a detailed proposal with timeline and pricing.` },
+    { question: `Do you handle permits and approvals for ${sector.name.toLowerCase()} projects?`, answer: `Yes, we handle all necessary permits, approvals, and regulatory compliance as part of our turnkey service. Our team is familiar with requirements across all UAE emirates.` },
+    { question: `What safety standards do you follow for ${sector.name.toLowerCase()} construction?`, answer: `We follow international safety standards and hold ISO 45001:2018 certification. All our sites implement comprehensive HSE protocols with regular safety audits and training.` },
+    { question: `How can I get a quote for my ${sector.name.toLowerCase()} project?`, answer: `Contact us via WhatsApp at ${SITE_CONFIG.phone} or email at ${SITE_CONFIG.email}. Provide your project details and we'll send a competitive quote within 24-48 hours.` },
+  ]
+
+  const breadcrumbs = [
+    { name: "Home", url: "https://hadeedconstruction.com" },
+    { name: "Sectors", url: "https://hadeedconstruction.com/sectors" },
+    { name: sector.name, url: `https://hadeedconstruction.com/sectors/${slug}` },
+  ]
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -82,11 +104,18 @@ export default async function SectorPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <BreadcrumbSchema items={breadcrumbs} />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0">
-          <img src={sector.image} alt={sector.name} className="w-full h-full object-cover" />
+          <img 
+            src={sector.image} 
+            alt={sector.name} 
+            className="w-full h-full object-cover"
+            loading="eager"
+            fetchPriority="high"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-900/70 to-slate-900/40" />
         </div>
         <div className="max-w-7xl mx-auto px-4 relative">
@@ -228,15 +257,21 @@ export default async function SectorPage({ params }: Props) {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
-              "/images/projects/project-01.jpeg",
-              "/images/projects/project-10.jpeg",
-              "/images/projects/project-14.jpeg",
-              "/images/projects/project-15.jpeg",
-              "/images/projects/project-22.jpeg",
-              "/images/projects/project-35.jpeg",
+              "/images/projects/project-01.webp",
+              "/images/projects/project-10.webp",
+              "/images/projects/project-14.webp",
+              "/images/projects/project-15.webp",
+              "/images/projects/project-22.webp",
+              "/images/projects/project-35.webp",
             ].map((src, i) => (
               <div key={i} className="relative aspect-[4/3] rounded-xl overflow-hidden group">
-                <img src={src} alt={`${sector.name} project ${i + 1}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                <img 
+                  src={src} 
+                  alt={`${sector.name} project ${i + 1}`} 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                  loading="lazy"
+                  decoding="async"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
             ))}
@@ -301,6 +336,13 @@ export default async function SectorPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* FAQs */}
+      <FAQSection 
+        customFaqs={sectorFaqs} 
+        title={`${sector.name} FAQs`}
+        subtitle={`Common Questions About ${sector.name}`}
+      />
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-[#2563eb]/20 via-[#f1f5f9] to-[#2563eb]/20">

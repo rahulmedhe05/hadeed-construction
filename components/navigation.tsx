@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { Menu, X, ChevronDown, Mail, Download, FileText } from "lucide-react"
 import { projectSectors, SITE_CONFIG } from "@/lib/data"
+import { Logo } from "@/components/logo"
 
 export function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -48,15 +49,7 @@ export function Navigation() {
       {/* Main nav */}
       <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-lg blue-gradient flex items-center justify-center font-bold text-[#ffffff] text-lg">
-            H
-          </div>
-          <div className="flex flex-col">
-            <span className="text-lg font-bold text-gray-900 leading-tight">
-              Hadeed<span className="text-[#2563eb]"> Emirates</span>
-            </span>
-            <span className="text-[10px] text-gray-600 tracking-wider uppercase leading-tight">Contracting Company</span>
-          </div>
+          <Logo size="md" />
         </Link>
 
         {/* Desktop nav */}

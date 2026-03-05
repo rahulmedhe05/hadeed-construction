@@ -3,24 +3,38 @@
 import { useState } from "react"
 import { ChevronDown } from "lucide-react"
 import { faqs } from "@/lib/data"
+import { FAQSchema } from "@/components/schema-markup"
 
-export function FAQSection() {
+interface FAQ {
+  question: string
+  answer: string
+}
+
+interface FAQSectionProps {
+  customFaqs?: FAQ[]
+  title?: string
+  subtitle?: string
+}
+
+export function FAQSection({ customFaqs, title = "Most Popular Questions", subtitle = "Common Questions" }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const faqList = customFaqs || faqs
 
   return (
     <section className="py-24 bg-[#f1f5f9]">
+      <FAQSchema faqs={faqList} />
       <div className="max-w-4xl mx-auto px-4">
         <div className="text-center mb-16">
           <span className="text-[#2563eb] text-sm font-semibold tracking-[0.3em] uppercase">
-            Common Questions
+            {subtitle}
           </span>
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mt-4">
-            Most Popular Questions
+            {title}
           </h2>
         </div>
 
         <div className="space-y-4">
-          {faqs.map((faq, index) => (
+          {faqList.map((faq, index) => (
             <div
               key={index}
               className="bg-[#ffffff] shadow-sm border border-[#2563eb]/15 rounded-xl overflow-hidden hover:border-[#2563eb]/30 transition-all"

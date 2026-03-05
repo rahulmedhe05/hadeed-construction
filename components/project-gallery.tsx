@@ -4,18 +4,18 @@ import { useState } from "react"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 
 const projectGallery = [
-  { src: "/images/projects/ppt-project-01.jpg", title: "ICT Logistics Park — Mussafah", category: "Logistics" },
-  { src: "/images/projects/ppt-project-05.jpg", title: "DEWA Solar Innovation Centre", category: "Renewable Energy" },
-  { src: "/images/projects/ppt-project-08.jpg", title: "Al-Taaqa Warehouse — Jebel Ali Airport", category: "Logistics" },
-  { src: "/images/projects/ppt-project-13.jpg", title: "ADCAN Pharmaceutical Factory", category: "Pharmaceutical" },
-  { src: "/images/projects/ppt-project-18.jpg", title: "Aircraft Hangar — Internal View", category: "Aviation" },
-  { src: "/images/projects/ppt-project-22.jpg", title: "Al Ain Cement Factory Services", category: "Building Materials" },
-  { src: "/images/projects/ppt-project-25.jpg", title: "Kimera Warehouses — KIZAD", category: "Logistics" },
-  { src: "/images/projects/ppt-project-29.jpg", title: "Schmidlin Aluminium Factory", category: "Metal Industries" },
-  { src: "/images/projects/ppt-project-32.jpg", title: "ADSB Vessel Outfit Workshop", category: "Marine & Ports" },
-  { src: "/images/projects/ppt-project-35.jpg", title: "CMW Communication Tower — Ghagha", category: "Military" },
-  { src: "/images/projects/ppt-project-37.jpg", title: "Tawazun Residential Complex", category: "Residential" },
-  { src: "/images/projects/ppt-project-43.jpg", title: "Madinat Zayed Primary Substation", category: "Energy" },
+  { src: "/images/projects/ppt-project-01.webp", title: "ICT Logistics Park — Mussafah", category: "Logistics" },
+  { src: "/images/projects/ppt-project-05.webp", title: "DEWA Solar Innovation Centre", category: "Renewable Energy" },
+  { src: "/images/projects/ppt-project-08.webp", title: "Al-Taaqa Warehouse — Jebel Ali Airport", category: "Logistics" },
+  { src: "/images/projects/ppt-project-13.webp", title: "ADCAN Pharmaceutical Factory", category: "Pharmaceutical" },
+  { src: "/images/projects/ppt-project-18.webp", title: "Aircraft Hangar — Internal View", category: "Aviation" },
+  { src: "/images/projects/ppt-project-22.webp", title: "Al Ain Cement Factory Services", category: "Building Materials" },
+  { src: "/images/projects/ppt-project-25.webp", title: "Kimera Warehouses — KIZAD", category: "Logistics" },
+  { src: "/images/projects/ppt-project-29.webp", title: "Schmidlin Aluminium Factory", category: "Metal Industries" },
+  { src: "/images/projects/ppt-project-32.webp", title: "ADSB Vessel Outfit Workshop", category: "Marine & Ports" },
+  { src: "/images/projects/ppt-project-35.webp", title: "CMW Communication Tower — Ghagha", category: "Military" },
+  { src: "/images/projects/ppt-project-37.webp", title: "Tawazun Residential Complex", category: "Residential" },
+  { src: "/images/projects/ppt-project-43.webp", title: "Madinat Zayed Primary Substation", category: "Energy" },
 ]
 
 export function ProjectGallery() {
@@ -53,6 +53,8 @@ export function ProjectGallery() {
                 src={project.src}
                 alt={project.title}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">

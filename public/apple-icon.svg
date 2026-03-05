@@ -1,26 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
-  <rect width="180" height="180" rx="36" fill="#2563eb"/>
-  <!-- Building silhouette -->
-  <rect x="30" y="78" width="48" height="80" rx="4" fill="white" opacity="0.9"/>
-  <rect x="102" y="42" width="48" height="116" rx="4" fill="white" opacity="0.9"/>
-  <!-- Crane arm -->
-  <line x1="126" y1="20" x2="126" y2="42" stroke="white" stroke-width="8" stroke-linecap="round"/>
-  <line x1="78" y1="20" x2="126" y2="20" stroke="white" stroke-width="8" stroke-linecap="round"/>
-  <line x1="78" y1="20" x2="78" y2="44" stroke="white" stroke-width="5" stroke-linecap="round" opacity="0.6"/>
-  <!-- Windows left building -->
-  <rect x="38" y="90" width="12" height="12" rx="2" fill="#2563eb" opacity="0.7"/>
-  <rect x="38" y="112" width="12" height="12" rx="2" fill="#2563eb" opacity="0.7"/>
-  <rect x="38" y="134" width="12" height="12" rx="2" fill="#2563eb" opacity="0.7"/>
-  <rect x="58" y="90" width="12" height="12" rx="2" fill="#2563eb" opacity="0.5"/>
-  <rect x="58" y="112" width="12" height="12" rx="2" fill="#2563eb" opacity="0.5"/>
-  <rect x="58" y="134" width="12" height="12" rx="2" fill="#2563eb" opacity="0.5"/>
-  <!-- Windows right building -->
-  <rect x="110" y="56" width="12" height="12" rx="2" fill="#2563eb" opacity="0.7"/>
-  <rect x="110" y="78" width="12" height="12" rx="2" fill="#2563eb" opacity="0.7"/>
-  <rect x="110" y="100" width="12" height="12" rx="2" fill="#2563eb" opacity="0.7"/>
-  <rect x="110" y="122" width="12" height="12" rx="2" fill="#2563eb" opacity="0.7"/>
-  <rect x="130" y="56" width="12" height="12" rx="2" fill="#2563eb" opacity="0.5"/>
-  <rect x="130" y="78" width="12" height="12" rx="2" fill="#2563eb" opacity="0.5"/>
-  <rect x="130" y="100" width="12" height="12" rx="2" fill="#2563eb" opacity="0.5"/>
-  <rect x="130" y="122" width="12" height="12" rx="2" fill="#2563eb" opacity="0.5"/>
+  <defs>
+    <clipPath id="leftClip180">
+      <polygon points="0,0 180,0 0,180"/>
+    </clipPath>
+    <clipPath id="rightClip180">
+      <polygon points="180,0 180,180 0,180"/>
+    </clipPath>
+  </defs>
+  <!-- Blue H (top-left triangle) -->
+  <g clip-path="url(#leftClip180)">
+    <rect width="180" height="180" fill="#0076c0"/>
+    <path d="M30,20 L30,160 L60,160 L60,100 L120,100 L120,160 L150,160 L150,20 L120,20 L120,80 L60,80 L60,20 Z" fill="white"/>
+  </g>
+  <!-- Red H (bottom-right triangle) -->
+  <g clip-path="url(#rightClip180)">
+    <rect width="180" height="180" fill="#ee3425"/>
+    <path d="M30,20 L30,160 L60,160 L60,100 L120,100 L120,160 L150,160 L150,20 L120,20 L120,80 L60,80 L60,20 Z" fill="white"/>
+  </g>
 </svg>

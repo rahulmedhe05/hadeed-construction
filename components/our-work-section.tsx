@@ -15,88 +15,88 @@ interface Project {
 
 const projects: Project[] = [
   // Major Projects
-  { src: "/images/projects/ppt-project-01.jpg", title: "ICT Logistics Park", location: "Mussafah, Abu Dhabi", category: "logistics", sector: "Logistics" },
-  { src: "/images/projects/ppt-project-02.jpg", title: "ICT Logistics Park — Phase 2", location: "Mussafah, Abu Dhabi", category: "logistics", sector: "Logistics" },
-  { src: "/images/projects/ppt-project-03.jpg", title: "Abu Dhabi Business Hub — Phase 11", location: "Mussafah, Abu Dhabi", category: "logistics", sector: "Logistics" },
-  { src: "/images/projects/ppt-project-04.jpg", title: "Business Hub Offices & Warehouse", location: "Mussafah, Abu Dhabi", category: "logistics", sector: "Logistics" },
+  { src: "/images/projects/ppt-project-01.webp", title: "ICT Logistics Park", location: "Mussafah, Abu Dhabi", category: "logistics", sector: "Logistics" },
+  { src: "/images/projects/ppt-project-02.webp", title: "ICT Logistics Park — Phase 2", location: "Mussafah, Abu Dhabi", category: "logistics", sector: "Logistics" },
+  { src: "/images/projects/ppt-project-03.webp", title: "Abu Dhabi Business Hub — Phase 11", location: "Mussafah, Abu Dhabi", category: "logistics", sector: "Logistics" },
+  { src: "/images/projects/ppt-project-04.webp", title: "Business Hub Offices & Warehouse", location: "Mussafah, Abu Dhabi", category: "logistics", sector: "Logistics" },
 
   // Renewable Energy
-  { src: "/images/projects/ppt-project-05.jpg", title: "DEWA Solar Innovation Centre", location: "Dubai, U.A.E.", category: "energy", sector: "Renewable Energy" },
-  { src: "/images/projects/ppt-project-06.jpg", title: "DEWA Solar Innovation Centre — Interior", location: "Dubai, U.A.E.", category: "energy", sector: "Renewable Energy" },
-  { src: "/images/projects/ppt-project-07.jpg", title: "DEWA Solar Panel Installation", location: "Dubai, U.A.E.", category: "energy", sector: "Renewable Energy" },
+  { src: "/images/projects/ppt-project-05.webp", title: "DEWA Solar Innovation Centre", location: "Dubai, U.A.E.", category: "energy", sector: "Renewable Energy" },
+  { src: "/images/projects/ppt-project-06.webp", title: "DEWA Solar Innovation Centre — Interior", location: "Dubai, U.A.E.", category: "energy", sector: "Renewable Energy" },
+  { src: "/images/projects/ppt-project-07.webp", title: "DEWA Solar Panel Installation", location: "Dubai, U.A.E.", category: "energy", sector: "Renewable Energy" },
 
   // Al-Taaqa Warehouse
-  { src: "/images/projects/ppt-project-08.jpg", title: "Al-Taaqa Alternative Solutions — Jebel Ali Airport", location: "Dubai, U.A.E.", category: "logistics", sector: "Logistics" },
-  { src: "/images/projects/ppt-project-09.jpg", title: "Al-Taaqa Warehouse Construction", location: "Jebel Ali, Dubai", category: "logistics", sector: "Logistics" },
-  { src: "/images/projects/ppt-project-10.jpg", title: "Al-Taaqa Office Buildings", location: "Jebel Ali, Dubai", category: "logistics", sector: "Logistics" },
+  { src: "/images/projects/ppt-project-08.webp", title: "Al-Taaqa Alternative Solutions — Jebel Ali Airport", location: "Dubai, U.A.E.", category: "logistics", sector: "Logistics" },
+  { src: "/images/projects/ppt-project-09.webp", title: "Al-Taaqa Warehouse Construction", location: "Jebel Ali, Dubai", category: "logistics", sector: "Logistics" },
+  { src: "/images/projects/ppt-project-10.webp", title: "Al-Taaqa Office Buildings", location: "Jebel Ali, Dubai", category: "logistics", sector: "Logistics" },
 
   // Industrial Cable
-  { src: "/images/projects/ppt-project-12.jpg", title: "Industrial Cable Factory", location: "Abu Dhabi, U.A.E.", category: "industrial", sector: "Industrial" },
+  { src: "/images/projects/ppt-project-12.webp", title: "Industrial Cable Factory", location: "Abu Dhabi, U.A.E.", category: "industrial", sector: "Industrial" },
 
   // Pharmaceutical
-  { src: "/images/projects/ppt-project-13.jpg", title: "ADCAN Pharmaceutical Factory", location: "ICAD II, Abu Dhabi", category: "industrial", sector: "Pharmaceutical" },
-  { src: "/images/projects/ppt-project-14.jpg", title: "ADCAN Pharmaceutical — Interior", location: "ICAD II, Abu Dhabi", category: "industrial", sector: "Pharmaceutical" },
-  { src: "/images/projects/ppt-project-15.jpg", title: "ADCAN Pharmaceutical — Lab Facilities", location: "ICAD II, Abu Dhabi", category: "industrial", sector: "Pharmaceutical" },
-  { src: "/images/projects/ppt-project-16.jpg", title: "ADCAN Pharmaceutical — Production Line", location: "ICAD II, Abu Dhabi", category: "industrial", sector: "Pharmaceutical" },
+  { src: "/images/projects/ppt-project-13.webp", title: "ADCAN Pharmaceutical Factory", location: "ICAD II, Abu Dhabi", category: "industrial", sector: "Pharmaceutical" },
+  { src: "/images/projects/ppt-project-14.webp", title: "ADCAN Pharmaceutical — Interior", location: "ICAD II, Abu Dhabi", category: "industrial", sector: "Pharmaceutical" },
+  { src: "/images/projects/ppt-project-15.webp", title: "ADCAN Pharmaceutical — Lab Facilities", location: "ICAD II, Abu Dhabi", category: "industrial", sector: "Pharmaceutical" },
+  { src: "/images/projects/ppt-project-16.webp", title: "ADCAN Pharmaceutical — Production Line", location: "ICAD II, Abu Dhabi", category: "industrial", sector: "Pharmaceutical" },
 
   // Aviation
-  { src: "/images/projects/ppt-project-17.jpg", title: "Aircraft Hangar — Front View", location: "Abu Dhabi, U.A.E.", category: "aviation", sector: "Aviation" },
-  { src: "/images/projects/ppt-project-18.jpg", title: "Aircraft Hangar — Internal View", location: "Abu Dhabi, U.A.E.", category: "aviation", sector: "Aviation" },
-  { src: "/images/projects/ppt-project-20.jpg", title: "Aircraft Hangar — Panoramic View", location: "Abu Dhabi, U.A.E.", category: "aviation", sector: "Aviation" },
-  { src: "/images/projects/ppt-project-21.jpg", title: "CMW Hangar — 170m Clear Span", location: "Abu Dhabi Airport", category: "aviation", sector: "Aviation" },
+  { src: "/images/projects/ppt-project-17.webp", title: "Aircraft Hangar — Front View", location: "Abu Dhabi, U.A.E.", category: "aviation", sector: "Aviation" },
+  { src: "/images/projects/ppt-project-18.webp", title: "Aircraft Hangar — Internal View", location: "Abu Dhabi, U.A.E.", category: "aviation", sector: "Aviation" },
+  { src: "/images/projects/ppt-project-20.webp", title: "Aircraft Hangar — Panoramic View", location: "Abu Dhabi, U.A.E.", category: "aviation", sector: "Aviation" },
+  { src: "/images/projects/ppt-project-21.webp", title: "CMW Hangar — 170m Clear Span", location: "Abu Dhabi Airport", category: "aviation", sector: "Aviation" },
 
   // Building Materials
-  { src: "/images/projects/ppt-project-22.jpg", title: "Al Ain Cement Factory Services Buildings", location: "Al Ain, Abu Dhabi", category: "industrial", sector: "Building Materials" },
-  { src: "/images/projects/ppt-project-23.jpg", title: "Polymer Additive Plant", location: "KIZAD, Abu Dhabi", category: "industrial", sector: "Building Materials" },
-  { src: "/images/projects/ppt-project-24.jpg", title: "Extramix Precast Concrete Plant", location: "Mussafah, Abu Dhabi", category: "industrial", sector: "Building Materials" },
+  { src: "/images/projects/ppt-project-22.webp", title: "Al Ain Cement Factory Services Buildings", location: "Al Ain, Abu Dhabi", category: "industrial", sector: "Building Materials" },
+  { src: "/images/projects/ppt-project-23.webp", title: "Polymer Additive Plant", location: "KIZAD, Abu Dhabi", category: "industrial", sector: "Building Materials" },
+  { src: "/images/projects/ppt-project-24.webp", title: "Extramix Precast Concrete Plant", location: "Mussafah, Abu Dhabi", category: "industrial", sector: "Building Materials" },
 
   // Logistics - Kimera
-  { src: "/images/projects/ppt-project-25.jpg", title: "Kimera Warehouses", location: "KIZAD, Abu Dhabi", category: "logistics", sector: "Logistics" },
-  { src: "/images/projects/ppt-project-26.jpg", title: "Warehouse for Al Masa", location: "Jebel Ali, Dubai", category: "logistics", sector: "Logistics" },
+  { src: "/images/projects/ppt-project-25.webp", title: "Kimera Warehouses", location: "KIZAD, Abu Dhabi", category: "logistics", sector: "Logistics" },
+  { src: "/images/projects/ppt-project-26.webp", title: "Warehouse for Al Masa", location: "Jebel Ali, Dubai", category: "logistics", sector: "Logistics" },
 
   // Automobile
-  { src: "/images/projects/ppt-project-27.jpg", title: "Al Masaood New Workshop", location: "Mussafah, Abu Dhabi", category: "industrial", sector: "Automobile" },
-  { src: "/images/projects/ppt-project-28.jpg", title: "Al Masaood Workshop Interior", location: "Mussafah, Abu Dhabi", category: "industrial", sector: "Automobile" },
+  { src: "/images/projects/ppt-project-27.webp", title: "Al Masaood New Workshop", location: "Mussafah, Abu Dhabi", category: "industrial", sector: "Automobile" },
+  { src: "/images/projects/ppt-project-28.webp", title: "Al Masaood Workshop Interior", location: "Mussafah, Abu Dhabi", category: "industrial", sector: "Automobile" },
 
   // Metal Industries
-  { src: "/images/projects/ppt-project-29.jpg", title: "Schmidlin Aluminium Factory", location: "Mussafah, Abu Dhabi", category: "industrial", sector: "Metal Industries" },
+  { src: "/images/projects/ppt-project-29.webp", title: "Schmidlin Aluminium Factory", location: "Mussafah, Abu Dhabi", category: "industrial", sector: "Metal Industries" },
 
   // Oilfield
-  { src: "/images/projects/ppt-project-30.jpg", title: "Al Ghaith Oilfield Offices & Workshop", location: "Mussafah, Abu Dhabi", category: "industrial", sector: "Oil & Gas" },
+  { src: "/images/projects/ppt-project-30.webp", title: "Al Ghaith Oilfield Offices & Workshop", location: "Mussafah, Abu Dhabi", category: "industrial", sector: "Oil & Gas" },
 
   // Paper & Printing
-  { src: "/images/projects/ppt-project-31.png", title: "West Coast Papers & Plastic Factory", location: "Khalifa A, Abu Dhabi", category: "industrial", sector: "Paper & Printing" },
+  { src: "/images/projects/ppt-project-31.webp", title: "West Coast Papers & Plastic Factory", location: "Khalifa A, Abu Dhabi", category: "industrial", sector: "Paper & Printing" },
 
   // Marine & Ports
-  { src: "/images/projects/ppt-project-32.jpg", title: "Abu Dhabi Ship Building — Vessel Outfit Workshop", location: "Mussafah, Abu Dhabi", category: "marine", sector: "Marine & Ports" },
-  { src: "/images/projects/ppt-project-33.jpg", title: "Boat Shed Factory", location: "Mussafah, Abu Dhabi", category: "marine", sector: "Marine & Ports" },
-  { src: "/images/projects/ppt-project-34.jpg", title: "Leaders Marine Factory", location: "ICAD II, Abu Dhabi", category: "marine", sector: "Marine & Ports" },
+  { src: "/images/projects/ppt-project-32.webp", title: "Abu Dhabi Ship Building — Vessel Outfit Workshop", location: "Mussafah, Abu Dhabi", category: "marine", sector: "Marine & Ports" },
+  { src: "/images/projects/ppt-project-33.webp", title: "Boat Shed Factory", location: "Mussafah, Abu Dhabi", category: "marine", sector: "Marine & Ports" },
+  { src: "/images/projects/ppt-project-34.webp", title: "Leaders Marine Factory", location: "ICAD II, Abu Dhabi", category: "marine", sector: "Marine & Ports" },
 
   // Military
-  { src: "/images/projects/ppt-project-35.jpg", title: "CMW Communication Tower — Ghagha Project", location: "Abu Dhabi, U.A.E.", category: "military", sector: "Military & Police" },
-  { src: "/images/projects/ppt-project-36.jpg", title: "Military Communications Facility", location: "Abu Dhabi, U.A.E.", category: "military", sector: "Military & Police" },
+  { src: "/images/projects/ppt-project-35.webp", title: "CMW Communication Tower — Ghagha Project", location: "Abu Dhabi, U.A.E.", category: "military", sector: "Military & Police" },
+  { src: "/images/projects/ppt-project-36.webp", title: "Military Communications Facility", location: "Abu Dhabi, U.A.E.", category: "military", sector: "Military & Police" },
 
   // Residential
-  { src: "/images/projects/ppt-project-37.jpg", title: "Tawazun Residential Complex", location: "Suweihan, Abu Dhabi", category: "other", sector: "Residential" },
+  { src: "/images/projects/ppt-project-37.webp", title: "Tawazun Residential Complex", location: "Suweihan, Abu Dhabi", category: "other", sector: "Residential" },
 
   // Food & Beverages
-  { src: "/images/projects/ppt-project-38.png", title: "Packing House for Vegetables", location: "Al Maha, Abu Dhabi", category: "other", sector: "Food & Beverages" },
+  { src: "/images/projects/ppt-project-38.webp", title: "Packing House for Vegetables", location: "Al Maha, Abu Dhabi", category: "other", sector: "Food & Beverages" },
 
   // Water Stations
-  { src: "/images/projects/ppt-project-39.png", title: "Main Pump Station", location: "Mussafah, Abu Dhabi", category: "other", sector: "Water Stations" },
+  { src: "/images/projects/ppt-project-39.webp", title: "Main Pump Station", location: "Mussafah, Abu Dhabi", category: "other", sector: "Water Stations" },
 
   // Education
-  { src: "/images/projects/ppt-project-40.jpg", title: "American Community School", location: "Abu Dhabi, U.A.E.", category: "other", sector: "Education" },
+  { src: "/images/projects/ppt-project-40.webp", title: "American Community School", location: "Abu Dhabi, U.A.E.", category: "other", sector: "Education" },
 
   // Malls
-  { src: "/images/projects/ppt-project-41.jpg", title: "Sheikh Hamdan Warehouse — M34", location: "Mussafah, Abu Dhabi", category: "logistics", sector: "Malls & Showrooms" },
+  { src: "/images/projects/ppt-project-41.webp", title: "Sheikh Hamdan Warehouse — M34", location: "Mussafah, Abu Dhabi", category: "logistics", sector: "Malls & Showrooms" },
 
   // Energy
-  { src: "/images/projects/ppt-project-42.jpg", title: "Shahama 33/11KV Substation", location: "Shahama, Abu Dhabi", category: "energy", sector: "Energy" },
-  { src: "/images/projects/ppt-project-43.jpg", title: "Madinat Zayed Primary Substation", location: "Abu Dhabi, U.A.E.", category: "energy", sector: "Energy" },
+  { src: "/images/projects/ppt-project-42.webp", title: "Shahama 33/11KV Substation", location: "Shahama, Abu Dhabi", category: "energy", sector: "Energy" },
+  { src: "/images/projects/ppt-project-43.webp", title: "Madinat Zayed Primary Substation", location: "Abu Dhabi, U.A.E.", category: "energy", sector: "Energy" },
 
   // Qatar
-  { src: "/images/projects/ppt-project-46.jpg", title: "Umm Al Houl Power Project", location: "Doha, Qatar", category: "energy", sector: "Energy — Qatar" },
+  { src: "/images/projects/ppt-project-46.webp", title: "Umm Al Houl Power Project", location: "Doha, Qatar", category: "energy", sector: "Energy — Qatar" },
 ]
 
 const filters: { key: ProjectCategory; label: string }[] = [

@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { OrganizationSchema, LocalBusinessSchema } from "@/components/schema-markup"
 import "./globals.css"
 
 const inter = Inter({
@@ -66,6 +67,14 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/apple-icon.svg", sizes: "180x180", type: "image/svg+xml" },
+    ],
+  },
 }
 
 export default function RootLayout({
@@ -75,6 +84,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        <OrganizationSchema />
+        <LocalBusinessSchema />
+      </head>
       <body className="min-h-screen bg-background font-sans antialiased">
         {children}
         <Analytics />

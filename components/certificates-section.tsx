@@ -4,23 +4,28 @@ import { useState } from "react"
 import { Award, ShieldCheck, FileCheck, X, ChevronLeft, ChevronRight } from "lucide-react"
 
 const awards = [
-  { src: "/images/awards/award-1.jpg", title: "Paris 2007 Gold Award" },
-  { src: "/images/awards/award-2.jpg", title: "TRIDEX 2000 General Exhibition Corporation" },
-  { src: "/images/awards/award-3.jpg", title: "19th International Construction Award — Madrid, Spain 2007" },
-  { src: "/images/awards/award-4.jpg", title: "Zamil Steel Certificate 2007" },
-  { src: "/images/awards/award-5.jpg", title: "Zamil Steel Certificate 2008" },
+  { src: "/images/awards/award-1.webp", title: "Paris 2007 Gold Award" },
+  { src: "/images/awards/award-2.webp", title: "TRIDEX 2000 General Exhibition Corporation" },
+  { src: "/images/awards/award-3.webp", title: "19th International Construction Award — Madrid, Spain 2007" },
+  { src: "/images/awards/award-4.webp", title: "Zamil Steel Certificate 2007" },
+  { src: "/images/awards/award-5.webp", title: "Zamil Steel Certificate 2008" },
 ]
 
 const certificates = [
-  { src: "/images/certificates/cert-12-1.jpg", title: "ISO 9001:2008 — Quality Management System" },
-  { src: "/images/certificates/cert-12-2.jpg", title: "ISO 14001:2004 — Environmental Management System" },
-  { src: "/images/certificates/cert-13-1.jpg", title: "Classification Certificate — First Class in Abu Dhabi & G+4 in Dubai" },
+  // New certificates (2025) - shown first in ascending order
+  { src: "/images/certificates/cert-new-1.webp", title: "Abu Dhabi Trade License 2027" },
+  { src: "/images/certificates/cert-new-2.webp", title: "ISO 14001:2015 — Environmental Management System" },
+  { src: "/images/certificates/cert-new-3.webp", title: "ISO 9001:2015 — Quality Management System" },
+  // Legacy certificates
+  { src: "/images/certificates/cert-12-1.webp", title: "ISO 9001:2008 — Quality Management System (Legacy)" },
+  { src: "/images/certificates/cert-12-2.webp", title: "ISO 14001:2004 — Environmental Management System (Legacy)" },
+  { src: "/images/certificates/cert-13-1.webp", title: "Classification Certificate — First Class in Abu Dhabi & G+4 in Dubai" },
 ]
 
 const licenses = [
-  { src: "/images/licenses/license-14-1.jpg", title: "Abu Dhabi Trade License" },
-  { src: "/images/licenses/license-15-1.jpg", title: "Dubai Trade License" },
-  { src: "/images/licenses/license-15-2.jpg", title: "Dubai Branch License" },
+  { src: "/images/licenses/license-14-1.webp", title: "Abu Dhabi Trade License" },
+  { src: "/images/licenses/license-15-1.webp", title: "Dubai Trade License" },
+  { src: "/images/licenses/license-15-2.webp", title: "Dubai Branch License" },
 ]
 
 const allItems = [...awards, ...certificates, ...licenses]

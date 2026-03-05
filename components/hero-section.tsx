@@ -8,22 +8,22 @@ import { BookingForm } from "./booking-form"
 
 const heroSlides = [
   {
-    image: "/images/hero/hero-1.jpg",
+    image: "/images/hero/hero-1.webp",
     title: "Industrial & Construction Excellence",
     subtitle: "Heavy equipment fleet and skilled workforce delivering complex projects across Abu Dhabi & Dubai",
   },
   {
-    image: "/images/hero/hero-2.jpg",
+    image: "/images/hero/hero-2.webp",
     title: "400+ Projects Successfully Delivered",
     subtitle: "From warehouses to logistics parks — proven turnkey execution at scale across the UAE",
   },
   {
-    image: "/images/hero/hero-3.jpg",
+    image: "/images/hero/hero-3.webp",
     title: "Diverse Sector Expertise",
     subtitle: "Aviation hangars, industrial factories, marine facilities — 15+ sectors served since 2001",
   },
   {
-    image: "/images/hero/hero-4.jpg",
+    image: "/images/hero/hero-4.webp",
     title: "Turnkey Construction Solutions",
     subtitle: "Design, engineering, procurement & construction of commercial and industrial buildings",
   },
@@ -61,6 +61,9 @@ export function HeroSection() {
             src={s.image}
             alt={s.title}
             className="w-full h-full object-cover"
+            loading={i === 0 ? "eager" : "lazy"}
+            decoding="async"
+            fetchPriority={i === 0 ? "high" : "low"}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/75 to-slate-900/40" />
         </div>

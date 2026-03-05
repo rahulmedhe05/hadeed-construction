@@ -3,15 +3,26 @@ import { Facebook, Instagram, Linkedin, Phone, Mail, MapPin } from "lucide-react
 import { projectSectors, SITE_CONFIG } from "@/lib/data"
 import { allCities } from "@/lib/areas"
 import { keywordPages } from "@/lib/keyword-pages-data"
+import { Logo } from "@/components/logo"
 
 export function Footer() {
   const serviceKeywords = keywordPages.filter((k) => k.category === "service").slice(0, 12)
   const locationKeywords = keywordPages.filter((k) => k.category === "location").slice(0, 10)
 
   return (
-    <footer className="bg-[#f8fafc] border-t border-[#2563eb]/20">
+    <footer className="bg-[#f8fafc] border-t border-[#0076c0]/20">
+      {/* Footer Logo Section */}
+      <div className="max-w-7xl mx-auto px-4 pt-12 pb-6">
+        <Link href="/" className="inline-block">
+          <Logo size="lg" />
+        </Link>
+        <p className="mt-4 text-gray-600 text-sm max-w-md">
+          25+ years delivering industrial, commercial, and infrastructure construction across UAE, Qatar & Jordan. 400+ projects completed with excellence.
+        </p>
+      </div>
+
       {/* Main Footer Grid */}
-      <div className="max-w-7xl mx-auto px-4 py-16">
+      <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Project Sectors */}
           <div>
