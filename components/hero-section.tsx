@@ -105,7 +105,7 @@ export function HeroSection() {
           {/* Left: Text Content */}
           <div className="lg:col-span-3">
             <div className="inline-block mb-6">
-              <span className="text-blue-400 text-sm font-semibold tracking-[0.3em] uppercase border border-blue-400/30 px-6 py-2 rounded-full bg-white/10 backdrop-blur-sm">
+              <span className="text-blue-400 text-[10px] sm:text-xs md:text-sm font-semibold tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.3em] uppercase border border-blue-400/30 px-3 sm:px-4 md:px-6 py-2 rounded-full bg-white/10 backdrop-blur-sm whitespace-nowrap">
                 {SITE_CONFIG.tagline}
               </span>
             </div>
