@@ -1,45 +1,22 @@
 import React from "react"
+import Image from "next/image"
 
 interface LogoIconProps {
   size?: number
   className?: string
 }
 
-// Stylized H logo with diagonal red/blue split - matching the original logo.jpeg
+// Logo icon using the actual company logo image
 export function LogoIcon({ size = 40, className = "" }: LogoIconProps) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 32 32"
+    <Image
+      src="/images/logo.webp"
+      alt="Hadeed Emirates Contracting Logo"
       width={size}
       height={size}
       className={className}
-    >
-      <defs>
-        <clipPath id="logoLeftClip">
-          <polygon points="0,0 32,0 0,32" />
-        </clipPath>
-        <clipPath id="logoRightClip">
-          <polygon points="32,0 32,32 0,32" />
-        </clipPath>
-      </defs>
-      {/* Blue H (top-left triangle) */}
-      <g clipPath="url(#logoLeftClip)">
-        <rect width="32" height="32" fill="#0076c0" />
-        <path
-          d="M6,4 L6,28 L11,28 L11,18 L21,18 L21,28 L26,28 L26,4 L21,4 L21,14 L11,14 L11,4 Z"
-          fill="white"
-        />
-      </g>
-      {/* Red H (bottom-right triangle) */}
-      <g clipPath="url(#logoRightClip)">
-        <rect width="32" height="32" fill="#ee3425" />
-        <path
-          d="M6,4 L6,28 L11,28 L11,18 L21,18 L21,28 L26,28 L26,4 L21,4 L21,14 L11,14 L11,4 Z"
-          fill="white"
-        />
-      </g>
-    </svg>
+      priority
+    />
   )
 }
 
