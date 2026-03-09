@@ -59,56 +59,93 @@ export function AboutSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-[#ffffff] shadow-sm border border-[#2563eb]/15 rounded-2xl p-8 text-center hover:border-[#2563eb]/40 transition-all group">
-            <div className="w-16 h-16 mx-auto mb-6 rounded-xl bg-[#2563eb]/10 flex items-center justify-center group-hover:bg-[#2563eb]/20 transition-colors">
-              <ShieldCheck className="w-8 h-8 text-[#2563eb]" />
+          <div className="bg-[#ffffff] shadow-sm border border-[#2563eb]/15 rounded-2xl overflow-hidden hover:border-[#2563eb]/40 transition-all group">
+            <div className="h-48 overflow-hidden">
+              <img
+                src="/images/projects/quality-1.webp"
+                alt="Safety and quality management on site"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-3">Safety & Quality Culture</h3>
-            <p className="text-gray-600">
-              ISO 9001, ISO 14001, ISO 45001 certified. Strong HSE management across all projects.
-            </p>
+            <div className="p-8 text-center">
+              <div className="w-14 h-14 mx-auto mb-5 rounded-xl bg-[#2563eb]/10 flex items-center justify-center group-hover:bg-[#2563eb]/20 transition-colors -mt-12 relative z-10 border-4 border-white shadow-md">
+                <ShieldCheck className="w-7 h-7 text-[#2563eb]" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Safety & Quality Culture</h3>
+              <p className="text-gray-600">
+                ISO 9001, ISO 14001, ISO 45001 certified. Strong HSE management across all projects.
+              </p>
+            </div>
           </div>
 
-          <div className="bg-[#ffffff] shadow-sm border border-[#2563eb]/15 rounded-2xl p-8 text-center hover:border-[#2563eb]/40 transition-all group">
-            <div className="w-16 h-16 mx-auto mb-6 rounded-xl bg-[#2563eb]/10 flex items-center justify-center group-hover:bg-[#2563eb]/20 transition-colors">
-              <Building2 className="w-8 h-8 text-[#2563eb]" />
+          <div className="bg-[#ffffff] shadow-sm border border-[#2563eb]/15 rounded-2xl overflow-hidden hover:border-[#2563eb]/40 transition-all group">
+            <div className="h-48 overflow-hidden">
+              <img
+                src="/images/projects/project-01.webp"
+                alt="Industrial construction project"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-3">Industrial Specialization</h3>
-            <p className="text-gray-600">
-              Deep expertise in industrial construction, manufacturing plants, and production facilities.
-            </p>
+            <div className="p-8 text-center">
+              <div className="w-14 h-14 mx-auto mb-5 rounded-xl bg-[#2563eb]/10 flex items-center justify-center group-hover:bg-[#2563eb]/20 transition-colors -mt-12 relative z-10 border-4 border-white shadow-md">
+                <Building2 className="w-7 h-7 text-[#2563eb]" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Industrial Specialization</h3>
+              <p className="text-gray-600">
+                Deep expertise in industrial construction, manufacturing plants, and production facilities.
+              </p>
+            </div>
           </div>
 
-          <div className="bg-[#ffffff] shadow-sm border border-[#2563eb]/15 rounded-2xl p-8 text-center hover:border-[#2563eb]/40 transition-all group">
-            <div className="w-16 h-16 mx-auto mb-6 rounded-xl bg-[#2563eb]/10 flex items-center justify-center group-hover:bg-[#2563eb]/20 transition-colors">
-              <Globe className="w-8 h-8 text-[#2563eb]" />
+          <div className="bg-[#ffffff] shadow-sm border border-[#2563eb]/15 rounded-2xl overflow-hidden hover:border-[#2563eb]/40 transition-all group">
+            <div className="h-48 overflow-hidden">
+              <img
+                src="/images/projects/project-35.webp"
+                alt="Regional construction operations"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-3">Regional Presence</h3>
-            <p className="text-gray-600">
-              Operations across UAE, Qatar, and Jordan — proven execution in government, private, and industrial sectors.
-            </p>
+            <div className="p-8 text-center">
+              <div className="w-14 h-14 mx-auto mb-5 rounded-xl bg-[#2563eb]/10 flex items-center justify-center group-hover:bg-[#2563eb]/20 transition-colors -mt-12 relative z-10 border-4 border-white shadow-md">
+                <Globe className="w-7 h-7 text-[#2563eb]" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Regional Presence</h3>
+              <p className="text-gray-600">
+                Operations across UAE, Qatar, and Jordan — proven execution in government, private, and industrial sectors.
+              </p>
+            </div>
           </div>
         </div>
 
         {/* Strengths checklist */}
-        <div className="mt-16 bg-[#ffffff] shadow-sm border border-[#2563eb]/15 rounded-2xl p-8 md:p-12">
-          <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Why Choose Hadeed Emirates?</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[
-              "Deep regional experience across UAE, Qatar & Jordan",
-              "Industrial construction specialization",
-              "Multidisciplinary project delivery capability",
-              "Strong safety and quality culture",
-              "Proven execution across government & private sectors",
-              "400+ successfully completed projects",
-            ].map((item, i) => (
-              <div key={i} className="flex items-center gap-3">
-                <div className="w-6 h-6 rounded-full bg-[#2563eb]/20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-[#2563eb] text-sm">✔</span>
+        <div className="mt-16 bg-[#ffffff] shadow-sm border border-[#2563eb]/15 rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+          <div className="relative h-64 lg:h-auto">
+            <img
+              src="/images/projects/project-15.webp"
+              alt="Hadeed Emirates construction excellence"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+          </div>
+          <div className="p-8 md:p-12 flex flex-col justify-center">
+            <h3 className="text-2xl font-bold text-gray-900 mb-8">Why Choose Hadeed Emirates?</h3>
+            <div className="space-y-5">
+              {[
+                "Deep regional experience across UAE, Qatar & Jordan",
+                "Industrial construction specialization",
+                "Multidisciplinary project delivery capability",
+                "Strong safety and quality culture",
+                "Proven execution across government & private sectors",
+                "400+ successfully completed projects",
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-[#2563eb]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-[#2563eb] text-sm">✔</span>
+                  </div>
+                  <span className="text-gray-700">{item}</span>
                 </div>
-                <span className="text-gray-700 text-sm">{item}</span>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

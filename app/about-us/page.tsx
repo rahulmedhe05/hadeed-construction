@@ -93,7 +93,7 @@ export default function AboutUsPage() {
                     { label: "Headquarters", value: "Abu Dhabi, UAE" },
                     { label: "Projects Completed", value: "400+" },
                     { label: "Area Constructed", value: "1.5 Million+ Sqm" },
-                    { label: "Sectors Served", value: "15+" },
+                    { label: "Sectors Served", value: "16+" },
                     { label: "Countries", value: "UAE, Qatar, Jordan" },
                   ].map((item, i) => (
                     <div key={i} className="flex justify-between items-center border-b border-white/5 pb-3 last:border-0">

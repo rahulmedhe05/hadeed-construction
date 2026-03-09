@@ -12,20 +12,13 @@ const awards = [
 ]
 
 const certificates = [
-  // New certificates (2025) - shown first in ascending order
+  // New certificates (2025)
   { src: "/images/certificates/cert-new-2.webp", title: "ISO 14001:2015 — Environmental Management System" },
   { src: "/images/certificates/cert-new-3.webp", title: "ISO 9001:2015 — Quality Management System" },
-  // Legacy certificates
-  { src: "/images/certificates/cert-12-1.webp", title: "ISO 9001:2008 — Quality Management System (Legacy)" },
-  { src: "/images/certificates/cert-12-2.webp", title: "ISO 14001:2004 — Environmental Management System (Legacy)" },
-  { src: "/images/certificates/cert-13-1.webp", title: "Classification Certificate — First Class in Abu Dhabi & G+4 in Dubai" },
 ]
 
 const licenses = [
   { src: "/images/certificates/cert-new-1.webp", title: "HEC Abu Dhabi Trade Licence 2027" },
-  { src: "/images/licenses/license-14-1.webp", title: "Abu Dhabi Trade License" },
-  { src: "/images/licenses/license-15-1.webp", title: "Dubai Trade License" },
-  { src: "/images/licenses/license-15-2.webp", title: "Dubai Branch License" },
 ]
 
 const allItems = [...awards, ...certificates, ...licenses]

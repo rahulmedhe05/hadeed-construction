@@ -27,14 +27,6 @@ export function Navigation() {
           </div>
           <div className="flex items-center gap-3">
             <a
-              href={SITE_CONFIG.profilePdf}
-              download
-              className="flex items-center gap-1.5 bg-[#2563eb]/10 border border-[#2563eb]/20 text-[#2563eb] px-3 py-1 rounded-full text-sm font-medium hover:bg-[#2563eb]/20 transition-colors"
-            >
-              <Download className="w-3.5 h-3.5" />
-              Company Profile
-            </a>
-            <a
               href={SITE_CONFIG.whatsappLink}
               target="_blank"
               rel="noopener noreferrer"

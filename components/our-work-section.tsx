@@ -97,6 +97,13 @@ const projects: Project[] = [
 
   // Qatar
   { src: "/images/projects/ppt-project-46.webp", title: "Umm Al Houl Power Project", location: "Doha, Qatar", category: "energy", sector: "Energy — Qatar" },
+
+  // Villas
+  { src: "/images/projects/villa-01.webp", title: "Akoya Oxygen Villas — DAMAC Hills 2", location: "Dubai, U.A.E.", category: "other", sector: "Villas" },
+  { src: "/images/projects/villa-02.webp", title: "Akoya Oxygen Villas — 388 Units", location: "Dubai, U.A.E.", category: "other", sector: "Villas" },
+  { src: "/images/projects/villa-04.webp", title: "Khalifa City A Luxury Villas", location: "Abu Dhabi, U.A.E.", category: "other", sector: "Villas" },
+  { src: "/images/projects/villa-05.webp", title: "Al Nouf Luxury Villa", location: "Abu Dhabi, U.A.E.", category: "other", sector: "Villas" },
+  { src: "/images/projects/villa-06.webp", title: "Abu Dhabi Island Beachfront Villas", location: "Abu Dhabi, U.A.E.", category: "other", sector: "Villas" },
 ]
 
 const filters: { key: ProjectCategory; label: string }[] = [
