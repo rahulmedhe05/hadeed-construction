@@ -10,7 +10,6 @@ export default function robots(): MetadataRoute.Robots {
           "/api/",
           "/_next/",
           "/scripts/",
-          "/*.json$",
         ],
       },
       {
@@ -38,7 +37,9 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://hadeedconstruction.com/sitemap.xml",
+    sitemap: [
+      "https://hadeedconstruction.com/sitemap.xml",
+    ],
     host: "https://hadeedconstruction.com",
   }
 }

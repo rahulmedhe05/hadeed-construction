@@ -51,8 +51,8 @@ export function FAQSection({ customFaqs, title = "Most Popular Questions", subti
                 />
               </button>
               {openIndex === index && (
-                <div className="px-6 pb-6">
-                  <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                <div className="mx-4 mb-4 px-5 py-4 bg-blue-50 rounded-lg">
+                  <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
                 </div>
               )}
             </div>

@@ -16,7 +16,6 @@ interface Project {
 const projects: Project[] = [
   // Major Projects
   { src: "/images/projects/ppt-project-01.webp", title: "ICT Logistics Park", location: "Mussafah, Abu Dhabi", category: "logistics", sector: "Logistics" },
-  { src: "/images/projects/ppt-project-02.webp", title: "ICT Logistics Park — Phase 2", location: "Mussafah, Abu Dhabi", category: "logistics", sector: "Logistics" },
   { src: "/images/projects/ppt-project-03.webp", title: "Abu Dhabi Business Hub — Phase 11", location: "Mussafah, Abu Dhabi", category: "logistics", sector: "Logistics" },
   { src: "/images/projects/ppt-project-04.webp", title: "Business Hub Offices & Warehouse", location: "Mussafah, Abu Dhabi", category: "logistics", sector: "Logistics" },
 

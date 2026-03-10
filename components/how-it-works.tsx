@@ -17,19 +17,21 @@ export function HowItWorks() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {steps.map((step) => (
             <div
               key={step.number}
-              className="relative bg-[#ffffff] shadow-sm border border-[#2563eb]/15 rounded-2xl p-8 text-center hover:border-[#2563eb]/40 transition-all group"
+              className="relative bg-[#ffffff] shadow-sm border border-[#2563eb]/15 rounded-2xl p-8 flex items-start gap-5 hover:border-[#2563eb]/40 transition-all group"
             >
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full blue-gradient flex items-center justify-center text-[#ffffff] font-bold text-2xl">
+              <div className="w-14 h-14 flex-shrink-0 rounded-full blue-gradient flex items-center justify-center text-[#ffffff] font-bold text-xl">
                 {step.number}
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                {step.description}
-              </p>
+              <div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>

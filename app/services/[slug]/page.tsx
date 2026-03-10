@@ -25,6 +25,8 @@ import {
   getRelatedKeywordPages,
 } from "@/lib/keyword-pages-data"
 
+export const revalidate = 86400
+
 interface Props {
   params: Promise<{ slug: string }>
 }
@@ -41,6 +43,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: page.metaTitle,
     description: page.metaDescription,
     openGraph: {
+      title: page.metaTitle,
+      description: page.metaDescription,
+      url: `https://hadeedconstruction.com/services/${slug}`,
+      siteName: "Hadeed Emirates Contracting",
+      type: "website",
+      images: [{ url: "https://hadeedconstruction.com/og-image.jpg", width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
       title: page.metaTitle,
       description: page.metaDescription,
     },

@@ -13,8 +13,12 @@ import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { WhatsAppFloat } from "@/components/whatsapp-float"
 import { BookingForm } from "@/components/booking-form"
+import { InternalLinks } from "@/components/internal-links"
+import { BreadcrumbSchema } from "@/components/schema-markup"
 import { allCities } from "@/lib/areas"
 import { SITE_CONFIG } from "@/lib/data"
+
+export const revalidate = 86400
 
 interface Props {
   params: Promise<{ city: string; area: string }>
@@ -43,12 +47,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const result = findArea(citySlug, areaSlug)
   if (!result) return {}
   const { city, area } = result
+  const desc = `Construction, contracting & project management in ${area.name}, ${city.name}. Industrial, commercial, residential projects. Hadeed Emirates Contracting — 400+ projects completed.`
   return {
     title: `Construction & Contracting in ${area.name}, ${city.name} | Hadeed Emirates`,
-    description: `Construction, contracting & project management in ${area.name}, ${city.name}. Industrial, commercial, residential projects. Hadeed Emirates Contracting — 400+ projects completed.`,
+    description: desc,
     openGraph: {
       title: `Construction Services in ${area.name} | Hadeed Emirates Contracting`,
       description: `Construction & contracting in ${area.name}, ${city.name}. Industrial, commercial, infrastructure projects & MEP works.`,
+      url: `https://hadeedconstruction.com/${city.slug}/${area.slug}`,
+      siteName: "Hadeed Emirates Contracting",
+      type: "website",
+      images: [{ url: "https://hadeedconstruction.com/og-image.jpg", width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `Construction & Contracting in ${area.name}, ${city.name} | Hadeed Emirates`,
+      description: desc,
     },
     alternates: {
       canonical: `https://hadeedconstruction.com/${city.slug}/${area.slug}`,
@@ -82,9 +96,16 @@ export default async function AreaPage({ params }: Props) {
     url: `https://hadeedconstruction.com/${city.slug}/${area.slug}`,
   }
 
+  const breadcrumbs = [
+    { name: "Home", url: "https://hadeedconstruction.com" },
+    { name: city.name, url: `https://hadeedconstruction.com/${city.slug}` },
+    { name: area.name, url: `https://hadeedconstruction.com/${city.slug}/${area.slug}` },
+  ]
+
   return (
     <main className="min-h-screen bg-[#ffffff]">
       <Navigation />
+      <BreadcrumbSchema items={breadcrumbs} />
 
       <script
         type="application/ld+json"
@@ -310,6 +331,8 @@ export default async function AreaPage({ params }: Props) {
           </div>
         </section>
       )}
+
+      <InternalLinks variant="area" currentSlug={area.slug} citySlug={city.slug} />
 
       <Footer />
       <WhatsAppFloat />

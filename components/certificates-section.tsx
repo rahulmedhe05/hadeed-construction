@@ -15,6 +15,7 @@ const certificates = [
   // New certificates (2025)
   { src: "/images/certificates/cert-new-2.webp", title: "ISO 14001:2015 — Environmental Management System" },
   { src: "/images/certificates/cert-new-3.webp", title: "ISO 9001:2015 — Quality Management System" },
+  { src: "/images/certificates/cert-new-4.webp", title: "ISO 45001:2018 — Occupational Health & Safety Management System" },
 ]
 
 const licenses = [

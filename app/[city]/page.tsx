@@ -7,8 +7,12 @@ import { Footer } from "@/components/footer"
 import { BookingForm } from "@/components/booking-form"
 import { WhatsAppFloat } from "@/components/whatsapp-float"
 import { HowItWorks } from "@/components/how-it-works"
+import { InternalLinks } from "@/components/internal-links"
+import { BreadcrumbSchema } from "@/components/schema-markup"
 import { allCities } from "@/lib/areas"
 import { SITE_CONFIG } from "@/lib/data"
+
+export const revalidate = 86400
 
 interface Props {
   params: Promise<{ city: string }>
@@ -28,6 +32,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${city.title} | Hadeed Emirates Contracting`,
       description: city.metaDescription,
+      url: `https://hadeedconstruction.com/${city.slug}`,
+      siteName: "Hadeed Emirates Contracting",
+      type: "website",
+      images: [{ url: "https://hadeedconstruction.com/og-image.jpg", width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `Construction & Contracting in ${city.name} | Hadeed Emirates`,
+      description: city.metaDescription,
     },
     alternates: {
       canonical: `https://hadeedconstruction.com/${city.slug}`,
@@ -40,9 +53,15 @@ export default async function CityPage({ params }: Props) {
   const city = allCities.find((c) => c.slug === slug)
   if (!city) notFound()
 
+  const breadcrumbs = [
+    { name: "Home", url: "https://hadeedconstruction.com" },
+    { name: city.name, url: `https://hadeedconstruction.com/${city.slug}` },
+  ]
+
   return (
     <main className="min-h-screen bg-[#ffffff]">
       <Navigation />
+      <BreadcrumbSchema items={breadcrumbs} />
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 overflow-hidden">
@@ -167,6 +186,8 @@ export default async function CityPage({ params }: Props) {
           </a>
         </div>
       </section>
+
+      <InternalLinks variant="city" currentSlug={city.slug} />
 
       <Footer />
       <WhatsAppFloat />

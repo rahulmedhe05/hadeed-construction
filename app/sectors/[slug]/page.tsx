@@ -16,8 +16,11 @@ import { Footer } from "@/components/footer"
 import { WhatsAppFloat } from "@/components/whatsapp-float"
 import { FAQSection } from "@/components/faq-section"
 import { BreadcrumbSchema } from "@/components/schema-markup"
+import { InternalLinks } from "@/components/internal-links"
 import { projectSectors, SITE_CONFIG } from "@/lib/data"
 import { allCities } from "@/lib/areas"
+
+export const revalidate = 86400
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -35,6 +38,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: sector.metaTitle,
     description: sector.metaDescription,
     openGraph: {
+      title: sector.metaTitle,
+      description: sector.metaDescription,
+      url: `https://hadeedconstruction.com/sectors/${slug}`,
+      siteName: "Hadeed Emirates Contracting",
+      type: "website",
+      images: [{ url: `https://hadeedconstruction.com${sector.image}`, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
       title: sector.metaTitle,
       description: sector.metaDescription,
     },
@@ -373,6 +385,8 @@ export default async function SectorPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      <InternalLinks variant="sector" currentSlug={sector.slug} />
 
       <Footer />
       <WhatsAppFloat />
