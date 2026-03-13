@@ -14,6 +14,14 @@ interface Project {
 }
 
 const projects: Project[] = [
+  // Featured Projects (from PPTXs)
+  { src: "/images/projects/dewa-solar-innovation.webp", title: "DEWA Solar Innovation Centre", location: "Dubai, U.A.E.", category: "energy", sector: "Renewable Energy" },
+  { src: "/images/projects/ict-logistics-park.webp", title: "ICT Logistics Park — 51,309 m²", location: "Mussafah, Abu Dhabi", category: "logistics", sector: "Logistics" },
+  { src: "/images/projects/j218-shahama-substation.webp", title: "Shahama 33/11KV Substation", location: "Shahama, Abu Dhabi", category: "energy", sector: "Energy" },
+  { src: "/images/projects/j219-madinat-zayed-substation.webp", title: "Madinat Zayed 33/11KV Primary Substation", location: "Abu Dhabi, U.A.E.", category: "energy", sector: "Energy" },
+  { src: "/images/projects/dj53-taqa-jebel-ali.webp", title: "Al-Taaqa Alternative Solutions — Jebel Ali Airport", location: "Dubai, U.A.E.", category: "logistics", sector: "Logistics" },
+  { src: "/images/projects/j199-adcan-pharma.webp", title: "ADCAN Pharmaceutical Factory", location: "ICAD II, Abu Dhabi", category: "industrial", sector: "Pharmaceutical" },
+
   // Major Projects
   { src: "/images/projects/ppt-project-01.webp", title: "ICT Logistics Park", location: "Mussafah, Abu Dhabi", category: "logistics", sector: "Logistics" },
   { src: "/images/projects/ppt-project-03.webp", title: "Abu Dhabi Business Hub — Phase 11", location: "Mussafah, Abu Dhabi", category: "logistics", sector: "Logistics" },
