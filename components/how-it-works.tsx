@@ -1,121 +1,150 @@
 import { steps } from "@/lib/data"
-import { MessageSquare, FileText, HardHat, CheckCircle2, ArrowRight } from "lucide-react"
+import { MessageSquare, FileText, HardHat, CheckCircle2, ArrowRight, Phone } from "lucide-react"
 
 const stepIcons = [MessageSquare, FileText, HardHat, CheckCircle2]
 
 export function HowItWorks() {
   return (
-    <section className="py-24 bg-gradient-to-b from-[#f8fafc] to-[#f1f5f9] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-20">
-          <span className="inline-block text-[#2563eb] text-sm font-semibold tracking-[0.3em] uppercase bg-blue-50 px-4 py-1.5 rounded-full border border-blue-100">
-            How It Works
+    <section className="py-24 bg-[#0f1729] overflow-hidden relative">
+      {/* Blueprint grid background */}
+      <div className="absolute inset-0 opacity-[0.07]" style={{
+        backgroundImage: `
+          linear-gradient(rgba(96,165,250,1) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(96,165,250,1) 1px, transparent 1px)
+        `,
+        backgroundSize: "60px 60px",
+      }} />
+      {/* Subtle radial glow from center */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.15)_0%,transparent_70%)]" />
+
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
+        <div className="text-center mb-16 md:mb-20">
+          <span className="inline-block text-blue-400 text-sm font-semibold tracking-[0.3em] uppercase border border-blue-500/30 px-4 py-1.5 rounded-full bg-blue-500/10">
+            Our Process
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mt-6">
-            Your Project in <span className="text-[#2563eb]">4 Simple Steps</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mt-6">
+            How We Build <span className="text-blue-400">Your Vision</span>
           </h2>
-          <p className="mt-6 text-gray-500 max-w-2xl mx-auto text-lg leading-relaxed">
-            From first call to final handover — a proven process built on
-            25+ years of engineering excellence.
+          <p className="mt-6 text-blue-200/60 max-w-2xl mx-auto text-lg leading-relaxed">
+            A proven 4-step process built on 25+ years of engineering excellence —
+            from first call to final handover.
           </p>
         </div>
 
-        {/* Desktop: Horizontal timeline */}
-        <div className="hidden lg:block max-w-6xl mx-auto">
-          {/* Timeline connector line */}
-          <div className="relative">
-            <div className="absolute top-[60px] left-[12%] right-[12%] h-[2px] bg-gradient-to-r from-blue-200 via-blue-400 to-blue-200 z-0" />
-            <div className="absolute top-[60px] left-[12%] right-[12%] h-[2px] z-0">
-              <div className="h-full w-full bg-gradient-to-r from-blue-400 via-blue-600 to-blue-400 opacity-40 blur-sm" />
+        {/* Desktop: Winding blueprint road */}
+        <div className="hidden lg:block max-w-5xl mx-auto relative">
+          {/* SVG winding dashed road */}
+          <svg
+            className="absolute inset-0 w-full h-full pointer-events-none z-0"
+            viewBox="0 0 1000 520"
+            preserveAspectRatio="xMidYMid meet"
+            fill="none"
+          >
+            <path
+              d="M 160 80 C 300 80, 350 80, 500 80 C 650 80, 700 80, 840 80 
+                 C 920 80, 940 140, 880 180 
+                 C 780 240, 600 260, 500 260 C 400 260, 220 240, 160 260 
+                 C 80 290, 80 340, 160 380 
+                 C 260 420, 400 440, 500 440 C 600 440, 700 440, 840 440"
+              stroke="rgba(96,165,250,0.25)"
+              strokeWidth="3"
+              strokeDasharray="12 8"
+            />
+            {/* Glow path */}
+            <path
+              d="M 160 80 C 300 80, 350 80, 500 80 C 650 80, 700 80, 840 80 
+                 C 920 80, 940 140, 880 180 
+                 C 780 240, 600 260, 500 260 C 400 260, 220 240, 160 260 
+                 C 80 290, 80 340, 160 380 
+                 C 260 420, 400 440, 500 440 C 600 440, 700 440, 840 440"
+              stroke="rgba(59,130,246,0.1)"
+              strokeWidth="20"
+              strokeLinecap="round"
+            />
+          </svg>
+
+          {/* Step nodes positioned along the road */}
+          <div className="relative z-10" style={{ minHeight: "520px" }}>
+            {/* Step 1 — top-left */}
+            <div className="absolute" style={{ left: "4%", top: "0px" }}>
+              <StepCard step={steps[0]} icon={stepIcons[0]} index={0} />
+            </div>
+
+            {/* Step 2 — top-right */}
+            <div className="absolute" style={{ right: "4%", top: "0px" }}>
+              <StepCard step={steps[1]} icon={stepIcons[1]} index={1} />
+            </div>
+
+            {/* Step 3 — middle-left */}
+            <div className="absolute" style={{ left: "4%", top: "200px" }}>
+              <StepCard step={steps[2]} icon={stepIcons[2]} index={2} />
+            </div>
+
+            {/* Step 4 — bottom-right */}
+            <div className="absolute" style={{ right: "4%", top: "370px" }}>
+              <StepCard step={steps[3]} icon={stepIcons[3]} index={3} />
             </div>
           </div>
-
-          <div className="grid grid-cols-4 gap-6 relative z-10">
-            {steps.map((step, i) => {
-              const Icon = stepIcons[i]
-              return (
-                <div key={step.number} className="flex flex-col items-center text-center group">
-                  {/* Numbered circle */}
-                  <div className="relative mb-8">
-                    {/* Pulse ring */}
-                    <div className="absolute inset-0 rounded-full blue-gradient opacity-20 group-hover:opacity-40 scale-[1.4] group-hover:scale-[1.6] transition-all duration-500" />
-                    <div className="relative w-[120px] h-[120px] rounded-full bg-white shadow-xl shadow-blue-500/10 border-2 border-blue-100 group-hover:border-blue-300 flex flex-col items-center justify-center transition-all duration-300 group-hover:shadow-blue-500/20 group-hover:-translate-y-1">
-                      <Icon className="w-7 h-7 text-[#2563eb] mb-1.5" strokeWidth={1.8} />
-                      <span className="text-[#2563eb] font-bold text-lg">{String(step.number).padStart(2, "0")}</span>
-                    </div>
-                  </div>
-
-                  {/* Card */}
-                  <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 group-hover:shadow-lg group-hover:border-blue-200 transition-all duration-300 w-full group-hover:-translate-y-1">
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
-                    <p className="text-gray-500 text-sm leading-relaxed">{step.description}</p>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
         </div>
 
-        {/* Tablet: 2x2 grid */}
+        {/* Tablet: 2-column zigzag */}
         <div className="hidden md:block lg:hidden max-w-2xl mx-auto">
-          <div className="grid grid-cols-2 gap-6">
-            {steps.map((step, i) => {
-              const Icon = stepIcons[i]
-              return (
-                <div key={step.number} className="relative group">
-                  <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:border-blue-200 transition-all duration-300">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="w-14 h-14 rounded-xl blue-gradient flex items-center justify-center shadow-lg shadow-blue-500/20">
-                        <Icon className="w-6 h-6 text-white" strokeWidth={2} />
+          <div className="relative">
+            {/* Vertical dashed line */}
+            <div className="absolute left-1/2 top-0 bottom-0 w-[2px] border-l-2 border-dashed border-blue-500/25 -translate-x-1/2" />
+            
+            <div className="space-y-8">
+              {steps.map((step, i) => {
+                const Icon = stepIcons[i]
+                const isLeft = i % 2 === 0
+                return (
+                  <div key={step.number} className={`flex ${isLeft ? "justify-start pr-[52%]" : "justify-end pl-[52%]"} relative`}>
+                    {/* Center dot */}
+                    <div className="absolute left-1/2 top-8 -translate-x-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-[#0f1729] z-10" />
+                    
+                    <div className="bg-[#1a2744] border border-blue-500/20 rounded-2xl p-5 hover:border-blue-400/40 transition-all group w-full">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-11 h-11 rounded-lg bg-blue-500/15 flex items-center justify-center">
+                          <Icon className="w-5 h-5 text-blue-400" strokeWidth={2} />
+                        </div>
+                        <span className="text-3xl font-black text-blue-500/20 group-hover:text-blue-500/30 transition-colors">
+                          {String(step.number).padStart(2, "0")}
+                        </span>
                       </div>
-                      <span className="text-4xl font-black text-blue-100 group-hover:text-blue-200 transition-colors">
-                        {String(step.number).padStart(2, "0")}
-                      </span>
+                      <h3 className="text-base font-bold text-white mb-1.5">{step.title}</h3>
+                      <p className="text-blue-200/50 text-sm leading-relaxed">{step.description}</p>
                     </div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
-                    <p className="text-gray-500 text-sm leading-relaxed">{step.description}</p>
                   </div>
-                  {/* Arrow connectors */}
-                  {i < steps.length - 1 && (
-                    <div className={`absolute ${
-                      i === 0 ? "-right-4 top-1/2 -translate-y-1/2" :
-                      i === 1 ? "left-1/2 -bottom-4 -translate-x-1/2 rotate-90" :
-                      "-right-4 top-1/2 -translate-y-1/2"
-                    } text-blue-300 z-20`}>
-                      <ArrowRight className="w-5 h-5" />
-                    </div>
-                  )}
-                </div>
-              )
-            })}
+                )
+              })}
+            </div>
           </div>
         </div>
 
-        {/* Mobile: Vertical timeline */}
+        {/* Mobile: Vertical blueprint timeline */}
         <div className="md:hidden">
-          <div className="relative pl-8">
-            {/* Vertical line */}
-            <div className="absolute left-[23px] top-4 bottom-4 w-[2px] bg-gradient-to-b from-blue-400 via-blue-300 to-blue-400" />
+          <div className="relative pl-12">
+            {/* Vertical dashed road */}
+            <div className="absolute left-[19px] top-0 bottom-0 w-[2px] border-l-2 border-dashed border-blue-500/30" />
 
-            <div className="space-y-8">
+            <div className="space-y-6">
               {steps.map((step, i) => {
                 const Icon = stepIcons[i]
                 return (
                   <div key={step.number} className="relative">
-                    {/* Timeline dot */}
-                    <div className="absolute -left-8 top-6 w-[46px] h-[46px] rounded-full blue-gradient flex items-center justify-center shadow-lg shadow-blue-500/25 border-4 border-[#f1f5f9] z-10">
-                      <Icon className="w-5 h-5 text-white" strokeWidth={2} />
+                    {/* Road node */}
+                    <div className="absolute -left-12 top-5 w-[38px] h-[38px] rounded-full bg-[#1a2744] border-2 border-blue-500/40 flex items-center justify-center z-10">
+                      <Icon className="w-4 h-4 text-blue-400" strokeWidth={2} />
                     </div>
 
-                    {/* Card */}
-                    <div className="ml-8 bg-white rounded-2xl p-5 shadow-sm border border-gray-100 hover:shadow-md hover:border-blue-200 transition-all">
+                    <div className="bg-[#1a2744] border border-blue-500/15 rounded-xl p-5 hover:border-blue-400/30 transition-all">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="text-xs font-bold text-[#2563eb] bg-blue-50 px-2 py-0.5 rounded-full">
+                        <span className="text-xs font-bold text-blue-400 bg-blue-500/10 px-2.5 py-0.5 rounded-full border border-blue-500/20">
                           Step {step.number}
                         </span>
                       </div>
-                      <h3 className="text-base font-bold text-gray-900 mb-1.5">{step.title}</h3>
-                      <p className="text-gray-500 text-sm leading-relaxed">{step.description}</p>
+                      <h3 className="text-base font-bold text-white mb-1.5">{step.title}</h3>
+                      <p className="text-blue-200/50 text-sm leading-relaxed">{step.description}</p>
                     </div>
                   </div>
                 )
@@ -126,16 +155,14 @@ export function HowItWorks() {
 
         {/* CTA */}
         <div className="mt-20 text-center">
-          <div className="relative bg-white rounded-3xl p-10 md:p-14 max-w-3xl mx-auto shadow-sm border border-gray-100 overflow-hidden">
-            {/* Decorative gradient blobs */}
-            <div className="absolute -top-20 -right-20 w-40 h-40 bg-blue-100 rounded-full opacity-50 blur-3xl" />
-            <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-blue-50 rounded-full opacity-50 blur-3xl" />
-
+          <div className="relative bg-[#1a2744] rounded-3xl p-10 md:p-14 max-w-3xl mx-auto border border-blue-500/15 overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(59,130,246,0.1)_0%,transparent_60%)]" />
+            
             <div className="relative">
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
                 Ready to Start Your Project?
               </h3>
-              <p className="text-gray-500 mb-8 leading-relaxed max-w-xl mx-auto">
+              <p className="text-blue-200/50 mb-8 leading-relaxed max-w-xl mx-auto">
                 From inquiry to delivery, Hadeed is your trusted partner.
                 Get a free consultation and detailed proposal today.
               </p>
@@ -149,8 +176,9 @@ export function HowItWorks() {
                 </a>
                 <a
                   href="tel:+971506266515"
-                  className="inline-flex items-center gap-2 bg-gray-50 text-gray-700 px-8 py-3.5 rounded-full font-semibold hover:bg-gray-100 transition-colors border border-gray-200"
+                  className="inline-flex items-center gap-2 bg-white/5 text-blue-200 px-8 py-3.5 rounded-full font-semibold hover:bg-white/10 transition-colors border border-blue-500/20"
                 >
+                  <Phone className="w-4 h-4" />
                   Call Us Now
                 </a>
               </div>
@@ -158,6 +186,32 @@ export function HowItWorks() {
           </div>
         </div>
       </div>
+    </section>
+  )
+}
+
+function StepCard({ step, icon: Icon, index }: { step: typeof steps[0]; icon: typeof stepIcons[0]; index: number }) {
+  return (
+    <div className="group w-[280px]">
+      <div className="flex items-center gap-4 mb-3">
+        {/* Glowing node */}
+        <div className="relative">
+          <div className="absolute inset-0 rounded-full bg-blue-500 opacity-20 blur-md group-hover:opacity-40 transition-opacity scale-150" />
+          <div className="relative w-14 h-14 rounded-full bg-[#1a2744] border-2 border-blue-500/40 group-hover:border-blue-400 flex items-center justify-center transition-all">
+            <Icon className="w-6 h-6 text-blue-400" strokeWidth={1.8} />
+          </div>
+        </div>
+        <span className="text-5xl font-black text-blue-500/15 group-hover:text-blue-500/25 transition-colors select-none">
+          {String(step.number).padStart(2, "0")}
+        </span>
+      </div>
+      <div className="bg-[#1a2744]/80 backdrop-blur-sm border border-blue-500/15 rounded-xl p-5 group-hover:border-blue-400/30 group-hover:bg-[#1e2f50]/80 transition-all">
+        <h3 className="text-lg font-bold text-white mb-2">{step.title}</h3>
+        <p className="text-blue-200/50 text-sm leading-relaxed">{step.description}</p>
+      </div>
+    </div>
+  )
+}
     </section>
   )
 }
