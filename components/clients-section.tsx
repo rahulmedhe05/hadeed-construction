@@ -12,7 +12,8 @@ const clientLogos = [
   "/images/client-logos/preq-logo-07.webp",
   "/images/client-logos/preq-logo-08.webp",
   "/images/client-logos/preq-logo-09.webp",
-  "/images/client-logos/preq-logo-10.webp",
+  "/images/client-logos/dewa-logo.svg",
+  "/images/client-logos/taqa-logo.webp",
 ]
 
 

@@ -20,6 +20,7 @@ const certificates = [
 
 const licenses = [
   { src: "/images/certificates/cert-new-1.webp", title: "HEC Abu Dhabi Trade Licence 2027" },
+  { src: "/images/certificates/dubai-trade-licence.webp", title: "HEC Dubai Trade Licence" },
 ]
 
 const allItems = [...awards, ...certificates, ...licenses]

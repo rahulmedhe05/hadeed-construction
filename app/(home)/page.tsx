@@ -8,7 +8,6 @@ import { FAQSection } from "@/components/faq-section"
 import { Footer } from "@/components/footer"
 import { Navigation } from "@/components/navigation"
 import { WhatsAppFloat } from "@/components/whatsapp-float"
-import { ProjectGallery } from "@/components/project-gallery"
 import { CertificatesSection } from "@/components/certificates-section"
 import { ClientsSection } from "@/components/clients-section"
 import { OurWorkSection } from "@/components/our-work-section"
@@ -71,7 +70,6 @@ export default function Home() {
       </section>
 
       <OurWorkSection />
-      <ProjectGallery />
       <HowItWorks />
       <StatsCounter />
       <FAQSection />

@@ -1,21 +1,18 @@
 import type { MetadataRoute } from "next"
-import { getSitemapCount } from "@/lib/sitemap-utils"
+import { getSitemapCount, getUrlsForSitemap } from "@/lib/sitemap-utils"
 
-/**
- * Sitemap Index — generates /sitemap.xml pointing to child sitemaps
- * Each child contains max 100 URLs for optimal crawling.
- */
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://hadeedconstruction.com"
+export async function generateSitemaps() {
   const count = getSitemapCount()
-  const entries: MetadataRoute.Sitemap = []
+  return Array.from({ length: count }, (_, i) => ({ id: i }))
+}
 
-  for (let i = 0; i < count; i++) {
-    entries.push({
-      url: `${baseUrl}/sitemap/${i}.xml`,
-      lastModified: new Date(),
-    })
-  }
+export default async function sitemap({ id }: { id: number }): Promise<MetadataRoute.Sitemap> {
+  const urls = getUrlsForSitemap(id)
 
-  return entries
+  return urls.map((entry) => ({
+    url: entry.url,
+    lastModified: entry.lastModified,
+    changeFrequency: entry.changeFrequency,
+    priority: entry.priority,
+  }))
 }
