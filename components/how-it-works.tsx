@@ -212,6 +212,3 @@ function StepCard({ step, icon: Icon, index }: { step: typeof steps[0]; icon: ty
     </div>
   )
 }
-    </section>
-  )
-}
