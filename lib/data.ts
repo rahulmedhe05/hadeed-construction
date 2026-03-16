@@ -17,9 +17,9 @@ export const SITE_CONFIG = {
   url: "https://hadeedconstruction.com",
   profilePdf: "/HEC LLC - Prequalification.pdf",
   social: {
-    facebook: "#",
-    instagram: "#",
-    linkedin: "#",
+    facebook: "https://www.facebook.com/share/1Ar5KqtBWg/",
+    instagram: "https://www.instagram.com/hadeedconstruction",
+    linkedin: "https://www.linkedin.com/in/hadeed-emirates-contracting-0353a7a9",
   },
 }
 

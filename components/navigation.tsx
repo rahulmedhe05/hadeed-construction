@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Menu, X, ChevronDown, Mail, Download, FileText } from "lucide-react"
+import { Menu, X, ChevronDown, Mail, Download, FileText, Facebook, Instagram, Linkedin } from "lucide-react"
 import { projectSectors, SITE_CONFIG } from "@/lib/data"
 import { Logo } from "@/components/logo"
 
@@ -26,6 +26,16 @@ export function Navigation() {
             <span className="text-gray-600">25+ Years | 400+ Projects | UAE · Qatar · Jordan</span>
           </div>
           <div className="flex items-center gap-3">
+            <a href={SITE_CONFIG.social.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#E1306C] transition-colors" aria-label="Instagram">
+              <Instagram className="w-4 h-4" />
+            </a>
+            <a href={SITE_CONFIG.social.facebook} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#1877F2] transition-colors" aria-label="Facebook">
+              <Facebook className="w-4 h-4" />
+            </a>
+            <a href={SITE_CONFIG.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#0A66C2] transition-colors" aria-label="LinkedIn">
+              <Linkedin className="w-4 h-4" />
+            </a>
+            <span className="text-gray-300">|</span>
             <a
               href={SITE_CONFIG.whatsappLink}
               target="_blank"
